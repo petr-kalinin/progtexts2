@@ -10,9 +10,9 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+import os
+import sys
+sys.path.insert(0, os.path.abspath('.'))
 
 
 # -- Project information -----------------------------------------------------
@@ -28,6 +28,7 @@ author = 'Petr Kalinin'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    "sphinx.ext.mathjax"
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -57,3 +58,55 @@ html_theme = 'alabaster'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+#---
+master_doc = 'index'
+mathjax_path = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_SVG'
+
+from docutils import nodes
+from docutils.parsers.rst import Directive
+from docutils.parsers.rst import directives
+
+FILES = {}
+
+class TaskDirective(Directive):
+    required_arguments = 0
+    optional_arguments = 0
+    final_argument_whitespace = True
+    option_spec = {'name': directives.unchanged}
+    has_content = True
+
+    node_class = None
+    """Subclasses must set this to the appropriate admonition node class."""
+
+    def run(self):
+        filename = self.state_machine.document.current_source
+        basename = os.path.splitext(filename)[0]
+        if filename not in FILES:
+            FILES[filename] = [None] * 3
+            FILES[filename][1] = open(basename + ".s.rst", "w")
+            FILES[filename][2] = open(basename + ".a.rst", "w")
+        self.assert_has_content()
+        name = "Задача"
+        if "name" in self.options:
+            name = self.options["name"]
+        self.content[0] = ":strong:`{}:` {}".format(name,  self.content[0])
+        content = self.content
+        state = 0
+        res = [[], [], []]
+        for idx, line in enumerate(self.content):
+            if line.strip() == "|":
+                state += 1
+                if state == 1:
+                    content = content[:idx]
+            else:
+                res[state].append(line)
+        node = nodes.paragraph(rawsource="\n".join(content))
+        self.state.nested_parse(content, self.content_offset, node)
+        for i in (1, 2):
+            FILES[filename][i].write("aaaaa\n")
+            FILES[filename][i].write("\n".join(res[i]) + "\n")
+        return [node]
+
+def setup(app):
+    app.add_directive('task', TaskDirective)
