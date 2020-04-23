@@ -129,45 +129,47 @@ l6.5cm
 --------------
 
 | 
-| :math:`
-  \displaystyle
-  \left|
-  \frac{\displaystyle
-  {\hbox to 1.5cm{\hfill 0\hfill}}\left|
-    \frac{\displaystyle
-    {\hbox to 1.5cm{\hfill 0\hfill}}\left|
-      \frac{\displaystyle
-      {\hbox to 1.5cm{\hfill 0\hfill}}}{\displaystyle
-      {\hbox to 1.5cm{\hfill 1\hfill}}}
-      \right.
-    }{\displaystyle
-    {\hbox to 1.5cm{\hfill 1\hfill}}\left|
-      \frac{\displaystyle
-      {\hbox to 1.5cm{\hfill 0\hfill}}}{\displaystyle
-      {\hbox to 1.5cm{\hfill 1\hfill}}}
-      \right.
-    }
-    \right.
-  }{\displaystyle
-  {\hbox to 1.5cm{\hfill 1\hfill}}\left|
-    \frac{\displaystyle
-    {\hbox to 1.5cm{\hfill 0\hfill}}\left|
-      \frac{\displaystyle
-      {\hbox to 1.5cm{\hfill 0\hfill}}}{\displaystyle
-      {\hbox to 1.5cm{\hfill 1\hfill}}}
-      \right.
-    }{\displaystyle
-    {\hbox to 1.5cm{\hfill 1\hfill}}\left|
-      \frac{\displaystyle
-      {\hbox to 1.5cm{\hfill 0\hfill}}}{\displaystyle
-      {\hbox to 1.5cm{\hfill 1\hfill}}}
-      \right.
-    }
-    \right.
-  }
-  \right.
-  \cdots
-   `
+| 
+
+  .. math::
+
+     \displaystyle
+     \left|
+     \frac{\displaystyle
+     {\hbox to 1.5cm{\hfill 0\hfill}}\left|
+       \frac{\displaystyle
+       {\hbox to 1.5cm{\hfill 0\hfill}}\left|
+         \frac{\displaystyle
+         {\hbox to 1.5cm{\hfill 0\hfill}}}{\displaystyle
+         {\hbox to 1.5cm{\hfill 1\hfill}}}
+         \right.
+       }{\displaystyle
+       {\hbox to 1.5cm{\hfill 1\hfill}}\left|
+         \frac{\displaystyle
+         {\hbox to 1.5cm{\hfill 0\hfill}}}{\displaystyle
+         {\hbox to 1.5cm{\hfill 1\hfill}}}
+         \right.
+       }
+       \right.
+     }{\displaystyle
+     {\hbox to 1.5cm{\hfill 1\hfill}}\left|
+       \frac{\displaystyle
+       {\hbox to 1.5cm{\hfill 0\hfill}}\left|
+         \frac{\displaystyle
+         {\hbox to 1.5cm{\hfill 0\hfill}}}{\displaystyle
+         {\hbox to 1.5cm{\hfill 1\hfill}}}
+         \right.
+       }{\displaystyle
+       {\hbox to 1.5cm{\hfill 1\hfill}}\left|
+         \frac{\displaystyle
+         {\hbox to 1.5cm{\hfill 0\hfill}}}{\displaystyle
+         {\hbox to 1.5cm{\hfill 1\hfill}}}
+         \right.
+       }
+       \right.
+     }
+     \right.
+     \cdots
 
 --------------
 
