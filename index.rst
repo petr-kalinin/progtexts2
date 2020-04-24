@@ -7,6 +7,7 @@ Welcome to ProgTexts's documentation!
    :numbered:
 
    backtrack/index
+   dfs/index
 
 
 

@@ -129,6 +129,7 @@ def process_task_nodes(app, doctree, fromdocname):
         env.tasklabels = defaultdict(list)
     if not hasattr(env, "idtolabel"):
         env.idtolabel = {}
+
     for node in doctree.traverse(taskheader):
         doc = node.docname
         sec = env.toc_secnumbers[doc][''][0]        
@@ -139,12 +140,18 @@ def process_task_nodes(app, doctree, fromdocname):
         name_node = nodes.strong(text, text)
         node.replace_self(name_node)
 
+    if not fromdocname.endswith("index"):
+        return
+    directory = os.path.dirname(fromdocname)
+
     for clas in [tasklist, suggestlist, answerlist]:
         for node in doctree.traverse(clas):
             content = []
 
             for task_info in env.task_all_tasks:
                 docname = task_info['docname']
+                if not docname.startswith(directory + "/"):
+                    continue
                 text_node = None
                 if (clas is tasklist):
                     text_node = task_info['task']
@@ -152,7 +159,7 @@ def process_task_nodes(app, doctree, fromdocname):
                     text_node = task_info['suggest']
                 else:
                     text_node = task_info['answer']
-                if not text_node:
+                if not text_node or not text_node.children:
                     continue
 
                 label = env.idtolabel[docname + ":" + task_info["target"]["refid"]]
