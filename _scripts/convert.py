@@ -20,6 +20,17 @@ def replace_task(match):
     result += ["", ""]
     return "\n".join(result)
 
+def replace_image(match):
+    filename = match.group(3)
+    initial_filename = filename
+    while filename != "" and not os.path.exists(filename):
+        filename = filename[filename.find("/") + 1:]
+    resultname = filename + ".png"
+    print("filename=", filename)
+    subprocess.check_call("gs -dSAFER -dBATCH -dNOPAUSE -dEPSCrop -r600 -sDEVICE=pngalpha".split() + ["-sOutputFile=" + resultname, filename])
+    return match.group(0).replace(initial_filename, resultname)
+    
+
 with open(sys.argv[1], "r") as f:
     data = f.read()
 
@@ -38,6 +49,8 @@ replacements = [
 
 for r in replacements:
     data = data.replace(*r)
+
+data = re.sub(r"\\includegraphics(\[(.*)\])?\{(.*)\}", replace_image, data)
 
 tempfile = sys.argv[1] + ".tmp.tex" 
 with open(tempfile, "w") as f:

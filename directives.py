@@ -114,16 +114,12 @@ def purge_tasks(app, env, docname):
         env.tasklabels[key] = [l for l in env.tasklabels[key] if l["docname"] != docname]
 
     if not hasattr(env, "idtolabel"):
-        print("!!!")
         env.idtolabel = {}
-    print("purge_tasks", docname, env.idtolabel)
     for key in env.idtolabel:
         if key.startswith(docname):
             del env.idtolabel[key]
-    print("purge_tasks", docname, env.idtolabel)
 
 def process_task_nodes(app, doctree, fromdocname):
-    print("process_task_nodes")
     env = app.builder.env
 
     if not hasattr(env, 'task_all_tasks'):
@@ -132,7 +128,6 @@ def process_task_nodes(app, doctree, fromdocname):
     if not hasattr(env, "tasklabels"):
         env.tasklabels = defaultdict(list)
     if not hasattr(env, "idtolabel"):
-        print("!!!")
         env.idtolabel = {}
     for node in doctree.traverse(taskheader):
         doc = node.docname

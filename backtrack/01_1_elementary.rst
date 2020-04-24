@@ -133,7 +133,6 @@ l6.5cm
 
   .. math::
 
-     \displaystyle
      \left|
      \frac{\displaystyle
      {\hbox to 1.5cm{\hfill 0\hfill}}\left|
@@ -1428,5 +1427,5 @@ breakpoint с условием :math:`i=<\mbox{тому, что надо}>`, и 
 
 [Perestroika\_simple]
 
-.. |image| image:: texts/01_1_elementary/tree.1
+.. |image| image:: 01_1_elementary/tree.1.png
    :width: 8.00000cm
