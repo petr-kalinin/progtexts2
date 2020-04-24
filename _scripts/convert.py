@@ -31,6 +31,9 @@ def replace_image(match):
     return match.group(0).replace(initial_filename, resultname)
     
 
+if ".tmp." in sys.argv[1]:
+    sys.exit(0)
+
 with open(sys.argv[1], "r") as f:
     data = f.read()
 
@@ -40,17 +43,20 @@ replacements = [
     ("\"---", "—"),
     ("<<", "«"),
     (">>", "»"),
+    ("\"<", "«"),
+    ("\">", "»"),
     ("\hm", ""),
     ("\header{", "\subsection{"),
     ("\lheader{", "\paragraph{"),
     ("\lheadernd{", "\paragraph{"),
-    ("\\task", "||task")
+    ("\\task", "||task"),
 ]
 
 for r in replacements:
     data = data.replace(*r)
 
 data = re.sub(r"\\includegraphics(\[(.*)\])?\{(.*)\}", replace_image, data)
+data = re.sub(r"\\(label|ref)\{(.*?)\}", r"||\1|\2|", data)
 
 tempfile = sys.argv[1] + ".tmp.tex" 
 with open(tempfile, "w") as f:
@@ -66,6 +72,8 @@ with open(result_file, "r") as f:
 
 data = re.sub("\\\\\\|\\\\\\|task(n[^|]*)?\\\\\\|([^|]*)\\\\\\|\\s*\\\\\\|([^|]*)\\\\\\|\\s*\\\\\\|([^|]*)\\\\\\|", 
               replace_task, data)
+data = re.sub(r"\\\|\\\|label\\\|(.*?)\\\|", r"\n\n.. _\1:\n\n", data)
+data = re.sub(r"\\\|\\\|ref\\\|(.*?)\\\|", r":ref:`*<\1>`", data)
 
 with open(result_file, "w") as f:
     f.write(data)

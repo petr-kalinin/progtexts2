@@ -140,8 +140,6 @@ def process_task_nodes(app, doctree, fromdocname):
         name_node = nodes.strong(text, text)
         node.replace_self(name_node)
 
-    if not fromdocname.endswith("index"):
-        return
     directory = os.path.dirname(fromdocname)
 
     for clas in [tasklist, suggestlist, answerlist]:

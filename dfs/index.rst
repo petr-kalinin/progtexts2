@@ -10,9 +10,6 @@
    04_2_simple
    04_3_topsort
    04_4_bridges
-
-.. tasklist::
-
-.. suggestlist::
-
-.. answerlist::
+   tasks
+   suggests
+   answers

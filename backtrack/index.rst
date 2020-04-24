@@ -10,9 +10,7 @@
    01_2_cuts
    01_3_heur
    01_4_add
-
-.. tasklist::
-
-.. suggestlist::
-
-.. answerlist::
+   tasks
+   suggests
+   answers
+   
