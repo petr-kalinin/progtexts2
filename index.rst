@@ -6,6 +6,7 @@ Welcome to ProgTexts's documentation!
    :caption: Оглавление:
    :numbered:
 
+   intro/index
    backtrack/index
    dfs/index
 
