@@ -44,6 +44,7 @@ class TaskDirective(Directive):
         headernode.targetid = targetid
         headernode.name = name
         headernode.docname = env.docname
+        headernode.title = True
 
         content = self.content
         state = 0
@@ -78,8 +79,11 @@ class TaskDirective(Directive):
                 f.flush()
         res_node = nodes.paragraph(rawsource="\n".join(res[0]))
         self.state.nested_parse(res[0], self.content_offset, res_node)
-        res_node.children[0].insert(0, headernode)
-        return [targetnode, res_node]
+        #res_node.children[0].insert(0, headernode)
+
+        wrap_node = nodes.admonition()
+        wrap_node += [headernode, res_node]
+        return [targetnode, wrap_node]
 
 
 class TaskRefDirective(Directive):
@@ -102,6 +106,7 @@ class TaskRefDirective(Directive):
         header_node.targetid = targetid
         header_node.name = name
         header_node.docname = docname
+        header_node.title = False
 
         ref_node = nodes.reference('', '')
         ref_node['refdocname'] = docname
@@ -154,7 +159,10 @@ def process_task_nodes(app, doctree, fromdocname):
             label = env.idtolabel[key]
 
         text = "{} {}: ".format(node.name, label)
-        name_node = nodes.strong(text, text)
+        if node.title:
+            name_node = nodes.title(text, text)
+        else:
+            name_node = nodes.strong(text, text)
         node.replace_self(name_node)
 
 
