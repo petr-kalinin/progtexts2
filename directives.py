@@ -157,44 +157,6 @@ def process_task_nodes(app, doctree, fromdocname):
         name_node = nodes.strong(text, text)
         node.replace_self(name_node)
 
-    """
-    directory = os.path.dirname(fromdocname)
-
-    for clas in [tasklist, suggestlist, answerlist]:
-        for node in doctree.traverse(clas):
-            content = []
-
-            for task_info in env.task_all_tasks:
-                docname = task_info['docname']
-                if not docname.startswith(directory + "/"):
-                    continue
-                text_node = None
-                if (clas is tasklist):
-                    text_node = task_info['task']
-                elif (clas is suggestlist):
-                    text_node = task_info['suggest']
-                else:
-                    text_node = task_info['answer']
-                if not text_node or not text_node.children:
-                    continue
-
-                label = env.idtolabel[docname + ":" + task_info["target"]["refid"]]
-                header = "{} {}: ".format(task_info["name"], label)
-                header_node = nodes.strong(header, header)
-
-                ref_node = nodes.reference('', '')
-                ref_node['refdocname'] = task_info['docname']
-                ref_node['refuri'] = app.builder.get_relative_uri(
-                    fromdocname, task_info['docname'])
-                ref_node['refuri'] += '#' + task_info['target']['refid']
-                ref_node.append(header_node)
-
-                text_node.children[0].insert(0, ref_node)
-                content += text_node
-
-            node.replace_self(content)
-    """
-
 
 def setup(app):
     app.add_node(task)
