@@ -52,6 +52,7 @@ replacements = [
     ("\lheader{", "\paragraph{"),
     ("\lheadernd{", "\paragraph{"),
     ("\\task", "||task"),
+    ("ulist", "itemize")
 ]
 
 for r in replacements:
