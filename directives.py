@@ -93,13 +93,13 @@ class TaskDirective(Directive):
             'docname': env.docname,
             'lineno': self.lineno,
             'target': targetnode,
-            'task': res_node[0].deepcopy(),
+            'task': res_node[0],
             'suggest': res_node[1],
             'answer': res_node[2],
             'name': name
         })
         res_node[0].children[0].insert(0, headernode)
-        return [targetnode, res_node[0]]
+        return [targetnode] + [r for r in res_node if r]
 
 
 def purge_tasks(app, env, docname):

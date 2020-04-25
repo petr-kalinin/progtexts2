@@ -37,6 +37,8 @@ if ".tmp." in sys.argv[1]:
 with open(sys.argv[1], "r") as f:
     data = f.read()
 
+data = re.sub(r"(\\(\w*)header(\w*)\{(.*?)\})(\s*" + "\n" + r")*(\\label\{(.*?)\})", "\\6\n\\1", data)
+
 replacements = [
     ("\"=", "-"),
     ("\"-", "-"),
@@ -70,10 +72,10 @@ subprocess.check_call(["pandoc", "-f", "latex", "-t", "rst", tempfile, "-o", res
 with open(result_file, "r") as f:
     data = f.read()
 
+data = re.sub(r"\\\|\\\|label\\\|(.*?)\\\|", r"\n\n.. _\1:\n\n", data)
+data = re.sub(r"\\\|\\\|ref\\\|(.*?)\\\|", r":ref:`\1`", data)
 data = re.sub("\\\\\\|\\\\\\|task(n[^|]*)?\\\\\\|([^|]*)\\\\\\|\\s*\\\\\\|([^|]*)\\\\\\|\\s*\\\\\\|([^|]*)\\\\\\|", 
               replace_task, data)
-data = re.sub(r"\\\|\\\|label\\\|(.*?)\\\|", r"\n\n.. _\1:\n\n", data)
-data = re.sub(r"\\\|\\\|ref\\\|(.*?)\\\|", r":ref:`*<\1>`", data)
 
 with open(result_file, "w") as f:
     f.write(data)
