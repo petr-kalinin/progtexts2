@@ -1,4 +1,5 @@
 Все задачи
 ----------
 
-.. tasklist::
+.. include:: all_tasks.inc
+

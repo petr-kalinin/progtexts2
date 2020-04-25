@@ -1,4 +1,4 @@
 Ответы на задачи
 ----------------
 
-.. answerlist::
+.. include:: all_answers.inc

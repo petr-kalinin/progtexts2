@@ -1,4 +1,4 @@
 Подсказки к задачам
 -------------------
 
-.. suggestlist::
+.. include:: all_suggests.inc
