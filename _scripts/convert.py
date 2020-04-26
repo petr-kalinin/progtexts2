@@ -8,7 +8,7 @@ def add_indent(text):
     if not text:
         return []
     text = text.split("\n")
-    return ["    " + line for line in text]
+    return ["    " + line.strip() for line in text]
 
 def replace_task(match):
     result = ["", "", ".. task::"]
@@ -24,7 +24,12 @@ def replace_image(match):
     filename = match.group(3)
     initial_filename = filename
     while filename != "" and not os.path.exists(filename):
-        filename = filename[filename.find("/") + 1:]
+        new_filename = filename[filename.find("/") + 1:]
+        if new_filename == filename:
+            break
+        filename = new_filename
+    if not os.path.exists(filename):
+        raise Exception("Can't find file {}".format(filename))
     resultname = filename + ".png"
     print("filename=", filename)
     subprocess.check_call("gs -dSAFER -dBATCH -dNOPAUSE -dEPSCrop -r600 -sDEVICE=pngalpha".split() + ["-sOutputFile=" + resultname, filename])
@@ -34,6 +39,7 @@ def replace_image(match):
 if ".tmp." in sys.argv[1]:
     sys.exit(0)
 
+print("Process ", sys.argv[1])
 with open(sys.argv[1], "r") as f:
     data = f.read()
 
@@ -48,6 +54,7 @@ replacements = [
     ("\"<", "«"),
     ("\">", "»"),
     ("\hm", ""),
+    ("`", "'"),
     ("\header{", "\subsection{"),
     ("\lheader{", "\paragraph{"),
     ("\lheadernd{", "\paragraph{"),
@@ -58,7 +65,7 @@ replacements = [
 for r in replacements:
     data = data.replace(*r)
 
-data = re.sub(r"\\includegraphics(\[(.*)\])?\{(.*)\}", replace_image, data)
+data = re.sub(r"\\includegraphics(\[(.*)\])?\{(.*?)\}", replace_image, data)
 data = re.sub(r"\\(label|ref)\{(.*?)\}", r"||\1|\2|", data)
 
 tempfile = sys.argv[1] + ".tmp.tex" 
@@ -75,7 +82,7 @@ with open(result_file, "r") as f:
 
 data = re.sub(r"\\\|\\\|label\\\|(.*?)\\\|", r"\n\n.. _\1:\n\n", data)
 data = re.sub(r"\\\|\\\|ref\\\|(.*?)\\\|", r":ref:`\1`", data)
-data = re.sub("\\\\\\|\\\\\\|task(n[^|]*)?\\\\\\|([^|]*)\\\\\\|\\s*\\\\\\|([^|]*)\\\\\\|\\s*\\\\\\|([^|]*)\\\\\\|", 
+data = re.sub("\\\\\\|\\\\\\|task(n[^|]*)?\\\\\\|([^|]*)\\\\\\|\\s*\\\\\\|([^|]*)\\\\\\|\\s*\\\\\\|([^|]*)\\\\\\|\\s*", 
               replace_task, data)
 
 with open(result_file, "w") as f:

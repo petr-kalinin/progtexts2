@@ -9,6 +9,7 @@ Welcome to ProgTexts's documentation!
    intro/index
    backtrack/index
    dfs/index
+   dynprog/index
 
 
 
