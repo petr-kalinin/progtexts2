@@ -63,8 +63,8 @@
 
 .. math::
 
-   \mbox{а) }ans[i,j]=ans[i-1,j]+ans[i,j-1]; 
-   \qquad\mbox{б) }ans[i,j]=max(ans[i-1,j],ans[i,j-1])+a[i,j],
+   {а) }ans[i,j]=ans[i-1,j]+ans[i,j-1]; 
+   \qquad{б) }ans[i,j]=max(ans[i-1,j],ans[i,j-1])+a[i,j],
 
  где в варианте б) :math:`a` — массив, в котором храним числа,
 изначально записанные в клетках поля.

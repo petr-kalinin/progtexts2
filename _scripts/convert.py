@@ -68,6 +68,7 @@ replacements = [
     ("\"<", "«"),
     ("\">", "»"),
     ("\hm", ""),
+    ("\mbox", ""),
     ("`", "'"),
     ("\header{", "\subsection{"),
     ("\lheader{", "\paragraph{"),
@@ -80,6 +81,7 @@ replacements = [
 for r in replacements:
     data = data.replace(*r)
 
+data = re.sub(r"\\tt\s*(.*?)\}", r"\\texttt{\1}}", data)
 data = re.sub(r"\\includegraphics(\[(.*)\])?\{(.*?)\}", replace_image, data)
 data = re.sub(r"\\(label|ref)\{(.*?)\}", r"||\1|\2|", data)
 

@@ -93,14 +93,14 @@
    \verb'0xxxx'\\
    \verb'0xxxx'
    \end{array}
-   \right\} \mbox{всего $ans[i-1]$ последовательностей}
+   \right\} {всего $ans[i-1]$ последовательностей}
    \\
    \left.
    \begin{array}{c}
    \verb'10xxx'\\
    \verb'10xxx'
    \end{array}
-   \right\} \mbox{всего $ans[i-2]$ последовательностей}
+   \right\} {всего $ans[i-2]$ последовательностей}
    \end{array}
    \hspace{0.5cm} 
    \right\} \parbox{6cm}{\raggedright всего $ans[i]=ans[i-1]+ans[i-2]$ последовательностей}
