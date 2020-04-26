@@ -70,9 +70,10 @@ replacements = [
     ("\\hm", ""),
     ("\\mbox", ""),
     ("`", "'"),
-    ("\\header{", "\subsection{"),
-    ("\\lheader{", "\paragraph{"),
-    ("\\lheadernd{", "\paragraph{"),
+    ("\\header{", "\section{"),
+    ("\\lheader{", "\subsection{"),
+    ("\\lheadernd{", "\subsection{"),
+    ("\\llheader", "\paragraph{!!!}"),
     ("\\task", "||task"),
     ("\\note", "||note"),
     ("ulist", "itemize")
