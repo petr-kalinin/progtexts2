@@ -67,12 +67,12 @@ replacements = [
     (">>", "»"),
     ("\"<", "«"),
     ("\">", "»"),
-    ("\hm", ""),
-    ("\mbox", ""),
+    ("\\hm", ""),
+    ("\\mbox", ""),
     ("`", "'"),
-    ("\header{", "\subsection{"),
-    ("\lheader{", "\paragraph{"),
-    ("\lheadernd{", "\paragraph{"),
+    ("\\header{", "\subsection{"),
+    ("\\lheader{", "\paragraph{"),
+    ("\\lheadernd{", "\paragraph{"),
     ("\\task", "||task"),
     ("\\note", "||note"),
     ("ulist", "itemize")
@@ -84,6 +84,7 @@ for r in replacements:
 data = re.sub(r"\\tt\s*(.*?)\}", r"\\texttt{\1}}", data)
 data = re.sub(r"\\includegraphics(\[(.*)\])?\{(.*?)\}", replace_image, data)
 data = re.sub(r"\\(label|ref)\{(.*?)\}", r"||\1|\2|", data)
+data = re.sub(r"\\(v|h)box[^{]*{", r"{", data)
 
 tempfile = sys.argv[1] + ".tmp.tex" 
 with open(tempfile, "w") as f:

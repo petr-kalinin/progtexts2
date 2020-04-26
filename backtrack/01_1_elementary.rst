@@ -153,34 +153,34 @@ l6.5cm
   \displaystyle
   \left|
   \frac{\displaystyle
-  {\hbox to 1.5cm{\hfill 0\hfill}}\left|
+  {{\hfill 0\hfill}}\left|
     \frac{\displaystyle
-    {\hbox to 1.5cm{\hfill 0\hfill}}\left|
+    {{\hfill 0\hfill}}\left|
       \frac{\displaystyle
-      {\hbox to 1.5cm{\hfill 0\hfill}}}{\displaystyle
-      {\hbox to 1.5cm{\hfill 1\hfill}}}
+      {{\hfill 0\hfill}}}{\displaystyle
+      {{\hfill 1\hfill}}}
       \right.
     }{\displaystyle
-    {\hbox to 1.5cm{\hfill 1\hfill}}\left|
+    {{\hfill 1\hfill}}\left|
       \frac{\displaystyle
-      {\hbox to 1.5cm{\hfill 0\hfill}}}{\displaystyle
-      {\hbox to 1.5cm{\hfill 1\hfill}}}
+      {{\hfill 0\hfill}}}{\displaystyle
+      {{\hfill 1\hfill}}}
       \right.
     }
     \right.
   }{\displaystyle
-  {\hbox to 1.5cm{\hfill 1\hfill}}\left|
+  {{\hfill 1\hfill}}\left|
     \frac{\displaystyle
-    {\hbox to 1.5cm{\hfill 0\hfill}}\left|
+    {{\hfill 0\hfill}}\left|
       \frac{\displaystyle
-      {\hbox to 1.5cm{\hfill 0\hfill}}}{\displaystyle
-      {\hbox to 1.5cm{\hfill 1\hfill}}}
+      {{\hfill 0\hfill}}}{\displaystyle
+      {{\hfill 1\hfill}}}
       \right.
     }{\displaystyle
-    {\hbox to 1.5cm{\hfill 1\hfill}}\left|
+    {{\hfill 1\hfill}}\left|
       \frac{\displaystyle
-      {\hbox to 1.5cm{\hfill 0\hfill}}}{\displaystyle
-      {\hbox to 1.5cm{\hfill 1\hfill}}}
+      {{\hfill 0\hfill}}}{\displaystyle
+      {{\hfill 1\hfill}}}
       \right.
     }
     \right.

@@ -387,6 +387,36 @@ if’ы в начало процедуры:
     :ref:`outzeroline` (правда, тут это будет :math:`N+1`-ая строка и
     :math:`(M+1)`-ый столбец).
     
+    ::
+    
+        procedure out(i,j);
+        begin
+        if (i=N+1)or(j=M+1) then exit;
+        if ans[i+1,j]>ans[i,j+1] then begin
+           write('R');
+           out(i+1,j);
+        end;
+        if ans[i+1,j]=ans[i,j+1] then begin
+           write('R');
+           out(i+1,j);
+        end;
+        if ans[i+1,j]<ans[i,j+1] then begin
+           write('U');
+           out(i,j+1);
+        end;
+        end;
+        procedure out(i,j);
+        begin
+        if (i=N+1)or(j=M+1) then exit;
+        if ans[i+1,j]>=ans[i,j+1] then begin
+           write('R');
+           out(i+1,j);
+        end else begin
+           write('U');
+           out(i,j+1);
+        end;
+        end;
+    
     Слева приведено простое решение, которое чётко показывает, что мы
     делаем: если один из двух имеющихся у нас вариантов явно лучше другого
     (т.е. :math:`ans[i+1,j]\neq ans[i,j+1]`), то мы идём туда. Иначе, если
