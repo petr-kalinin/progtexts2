@@ -22,6 +22,7 @@ sys.path.insert(0, os.path.abspath('../theme'))
 project = 'Заметки'
 copyright = '2020, Петр Калинин'
 author = 'Петр Калинин'
+display_github = True
 
 
 # -- General configuration ---------------------------------------------------
@@ -58,9 +59,15 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 html_theme = 'sphinx_rtd_theme'
 html_theme_options = {
     "collapse_navigation": False,
-    "github_url": "https://github.com/petr-kalinin/progtexts2",
-    "github_version": "checked",
-    "vcs_pageview_mode": "blob"
+}
+
+html_context = {
+  "display_github": True, 
+  "github_user": "petr-kalinin",
+  "github_repo": "progtexts2",
+  "github_version": "checked",
+  "conf_py_path": "/",
+  "source_suffix": ".rst",
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
