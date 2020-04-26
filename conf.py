@@ -57,7 +57,10 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 #
 html_theme = 'sphinx_rtd_theme'
 html_theme_options = {
-    "collapse_navigation": False
+    "collapse_navigation": False,
+    "github_url": "https://github.com/petr-kalinin/progtexts2",
+    "github_version": "checked",
+    "vcs_pageview_mode": "blob"
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
