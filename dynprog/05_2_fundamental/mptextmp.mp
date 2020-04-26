@@ -1,0 +1,1 @@
+btex $(N,M)$ etex

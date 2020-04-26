@@ -16,3 +16,4 @@
    intro/index
    backtrack/index
    dfs/index
+   dynprog/index
