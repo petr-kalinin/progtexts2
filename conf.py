@@ -20,7 +20,7 @@ sys.path.insert(0, os.path.abspath('../theme'))
 # -- Project information -----------------------------------------------------
 
 project = 'Заметки'
-copyright = '2020, Петр Калинин'
+copyright = 'Петр Калинин, 2008-н.в.'
 author = 'Петр Калинин'
 display_github = True
 
@@ -68,6 +68,7 @@ html_context = {
   "github_version": "checked",
   "conf_py_path": "/",
   "source_suffix": ".rst",
+  "license": "GNU GPL"
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
