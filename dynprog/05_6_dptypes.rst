@@ -264,18 +264,18 @@ r4cm
     
     ::
     
-    procedure out(i,j)
-    begin
-    if (i=0)or(j=0) then exit;
-    if s1[i]=s2[j] then begin
-    out(i-1,j-1);
-    write(s1[i]);
-    end else begin
-    if ans[i-1,j]>ans[i,j-1] then
-    out(i-1,j)
-    else out(i,j-1);
-    end;
-    end;
+        procedure out(i,j)
+        begin
+        if (i=0)or(j=0) then exit;
+        if s1[i]=s2[j] then begin
+           out(i-1,j-1);
+           write(s1[i]);
+        end else begin
+            if ans[i-1,j]>ans[i,j-1] then
+               out(i-1,j)
+            else out(i,j-1);
+        end;
+        end;
     
     
     |
@@ -650,16 +650,16 @@ r4cm
     
     ::
     
-    fillchar(ams,sizeof(ans),0);
-    for i:=1 to n-1 do
-    ans[i+1,i]:=0;
-    for len:=2 to n do
-    for l:=1 to n-len+1 do begin {обратите внимание на аккуратное значение верхнего предела}
-    r:=l+len-1;
-    if s[l]=s[r] then
-    ans[l,r]:=ans[l+1,r-1]
-    else ans[l,r]:=max(ans[l+1,r],ans[l,r-1]);
-    end;
+        fillchar(ams,sizeof(ans),0);
+        for i:=1 to n-1 do
+            ans[i+1,i]:=0;
+        for len:=2 to n do
+            for l:=1 to n-len+1 do begin {обратите внимание на аккуратное значение верхнего предела}
+              r:=l+len-1;
+              if s[l]=s[r] then
+                 ans[l,r]:=ans[l+1,r-1]
+              else ans[l,r]:=max(ans[l+1,r],ans[l,r-1]);
+            end;
     
     
     |
@@ -678,24 +678,24 @@ r4cm
     
     ::
     
-    procedure out(l,r)
-    begin
-    if l>r then
-    exit;
-    if l=r then begin
-    write(s[l]);
-    exit;
-    end;
-    if s[l]=s[r] then begin
-    write(s[l]);
-    out(l+1,r-1);
-    write(s[r]);
-    end else begin
-    if ans[l+1,r]>ans[l,r-1] then
-    out(l+1,r)
-    else out(l,r-1);
-    end;
-    end;
+        procedure out(l,r)
+        begin
+        if l>r then
+           exit;
+        if l=r then begin
+           write(s[l]);
+           exit;
+        end;
+        if s[l]=s[r] then begin
+           write(s[l]);
+           out(l+1,r-1);
+           write(s[r]);
+        end else begin
+            if ans[l+1,r]>ans[l,r-1] then
+               out(l+1,r)
+            else out(l,r-1);
+        end;
+        end;
     
     Здесь сначала два if’а, соответствующие «базе» динамики, а потом
     основной код. С вариантом, когда :math:`s[l]\neq s[r]`, все понятно, а
@@ -907,33 +907,33 @@ r4cm
     
     ::
     
-    function find(u):integer;
-    var max,t,v...
-    begin
-    if ans[u]<>-1 then begin
-    find:=ans[u];
-    exit;
-    end;
-    max:=-1;
-    from[u]:=0;
-    for v:=1 to n do
-    if gr[v,u]<>0 then begin{если из v в u идет ребро}
-    t:=find(v);
-    if t>max then begin
-    max:=t;
-    from[u]:=v;
-    end;
-    end;
-    ans[u]:=max+1;
-    find:=ans[u];
-    end;
-    procedure out(u)
-    begin
-    if u=0 then
-    exit;
-    out(from[u]);
-    write(u,' ');
-    end;
+        function find(u):integer;
+        var max,t,v...
+        begin
+        if ans[u]<>-1 then begin
+           find:=ans[u];
+           exit;
+        end;
+        max:=-1;
+        from[u]:=0;
+        for v:=1 to n do
+            if gr[v,u]<>0 then begin{если из v в u идет ребро}
+               t:=find(v);
+               if t>max then begin
+                  max:=t;
+                  from[u]:=v;
+               end;
+            end;
+        ans[u]:=max+1;
+        find:=ans[u];
+        end;
+        procedure out(u)
+        begin
+        if u=0 then
+           exit;
+        out(from[u]);
+        write(u,' ');
+        end;
     
     Если в вершину :math:`u` не входит ни одного ребра, то :math:`ans[u]=1`,
     и в вышеприведённом коде :math:`from[u]=0`, потому и процедура
@@ -1058,17 +1058,17 @@ r4cm
     
     ::
     
-    fillchar(a,sizeof(a),255);
-    fillchar(b,sizeof(b),0);
-    fillchar(c,sizeof(c),0);
-    for i:=n downto 2 do begin
-    {заканчиваем обработку вершины i}
-    a[i]:=a[i]+b[i]+1;
-    c[i]:=max(a[i],b[i]);
-    {смотрим на задачи, которые зависят от i}
-    b[p[i]]:=b[p[i]]+c[i];
-    a[p[i]]:=max(a[p[i]], b[i]-c[i]);
-    end;
+        fillchar(a,sizeof(a),255); 
+        fillchar(b,sizeof(b),0);
+        fillchar(c,sizeof(c),0);
+        for i:=n downto 2 do begin
+            {заканчиваем обработку вершины i}
+            a[i]:=a[i]+b[i]+1;
+            c[i]:=max(a[i],b[i]);
+            {смотрим на задачи, которые зависят от i}
+            b[p[i]]:=b[p[i]]+c[i];
+            a[p[i]]:=max(a[p[i]], b[i]-c[i]);
+        end;
     
     Обратите внимание, что массив :math:`a` изначально заполняю минус
     единицами (ясно, почему? И какого типа должно быть :math:`a`, чтобы это
@@ -1193,15 +1193,15 @@ r4cm
     
     ::
     
-    fillchar(ans,sizeof(ans),2); {осторожно тут с типом ans}
-    for i:=1 to n do
-    for j:=1 to m do begin
-    {ans[i,j] уже равно 2}
-    for k:=1 to j do
-    if (k<=i)and(ans[i-k,k]=2) then
-    ans[i,j]:=1;
-    end;
-    end;
+        fillchar(ans,sizeof(ans),2); {осторожно тут с типом ans}
+        for i:=1 to n do 
+            for j:=1 to m do begin
+                {ans[i,j] уже равно 2}
+                for k:=1 to j do
+                    if (k<=i)and(ans[i-k,k]=2) then
+                      ans[i,j]:=1;
+            end;
+        end;
     
     Вот и все решение, мне кажется, достаточно просто. На самом деле в этой
     задаче есть хитрая закономерность, можете её поискать (совет: напишите
@@ -1235,6 +1235,13 @@ r4cm
 что-то для каждой позиции, а что именно — зависит от игры. Вычисляете
 это, перебирая все возможные ходы и используя ответы для тех позиций,
 куда это ходы ведут.
+
+\|\|note Кстати, можете обратить внимание, что на самом деле только
+алгоритм такого рода доказывает корректность введения термина «при
+правильной игре». Откуда мы знаем, что из каждой позиции есть
+«правильная игра» и откуда мы знаем, что результат определён? А именно
+по индукции, идя от конечных позиций и используя соображения,
+аналогичные вышеописанным, мы докажем, что действительно определён.
 
 Иногда бывает так, что игроки в каком-то смысле несимметричны. Например,
 игроки ходят не по очереди, а для каждой позиции задано, кто из неё
@@ -1278,29 +1285,29 @@ r4cm
     
     ::
     
-    function find(i,j)
-    begin
-    if i<0 then begin
-    find:=1;
-    exit;
-    end;
-    if i mod 30=0 then
-    find:=2;
-    exit;
-    end;
-    if ans[i,j]=-1 then begin
-    ans[i,j]:=2;
-    if j=1 then begin
-    if (find(i-3,2)=2) or (find(i-4,2)=2)
-    or (find(i-5,2)=2) then
-    ans[i,j]:=1;
-    end else begin {j=2}
-    if (find(i+1,1)=2) or (find(i+2,1)=2)then
-    ans[i,j]:=1;
-    end;
-    end;
-    find:=ans[i,j];
-    end;
+        function find(i,j)
+        begin
+        if i<0 then begin
+           find:=1;
+           exit;
+        end;
+        if i mod 30=0 then
+           find:=2;
+           exit;
+        end;
+        if ans[i,j]=-1 then begin
+           ans[i,j]:=2;
+           if j=1 then begin
+              if (find(i-3,2)=2) or (find(i-4,2)=2) 
+                           or (find(i-5,2)=2) then
+                 ans[i,j]:=1;
+           end else begin {j=2}
+              if (find(i+1,1)=2) or (find(i+2,1)=2)then
+                 ans[i,j]:=1;
+           end;
+        end;
+        find:=ans[i,j];
+        end;
     
     Поймите, почему так обрабатывается случаи :math:`i<0` и
     :math:`i\bmod 30=0`.
@@ -1444,42 +1451,42 @@ r4cm
     
     ::
     
-    for i:=0 to (1 shl N)-1 do begin
-    ans[i]:=0;
-    for j:=0 to N-1 do
-    if (i and (1 shl j)<>0) then begin
-    first[i]:=j;                            {+}
-    from[i]:=0;                             {+}
-    t:=ans[i and (not (1 shl j))];
-    ans[i]:=t;
+        for i:=0 to (1 shl N)-1 do begin
+            ans[i]:=0;
+            for j:=0 to N-1 do 
+                if (i and (1 shl j)<>0) then begin 
+                   first[i]:=j;                            {+}
+                   from[i]:=0;                             {+}
+                   t:=ans[i and (not (1 shl j))];  
+                   ans[i]:=t;     
     
-    for k:=j+1 to N-1 do if (i and (1 shl k)<>0) and (gr[j,k]<>0) then begin
-    t:=ans[i and (not (1 shl j)) and (not (1 shl k))];
-    if t+1>ans[i] then begin
-    ans[i]:=t+1;
-    from[i]:=k;                      {+}
-    end;
-    end;
-    break;
-    end;
-    end;
+                   for k:=j+1 to N-1 do if (i and (1 shl k)<>0) and (gr[j,k]<>0) then begin 
+                       t:=ans[i and (not (1 shl j)) and (not (1 shl k))];   
+                       if t+1>ans[i] then begin
+                          ans[i]:=t+1;
+                          from[i]:=k;                      {+}
+                       end;
+                   end;
+                   break;
+                end;
+        end;
     
     И теперь процедура :math:`out` пишется в две строчки:
     
     ::
     
-    procedure out(i)
-    var j;
-    begin
-    if i=0 then exit; {i=0 --- пустое множество --- "база" динамики}
-    j:=first[i];
-    if from[i]=0 then
-    out(i and (not (1 shl j)));
-    else begin
-    writeln(j,' ',from[i]); {выведем, что это ребро входит в паросочетание}
-    out(i and (not (1 shl j)) and (not (1 shl k)));
-    end;
-    end;
+        procedure out(i)
+        var j;
+        begin
+        if i=0 then exit; {i=0 --- пустое множество --- "база" динамики}
+        j:=first[i];
+        if from[i]=0 then 
+           out(i and (not (1 shl j)));
+        else begin
+             writeln(j,' ',from[i]); {выведем, что это ребро входит в паросочетание}
+             out(i and (not (1 shl j)) and (not (1 shl k)));
+        end;
+        end;
     
     Надеюсь, понятны два момента. Во-первых, то, что в общем случае можно
     использовать не только один массив :math:`from`, но и что-нибудь сложнее
@@ -1538,79 +1545,79 @@ r4cm
     
     ::
     
-    {$r+,q+,s+,i+,o+}
-    {$apptype console}
-    uses sysutils;
-    var n,gcdmin:integer;
-    reqn:int64;
-    a:array[0..16] of integer;
-    can:array[0..16,0..16] of integer;
-    ans:array[0..1 shl 17-1,0..16] of int64;
-    f:text;
-    ii,i,j,k:integer;
-    t:integer;
+        {$r+,q+,s+,i+,o+}
+        {$apptype console}
+        uses sysutils;
+        var n,gcdmin:integer;
+            reqn:int64;
+            a:array[0..16] of integer;
+            can:array[0..16,0..16] of integer;
+            ans:array[0..1 shl 17-1,0..16] of int64;
+            f:text;
+            ii,i,j,k:integer;
+            t:integer;
     
-    function gcd(a,b:integer):integer;
-    begin
-    if b=0 then
-    gcd:=a
-    else gcd:=gcd(b,a mod b);
-    end;
+        function gcd(a,b:integer):integer;
+        begin
+        if b=0 then
+           gcd:=a
+        else gcd:=gcd(b,a mod b);
+        end;
     
-    procedure out(i,j:integer;reqn:int64);
-    var k,ii:integer;
-    begin
-    ii:=i and (not (1 shl j));
-    for k:=0 to n do if (i and (1 shl k)<>0)
-    and(k<>j)and(can[j,k]=1) then begin
-    if ans[ii,k]>=reqn then begin
-    write(f,a[k],' ');
-    out(ii,k,reqn);
-    exit;
-    end;
-    reqn:=reqn-ans[ii,k];
-    end;
-    end;
+        procedure out(i,j:integer;reqn:int64);
+        var k,ii:integer;
+        begin
+        ii:=i and (not (1 shl j));
+        for k:=0 to n do if (i and (1 shl k)<>0)
+                  and(k<>j)and(can[j,k]=1) then begin
+            if ans[ii,k]>=reqn then begin
+               write(f,a[k],' ');
+               out(ii,k,reqn);
+               exit;
+            end;
+            reqn:=reqn-ans[ii,k];
+        end;
+        end;
     
-    begin
-    assign(f,'perm.in');reset(f);
-    read(f,n,reqn,gcdmin);
-    a[0]:=0;
-    for i:=1 to n do
-    read(f,a[i]);
-    close(f);
-    for i:=n-1 downto 1 do
-    for j:=1 to i do
-    if a[j]>a[j+1] then begin
-    t:=a[j];a[j]:=a[j+1];a[j+1]:=t;
-    end;
-    for i:=1 to n do
-    for j:=1 to n do
-    if gcd(a[i],a[j])>=gcdmin then
-    can[i,j]:=1
-    else can[i,j]:=0;
-    for i:=0 to n do begin
-    can[0,i]:=1;
-    can[i,0]:=1;
-    end;
-    for i:=2 to 1 shl (n+1)-1 do
-    for j:=0 to n do if i and (1 shl j)<>0 then begin
-    ii:=i and (not (1 shl j));
-    if ii=0 then begin
-    ans[i,j]:=1;
-    continue;
-    end;
-    ans[i,j]:=0;
-    for k:=0 to n do if (i and (1 shl k)<>0)
-    and(can[j,k]=1)and(j<>k) then
-    inc(ans[i,j],ans[ii,k]);
-    end;
-    assign(f,'perm.out');rewrite(f);
-    if ans[1 shl (n+1)-1,0]<reqn then
-    writeln(f,-1)
-    else out(1 shl (n+1)-1,0,reqn);
-    close(f);
-    end.
+        begin
+        assign(f,'perm.in');reset(f);
+        read(f,n,reqn,gcdmin);
+        a[0]:=0;
+        for i:=1 to n do
+            read(f,a[i]);
+        close(f);
+        for i:=n-1 downto 1 do
+            for j:=1 to i do
+                if a[j]>a[j+1] then begin
+                   t:=a[j];a[j]:=a[j+1];a[j+1]:=t;
+                end;
+        for i:=1 to n do
+            for j:=1 to n do
+                if gcd(a[i],a[j])>=gcdmin then
+                   can[i,j]:=1
+                else can[i,j]:=0;
+        for i:=0 to n do begin
+            can[0,i]:=1;
+            can[i,0]:=1;
+        end;
+        for i:=2 to 1 shl (n+1)-1 do
+            for j:=0 to n do if i and (1 shl j)<>0 then begin
+                ii:=i and (not (1 shl j));
+                if ii=0 then begin
+                   ans[i,j]:=1;
+                   continue;
+                end;
+                ans[i,j]:=0;
+                for k:=0 to n do if (i and (1 shl k)<>0)
+                        and(can[j,k]=1)and(j<>k) then
+                    inc(ans[i,j],ans[ii,k]);
+            end;
+        assign(f,'perm.out');rewrite(f);
+        if ans[1 shl (n+1)-1,0]<reqn then
+           writeln(f,-1)
+        else out(1 shl (n+1)-1,0,reqn);
+        close(f);
+        end.
     
     Комментарии. Функция :math:`gcd` считает НОД двух чисел по алгоритму
     Евклида; надеюсь, вы это знаете. Если вы пиите длиннее, то обратите

@@ -228,8 +228,6 @@ r3cm |image|
     
     |
 
-
-
 .. _provetree:
 
 

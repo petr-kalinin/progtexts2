@@ -200,17 +200,17 @@
     
     ::
     
-    procedure out(i,j,k); // k - номер решения, которое надо вывести
-    begin
-    if (i=N+1)or(j=M+1) then exit;
-    if ans[i+1,j]<=k then begin
-    write('R');
-    out(i+1,j,k);
-    end else begin
-    write('U');
-    out(i,j+1,k-ans[i+1,j]);
-    end;
-    end;
+        procedure out(i,j,k); // k - номер решения, которое надо вывести
+        begin
+        if (i=N+1)or(j=M+1) then exit;
+        if ans[i+1,j]<=k then begin
+           write('R');
+           out(i+1,j,k);
+        end else begin
+            write('U');
+            out(i,j+1,k-ans[i+1,j]);
+        end;
+        end;
     
     
     |
@@ -292,19 +292,19 @@
     
     ::
     
-    function getnum(i)
-    begin
-    if i=n then begin
-    getnum:=1;
-    exit;
-    end;
-    if (i=n+1) then begin //аналог нулевого элемента
-    getnum:=1;
-    end;
-    if a[n-i+1]=0 then
-    getnum:=getnum(i-1)
-    else getnum:=ans[i-1]+getnum(i-2)
-    end;
+        function getnum(i)
+        begin
+        if i=n then begin
+           getnum:=1;
+           exit;
+        end;
+        if (i=n+1) then begin //аналог нулевого элемента
+           getnum:=1;
+        end;
+        if a[n-i+1]=0 then
+           getnum:=getnum(i-1)
+        else getnum:=ans[i-1]+getnum(i-2)
+        end;
     
     Надеюсь, что правильно :)
     
@@ -355,19 +355,19 @@
     
     ::
     
-    function getnum(i,j,k);
-    begin
-    if (i=N+1)or(j=M+1) then begin // можно написать и if k=N+M-1
-    getnum:=1;
-    exit;
-    end;
-    if ans[k]='R' then
-    getnum:=getnum(i+1,j,k+1)
-    write('R');
-    out(i+1,j,k);
-    end else
-    getnum:=ans[i+1,j]+getnum(i,j+1,k+1);
-    end;
+        function getnum(i,j,k); 
+        begin
+        if (i=N+1)or(j=M+1) then begin // можно написать и if k=N+M-1
+           getnum:=1;
+           exit;
+        end;
+        if ans[k]='R' then 
+           getnum:=getnum(i+1,j,k+1)
+           write('R');
+           out(i+1,j,k);
+        end else 
+            getnum:=ans[i+1,j]+getnum(i,j+1,k+1);
+        end;
     
     Ещё обратите внимание на следующий момент: когда вы только услышали
     такую задачу, может показаться, что тут есть какие-нибудь идеи, методы

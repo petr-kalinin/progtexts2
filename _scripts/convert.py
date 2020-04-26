@@ -8,7 +8,21 @@ def add_indent(text):
     if not text:
         return []
     text = text.split("\n")
-    return ["    " + line.strip() for line in text]
+    result = []
+    for line in text:
+        s = line.strip()
+        # do ot strip big indent, but strip small
+        if len(s) > len(line) - 4:
+            line = s
+        result.append("    " + line)
+    return result
+
+def replace_note(text):
+    result = ["", "", ".. note::"]
+    result += add_indent(match.group(1))
+    result += ["", ""]
+    return "\n".join(result)
+
 
 def replace_task(match):
     result = ["", "", ".. task::"]
@@ -59,6 +73,7 @@ replacements = [
     ("\lheader{", "\paragraph{"),
     ("\lheadernd{", "\paragraph{"),
     ("\\task", "||task"),
+    ("\\note", "||note"),
     ("ulist", "itemize")
 ]
 
