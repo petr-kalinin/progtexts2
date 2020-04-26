@@ -116,17 +116,17 @@ if’ы в начало процедуры:
     
     ::
     
-    procedure out(i,j);
-    begin
-    if (i=0)or(j=0) then exit;
-    if ans[i-1,j]>ans[i,j-1] then begin
-    out(i-1,j);
-    write('R');
-    end else begin
-    out(i,j-1);
-    write('U');
-    end;
-    end;
+        procedure out(i,j);
+        begin
+        if (i=0)or(j=0) then exit;
+        if ans[i-1,j]>ans[i,j-1] then begin
+           out(i-1,j);
+           write('R');
+        end else begin
+           out(i,j-1);
+           write('U');
+        end;
+        end;
     
     
     |
@@ -247,16 +247,16 @@ if’ы в начало процедуры:
     
     ::
     
-    procedure out(i,j)
-    begin
-    while i<>0 do begin
-    if (j>=a[i])and(ans[i-1,j-a[i]]) then begin
-    write(i,' ');
-    j:=j-a[i];
-    dec(i);
-    end else
-    dec(i);
-    end;
+        procedure out(i,j)
+        begin
+        while i<>0 do begin
+              if (j>=a[i])and(ans[i-1,j-a[i]]) then begin
+                 write(i,' ');
+                 j:=j-a[i];
+                 dec(i);
+              end else 
+                  dec(i);
+        end;
     
     Или даже можно while на for заменить. Мне кажется, что такой while более
     аналогичен процедуре, которую я приводил в тексте, и лишь поэтому я не

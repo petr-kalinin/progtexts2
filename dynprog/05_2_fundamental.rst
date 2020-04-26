@@ -541,15 +541,15 @@
     
     ::
     
-    fillchar(old,sizeof(old),false);
-    old[0]:=true;
-    for i:=1 to n do begin
-    for j:=0 to s do
-    if j<a[i] then
-    ans[j]:=old[j]
-    else ans[j]:=old[j] or old[j-a[i]];
-    old:=ans;
-    end;
+        fillchar(old,sizeof(old),false);
+        old[0]:=true;
+        for i:=1 to n do begin
+            for j:=0 to s do
+                if j<a[i] then
+                   ans[j]:=old[j]
+                else ans[j]:=old[j] or old[j-a[i]];
+            old:=ans;
+        end;
     
     
     |

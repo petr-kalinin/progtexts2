@@ -179,12 +179,12 @@
     
     ::
     
-    fillchar(ans,sizeof(ans),0);
-    ans[0]:=0;
-    for i:=1 to n do begin
-    ans[i+1]:=max(ans[i+1],ans[i]);
-    ans[i+time[i]]:=max(ans[i+time[i]],ans[i]+1);
-    end;
+        fillchar(ans,sizeof(ans),0);
+        ans[0]:=0;
+        for i:=1 to n do begin
+            ans[i+1]:=max(ans[i+1],ans[i]); 
+            ans[i+time[i]]:=max(ans[i+time[i]],ans[i]+1);
+        end;
     
     Все!
     
