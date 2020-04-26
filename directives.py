@@ -81,7 +81,7 @@ class TaskDirective(Directive):
         self.state.nested_parse(res[0], self.content_offset, res_node)
         #res_node.children[0].insert(0, headernode)
 
-        wrap_node = nodes.admonition()
+        wrap_node = nodes.admonition(classes=["task"])
         wrap_node += [headernode, res_node]
         return [targetnode, wrap_node]
 
