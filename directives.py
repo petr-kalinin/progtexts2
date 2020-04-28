@@ -79,10 +79,10 @@ class TaskDirective(Directive):
                 f.flush()
         res_node = nodes.paragraph(rawsource="\n".join(res[0]))
         self.state.nested_parse(res[0], self.content_offset, res_node)
-        #res_node.children[0].insert(0, headernode)
 
         wrap_node = nodes.admonition(classes=["task"])
         wrap_node += [headernode, res_node]
+
         return [targetnode, wrap_node]
 
 
@@ -114,7 +114,10 @@ class TaskRefDirective(Directive):
         ref_node['refuri'] += '#' + targetid
         ref_node.append(header_node)
 
-        text_node.children[0].insert(0, ref_node)
+        if isinstance(text_node.children[0], nodes.paragraph):
+            text_node.children[0].insert(0, ref_node)
+        else:
+            text_node.insert(0, ref_node)
 
         return [text_node]
 

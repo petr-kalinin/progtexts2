@@ -344,11 +344,11 @@
     
     .. math::
     
-    ans[i,j]=\left\{
-    \begin{array}{ll}
-    ans[i-1,j] \OR ans[i,j-a_i],&\quad j\geq a_i,\\
-    ans[i-1,j],&\quad j<a_i,
-    \end{array}\right.
+        ans[i,j]=\left\{
+        \begin{array}{ll}
+        ans[i-1,j] {\ \mathrm{or} \ }  ans[i,j-a_i],&\quad j\geq a_i,\\
+        ans[i-1,j],&\quad j<a_i,
+        \end{array}\right.
     
     отличие в том, что в первой строке теперь :math:`ans[i,j-a_i]`, а не
     :math:`ans[i-1,j-a_i]`.
@@ -393,11 +393,11 @@
     
     .. math::
     
-    ans[i,j]=\left\{
-    \begin{array}{ll}
-    \min\big(ans[i-1,j],\quad ans[i-1,j-a_i]+1\big),&\qquad j\geq a_i,\\
-    ans[i-1,j],&\qquad j<a_i.
-    \end{array}\right.
+        ans[i,j]=\left\{
+        \begin{array}{ll}
+        \min\big(ans[i-1,j],\quad ans[i-1,j-a_i]+1\big),&\qquad j\geq a_i,\\
+        ans[i-1,j],&\qquad j<a_i.
+        \end{array}\right.
     
     (:math:`+1` в соответствующем варианте, т.к. на одну монету больше
     берём. Очевидно, что и :math:`\infty` обрабатывается корректно.) Если бы
