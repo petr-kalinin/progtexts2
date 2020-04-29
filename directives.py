@@ -67,7 +67,7 @@ class TaskDirective(Directive):
         if directory not in FILES:
             FILES[directory] = [open(directory + "/" + x + ".inc", "w") for x in ("all_tasks", "all_suggests", "all_answers")]
         for i in range(3):
-            if res[i]:
+            if res[i] and "\n".join(res[i]).strip():
                 f = FILES[directory][i]
                 f.write(".. taskref::\n")
                 f.write("    :name: {}\n".format(name))
