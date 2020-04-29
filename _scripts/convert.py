@@ -69,6 +69,7 @@ replacements = [
     ("\">", "»"),
     ("\\hm", ""),
     ("\\mbox", ""),
+    ("\\eps", "\\varepsilon"),
     ("\\ddots", "\\dots"),
     ("`", "'"),
     ("\\header{", "\section{"),
