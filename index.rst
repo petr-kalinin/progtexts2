@@ -14,6 +14,7 @@
    :numbered:
 
    intro/index
+   testing/06_testing_main
    backtrack/index
    dfs/index
    dynprog/index
