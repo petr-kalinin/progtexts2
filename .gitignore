@@ -134,3 +134,4 @@ _build
 .vscode
 *.tmp.tex
 *.inc
+*.orig
