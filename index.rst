@@ -16,6 +16,7 @@
    intro/index
    testing/06_testing_main
    backtrack/index
+   complexity/02_complexity_main
    dfs/index
    dynprog/index
    binsearch/07_binsearch_main
