@@ -30,9 +30,6 @@ class TaskDirective(Directive):
         self.assert_has_content()
         env = self.state.document.settings.env
 
-        # force always re-read all files with tasks
-        env.note_reread()
-
         targetid = 'task-{}'.format(env.new_serialno('task'))
         targetnode = nodes.target('', '', ids=[targetid])
 
