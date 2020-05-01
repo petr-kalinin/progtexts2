@@ -269,7 +269,7 @@ if вводить, просто, например, надо сделать ка�
 
    ans[i,j]=\left\{
    \begin{array}{ll}
-   ans[i-1,j] \OR ans[i-1,j-a_i],&\quad j\geq a_i,\\
+   ans[i-1,j] \text{ or } ans[i-1,j-a_i],&\quad j\geq a_i,\\
    ans[i-1,j],&\quad j<a_i.
    \end{array}\right.
 
@@ -343,7 +343,7 @@ if вводить, просто, например, надо сделать ка�
     
     ans[i,j]=\left\{
     \begin{array}{ll}
-    ans[i-1,j] \OR ans[i,j-a_i],&\quad j\geq a_i,\\
+    ans[i-1,j] \text{ or } ans[i,j-a_i],&\quad j\geq a_i,\\
     ans[i-1,j],&\quad j<a_i,
     \end{array}\right.
     
