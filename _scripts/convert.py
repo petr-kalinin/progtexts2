@@ -44,9 +44,12 @@ def replace_image(match):
         filename = new_filename
     if not os.path.exists(filename):
         raise Exception("Can't find file {}".format(filename))
-    resultname = filename + ".png"
-    print("filename=", filename)
-    subprocess.check_call("gs -dSAFER -dBATCH -dNOPAUSE -dEPSCrop -r600 -sDEVICE=pngalpha".split() + ["-sOutputFile=" + resultname, filename])
+    if os.path.splitext(filename)[1] != ".png":
+        resultname = filename + ".png"
+        print("filename=", filename)
+        subprocess.check_call("gs -dSAFER -dBATCH -dNOPAUSE -dEPSCrop -r600 -sDEVICE=pngalpha".split() + ["-sOutputFile=" + resultname, filename])
+    else:
+        resultname = filename
     return match.group(0).replace(initial_filename, resultname)
     
 
