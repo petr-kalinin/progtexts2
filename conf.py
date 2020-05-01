@@ -68,7 +68,8 @@ html_context = {
   "github_version": "checked",
   "conf_py_path": "/",
   "source_suffix": ".rst",
-  "license": "GNU GPL"
+  "license": "GNU GPL",
+  "custom_footer": '<a href="https://algoprog.ru">algoprog.ru</a> — мой курс по алгоритмическому программированию</a>'
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
