@@ -14,6 +14,7 @@
    :numbered:
 
    intro/index
+   python_basics/index
    testing/06_testing_main
    backtrack/index
    complexity/index
