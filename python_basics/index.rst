@@ -27,3 +27,4 @@
    2_loops
    2_1_break_continue
    3_arrays
+   4_strings
