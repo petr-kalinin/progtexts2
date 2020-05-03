@@ -70,7 +70,24 @@ html_context = {
   "source_suffix": ".rst",
   "license": "GNU GPL",
   "custom_footer": '<a href="https://algoprog.ru">algoprog.ru</a> — мой курс по алгоритмическому программированию</a>',
-  "left_footer": '<div class="wy-side-nav-search"><a href="https://algoprog.ru">algoprog.ru</a></div>'
+  "left_footer": '<div class="wy-side-nav-search"><a href="https://algoprog.ru">algoprog.ru</a></div>',
+  "metrica": '''
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(62513290, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/62513290" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+'''
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
