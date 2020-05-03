@@ -65,7 +65,7 @@ html_context = {
   "display_github": True, 
   "github_user": "petr-kalinin",
   "github_repo": "progtexts2",
-  "github_version": "checked",
+  "github_version": "master",
   "conf_py_path": "/",
   "source_suffix": ".rst",
   "license": "GNU GPL",
