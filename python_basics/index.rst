@@ -29,4 +29,5 @@
    3_arrays
    4_strings
    5_float
+   6_functions
    7_files
