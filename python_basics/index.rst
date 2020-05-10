@@ -30,3 +30,4 @@
    5_float
    6_functions
    7_files
+   8_addtypes
