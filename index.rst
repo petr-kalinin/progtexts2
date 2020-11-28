@@ -15,6 +15,7 @@
 
    intro/index
    python_basics/index
+   cpp/index
    testing/06_testing_main
    complexity/index
    shortideas/index
