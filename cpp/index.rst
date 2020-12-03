@@ -26,3 +26,4 @@
    basic_info
    ide
    syntax
+   additional
