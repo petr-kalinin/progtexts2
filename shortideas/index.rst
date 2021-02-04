@@ -16,6 +16,7 @@
 
    03_8_changetest
    03_9_quickpow
+   03_x_prefix_sums
    03_10_GCDnodiv
    03_12_noinitarray
    03_13_period
