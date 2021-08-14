@@ -518,7 +518,7 @@
            exit;
         end;
         was[i]:=1;
-        for i:=1 to n do
+        for j:=1 to n do
             if (gr[i,j]=1)and(j<>p) then
                find(j,i);
         end;
