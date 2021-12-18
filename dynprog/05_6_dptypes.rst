@@ -671,7 +671,7 @@
             for l:=1 to n-len+1 do begin {обратите внимание на аккуратное значение верхнего предела}
               r:=l+len-1;
               if s[l]=s[r] then
-                 ans[l,r]:=ans[l+1,r-1]
+                 ans[l,r]:=ans[l+1,r-1] + 2
               else ans[l,r]:=max(ans[l+1,r],ans[l,r-1]);
             end;
     
