@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: progtexts2
+  name: progtexts2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: progtexts2
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.network/app-network: "true"
+        io.kompose.service: progtexts2
+    spec:
+      containers:
+        - image: petrkalinin/progtexts2-master
+          imagePullPolicy: "Always"
+          name: progtexts2
+          ports:
+            - containerPort: 80
+          resources: {}
+      restartPolicy: Always
+status: {}

@@ -15,17 +15,22 @@ RUN npm install
 RUN npm run build
 
 
+
 FROM python:3
 
-COPY --from=0 /app /app
+RUN mkdir -p /app/docs
 WORKDIR /app/docs
-COPY . .
 
 RUN pip3 install -U sphinx
 
+COPY --from=0 /app/theme /app/theme
+COPY . .
 RUN make html
 RUN make html
 
+
+
 FROM nginx
+
 COPY --from=1 /app/docs/_build/html /usr/share/nginx/html
 
