@@ -47,3 +47,10 @@ jobs:
             k8s/service.yaml
           images: 'petrkalinin/progtexts2-master:${{ github.sha }}'
           kubectl-version: 'latest'
+
+      - 
+        name: send telegram message
+        uses: appleboy/telegram-action@master
+        with:
+            to: ${{ secrets.TELEGRAM_TO }}
+            token: ${{ secrets.TELEGRAM_TOKEN }}
