@@ -3,7 +3,7 @@
 Conditional body
 ----------------
 
-«Body» of an any complex statement (yet now you only know about ``if``) consists of other statements which will be executed inside it. You can put there any set of statements you wish. The only requierment is to write them with an indent so that Python interpreter would understand a part of ``if``-statement, not a resumption of the main program body.
+«Body» of an any complex statement (yet now you may only know about ``if``) consists of other statements which will be executed inside it. You can put there any set of statements you wish. The only requierment is to write them with an indent so that Python interpreter would understand a part of ``if``-statement, not a resumption of the main program body.
 
 Example::
 
