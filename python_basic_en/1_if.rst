@@ -51,10 +51,10 @@ Conditions
 
 Let's take a closer look at the content of the condition.
 
-First, these can be "simplest" conditions. You can take two arbitrary expressions and compare them in some way.
-THe following operators are used for comparison:
+First, these can be simplest relational operations. You can take two arbitrary expressions compare them.
+THe following operators are used for this:
 
-- ``==`` used for equality check. Script ``if a == 137`` means "if variable ``a`` is equal to 137". Note that here
+- ``==`` used for equality check. Expression ``if a == 137`` means "if variable ``a`` is equal to 137". Note that here
 we have two equality symblos because single equality symbol is used for assignment, which cannot be used in ``if``
 (and that would be quite senseless).
 - ``>`` — greater than: ``if a > 137:`` means "if value of variable ``a`` is greater than 137".
@@ -64,7 +64,7 @@ we have two equality symblos because single equality symbol is used for assignme
 - ``!=`` — not equal.
 
 On the left and on the right of the operator you can put any expressions.
-These can be just numbers or variables, but can also be complex, such as this::
+These can be just numbers or variables, but can also be complex, such as following::
 
     if sqrt(a*b+10) >= abs(2*(3-c)) + 5:
 
@@ -76,28 +76,27 @@ E.g., if you need to check that ``a == 10`` **and** ``b == 20``, here you go::
 
     if a == 10 and b == 20:
 
-The code under the condition will be run only if **both** of stated simple conditions
+The code under the condition will be executed only if **both** of given simple conditions
 are true, i.e. only if ``a == 10`` and ``b == 20`` at the same time.
 
 
-Есть следующие такие операторы («логические операторы»):
+Python has folloing operators of this type ("logical operators"):
 
-- ``and`` — И. Проверка ``... and ...`` срабатывает, только если оба условия, замененные на ``...``, верны.
-- ``or`` — ИЛИ. Проверка ``... or ...`` срабатывает, если верно хотя бы одно из двух указанных условий (или оба одновременно).
-- ``not`` — НЕ. Оно применяется к одному условию (а не к двум, как выше) и инвертирует его значение: ``not ...`` срабатывает, только если
-  условие, замененное на ``...``, *неверно*.
+- ``and`` — conjunction. Condition ``... and ...`` is true only if both of the expressions replaced by ``...`` are true.
+- ``or`` — disjunction. Condition ``... or ...`` is true if at least one of the given expressions is true (and also if they're both true)
+- ``not`` — negation. It is applied only to one expression (unlike the previous)  and inverts its meaning:
+``not ...`` is true only when expression replaces by ``...`` is false.
 
-Например::
+Example::
 
     if a == 0 or not (b > 0 and c < 0):
 
-сработает, если ``a`` равно нулю, или если не выполняется условие «одновременно ``b>0`` и ``c<0``». 
+will run if ``a`` is zero or if the expression "``b>0`` and ``c<0`` at the same time" is false. 
 
-Обратите внимание на скобки для указания порядка действий;
-если бы вы написали без скобок ``if a == 0 or not b > 0 and c < 0:``, то было бы непонятно,
-к чему относится ``not`` и в каком порядке надо делать действия.
+Not that here, brackets are used to specify the order of operations. If you'd type it without them: ``if a == 0 or not b > 0 and c < 0:``
+it wouldn't be clear what ``not`` refers to and what is the order of ``and`` and ``or``. 
 
-Более конкретный пример про скобки: сравните следующие два выражения::
+Here's a more distinct example for brackets. Compare the following::
 
     if a == 0 and (b == 0 or c == 0):
 
@@ -105,29 +104,27 @@ are true, i.e. only if ``a == 10`` and ``b == 20`` at the same time.
 
     if (a == 0 and b == 0) or c == 0:
 
-Эти выражения имеют разный смысл; например, ситуация ``a==1``, ``b==1``, ``c==0`` подходит под второе выражение,
-но не под первое. Поймите, почему, и заодно подумайте, какие есть еще случаи,
-в которых значения этих выражений отличатся. 
+These two expressions are different. E.g., a case when ``a==1``, ``b==1``, ``c==0`` fits the second condition, but not the first one.
+Find out on your own why and also consider other cases when these conditions have different results. 
 
-Поэтому в любых сложных логических выражениях надо обязательно ставить скобки для указания порядка действий.
-Запись просто ``if a == 0 and b == 0 or c == 0`` обозначает непонятно что. Конечно, компьютер выберет некоторый порядок действий,
-но лучше всегда указать его явно.
+That's why in any complex logical expressions brackets are obligatory to set the order of operations.
+Notation ``if a == 0 and b == 0 or c == 0`` is unclear. Of course, the computer will somehow choose a certain order,
+but it's better to always set it explicitly.
 
-Еще замечу, что выше все примеры для простоты были с разными переменными и с простыми сравнениями. Конечно,
-с логическими операторами можно использовать любые другие выражения, например ::
+Let's note that all samples above contained different variables and plain conditions specially to be simple.
+Of course, you can apply logical operators to logical expressions of any kind, such as:: 
 
     if a + 24 < b * 3 or (sqrt(a + 2) > b + a and a > 3):
 
-И наконец, логические операторы работают только с логическими выражениями — со сравнениями, либо 
-с выражениями, которые уже составлены из сравнений и логических операторов. То есть следующая запись::
+And finally, logical operators only work with logical expressions — comparisons or complex conditions that are
+composed only of relations and logical operators. I.e., such a notation::
 
     if a or b == 0:
 
-вовсе **не** обозначает «если ``a`` или ``b`` равны нулю», потому что сравнение ``==0`` тут относится только к ``b``,
-а левая часть оператора ``or``, в которой написано просто ``a``, не является сравнением.
-Запись ``if a:`` не имеет смысла (представьте себе, что ``a==40``; что тогда обозначает запись «если 40»? Не «если 40 больше нуля», 
-а просто «если 40»), потому и запись ``a or b == 0`` не имеет смысла. И даже если вы поставите скобки: ``if (a or b) == 0``,
-это тоже не будет работать, потому что совершенно непонятно, чему равно, например, ``40 or 30``.
+**doesn't** mean "if ``a`` is equal to zero or ``b`` is equal to zero", because on the left of ``or`` there's an ``a`` that is not a comparison.
+``if a:`` doesn't make any sense (imagine that value of ``a`` is ``40``. What does "if 40" mean in this case? Not "if 40 is positive" but just "if 40"),
+that's  why ``a or b == 0`` doesn't make sense also. And even if you'd try to use brackets:``if (a or b) == 0`` this won't work as well
+because it's absolutely unclear what ``40 or 30`` is equal to.
 
 .. note::
   
@@ -432,5 +429,4 @@ else и elif
         print("second")
 
 
-.. [1] Конечно, настоящие кондиционеры работают не совсем так, у них пороги включения и выключения разные (так называемый гистерезис).
-
+.. [1] Of course, real air conditioners work slightly different. They have separated thresholds for turning on and off (it's called hysteresis).
