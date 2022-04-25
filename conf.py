@@ -69,8 +69,8 @@ html_context = {
   "conf_py_path": "/",
   "source_suffix": ".rst",
   "license": "GNU GPL",
-  "custom_footer": '<a href="https://algoprog.ru">algoprog.ru</a> — мой курс по алгоритмическому программированию</a>',
-  "left_footer": '<div class="wy-side-nav-search"><a href="https://algoprog.ru">algoprog.ru</a></div>',
+  "custom_footer": '<a href="https://algoprog.org">algoprog.org</a> — мой курс по алгоритмическому программированию</a>',
+  "left_footer": '<div class="wy-side-nav-search"><a href="https://algoprog.org">algoprog.org</a></div>',
   "metrica": '''
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript" >
