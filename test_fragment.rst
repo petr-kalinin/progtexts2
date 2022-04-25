@@ -1,7 +1,7 @@
 .. highlight:: python
 
-Conditional body
-----------------
+Body of the conditional statement
+---------------------------------
 
 "Body" of an any complex statement (yet now you only know about ``if``)
 consists of other statements which are executed inside it. You can put there
