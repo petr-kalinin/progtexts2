@@ -24,13 +24,20 @@ WORKDIR /app/docs
 RUN pip3 install -U sphinx
 
 COPY --from=0 /app/theme /app/theme
-COPY . .
-RUN make html
-RUN make html
+RUN git clone https://github.com/petr-kalinin/progtexts2 .
 
+RUN git checkout master
+RUN make html
+RUN make html
+COPY _build _build_ru
+
+RUN git checkout english
+RUN make html
+RUN make html
 
 
 FROM nginx
 
-COPY --from=1 /app/docs/_build/html /usr/share/nginx/html
+COPY --from=1 /app/docs/_build_ru/html /usr/share/nginx/html/ru
+COPY --from=1 /app/docs/_build_en/html /usr/share/nginx/html/en
 
