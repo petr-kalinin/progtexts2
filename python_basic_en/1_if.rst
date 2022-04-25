@@ -1,58 +1,53 @@
 .. highlight:: python
 
-Условный оператор (if)
+Conditional statement (if)
 =======================================
 
-Базовый синтаксис
+Basic syntax
 -----------------
 
-В программах часто бывает нужно сделать так, чтобы те или иные действия
-выполнялись лишь при выполнении определенного условия. Для этого в питоне
-(ну и в других языках программирования, конечно) есть специальная команда
-— условный оператор, if.
+In programming, it's a typical case that you need to run a set of instructions only upon a certain condition. Python (and any other programming language, of course) has an appropriate instruction for this purpose. It is conditional statement, or just ``if``.
 
-Пример такой команды::
+Example of such an instruction::
 
     if a == 137:
-        print("Угадал")
+        print("Guessed!")
 
-Здесь подразумевается, что есть переменная ``a``, и команда тогда работает так:
-если переменная ``a`` равна 137, то вывести на экран слово «Угадал».
+Here it's implicit that a variable ``a`` exists, and the instruction works as follows:
+if ``a`` is equal to 137, then the program will print "Guessed!" on the screen.
 
-Соответственно, общий вид команды следующий::
+So, general structure of the statement is such::
 
-    if условие:
-        действия
+    if condition:
+        instructions
 
-Вы пишете ``if``, потом условие (чуть ниже поговорим, что именно можно тут писать),
-потом двоеточие (обязательно), и со следующей строки, причем с дополнительным отступом
-(пробелами в начале строки), указываются действия.
+You type ``if``, then the condition (its content will be discussed a little later),
+then colon (which is necessary), then, on the following line(s), the instructions upon the conditon,
+that must be typed with an extra indent (spaces in the beginning).
 
-В качестве действий можно указывать любые команды питона, которые вы знаете или еще узнаете:
-ввод данных через ``input``, присваивания, вывод данных, другие ``if``'ы и что угодно еще.
-(Подробные примеры будут ниже.)
+Those instructions may consist of any Python statements you know or will learn later:
+entering data via  ``input``, setting variables' values, printing data, other ``if``s, whatever you need
+(detailed examples will be shown below).
 
-Такую конструкцию вы просто пишете внутри основной программы, например::
+For example, you can insert this construction into your program like this::
 
     a = int(input())
     if a == 137:
-        print("Угадал!")
-    print("Программа завершена")
+        print("Guessed!")
+    print("Program terminated")
 
-Тут с клавиатуры вводится число ``a``, проверяется, равно ли оно 137, 
-если равно, то выводится «Угадал», и независимо от значения ``a`` выводится
-«Программа завершена». Обратите внимание, что ``print("Угадал!")``
-написано с отступом от левого края, поэтому эта команда будет выполняться,
-только если ``a==137``, а вот ``print("Программа завершена")`` написано без отступа,
-поэтому это продолжение основной программы, а не часть ``if``'а. Независимо от значения ``a``
-после проверки (и, если надо, выполнения) ``if``'а программа продолжит выполняться дальше,
-и выведет «Программа завершена».
+Here, number ``a`` is being input from keyboard, then checked if it's equal to 137, and if so,"Guessed!"
+is printed on the screen . After that, regardless of ``a``'s value, "Program terminated" is printed.
+Note that ``print("Guessed!")`` is typed with an indent, therefore it will be executed only if ``a==137``, but
+``print("Program terminated")`` has no indent, as it's a part of the main program, not a part of ``if``.
+No matter what is stored in ``a``, after the condition check (and if needed, executing instructions inside) the program will go on and print "Program terminated".
 
-(Конечно, напишите этот код и поэкспериментируйте с ним. Вообще, по всем примерам,
-которые я привожу тут и буду приводить в других темах, пишите код и экспериментируйте.)
+(Of course, type this code by yourself and try to change something. Generally, on all examlpes
+given here and in other sections, write the code and explore it.)
 
-Условия
--------
+
+Conditions
+----------
 
 Сначала подробнее поговорим про то, что можно писать в условии.
 
