@@ -166,30 +166,35 @@
 
     Но для базового понимания того, как работает ``if``, это пока не нужно.
 
-Тело условного оператора
-------------------------
+.. highlight:: python
 
-«Тело» любой составной команды (правда, вы пока знаете только про ``if``) — это другие команды, которые выполняются внутри нее. 
-Там можно писать вообще любые другие команды. Главное — писать с отступом, чтобы питон понял, что это часть ``if``'а, а не продолжение
-основной программы.
+Conditional body
+----------------
 
-Пример::
+"Body" of an any complex statement (yet now you only know about ``if``)
+consists of other statements which are executed inside it. You can put there
+any set of statements you wish. The only requierment is to write them with an indent
+so that Python interpreter would understand them as a part of ``if``-statement,
+not a resumption of the main program body.
+
+Example::
 
     ...
     if a == 0:
-        print("Ноль")
+        print("Zero")
         b = int(input())
         if b == 0:
-            print("И это тоже ноль!")
+            print("That's also zero!")
         print("-----")
 
-Обратите внимание, что внутри ``if`` можно писать еще один ``if``, и его тело будет с дополнительным отступом. 
-Т.е. тут ``print("И это тоже ноль!")`` выполнится, только если ``b`` тоже оказалось равно нулю, а вот 
-``print("-----")`` выполнится независимо от ``b`` (но, конечно, надо, чтобы ``a`` было нулем).
+Please note that you cat put an ``if``-statement inside of another ``if``-statement,
+and its body will accordingly need an additional indent. In this example,
+``print("That's also zero!")`` will be executed only if ``b`` is also equal to zero
+but ``print("-----")`` will run regardless of ``b`` value (but of course it needs ``a`` to be zero).
 
-Еще раз повторю то, что я писал в предыдущем разделе: питон, как и любой другой язык программирования ­— это 
-конструктор. Все программирование состоит в том, что вы собираете большую программу
-из маленьких команд — кирпичиков. Соответственно, внутри ``if``'а можно использовать любые другие такие кирпичики.
+Once again, as stated in the previous section: Python, as any other programming language,
+is a constructor. Actually, programming is the assembly of a big program from small "bricks"
+which are statements. So you can use any of these bricks inside of the ``if``-statement.
 
 else и elif
 -----------
