@@ -13,7 +13,7 @@ Example of such an instruction::
     if a == 137:
         print("Guessed!")
 
-Here it's implicit that a variable ``a`` exists, and the instruction works as follows:
+Here, it's implicit that a variable ``a`` exists, and the instruction works as follows:
 if ``a`` is equal to 137, then the program will print "Guessed!" on the screen.
 
 So, general structure of the statement is such::
@@ -26,7 +26,7 @@ then colon (which is necessary), then, on the following line(s), the instruction
 that must be typed with an extra indent (spaces in the beginning).
 
 Those instructions may consist of any Python statements you know or will learn later:
-entering data via  ``input``, setting variables' values, printing data, other ``if``s, whatever you need
+entering data via  ``input``, setting variables' values, printing data, other ``if``-s, whatever you need
 (detailed examples will be shown below).
 
 For example, you can insert this construction into your program like this::
@@ -36,7 +36,7 @@ For example, you can insert this construction into your program like this::
         print("Guessed!")
     print("Program terminated")
 
-Here, number ``a`` is being input from keyboard, then checked if it's equal to 137, and if so,"Guessed!"
+Here, number ``a`` is being input from keyboard, then checked if it's equal to 137, and if so, "Guessed!"
 is printed on the screen . After that, regardless of ``a``'s value, "Program terminated" is printed.
 Note that ``print("Guessed!")`` is typed with an indent, therefore it will be executed only if ``a==137``, but
 ``print("Program terminated")`` has no indent, as it's a part of the main program, not a part of ``if``.
