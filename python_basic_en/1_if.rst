@@ -168,10 +168,10 @@
 
 .. highlight:: python
 
-Conditional body
-----------------
+Body of the conditional statement
+---------------------------------
 
-"Body" of an any complex statement (yet now you only know about ``if``)
+"Body" of any complex statement (yet now you only know about ``if``)
 consists of other statements which are executed inside it. You can put there
 any set of statements you wish. The only requierment is to write them with an indent
 so that Python interpreter would understand them as a part of ``if``-statement,
