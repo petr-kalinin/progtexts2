@@ -49,36 +49,36 @@ given here and in other sections, write the code and explore it.)
 Conditions
 ----------
 
-Сначала подробнее поговорим про то, что можно писать в условии.
+Let's take a closer look at the content of the condition.
 
-Во-первых, можно писать «простейшие» условия. Вы можете взять любые два выражения
-и так или иначе их сравнить. Для сравнения есть следующие операторы:
+First, these can be "simplest" conditions. You can take two arbitrary expressions and compare them in some way.
+THe following operators are used for comparison:
 
-- ``==`` проверяет на равенство: запись ``if a == 137:`` обозначает «если переменная ``a``
-  равна 137». Обратите внимание, что тут два знака «равно», потому что одиночный знак «равно»
-  имеет совсем другой смысл — это присваивание, и его нельзя (и не имеет смысла) использовать в ``if``.
-- ``>`` — больше: ``if a > 137:`` обозначает «если переменная ``a`` больше 137».
-- ``<`` — меньше.
-- ``>=`` — больше или равно. Обратите внимание, что пишется так же, как читается: «больше или равно»,
-  соответственно, ``>=``, а вовсе не ``=>``.
-- ``<=`` — меньше или равно. Аналогично, пишется именно ``<=``, а не ``=<``.
-- ``!=`` — не равно.
+- ``==`` used for equality check. Script ``if a == 137`` means "if variable ``a`` is equal to 137". Note that here
+we have two equality symblos because single equality symbol is used for assignment, which cannot be used in ``if``
+(and that would be quite senseless).
+- ``>`` — greater than: ``if a > 137:`` means "if value of variable ``a`` is greater than 137".
+- ``<`` — less than.
+- ``>=`` — greater than or equal to. Note that it's typed in a similar way to how we spell it: "greater than or equal to", so it's ``>=``, not ``=>``.
+- ``<=`` — less than or equal to. As the previous one, typed exactly like ``<=``, not ``=<``.
+- ``!=`` — not equal.
 
-По обе стороны от сравнения можно писать любые выражения. Можно просто переменные или числа,
-а можно и любые сложные выражения, например, можно написать ::
+On the left and on the right of the operator you can put any expressions.
+These can be just numbers or variables, but can also be complex, such as this::
 
     if sqrt(a*b+10) >= abs(2*(3-c)) + 5:
 
-Логические операторы
+Logical operators
 --------------------
 
-Во-вторых, в ``if`` можно комбинировать несколько условий. Например, если вам надо проверить,
-что ``a == 10`` **и** ``b == 20``. Это пишется так::
+Second, you can combine several conditions in your ``if``.
+E.g., if you need to check that ``a == 10`` **and** ``b == 20``, here you go::
 
     if a == 10 and b == 20:
 
-Такое условие будет выполняться, только если выполняются **оба** перечисленных простых условия, 
-т.е. только если и ``a == 10``, и ``b == 20``.
+The code under the condition will be run only if **both** of stated simple conditions
+are true, i.e. only if ``a == 10`` and ``b == 20`` at the same time.
+
 
 Есть следующие такие операторы («логические операторы»):
 
