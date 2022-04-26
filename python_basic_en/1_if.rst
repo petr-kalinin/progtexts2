@@ -78,7 +78,7 @@ The code under the condition will be executed only if **both** of given simple c
 are true, i.e. only if ``a == 10`` and ``b == 20`` at the same time.
 
 
-Python has folloing operators of this type ("logical operators"):
+Python has folloing operators of this type ("logical operators", or "Boolean operators"):
 
 - ``and`` — conjunction. Condition ``... and ...`` is true only if both of the expressions replaced by ``...`` are true.
 - ``or`` — disjunction. Condition ``... or ...`` is true if at least one of the given expressions is true (and also if they're both true)
@@ -110,12 +110,12 @@ Notation ``if a == 0 and b == 0 or c == 0`` is unclear. Of course, the computer 
 but it's better to always set it explicitly.
 
 Let's note that all samples above contained different variables and plain conditions specially to be simple.
-Of course, you can apply logical operators to logical expressions of any kind, such as:: 
+Of course, you can apply Boolean operators to Boolean expressions of any kind, such as:: 
 
     if a + 24 < b * 3 or (sqrt(a + 2) > b + a and a > 3):
 
-And finally, logical operators only work with logical expressions — relational operations or complex conditions that are
-composed only of relations and logical operators. I.e., such a notation::
+And finally, Boolean operators only work with Boolean expressions — relational operations or complex conditions that are
+composed only of relations and Boolean operators. I.e., such a notation::
 
     if a or b == 0:
 
@@ -142,9 +142,9 @@ because it's absolutely unclear what ``40 or 30`` is equal to.
     as it may be expected for a natural language. 
 
 .. note::
-    Of course it's more accurate here to speak of the *logical (or boolean) data type*. This is exactly what you get as a result of several
+    Of course it's more accurate here to speak of the *logical (or Boolean) data type*. This is exactly what you get as a result of several
     relations and logical operations, and what you can put straight into ``if``. This is a date type that only can store two values, which
-    in Python are ``True`` (the condition is correct) and ``False`` (otherwise). For example, statement ``10 > 0`` is ``True``, and ``True and False`` is ``False``.
+    in Python are ``True`` (the condition is true) and ``False`` (otherwise). For example, statement ``10 > 0`` is ``True``, and ``True and False`` is ``False``.
     And if you'd type::
     
         (10 > 0) and (8 > 10)
@@ -153,6 +153,8 @@ because it's absolutely unclear what ``40 or 30`` is equal to.
     ``True and False`` and gets ``False``, so this statement is false.
     
     But for basic comprehension of ``if``-statement it's not necessary.
+
+..Уточнить, Boolean или logical!!!
 
 Body of the conditional statement
 ---------------------------------
@@ -182,81 +184,76 @@ Once again, as stated in the previous section: Python, as any other programming 
 is a constructor. Actually, programming is the assembly of a big program from small "bricks"
 which are statements. So you can use any of these bricks inside of the ``if``-statement.
 
-.. Переделать LOGICAL на BOOLEAN!!!
-
 else и elif
 -----------
 
-То, что мы писали выше — это, как говорят, краткая форма ``if``. Она указывает только что делать, если условие *выполнилось*.
-Есть полная форма ``if``, она указывает, что делать, если условие выполнилось, а что делать, если оно *не выполнилось*::
+All considered above can be called "short form" of ``if``. It only specifies the program's action if the condition is *true*
+There's a full structure that specifies as well what to do if the condition is *false*::
 
     if a == 0:
-        print("Ноль")
+        print("Zero")
     else:
-        print("Не ноль")
+        print("Not zero")
 
-Часть «что делать, если условие не выполнилось», начинается с команды ``else:`` (с двоеточием!), причем она должна быть на том же уровне отступа,
-что и сам ``if``. Под ``else``, как и под ``if``, можно писать любые команды,
-тоже с дополнительным отступом.
+The part "what to do if the condition is false" begins with ``else:`` (with colon!) and must have the same indent as the corresponding ``if``.
+On the following lines you can type any instructions you wish, like under ``if``, with an extra indent.
 
-Пример::
+Example::
 
     if a == 0:
         if b == 0:
-            print("Два нуля")
+            print("Two zeros")
         else:
-            print("Только b не ноль")
+            print("Only b is not zero")
     else:
         if b == 0:
-            print("Только a не ноль")
+            print("Only a is not zero")
         else:
-            print("Обе переменные не нули")
+            print("Both variables are non-zero")
 
-Естественно, в ``else`` нельзя писать никаких еще условий — питон будет выполнять там код всегда, если условие соответствующего ``if``
-не выполнилось. Иногда бывает нужно, если условие ``if`` не выполнилось, то проверить какое-нибудь еще условие.
-Это, конечно, можно писать так::
+Clearly, ``else`` doesn't accept any other conditions. Python will execute code under it anyway upon the condition of corresponding ``if`` is false.
+Sometimes you need to check another condition when the first one fails. Of course, you can type it like this::
 
     if a < 0:
-        print("Отрицательное")
+        print("Negative")
     else:
         if a == 0:
-            print("Ноль")
+            print("Zero")
         else:
-            print("Положительное")
+            print("Positive")
 
-Но это длинновато и сложно, плюс если таких вариантов много, то получится очень большой отступ. Поэтому есть еще специальная команда
-``elif``, обозначающая ``else if``. Можно писать так::
+But it's a bit long and nested, and if there are many options, the indent will become naturally wide. To avoid this, there's a special structure
+``elif`` which actually means ``else if``. It's used like this::
 
     if a < 0:
-        print("Отрицательное")
+        print("Negative")
     elif a == 0:
-        print("Ноль")
+        print("Zero")
     else:
-        print("Положительное")
+        print("Positive")
 
-Это полный эквивалент предыдущего кода, только чуть покороче и — главное — без лишних отступов ступенькой.
-Еще раз: ``elif`` — это просто сокращение от ``else if``, позволяющее чуть красивее писать код, ничего больше.
+This piece of code is absolutely equivalent to the previous one but it's shorter and, more important, has no unnecessary staired indents.
+Once again, ``elif`` is no more than an abbreviation for ``else if`` that makes your code easier to read.
 
-Еще пример::
+One more sample::
 
-    if d = "Notrh":
-        print("Идем на север")
+    if d = "North":
+        print("Facing north")
     elif d == "South":
-        print("Идем на юг")
+        print("Facing south")
     elif d == "West":
-        print("Идем на запад")
+        print("Facing west")
     elif d == "East":
-        print("Идем на восток")
+        print("Facing east")
     else:
         print("??!!")
 
-То же самое можно было бы написать и через ``else``/``if``, но были бы очень некрасивые отступы.
+The same could be implemented via regular ``else``/``if`` but the indents would be quite ugly.
 
-Примеры решения задач
----------------------
+Sample problems and solutions
+-----------------------------
 
-Приведу несколько примеров задач, аналогичных тем, которые встречаются на олимпиадах
-и в моем курсе.
+Here are a few sample problems similar to ones you may come across on contests and in my course.
 
 .. task::
 
