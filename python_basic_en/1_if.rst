@@ -54,9 +54,7 @@ Let's take a closer look at the content of the condition.
 First, these can be simplest relational operations. You can take two arbitrary expressions compare them.
 THe following operators are used for this:
 
-- ``==`` used for equality check. Expression ``if a == 137`` means "if variable ``a`` is equal to 137". Note that here
-    we have two equality symblos because single equality symbol is used for assignment, which cannot be used in ``if``
-    (and that would be quite senseless).
+- ``==`` used for equality check. Expression ``if a == 137`` means "if variable ``a`` is equal to 137". Note that here we have two equality symblos because single equality symbol is used for assignment, which cannot be used in ``if`` (and that would be quite senseless).
 - ``>`` — greater than: ``if a > 137:`` means "if value of variable ``a`` is greater than 137".
 - ``<`` — less than.
 - ``>=`` — greater than or equal to. Note that it's typed in a similar way to how we spell it: "greater than or equal to", so it's ``>=``, not ``=>``.
