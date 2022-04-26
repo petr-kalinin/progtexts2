@@ -116,49 +116,45 @@ Of course, you can apply logical operators to logical expressions of any kind, s
 
     if a + 24 < b * 3 or (sqrt(a + 2) > b + a and a > 3):
 
-And finally, logical operators only work with logical expressions — comparisons or complex conditions that are
+And finally, logical operators only work with logical expressions — relational operations or complex conditions that are
 composed only of relations and logical operators. I.e., such a notation::
 
     if a or b == 0:
 
-**doesn't** mean "if ``a`` is equal to zero or ``b`` is equal to zero", because on the left of ``or`` there's an ``a`` that is not a comparison.
-``if a:`` doesn't make any sense (imagine that value of ``a`` is ``40``. What does "if 40" mean in this case? Not "if 40 is positive" but just "if 40"),
-that's  why ``a or b == 0`` doesn't make sense also. And even if you'd try to use brackets:``if (a or b) == 0`` this won't work as well
+**doesn't** mean "if ``a`` is equal to zero or ``b`` is equal to zero", because on the left of ``or`` there's an ``a`` that is not a relation.
+Structure ``if a:`` doesn't make any sense (imagine that value of ``a`` is ``40``. What does "if 40" mean in this case?
+Not "if 40 is positive" but just "if 40"),
+that's  why ``a or b == 0`` doesn't make sense also. And even if you'd try to use brackets: ``if (a or b) == 0``, this won't work as well
 because it's absolutely unclear what ``40 or 30`` is equal to.
 
 .. note::
-  
-    На самом деле сказанное в предыдущем абзаце, конечно же, не совсем верно. Запись ``if a:`` в питоне обозначает «если ``a`` не равно нулю», соответственно запись
-    ``if a or b == 0`` обозначает «если ``a`` **не** равно нулю, или ``b`` равно нулю». Но это вовсе не то, чего вы могли ожидать,
-    и вообще, таким наявным сравнением с нулем лучше не пользоваться, за исключением особых случаев. Если вы хотите сравнить переменную
-    с нулем, так явно и пишите: ``if a == 0`` и т.п.
+    Actually, what's stated in the paragraph above isn't exactly true. Notion ``if a:`` in Python means "if ``a`` is not zero",
+    so ``if a or b == 0`` means "if ``a`` is **not** zero or ``b`` is zero". But this is quite not that you could expect,
+    so generally, it's better not to use this implicit zero-check at all except some special cases. If you want to check
+    if a veriable is zero, do it explicitly: ``if a == 0`` and so on.
+
 
 .. note::
-
-    Запись ``if (a or b) == 0`` тоже на самом деле имеет некоторый смысл, но тоже не тот, который вы можете подумать.
-    Но поясню эту ситуацию чуть подробнее. Питон, как и любой язык программирования — он достаточно формален и не понимает чистого человеческого языка,
-    пусть даже иногда кажется, что понимает. В частности, любые выражения, что арифметические, что вот такие логические,
-    питон вычисляет по порядку. Вас в школе учили вычислять значение арифметических выражений с учетом порядка действий: например,
-    если есть выражение ``10 + 20 * 30``, то надо сначала умножить ``20 * 30``, получить 600, и потом вычислить ``10 + 600``.
-    Аналогично выражение ``(a or b) == 0`` вычисляется так: надо сначала вычислить ``a or b``, и только полученный результат уже сравнивать с нулем.
-    А вовсе не сравнить с нулем отдельно ``a`` и отдельно ``b``, как вы могли бы подумать.
+    Notion ``if (a or b) == 0`` also makes sense indeed, but also not that you could expect. Let's explain details of this case.
+    Python, as any other programming language, is quite formal and not alike human language, despite sometimes it may seem to be.
+    In particular, all expressions, arithmetical or logical, are calculated in a certain order. For example, it's common that in
+    arithmetic operations summation goes after multiplication. E.g. if you have an expression ``10 + 20 * 30``, you shuold first
+    multiply ``20 * 30`` getting 600, and then summarise ``10 + 600``. Likewise, here ``(a or b) == 0`` is done this way:
+    first calculate ``a or b`` and then check if the result is equal to zero. It's not a separate check of a being zero and b being zero
+    as it may be expected for a natural language. 
 
 .. note::
-
-    И конечно тут правильнее говорить про *логический тип данных* — это собственно то, что получается в результате сравнений
-    и логических операций, и то, что можно использовать в ``if``. Это тип данных, который может хранить
-    только два значения, которые в питоне называются ``True`` (истина, условие верно) и ``False`` (ложь, условие неверно), 
-    например, у выражения ``10 > 0`` результат будет ``True``,
-    а у выражения ``True and False`` результат будет ``False``. И, например, если у вас написано::
-
+    Of course it's more accurate here to speak of the *logical (or boolean) data type*. This is exactly what you get as a result of several
+    relations and logical operations, and what you can put straight into ``if``. This is a date type that only can store two values, which
+    in Python are ``True`` (the condition is correct) and ``False`` (otherwise). For example, statement ``10 > 0`` is ``True``, and ``True and False`` is ``False``.
+    And if you'd type::
+    
         (10 > 0) and (8 > 10)
-
-    то питон поступает так: он сначала вычисляет значение ``10 > 0``, получает ``True``, потом вычисляет ``8 > 10``,
-    получает ``False``, потом вычисляет ``True and False``, получает ``False``, т.е. условие не верно.
-
-    Но для базового понимания того, как работает ``if``, это пока не нужно.
-
-.. highlight:: python
+    
+    Python interpreter does this: first, calculates ``10 > 0`` which is ``True``, then ``8 > 10`` which is ``False``, then combines
+    ``True and False`` and gets ``False``, so this statement is false.
+    
+    But for basic comprehension of ``if``-statement it's not necessary.
 
 Body of the conditional statement
 ---------------------------------
@@ -187,6 +183,8 @@ but ``print("-----")`` will run regardless of ``b`` value (but of course it need
 Once again, as stated in the previous section: Python, as any other programming language,
 is a constructor. Actually, programming is the assembly of a big program from small "bricks"
 which are statements. So you can use any of these bricks inside of the ``if``-statement.
+
+.. Переделать LOGICAL на BOOLEAN!!!
 
 else и elif
 -----------
