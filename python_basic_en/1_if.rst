@@ -257,27 +257,27 @@ Here are a few sample problems similar to ones you may come across on contests a
 
 .. task::
 
-    Кондиционер включается, если в комнате температура больше 20 градусов; если же температура 20 градусов или ниже,
-    кондиционер выключается [1]_. Напишите программу, которая определит, что будет делать кондиционер.
+    Air conditioning system switches on if the temperature in the room is above 20 degrees. If the temperature is equal or below 20 degrees,
+    the system switches off [1]_. You shall write a program that defines the status of the AC system.
+    
+    **Input**: An only integer number — the current room temperature.
 
-    **Входные данные**: Вводится одно целое число — текущая температура в комнате.
+    **Output**: Print ``on`` if the AC will switch on and ``off`` if it'll switch off.
 
-    **Входные данные**: Выведите строку ``on``, если кондиционер включится, и ``off``, если выключится.
+    **Example**:
 
-    **Пример**:
-
-    Входные данные::
+    Input::
 
         22
 
-    Выходные данные::
+    Output::
 
         on
     |
     |
     |
 
-Надо считать одно число, дальше написать сравнение с 20 и, в зависимости от результата, вывести одну из двух строк::
+Here you need to read one number, compare it with 20 and, depending on the result, write one of the two lines::
 
     n = int(input())
     if n > 20:
