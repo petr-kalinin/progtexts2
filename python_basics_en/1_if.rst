@@ -175,14 +175,14 @@ Example::
             print("That's also zero!")
         print("-----")
 
-Please note that you cat put an ``if``-statement inside of another ``if``-statement,
+Please note that you cat put an ``if``-statement inside another ``if``-statement,
 and its body will accordingly need an additional indent. In this example,
 ``print("That's also zero!")`` will be executed only if ``b`` is also equal to zero
 but ``print("-----")`` will run regardless of ``b`` value (but of course it needs ``a`` to be zero).
 
 Once again, as stated in the previous section: Python, as any other programming language,
 is a constructor. Actually, programming is the assembly of a big program from small "bricks"
-which are statements. So you can use any of these bricks inside of the ``if``-statement.
+which are statements. So you can use any of these bricks inside the ``if``-statement.
 
 else и elif
 -----------
@@ -419,4 +419,4 @@ Obviously, the answer depends on :math:`N` being odd or even. This can be checke
         print("second")
 
 
-.. [1] Of course, real air conditioners work slightly different. They have separated thresholds for turning on and off (it's called hysteresis).
+.. [1] Of course, real air conditioners work differently. They have separated thresholds for turning on and off (it's called hysteresis).
