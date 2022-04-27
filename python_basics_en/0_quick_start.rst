@@ -1,98 +1,74 @@
 .. highlight:: python
 
-Начало работы в Python 3 и Wing IDE 101
+Getting started in Python 3 and Wing IDE 101
 =======================================
 
-О версиях Python
+About Python versions
+---------------------
+
+Now there are two main branches (versions) of Python language: Python 2 and Python 3. Version 2 is officially considered deprecated
+(its support ends in 2020), version 3 is newer and more modern. We will study exactly the version 3. Version 2 is significantly different
+from version 3, and here we will not discuss these differences.
+
+There are "sub-versions" within both version 2 and version 3. For example, the latest version in the third branch
+now (2020) is 3.8.2 (besides those ones that are still in development). Basically, for our lessons you can
+use any version of Python from the third branch, preferably at least 3.3, but if there are no special reasons,
+install the latest available version.
+
+Installing Python
 ----------------
 
-Сейчас существуют две основных ветки (версии) развития языка Python
-(питон): Python 2 и Python 3. Версия 2 официально считается устаревшей 
-(поддержка версии 2 заканчивается в 2020 году), версия 3
-— более новой и современной. Мы будем изучать именно версию 3. Версия 2
-существенно отличается от версии 3, мы не будем обсуждать эти отличия.
+Python is a free cross-platform software, so it can be easily downloaded from the official website,
+can be freely distributed, and can be installed on all modern operating systems.
 
-В пределах как версии 2, так и версии 3 есть «подверсии», например,
-последняя версия из третьей ветки сейчас (2020 г.) — версия 3.8.2 (не считая тех
-версий, которые находятся еще в разработке). В принципе, для наших занятий можно
-использовать более-менее любую версию питона из третьей ветки, лучше как
-минимум 3.3, но если нет особенных причин, то устанавливайте последнюю
-доступную вам версию.
+To install Python for Windows, download the installer from the course page or from the official website
+(http://python.org, choose "Downloads" section; make sure you are downloading exactly Python 3 for Windows).
+Install Python using this program, there is nothing complicated in the installer. It's useful to install Python
+somewhere in the root of the disk, such as ``C:\Python3``, not in the folder suggested by the default.
+To do this, select something like "Customize install" and specify the necessary path on one of the following steps.
 
-Установка Python
-----------------
+If you are working on another operating system, figure out how to install Python yourself. In Linux, for example, Python is
+included in the repositories of all leading distributions, the package is usually called ``python3``
+(and just ``python`` is the python of the second version).
 
-Python — это свободное кросс-платформенное программное обеспечение,
-поэтому его можно легко скачать с официального сайта, можно свободно
-распространять, и можно установить на все современные операционные
-системы.
-
-Чтобы установить Python под Windows, скачайте программу установки со
-странички курса или с официального сайта (http://python.org, через
-пункт Downloads; убедитесь, что вы скачиваете питон третьей версии для
-Windows). Установите Python с помощью этой программы, ничего сложного в
-установщике нет. Полезно установить питон куда-нибудь в корень диска,
-типа в ``C:\Python3``, а не в тот путь, который предлагается
-установщиком по умолчанию. Для этого при установке надо выбрать пункт
-типа Customize install и на одном из следующих экранов указать
-конкретный путь.
-
-Если вы работаете в другой операционной системе, то разберитесь, как
-установить питон, самостоятельно. В Linux, например, питон есть в
-репозиториях всех ведущих дистрибутивов, пакет обычно называется
-``python3`` (а просто ``python`` — это питон второй версии).
-
-Установка Wing IDE
+Installing Wing IDE
 ------------------
 
-Сам по себе питон — это только интерпретатор кода. Он запускает ваши программы,
-но не содержит удобного редактора. Поэтому для написания программ
-я советую вам использовать среду разработки (по сути, продвинутый редактор)
-Wing IDE.
+Python itself is only a code interpreter. It runs your programs, but doesn't contain a convenient editor. Therefore, to write programs
+I advise you to use a integrated development environment (in fact, an advanced editor) Wing IDE.
 
-Wing IDE — это, к сожалению, не свободное ПО, но у него существует
-официально бесплатная версия для образовательных целей, называется Wing
-IDE 101. Она доступна как для Windows, так и для Linux и macOS.
+Unfortunately, Wing IDE is not a free software, but it has an official free version for educational purposes, called Wing
+IDE 101. It's available for Windows, Linux and macOS.
 
-Все программы для установки можно скачать с официального сайта Wing IDE
-(http://wingware.com/, через пункт Download — Wing IDE 101);
-установщик под Windows также можно скачать со странички курса.
-Обратите внимание, что вам нужна именно версия 101, а не какая-нибудь другая!
-Установите Wing IDE с помощью этого установщика, ничего сложного в нем
-нет. 
+All installation programs can be downloaded from the official Wing IDE website (http://wingware.com /, via Download — Wing IDE 101);
+the installer for Windows can also be downloaded from the course page. Please note that you need exactly version 101, not any other!
+Install Wing IDE using this installer, there is nothing complicated in it.
 
-Wing IDE — это просто *среда разработки* (IDE) для Python, т.е. удобный
-редактор программ, позволяющий легко запускать программы с помощью
-питона (именно поэтому надо отдельно устанавливать сам Python — Wing IDE
-его не включает в себя). В принципе, вы можете использовать и
-какую-нибудь другую среду разработки, но тогда разбирайтесь с ней сами.
-В частности, сам Python включает простенькую среду разработки Python
-IDLE, ее описание вы можете встретить во многих книжках по Python, но
-она слишком простая и потому не очень удобная. Так же есть популярная среда
-PyCharm, но на мой вкус она слишком сложная.
+Wing IDE is just a *development environment* (IDE) for Python, i.e. a convenient program editor that allows you
+to easily run programs using Python (that's why you need to install Python itself separately — Wing IDE doesn't include it).
+Basically, you can use some other IDE, but then deal with it by yourself. In particular, Python itself includes
+a simple development environment called Python IDLE. You can find its description in many Python books, but it's too simple
+and therefore not very convenient. There is also a popular IDE PyCharm, but for my taste, it's too complicated.
 
-Проверка установки
-------------------
+Checking the installation
+-------------------------
 
-Запустите Wing IDE. Появится следующее окошко:
+Launch the Wing IDE. The following window will appear:
 
-.. image:: 0_quick_start/wing_ide_0.png
+.. image:: ../python_basics/0_quick_start/wing_ide_0.png
 
-Во-первых, убедитесь, что в правом нижнем углу, на панели, озаглавленной
-Python Shell, появился текст, похожий на приведенный на рисунке; в
-частности, там должна быть указана версия питона, которую вы
-устанавливали. Убедитесь, что это версия 3 (на рисунке это версия
-3.5.2). Если это не так, то попробуйте через меню Edit — Configure
-Python указать путь к питону вручную (см. рисунок ниже) — в
-пункте Python Executable надо указать что-нибудь типа
-``C:\Python3\python.exe``, если вы установили питон в каталог
-``C:\Python3``, возможно, также в список Python Path надо добавить
-``C:\Python3``. Возможно, вам придется поэкспериментировать, чтобы найти
-правильные настройки. Если у вас на компьютере установлены обе версии
-питона (и 2, и 3), то, возможно, Wing IDE по умолчанию «подцепит» версию
-2, тогда тоже вручную укажите, что вам надо работать с версией 3.
+First, make sure that in the lower right corner, on the panel entitled Python Shell,
+a text similar to the one shown in the figure appeared; in particular, the Python version that you installed
+should be indicated there. Make sure it's version 3 (in the picture it's version 3.5.2).
+If this is not, then try using the "Edit — Configure Python" menu to specify the path to Python manually
+(see the picture below) — in "Python Executable" field, you need to type something like
+``C:\Python3\python.exe`` if you have installed Python in the directory ``C:\Python3``.
+Perhaps you also should add ``C:\Python3`` to the ``Python Path`` list. You may have to explore it to find
+the right settings. If you have both versions of Python installed on your computer (both 2 and 3),
+perhaps the Wing IDE will "pick up" Python 2 by default. In this case, also manually specify
+that you need to work with version 3.
 
-.. image:: 0_quick_start/wing_ide_config.png
+.. image:: ../python_basics/0_quick_start/wing_ide_config.png
 
 Если у вас не получается, напишите мне [1]_, указав, куда вы установили
 питон, и прислав скриншоты основного окна Wing IDE и диалога Edit —
@@ -112,7 +88,7 @@ Configure Python.
 
 Должно получиться так:
 
-.. image:: 0_quick_start/wing_ide_1.png
+.. image:: ../python_basics/0_quick_start/wing_ide_1.png
 
 
 Убедитесь, что опечаток нет. Сохраните программу: нажмите Ctrl-S или
@@ -140,14 +116,14 @@ Configure Python.
 
 Если там появилась надпись «Test 4»:
 
-.. image:: 0_quick_start/wing_ide_2.png
+.. image:: ../python_basics/0_quick_start/wing_ide_2.png
 
 значит, все хорошо, программа успешно выполнилась. 
 
 Если же там появился длинный текст со словами «Traceback» (в начале) и
 «Error» (в конце):
 
-.. image:: 0_quick_start/wing_ide_3.png
+.. image:: ../python_basics/0_quick_start/wing_ide_3.png
 
 значит, в вашей программе есть ошибки. Подробнее про
 ошибки ниже (раздел :ref:`sec:ce`), а пока, если вы увидели ошибку,
