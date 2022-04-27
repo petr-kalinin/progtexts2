@@ -293,7 +293,7 @@ Here you need to read one number, compare it with 20 and, depending on the resul
     turns on when the temperature in the room is above :math:`T` and the humidity is not higher than 80%.
     If any of these conditions isn't met, the air conditioner turns off.
     
-    **Input**: One line contains three numbers: temperature set by user (:math:`T`), current temperature in the room and humidity. Temperatures are given in degrees and the humidity in percentage.
+    **Input**: The only line contains three numbers: temperature set by user (:math:`T`), current temperature in the room and humidity. Temperatures are given in degrees and the humidity in percentage.
 
     **Output**:  Print ``on`` if the AC will turn on and ``off`` if it'll turn off.
 
@@ -327,8 +327,8 @@ Here you need to point where the condition is strict ("greater than" or "greater
     it turns off. Masha wants to cool the room, but she's smart and realizes that if the outside temperature is lower than inside,
     she just needs to open the window. Write a program that defines what Masha should do.
 
-    **Input**: The first line consists of an only number that is temperature in the room.
-    The second line also consists of an only number that is outside temperature.
+    **Input**: The first line consists of an only number — the temperature in the room.
+    The second line also consists of an only number — the temperature outside.
 
     **Output**: Print ``ac on`` if Masha should turn on the AC and it will turn, ``ac off`` if Masha should try to turn on the AC *but it won't*
     and ``open window`` if she may just open the window.
