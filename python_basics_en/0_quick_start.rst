@@ -22,7 +22,7 @@ Python is a free cross-platform software, so it can be easily downloaded from th
 can be freely distributed, and can be installed on all modern operating systems.
 
 To install Python for Windows, download the installer from the course page or from the official website
-(http://python.org, choose "Downloads" section; make sure you are downloading exactly Python 3 for Windows).
+(http://python.org, choose Downloads section; make sure you are downloading exactly Python 3 for Windows).
 Install Python using this program, there is nothing complicated in the installer. It's useful to install Python
 somewhere in the root of the disk, such as ``C:\Python3``, not in the folder suggested by the default.
 To do this, select something like "Customize install" and specify the necessary path on one of the following steps.
@@ -60,7 +60,7 @@ Launch the Wing IDE. The following window will appear:
 First, make sure that in the lower right corner, on the panel entitled Python Shell,
 a text similar to the one shown in the figure appeared; in particular, the Python version that you installed
 should be indicated there. Make sure it's version 3 (in the picture it's version 3.5.2).
-If this is not, then try using the "Edit — Configure Python" menu to specify the path to Python manually
+If this is not, then try using the ``Edit — Configure Python`` menu option to specify the path to Python manually
 (see the picture below) — in "Python Executable" field, you need to type something like
 ``C:\Python3\python.exe`` if you have installed Python in the directory ``C:\Python3``.
 Perhaps you also should add ``C:\Python3`` to the ``Python Path`` list. You may have to explore it to find
@@ -70,87 +70,76 @@ that you need to work with version 3.
 
 .. image:: ../python_basics/0_quick_start/wing_ide_config.png
 
-Если у вас не получается, напишите мне [1]_, указав, куда вы установили
-питон, и прислав скриншоты основного окна Wing IDE и диалога Edit —
-Configure Python.
+If you fail, write to me [1]_, pointing where you installed Python and sending screenshots
+of the main Wing IDE window and the ``Edit — Configure Python`` dialog.
 
-Первая программа
+The first program
 ----------------
 
-В основном меню Wing IDE выберите пункт File — New. Появится окно для
-редактирования текста программы. В этом окне наберите следующий текст:
+In the main menu of the Wing IDE, select ``File — New``. A window for editing the program text
+will appear. In this window, type the following text:
 
 ::
 
-    print("Test", 2*2)
+print("Test", 2*2)
 
-(Здесь ``"`` — это символ кавычек.)
+(Here ``"`` is a quotation mark.)
 
-Должно получиться так:
+It should turn out like this:
 
 .. image:: ../python_basics/0_quick_start/wing_ide_1.png
 
 
-Убедитесь, что опечаток нет. Сохраните программу: нажмите Ctrl-S или
-выберите пункт меню File — Save As. Wing IDE предложит выбрать имя файла
-для сохранения, для первой программы можно выбрать любое имя.
+Make sure there are no typos. Save the program: press Ctrl-S or select the menu option ``File — Save As``.
+Wing IDE will prompt you to choose a file name to save, for the first program you can choose any name.
 
 .. note::
 
-    Обратите внимание, что Wing IDE раскрашивает вашу программу.
-    Это делается для того, чтобы ее было удобнее читать; на самом деле
-    для питона цвет не важен, он сделан только для того, чтобы вам было 
-    удобнее читать. Аналогично, в этом тексте код тоже раскрашен,
-    причем раскраска может быть немного другой (это просто обусловлено 
-    системой, которую я использую для написания текста). Но еще раз:
-    цвета только для удобства чтения, никакой больше нагрузки они не несут,
-    в частности, Wing может раскрашивать не так, как вы видите в этом тексте,
-    это не страшно.
+Note that the Wing IDE colors your program. This is done in order to make it easier to read. 
+In fact, for Python the color is not important, it is made only for convenient reading.
+Similarly, in this text the code is also colored, moreover, the coloring may be
+slightly different (this is simply due to the system I use to write the text).
+But once again: the colors are for readability only, they don't carry any more sense.
+In particular, Wing IDE may color it differently than you see in this text — it's okay,
+there's nothing wrong.
 
+After that, run the program by clicking on the button with a green
+triangle arrow on the toolbar above the program text. The result of the program execution
+will appear in the lower right part of the screen, on the "Python Shell" panel.
+Namely, there you can see one of the two possible results shown in two figures below.
 
-После этого запустите программу, нажав на кнопку с зеленым
-треугольничком—стрелочкой на панели инструментов над текстом программы.
-Результат выполнения программы появляется в правой нижней части экрана,
-в панели «Python Shell» А именно, там вы можете увидеть один из двух
-возможных результатов, показанных на двух рисунках ниже. 
-
-Если там появилась надпись «Test 4»:
+If there is an inscription "Test 4":
 
 .. image:: ../python_basics/0_quick_start/wing_ide_2.png
 
-значит, все хорошо, программа успешно выполнилась. 
+then everything is fine, the program has been successfully executed.
 
-Если же там появился длинный текст со словами «Traceback» (в начале) и
-«Error» (в конце):
+If there is a long text with the words "Traceback" (at the beginning) and
+"Error" (at the end):
 
 .. image:: ../python_basics/0_quick_start/wing_ide_3.png
 
-значит, в вашей программе есть ошибки. Подробнее про
-ошибки ниже (раздел :ref:`sec:ce`), а пока, если вы увидели ошибку,
-то просто внимательно проверьте, не ошиблись ли вы где-нибудь в наборе
-программы.
+then there are errors in your program. Read more about the errors below
+(section :ref:`sec:ce`), and in the meantime, if you see an error,
+just carefully check if you made a mistake somewhere when typing the program.
 
-Добейтесь того, чтобы ваша программа отработала успешно (внимательно
-проверив, не допустили ли вы ошибок), и посмотрите, что же именно
-пишется в этом окошке «Python Shell». Там, во-первых, виден заголовок
-питона (включающий номер версии), дальше строка ``>>> [evaluate tmp.py]``
-(вместо ``tmp.py`` здесь будет имя файла, куда вы сохранили программу).
-Эта строка была выведена в тот момент, когда Wing IDE начал запускать
-вашу программу. И, наконец, есть строка ``Test 4``, которую и
-напечатала наша программа. Почему она напечатала именно это, обсудим
-чуть ниже.
+Make sure that your program works successfully (by carefully checking if you've made
+any mistakes), and see what exactly is written in the "Python Shell" window. There, first,
+you can see the Python header(including the version number), then the line ``>>> [evaluate tmp.py]``
+(instead of ``tmp.py`` there will be the name of the file where you saved the program).
+This line was printed at the moment when Wing IDE started running your program.
+And finally, there is the line `Test 4`, which the program printed.
+Below we'll discuss why it printed exactly this.
 
-Позапускайте программу (зеленой стрелочкой) ещё несколько раз и
-посмотрите на результаты. Вы увидите что, Wing IDE каждый раз печатает
-строку ``evaluate...`` перед запуском программы, потом программа
-печатает свою строку. Вывод программы перемешивается с выводом Wing IDE
-— ничего страшного, это нормально.
+Restart the program (green arrow) a few more times and look at the results.
+You will see that the Wing IDE every time prints the string ``evaluate...`` before the program starts,
+then the program prints its own line. The output of the program is mixed with the output of the Wing IDE
+— it's okay.
 
-Можно также запускать программу нажатием на кнопку с картинкой типа
-красного жучка. Это немного другой режим запуска, более удобный для
-поиска ошибок. Попробуйте позапускать и так, и так, посмотрите на
-отличия (основное отличие пока — при запуске через «красного жучка»
-вывод предыдущих программ затирается).
+You can also run the program by clicking on the button with a picture looking like a red bug.
+This is a slightly different execution mode which is more convenient for seeking errors.
+Try to start both this and that way and look at the differences (the main difference so far
+is that when you start via the "red bug", the output of previous programs is overwritten).
 
 .. _sec:ce:
 
