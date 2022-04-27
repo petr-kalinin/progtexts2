@@ -391,7 +391,7 @@ But here it's possible to get rid of nested ``if``s via the opposite check: isn'
     On a PE lesson the teacher says 
     На уроке физкультуры тренер говорит «на первый-второй рассчитайтесь». Вася стоит :math:`N`-ым по счету. Что он скажет, «первый» или «второй»?
 
-    **Входные данные**: На первой строке вводится одно число :math:`N`.
+    **Входные данные**: The first line contains the only number :math:`N`.
 
     **Входные данные**: Выведите строку ``first``, если Вася скажет «первый», и ``second``, если «второй».
 
