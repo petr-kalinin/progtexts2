@@ -26,7 +26,7 @@ then colon (which is necessary), then, on the following line(s), the instruction
 that must be typed with an extra indent (spaces in the beginning).
 
 Those instructions may consist of any Python statements you know or will learn later:
-entering data via  ``input``, setting variables' values, printing data, other ``if``-s, whatever you need
+entering data via  ``input``, setting variables' values, printing data, other ``if``-statements, whatever you need
 (detailed examples will be shown below).
 
 For example, you can insert this construction into your program like this::
@@ -136,7 +136,7 @@ because it's absolutely unclear what ``40 or 30`` is equal to.
     Notion ``if (a or b) == 0`` also makes sense indeed, but also not that you could expect. Let's explain details of this case.
     Python, as any other programming language, is quite formal and not alike human language, despite sometimes it may seem to be.
     In particular, all expressions, arithmetical or logical, are calculated in a certain order. For example, it's common that in
-    arithmetic operations summation goes after multiplication. E.g. if you have an expression ``10 + 20 * 30``, you shuold first
+    arithmetic operations addition goes after multiplication. E.g. if you have an expression ``10 + 20 * 30``, you shuold first
     multiply ``20 * 30`` getting 600, and then summarise ``10 + 600``. Likewise, here ``(a or b) == 0`` is done this way:
     first calculate ``a or b`` and then check if the result is equal to zero. It's not a separate check of a being zero and b being zero
     as it may be expected for a natural language. 
@@ -376,7 +376,7 @@ After that (as in many other problems) there are several solutions. For example,
     else:
         print("open window")
 
-But here it's possible to get rid of nested ``if``-s via the opposite check: isn't Masha better open the window?
+But it's possible to get rid of nested ``if``-statements via the opposite check: isn't Masha better open the window?
 ::
     t_in = int(input())
     t_out = int(input())
@@ -388,20 +388,20 @@ But here it's possible to get rid of nested ``if``-s via the opposite check: isn
         print("ac off")
 
 .. task::
-    On a PE lesson the teacher says 
+    On a PE lesson the teacher (?)
     На уроке физкультуры тренер говорит «на первый-второй рассчитайтесь». Вася стоит :math:`N`-ым по счету. Что он скажет, «первый» или «второй»?
 
-    **Входные данные**: The first line contains the only number :math:`N`.
+    **Input**: The first line contains the only number :math:`N`.
 
-    **Входные данные**: Выведите строку ``first``, если Вася скажет «первый», и ``second``, если «второй».
+    **Output**: Выведите строку ``first``, если Вася скажет «первый», и ``second``, если «второй».
 
-    **Пример**:
+    **Example**:
 
-    Входные данные::
+    Input::
 
         3
 
-    Выходные данные:
+    Output:
 
     .. code-block:: text
 
@@ -410,7 +410,7 @@ But here it's possible to get rid of nested ``if``-s via the opposite check: isn
     |
     |
 
-Очевидно, ответ зависит от того, четное число :math:`N` или нет. Четность числа можно проверить, взяв остаток от деления на 2::
+Obviously, the answer depends on :math:`N` being odd or even. This can be checked by taking it's remainder when divided by 2 (modulo operator)::
 
     n = int(input())
     if n % 2 == 1:
