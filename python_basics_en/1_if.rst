@@ -257,12 +257,12 @@ Here are a few sample problems similar to ones you may come across on contests a
 
 .. task::
 
-    Air conditioning system switches on if the temperature in the room is above 20 degrees. If the temperature is equal or below 20 degrees,
-    the system switches off [1]_. You shall write a program that defines the status of the AC system.
+    Air conditioning system turns on if the temperature in the room is above 20 degrees. If the temperature is equal or below 20 degrees,
+    the system turns off [1]_. Write a program that defines the status of the AC system.
     
     **Input**: An only integer number — the current room temperature.
 
-    **Output**: Print ``on`` if the AC will switch on and ``off`` if it'll switch off.
+    **Output**: Print ``on`` if the AC will turn on and ``off`` if it'll turn off.
 
     **Example**:
 
@@ -286,33 +286,31 @@ Here you need to read one number, compare it with 20 and, depending on the resul
         print("off")
 
 .. task::
+    A new model of air conditioning system takes into account the level of humidity in the room. Because of the humidity rise upon cooling, the system
+    will not turn on if the relative humidity is above 80%.
 
-    Новая модель кондиционера учитывает еще и влажность в помещении. Поскольку при охлаждении влажность повышается,
-    то кондиционер ни в коем случае не включается, если влажность в помещении превышает 80%.
+    Moreover, in this system the required temperature can be set remotely. So if the user set :math:`T` degrees on remote control, the air conditioner
+    turns on when the temperature in the room is above :math:`T` and the humidity is not higher than 80%.
+    If any of these conditions isn't met, the air conditioner turns off.
+    
+    **Input**: One line contains three numbers: temperature set by user (:math:`T`), current temperature in the room and humidity. Temperatures are given in degrees and the humidity in percentage.
 
-    Кроме того, на этом кондиционере требуемую температуру можно настраивать с пульта. Таким образом, если пользователь выставил
-    с пульта температуру :math:`T` градусов, то кондиционер включается, если температура в комнате строго больше :math:`T`, а влажность 80% или ниже.
-    Если же хотя бы одно из условий не выполняется, то кондиционер выключается.
+    **Output**:  Print ``on`` if the AC will turn on and ``off`` if it'll turn off.
 
-    **Входные данные**: На одной строке вводятся три числа — выставленная пользователем температура (:math:`T`), 
-    текущая температура в комнате и текущая влажность в комнате. Температуры указаны в градусах, влажность — в процентах.
+    **Example**:
 
-    **Входные данные**: Выведите строку ``on``, если кондиционер включится, и ``off``, если выключится.
-
-    **Пример**:
-
-    Входные данные::
+    Input::
 
         20 22 60
 
-    Выходные данные::
+    Output::
 
         on
     |
     |
     |
 
-Тут надо написать чуть более сложное условие: если температура превышает заданную, а влажность не превышает, то кондиционер включается, иначе нет::
+Now the condition is a bit more sophisiticated: if the temperature is above given and the humidity is not, the system turns on, otherwise it's off::
 
     t0, t1, h = map(int input().split())
     if t1 > t0 and h <= 80:
@@ -320,54 +318,53 @@ Here you need to read one number, compare it with 20 and, depending on the resul
     else:
         print("off")
 
-Обратите внимание, что надо очень аккуратно писать строгие или нестрогие условия («больше» или «больше или равно»; аналогично «меньше» 
-или «меньше или равно»).
-В условии сказано, что кондиционер включается, только если температура **строго выше** заданной (т.е. «больше», а не «больше или равна»),
-а влажность **не превышает** 80% (т.е. «меньше или равна», а не «меньше»).
+Here you need to point where the condition is strict ("greater than" or "greater than or equal to", same with "less than").
+ problem it's said that AC turns on if the temperature is **strictly above** given (exactly "greater than", not "greater than or equal to")
+ and the humidity is **not higher** than 80% (so it's "less than or equal to", not just "less than").
 
 .. task::
+    In Masha's room there's a simple air conditioner. It turns on if the temperature in the room is above 20 degrees. If it's equal or below 20 degrees,
+    it turns off. Masha wants to cool the room, but she's smart and realizes that if the outside temperature is lower than inside,
+    she just needs to open the window. Write a program that defines what Masha should do.
 
-    У Маши в комнате висит простой кондиционер. Он включается, если в комнате температура больше 20 градусов; если же температура 20 градусов или ниже,
-    кондиционер выключается. Маша хочет охладить комнату, но она умная и понимает, что если температура воздуха на улице ниже, чем в комнате, 
-    то надо не включать кондиционер, а открыть окно. Напишите программу, которая определит, что будет делать Маша.
+    **Input**: The first line consists of an only number that is temperature in the room.
+    The second line also consists of an only number that is outside temperature.
 
-    **Входные данные**: На первой строке вводится одно число — температура в комнате. На второй строке одно число — температура на улице.
+    **Output**: Print ``ac on`` if Masha should turn on the AC and it will turn, ``ac off`` if Masha should try to turn on the AC *but it won't*
+    and ``open window`` if she may just open the window.
 
-    **Входные данные**: Выведите строку ``ac on``, если Маше надо включить кондиционер и он включится, ``ac off``, если Маша
-    попробует включить кондиционер, но он не включится, и ``open window``, если Маше достаточно просто открыть окно.
+    **Example**:
 
-    **Пример**:
-
-    Входные данные::
+    Input::
 
         22
         10
 
-    Выходные данные:
+    Output:
 
     .. code-block:: text
 
         open window
 
-    Входные данные::
+    Input::
 
         18
         20
 
-    Выходные данные::
+    Output::
 
         ac off
     |
     |
     |
 
-Сначала, конечно, надо считать два числа::
+Of course, first you need to input two numbers::
 
     t_in = int(input())
     t_out = int(input())
 
-Тут (как и во многих других задачах) есть несколько способов решения. Можно, например, сначала написать условие, когда стоит включать кондиционер:
-``if t_in <= t_out``, и дальше внутри этого ``if``'а разобрать ситуацию с кондиционером. Полный код получится такой::
+After that (as in many other problems) there are several solutions. For example, you may begin with a condition which defines if the AC should be turn on:
+``if t_in <= t_out`` and inside that find out if it'll really turn or not. Full source code might look like this::
 
     t_in = int(input())
     t_out = int(input())
@@ -379,7 +376,7 @@ Here you need to read one number, compare it with 20 and, depending on the resul
     else:
         print("open window")
 
-Но можно и сделать так, чтобы вложенные ``if``'ы не были нужны, сначала проверив, не стоит ли открыть окно::
+But here it's possible to get rid of nested ``if``s via the opposite check: isn't Masha better open the window?
 
     t_in = int(input())
     t_out = int(input())
@@ -391,7 +388,7 @@ Here you need to read one number, compare it with 20 and, depending on the resul
         print("ac off")
 
 .. task::
-
+    On a PE lesson the teacher says 
     На уроке физкультуры тренер говорит «на первый-второй рассчитайтесь». Вася стоит :math:`N`-ым по счету. Что он скажет, «первый» или «второй»?
 
     **Входные данные**: На первой строке вводится одно число :math:`N`.
