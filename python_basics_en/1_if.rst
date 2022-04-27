@@ -376,7 +376,7 @@ After that (as in many other problems) there are several solutions. For example,
     else:
         print("open window")
 
-But here it's possible to get rid of nested ``if``s via the opposite check: isn't Masha better open the window?
+But here it's possible to get rid of nested ``if``-s via the opposite check: isn't Masha better open the window?
 ::
     t_in = int(input())
     t_out = int(input())
