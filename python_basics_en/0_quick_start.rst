@@ -108,13 +108,13 @@ for the first program you can choose any name.
 
 .. note::
 
-Note that the Wing IDE colors your program. This is done in order to make it easier to
-read. In fact, for Python the color is not important, it is made only for convenient
-reading. Similarly, in this text the code is also colored, moreover, the coloring may be
-slightly different (this is simply due to the system I use to write the text).
-But once again: the colors are for readability only, they don't carry any more sense.
-In particular, Wing IDE may color it differently than you see in this text — it's okay,
-there's nothing wrong.
+    Note that the Wing IDE colors your program. This is done in order to make it easier to
+    read. In fact, for Python the color is not important, it is made only for convenient
+    reading. Similarly, in this text the code is also colored, moreover, the coloring may be
+    slightly different (this is simply due to the system I use to write the text).
+    But once again: the colors are for readability only, they don't carry any more sense.
+    In particular, Wing IDE may color it differently than you see in this text — it's okay,
+    there's nothing wrong.
 
 After that, run the program by clicking on the button with a green
 triangle arrow on the toolbar above the program text. The result of the program execution
@@ -244,16 +244,16 @@ You can use the following operators in arithmetic expressions:
 *unary* minus for writing negative numbers: to write
 :math:`2\cdot(-4)`, you need to type ``2*(-4)``);
 
-- ``*`` — multiplication;
+-   ``*`` — multiplication;
 
-- ``/`` — division ("fair", for example :math:`5/2=2.5`);
+-   ``/`` — division ("fair", for example :math:`5/2=2.5`);
 
-- ``//`` (two ``/`` characters in a row) — Euclidean division (see below);
+-   ``//`` (two ``/`` characters in a row) — Euclidean division (see below);
 
-- ``%`` — remainder (see below).
+-   ``%`` — remainder (see below).
 
-- Parentheses (round only) are used for grouping operations. You can
-use nested brackets, for example, `2*(3-(4+6))`.
+-   Parentheses (round only) are used for grouping operations. You can
+    use nested brackets, for example, `2*(3-(4+6))`.
 
 Чуть подробнее про деления. Есть три оператора, связанных с делением:
 один оператор для честного деления (``/``), и два оператора для деления с остатком
@@ -267,22 +267,22 @@ use nested brackets, for example, `2*(3-(4+6))`.
 
 Furthermore, there are so-called *functions*:
 
-- The notation `abs(-3)` means taking the absolute value of the number: :math:`|{-}3|`.
-Please note that first *the name of the function* is written (in this case
-``abs``), and then in parentheses — what to apply this function to (of what number to
-take the absolute value in this case). What is in parentheses is also called the *argument of the function*.
+-   The notation `abs(-3)` means taking the absolute value of the number: :math:`|{-}3|`.
+    Please note that first *the name of the function* is written (in this case
+    ``abs``), and then in parentheses — what to apply this function to (of what number to
+    take the absolute value in this case). What is in parentheses is also called the *argument of the function*.
 
-- Similarly, the notation ``sqrt(4)`` means taking the square root
-(if you don't know what it is, then skip this point for now), but,
-since this operation is needed somewhat less often, in order to
-to use it, at the beginning of the program you need to write a magic string
-``from math import *``. The program will look, for example, like this:
+-   Similarly, the notation ``sqrt(4)`` means taking the square root
+    (if you don't know what it is, then skip this point for now), but,
+    since this operation is needed somewhat less often, in order to
+    to use it, at the beginning of the program you need to write a magic string
+    ``from math import *``. The program will look, for example, like this:
 
 ::
 
   from math import *
   print(sqrt(4))
-
+.. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 All these operations can be combined. For example, the command
 ``print( (20 * 3) + sqrt( 2 + abs(5 - 7) ) )` displays the value
 of the expression :math:`20\cdot 3 + \sqrt{2+|5-7| }`. Spaces in the command
