@@ -126,14 +126,14 @@ that's  why ``a or b == 0`` doesn't make sense also. And even if you'd try to us
 because it's absolutely unclear what ``40 or 30`` is equal to.
 
 .. note::
-    Actually, what's stated in the paragraph above isn't exactly true. Notion ``if a:`` in Python means "if ``a`` is not zero",
+    Actually, what's stated in the paragraph above isn't exactly true. Notation ``if a:`` in Python means "if ``a`` is not zero",
     so ``if a or b == 0`` means "if ``a`` is **not** zero or ``b`` is zero". But this is quite not that you could expect,
     so generally, it's better not to use this implicit zero-check at all except some special cases. If you want to check
     if a veriable is zero, do it explicitly: ``if a == 0`` and so on.
 
 
 .. note::
-    Notion ``if (a or b) == 0`` also makes sense indeed, but also not that you could expect. Let's explain details of this case.
+    Notation ``if (a or b) == 0`` also makes sense indeed, but also not that you could expect. Let's explain details of this case.
     Python, as any other programming language, is quite formal and not alike human language, despite sometimes it may seem to be.
     In particular, all expressions, arithmetical or logical, are calculated in a certain order. For example, it's common that in
     arithmetic operations addition goes after multiplication. E.g. if you have an expression ``10 + 20 * 30``, you shuold first
