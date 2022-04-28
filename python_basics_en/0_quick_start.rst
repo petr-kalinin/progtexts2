@@ -286,11 +286,11 @@ Furthermore, there are so-called *functions*:
 
 All these operations can be combined. For example, an instruction
 ``print( (20 * 3) + sqrt( 2 + abs(5 - 7) ) )`` will output the value
-of the expression :math:`20\cdot 3 + \sqrt{2+|5-7| }`. Plenty of spaces are put here
-to make it easier to read; in general, in Python spaces can be typed in any 
-reasonable place (you can't put them inside numbers and names of the instructions
-but near brackets, punctuation marks and other symbols you can) but
-it is recommended to put them at least around the arithmetic operators.
+of the expression :math:`20\cdot 3 + \sqrt{2+|5-7| }`. Plenty of spaces are put
+into the code to make it easier to read; in general, in Python spaces can
+be typed in any reasonable place (you can't put them inside numbers and names 
+of the instructions but near brackets, punctuation marks and other symbols you can) 
+but it is recommended to put them at least around the arithmetic operators.
 
 Multiple expressions can be evaluated in one program. For example, the program
 ::
@@ -303,7 +303,7 @@ fours separated by a space. The second ``print`` just outputs a single number
 9. It will be output on a separate line, because each ``print`` instruction
 outputs one line. Note again that the instruction arguments are separated by commas.
 
-You can also, as we saw earlier, mix text (in quotes) and expressions:
+You can also, as we saw earlier, mix text (in quotes) and arithmetic expressions:
 ::
 
     print("Two by two is", 2 * 2, ".")
