@@ -93,7 +93,7 @@ the text of the program will appear. In this window, type the following text:
 
 ::
 
-print("Test", 2*2)
+  print("Test", 2*2)
 
 (Here ``"`` is a quotation mark.)
 
@@ -201,7 +201,7 @@ Let's take a look at how this program works. Let me remind you of its text:
 
 ::
 
-print("Test", 2*2)
+  print("Test", 2*2)
 
 In general, any program is, first of all, a sequence of instructions that the programmer
 gives to the computer, and the computer consistently (one by one) executes them.
@@ -231,30 +231,29 @@ As a result, our program outputs ``Test 4``.
 Using Python as a calculator
 ----------------------------
 
-Таким образом можно использовать питон как калькулятор. Например, если
-надо посчитать значение выражения :math:`7+3\cdot(8-2)`, то можно
-написать команду ``print(7+3*(8-2))``, после чего запустить программу —
-и на экран будет выведен результат. Обратите внимание, что скобки
-учтутся корректно и порядок действий будет правильный. Две скобки в
-конце команды — это одна является частью выражения, а вторая заканчивает
-список аргументов команды ``print``.
+So, you can use Python as a calculator. For example, if you need to calculate
+the value of the expression :math:`7+3\cdot(8-2)`, you can
+write ``print(7+3*(8-2))`` and run the program — the result will be displayed
+on the screen. Note that the brackets will be taken into account correctly\
+and the order of calculations will be right. There are two parentheses at
+the end of the instruction — the first one is a part of the expression,
+and the second ends the list of arguments of ``print`` instruction.
 
-В выражениях можно использовать следующие операторы:
+You can use the following operators in arithmetic expressions:
+- `+` and `-` — addition and subtraction (including what is called
+*unary* minus for writing negative numbers: to write
+:math:`2\cdot(-4)`, you need to type ``2*(-4)``);
 
--  ``+`` и ``-`` — сложение и вычитание (в том числе то, что называется
-   *унарный* минус для записи отрицательных чисел: чтобы написать
-   :math:`2\cdot(-4)`, надо написать ``2*(-4)``);
+- ``*`` — multiplication;
 
--  ``*`` — умножение;
+- ``/`` — division ("fair", for example :math:`5/2=2.5`);
 
--  ``/`` — деление («честное», например, :math:`5/2=2.5`);
+- ``//`` (two ``/`` characters in a row) — Euclidean division (see below);
 
--  ``//`` (это два символа ``/`` подряд) — неполное частное (см. ниже);
+- ``%`` — remainder (see below).
 
-- ``%`` ­— остаток (см. ниже).
-
--  Скобки (только круглые) работают для группировки операций, можно
-   использовать вложенные скобки, например, ``2*(3-(4+6))``.
+- Parentheses (round only) are used for grouping operations. You can
+use nested brackets, for example, `2*(3-(4+6))`.
 
 Чуть подробнее про деления. Есть три оператора, связанных с делением:
 один оператор для честного деления (``/``), и два оператора для деления с остатком
@@ -266,6 +265,47 @@ Using Python as a calculator
 питоне так принято.) (При работе с отрицательными числами результат
 может показаться вам неожиданным, но это мы обсудим потом.)
 
+Furthermore, there are so-called *functions*:
+
+- The notation `abs(-3)` means taking the absolute value of the number: :math:`|{-}3|`.
+Please note that first *the name of the function* is written (in this case
+``abs``), and then in parentheses — what to apply this function to (of what number to
+take the absolute value in this case). What is in parentheses is also called the *argument of the function*.
+
+- Similarly, the notation ``sqrt(4)`` means taking the square root
+(if you don't know what it is, then skip this point for now), but,
+since this operation is needed somewhat less often, in order to
+to use it, at the beginning of the program you need to write a magic string
+``from math import *``. The program will look, for example, like this:
+
+::
+
+  from math import *
+  print(sqrt(4))
+
+All these operations can be combined. For example, the command
+``print( (20 * 3) + sqrt( 2 + abs(5 - 7) ) )` displays the value
+of the expression :math:`20\cdot 3 + \sqrt{2+|5-7| }`. Spaces in the command
+are placed to make it easier to read; in general, in python, spaces can
+be placed in any reasonable place (you can't put them inside the names of commands and numbers,
+but you can near brackets, punctuation marks and other symbols), but
+it is recommended to put them at least around the action signs.
+
+Multiple expressions can be evaluated in one program. For example,
+the program
+
+::
+
+  print(2 * 2, 2 + 2)
+  print(3 * 3)
+
+evaluates three expressions. The first "print` command displays two
+fours separated by a space. The second command just outputs a single number
+9. It will be output on a separate line, because each `print` command
+outputs one line. Note again that the command arguments
+are separated by commas.
+
+You can also, as we saw earlier, mix text (in quotes) and expressions:
 Кроме того, есть так называемые *функции*:
 
 -  Запись ``abs(-3)`` обозначает взятие числа по модулю: :math:`|{-}3|`.
@@ -311,7 +351,7 @@ Using Python as a calculator
 
 ::
 
-    print("Дважды два равно", 2 * 2, ".")
+    print("Two by two is", 2 * 2, ".")
 
 Простейший ввод и вывод. Переменные
 -----------------------------------
