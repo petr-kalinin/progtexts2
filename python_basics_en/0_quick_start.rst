@@ -224,7 +224,7 @@ the computer will first calculate :math:`2\cdot 2`, get 4, and then pass the res
 instruction ``print``, which will display it on the screen.
 
 ``print`` separates the output elements with spaces, so between
-``Test`` and ``4`` there's space.
+``Test`` and ``4`` there's one space.
 
 As a result, our program outputs ``Test 4``.
 
