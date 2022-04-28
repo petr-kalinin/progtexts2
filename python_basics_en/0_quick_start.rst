@@ -255,15 +255,16 @@ You can use the following operators in arithmetic expressions:
 -   Parentheses (round only) are used for grouping operations. You can
     use nested brackets, for example, `2*(3-(4+6))`.
 
-Чуть подробнее про деления. Есть три оператора, связанных с делением:
-один оператор для честного деления (``/``), и два оператора для деления с остатком
-(``//`` и ``%``).  Вспомните младшие классы и деление с остатком: 16 разделить
-на 3 будет 5 («неполное частное») и в остатке 1. Вот ``//`` вычисляет
-неполное частное, а ``%`` — остаток. Пишется так: ``16 // 3`` и
-``16 % 3``, как будто ``//`` и ``%`` — это символ операции, а-ля плюс
-или звёздочка. (Пробелы вокруг ``//`` и ``%`` не обязательны, но на
-питоне так принято.) (При работе с отрицательными числами результат
-может показаться вам неожиданным, но это мы обсудим потом.)
+A little more about the division. There are three operators related to division:
+one operator for regular division (``/``), and two operators for Euclidean division
+(division with remainder) (``//`` and ``%``). Remember the primary school and the division
+with remainder: 16 divided by 3 will give the quotient 5 and the remainder 1.
+Here `//` calculates the integer quotient, and ``%`` gives the remainder. It is written
+like this: ``16 // 3`` and ``16 % 3``, as if ``//`` and `%` were the operation symbols,
+like plus or asterisk. (Space around ``//`` and ``%`` are not required, but in Python
+they're traditionally put there.)
+(When operating with negative numbers, the result may seem unexpected to you. 
+We will discuss this later.)
 
 Furthermore, there are so-called *functions*:
 
@@ -280,75 +281,29 @@ Furthermore, there are so-called *functions*:
 
 ::
 
-  from math import *
-  print(sqrt(4))
-.. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-All these operations can be combined. For example, the command
-``print( (20 * 3) + sqrt( 2 + abs(5 - 7) ) )` displays the value
-of the expression :math:`20\cdot 3 + \sqrt{2+|5-7| }`. Spaces in the command
-are placed to make it easier to read; in general, in python, spaces can
-be placed in any reasonable place (you can't put them inside the names of commands and numbers,
-but you can near brackets, punctuation marks and other symbols), but
-it is recommended to put them at least around the action signs.
+    from math import *
+    print(sqrt(4))
 
-Multiple expressions can be evaluated in one program. For example,
-the program
+All these operations can be combined. For example, an instruction
+``print( (20 * 3) + sqrt( 2 + abs(5 - 7) ) )`` will output the value
+of the expression :math:`20\cdot 3 + \sqrt{2+|5-7| }`. Plenty of spaces are put here
+to make it easier to read; in general, in Python spaces can be typed in any 
+reasonable place (you can't put them inside numbers and names of the instructions
+but near brackets, punctuation marks and other symbols you can) but
+it is recommended to put them at least around the arithmetic operators.
 
-::
-
-  print(2 * 2, 2 + 2)
-  print(3 * 3)
-
-evaluates three expressions. The first "print` command displays two
-fours separated by a space. The second command just outputs a single number
-9. It will be output on a separate line, because each `print` command
-outputs one line. Note again that the command arguments
-are separated by commas.
-
-You can also, as we saw earlier, mix text (in quotes) and expressions:
-Кроме того, есть так называемые *функции*:
-
--  Запись ``abs(-3)`` обозначает взятие числа по модулю: :math:`|{-}3|`.
-   Обратите внимание: пишется сначала *имя функции* (в данном случае
-   ``abs``), а потом в скобках — от чего взять эту функцию (от чего
-   взять модуль в данном случае). То, что в скобках, аналогично командам
-   называется *аргументом функции*.
-
--  Аналогично, запись ``sqrt(4)`` обозначает взятие квадратного корня
-   (если не знаете, что это такое, то пока пропустите этот пункт), но,
-   поскольку эта операция бывает нужна несколько реже, то чтобы ее
-   использовать, в начале программы надо написать магическую строку
-   ``from math import *``. Программа получается, например, такая:
-
-   ::
-
-       from math import *
-       print(sqrt(4))
-
-Все эти операции можно комбинировать. Например, команда
-``print( (20 * 3) + sqrt( 2 + abs(5 - 7) ) )`` выведет на экран значение
-выражения :math:`20\cdot 3 + \sqrt{2+|5-7|}`. Пробелы в команде
-поставлены, чтобы проще было читать; вообще, в питоне пробелы можно
-ставить в любом разумном месте (внутри названий команд и чисел нельзя,
-но около скобок, знаков препинания и прочих символов можно), но
-рекомендуется ставить их как минимум вокруг знаков действий.
-
-В одной программе можно вычислять несколько выражений. Например,
-программа
-
+Multiple expressions can be evaluated in one program. For example, the program
 ::
 
     print(2 * 2, 2 + 2)
     print(3 * 3)
 
-вычисляет три выражения. Первая команда ``print`` выводит на экран две
-четвёрки, разделённых пробелом. Вторая команда просто выводит одно число
-9. Оно будет выведено на отдельной строке, т.к. каждая команда ``print``
-выводит одну строку. Обратите еще раз внимание, что аргументы команды
-разделяются запятыми.
+evaluates three expressions. The first ``print`` displays two
+fours separated by a space. The second ``print`` just outputs a single number
+9. It will be output on a separate line, because each ``print`` instruction
+outputs one line. Note again that the instruction arguments are separated by commas.
 
-Можно также, как мы видели раньше, смешивать текст (в кавычках) и выражения:
-
+You can also, as we saw earlier, mix text (in quotes) and expressions:
 ::
 
     print("Two by two is", 2 * 2, ".")
