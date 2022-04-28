@@ -6,49 +6,60 @@ Getting started in Python 3 and Wing IDE 101
 About Python versions
 ---------------------
 
-Now there are two main branches (versions) of Python language: Python 2 and Python 3. Version 2 is officially considered deprecated
-(its support ends in 2020), version 3 is newer and more modern. We will study exactly the version 3. Version 2 is significantly different
-from version 3, and here we will not discuss these differences.
+Now there are two main branches (versions) of Python language: Python 2 and Python 3.
+Version 2 is officially considered deprecated (its support ends in 2020), version 3 is
+newer and more modern. We will study exactly the version 3. Version 2 is significantly
+different from version 3, and we will not discuss these differences here.
 
-There are "sub-versions" within both version 2 and version 3. For example, the latest version in the third branch
-now (2020) is 3.8.2 (besides those ones that are still in development). Basically, for our lessons you can
-use any version of Python from the third branch, preferably at least 3.3, but if there are no special reasons,
+There are "sub-versions" within both version 2 and version 3. For example, the latest
+version in the third branch now (2020) is 3.8.2 (besides those ones that are still
+in development). Basically, for our lessons you can use any version of Python
+from the third branch, preferably at least 3.3, but if there are no special reasons,
 install the latest available version.
 
 Installing Python
 ----------------
 
-Python is a free cross-platform software, so it can be easily downloaded from the official website,
-can be freely distributed, and can be installed on all modern operating systems.
+Python is a free cross-platform software, so it can be easily downloaded from
+the official website, can be freely distributed, and can be installed on all
+modern operating systems.
 
-To install Python for Windows, download the installer from the course page or from the official website
-(http://python.org, choose Downloads section; make sure you are downloading exactly Python 3 for Windows).
-Install Python using this program, there is nothing complicated in the installer. It's useful to install Python
-somewhere in the root of the disk, such as ``C:\Python3``, not in the folder suggested by the default.
-To do this, select something like "Customize install" and specify the necessary path on one of the following steps.
+To install Python for Windows, download the installer from the course page or
+from the official website (http://python.org, choose Downloads section;
+make sure you are downloading exactly Python 3 for Windows). Install Python
+using this program, there is nothing complicated in the installer. It's useful
+to install Python somewhere in the root of the disk, such as ``C:\Python3``,
+not in the folder suggested by default. To do this, select something like
+"Customize install" and specify the necessary path on one of the following steps.
 
-If you are working on another operating system, figure out how to install Python yourself. In Linux, for example, Python is
-included in the repositories of all leading distributions, the package is usually called ``python3``
-(and just ``python`` is the python of the second version).
+If you are working on another operating system, figure out how to install Python yourself. 
+In Linux, for example, Python is included in the repositories of all leading distributions,
+the package is usually called ``python3`` (and just ``python`` is the python
+of the second version).
 
 Installing Wing IDE
 ------------------
 
-Python itself is only a code interpreter. It runs your programs, but doesn't contain a convenient editor. Therefore, to write programs
-I advise you to use a integrated development environment (in fact, an advanced editor) Wing IDE.
+Python itself is only a code interpreter. It runs your programs, but doesn't contain a
+convenient editor. Therefore, to write programs I advise you to use a integrated
+development environment (in fact, an advanced editor) Wing IDE.
 
-Unfortunately, Wing IDE is not a free software, but it has an official free version for educational purposes, called Wing
-IDE 101. It's available for Windows, Linux and macOS.
+Unfortunately, Wing IDE is not a free software, but it has an official free version
+for educational purposes, called Wing IDE 101. It's available for Windows, Linux and macOS.
 
-All installation programs can be downloaded from the official Wing IDE website (http://wingware.com /, via Download — Wing IDE 101);
-the installer for Windows can also be downloaded from the course page. Please note that you need exactly version 101, not any other!
-Install Wing IDE using this installer, there is nothing complicated in it.
+All installation programs can be downloaded from the official Wing IDE website
+(http://wingware.com /, via Download — Wing IDE 101); the installer for Windows
+can also be downloaded from the course page. Please note that you need exactly
+version 101, not any other! Install Wing IDE using this installer, there is nothing
+complicated in it.
 
-Wing IDE is just a *development environment* (IDE) for Python, i.e. a convenient program editor that allows you
-to easily run programs using Python (that's why you need to install Python itself separately — Wing IDE doesn't include it).
-Basically, you can use some other IDE, but then deal with it by yourself. In particular, Python itself includes
-a simple development environment called Python IDLE. You can find its description in many Python books, but it's too simple
-and therefore not very convenient. There is also a popular IDE PyCharm, but for my taste, it's too complicated.
+Wing IDE is just a *development environment* (IDE) for Python, i.e. a convenient program 
+editor that allows you to easily run programs using Python (that's why you need
+to install Python itself separately — Wing IDE doesn't include it). Basically,
+you can use some other IDE, but then deal with it by yourself. In particular, Python itself
+includes a simple development environment called Python IDLE. You can find its description
+in many Python books, but it's too simple and therefore not very convenient.
+There is also a popular IDE PyCharm, but for my taste, it's too complicated.
 
 Checking the installation
 -------------------------
@@ -58,15 +69,16 @@ Launch the Wing IDE. The following window will appear:
 .. image:: ../python_basics/0_quick_start/wing_ide_0.png
 
 First, make sure that in the lower right corner, on the panel entitled Python Shell,
-a text similar to the one shown in the figure appeared; in particular, the Python version that you installed
-should be indicated there. Make sure it's version 3 (in the picture it's version 3.5.2).
-If this is not, then try using the ``Edit — Configure Python`` menu option to specify the path to Python manually
-(see the picture below) — in "Python Executable" field, you need to type something like
-``C:\Python3\python.exe`` if you have installed Python in the directory ``C:\Python3``.
-Perhaps you also should add ``C:\Python3`` to the ``Python Path`` list. You may have to explore it to find
-the right settings. If you have both versions of Python installed on your computer (both 2 and 3),
-perhaps the Wing IDE will "pick up" Python 2 by default. In this case, also manually specify
-that you need to work with version 3.
+a text similar to the one shown in the figure appeared; in particular, the Python version
+that you installed should be shown there. Make sure it's version 3 (in the picture
+it's version 3.5.2). If this is not, then try using the ``Edit — Configure Python`` 
+menu option to specify the path to Python manually (see the picture below) — in
+"Python Executable" field, you need to type something like ``C:\Python3\python.exe``
+if you have installed Python in the directory ``C:\Python3``. Perhaps you also should 
+add ``C:\Python3`` to the ``Python Path`` list. You may have to explore it to find
+the right settings. If you have both versions of Python installed on your computer 
+(both 2 and 3), perhaps the Wing IDE will "pick up" Python 2 by default. 
+In this case, also manually specify that you need to work with version 3.
 
 .. image:: ../python_basics/0_quick_start/wing_ide_config.png
 
@@ -76,8 +88,8 @@ of the main Wing IDE window and the ``Edit — Configure Python`` dialog.
 The first program
 ----------------
 
-In the main menu of the Wing IDE, select ``File — New``. A window for editing the program text
-will appear. In this window, type the following text:
+In the main menu of the Wing IDE, select ``File — New``. A window for editing
+the text of the program will appear. In this window, type the following text:
 
 ::
 
@@ -90,14 +102,15 @@ It should turn out like this:
 .. image:: ../python_basics/0_quick_start/wing_ide_1.png
 
 
-Make sure there are no typos. Save the program: press Ctrl-S or select the menu option ``File — Save As``.
-Wing IDE will prompt you to choose a file name to save, for the first program you can choose any name.
+Make sure there are no typos. Save the program: press Ctrl-S or select the menu option
+``File — Save As``. Wing IDE will prompt you to choose a file name to save,
+for the first program you can choose any name.
 
 .. note::
 
-Note that the Wing IDE colors your program. This is done in order to make it easier to read. 
-In fact, for Python the color is not important, it is made only for convenient reading.
-Similarly, in this text the code is also colored, moreover, the coloring may be
+Note that the Wing IDE colors your program. This is done in order to make it easier to
+read. In fact, for Python the color is not important, it is made only for convenient
+reading. Similarly, in this text the code is also colored, moreover, the coloring may be
 slightly different (this is simply due to the system I use to write the text).
 But once again: the colors are for readability only, they don't carry any more sense.
 In particular, Wing IDE may color it differently than you see in this text — it's okay,
@@ -125,141 +138,98 @@ just carefully check if you made a mistake somewhere when typing the program.
 
 Make sure that your program works successfully (by carefully checking if you've made
 any mistakes), and see what exactly is written in the "Python Shell" window. There, first,
-you can see the Python header(including the version number), then the line ``>>> [evaluate tmp.py]``
-(instead of ``tmp.py`` there will be the name of the file where you saved the program).
-This line was printed at the moment when Wing IDE started running your program.
-And finally, there is the line `Test 4`, which the program printed.
+you can see the Python header(including the version number), then the line
+``>>> [evaluate tmp.py]`` (instead of ``tmp.py`` there will be the name of the file
+where you saved the program). This line was printed at the moment when Wing IDE
+started running your program. And finally, there is the line `Test 4`,
+which was printed by the program.
 Below we'll discuss why it printed exactly this.
 
 Restart the program (green arrow) a few more times and look at the results.
-You will see that the Wing IDE every time prints the string ``evaluate...`` before the program starts,
-then the program prints its own line. The output of the program is mixed with the output of the Wing IDE
-— it's okay.
+You will see that the Wing IDE every time prints the string ``evaluate...`` 
+before the program starts, then the program prints its own line. The output
+of the program is mixed with the output of the Wing IDE — it's okay.
 
-You can also run the program by clicking on the button with a picture looking like a red bug.
-This is a slightly different execution mode which is more convenient for seeking errors.
-Try to start both this and that way and look at the differences (the main difference so far
-is that when you start via the "red bug", the output of previous programs is overwritten).
+You can also run the program by clicking on the button with a picture looking
+like a red bug. This is a slightly different execution mode which is 
+more convenient for seeking errors. Try to start both this and that way 
+and look at the differences (the main difference so far is that when you start
+via the "red bug", the output of previous programs is overwritten).
 
 .. _sec:ce:
 
 Errors in the program
-------------------
+----------------------
 
-Your program may contain serious errors — so that Python "does not understand" what you want from it
-(or maybe not so serious — the program works seemingly fine, but gives the wrong result).
-In case of such serious errors, Python will issue a message similar to the message
-shown in the figure above. It usually starts with the word "Traceback",
-and towards the end it has the word "Error".
+Your program may contain serious errors — so that Python "does not understand" 
+what you want from it (or maybe not so serious — the program works seemingly fine,
+but the result is wrong). In case of such serious errors, Python will show 
+a message similar to the one in the figure above. It usually starts with the word
+"Traceback", and towards the end there's the word "Error".
 
 It's more convenient to deal with errors by running the program in the "red
 bug" mode. In this case, Wing IDE highlights the line near the error
 in red, and writes detailed information in a special window on the right.
 
-For now, it will be important for you which line the Wing IDE highlighted in red —
-approximately in that place and the error. The text ("error message
-") is also important, usually containing the word "Error" (in the example in the figure
-``Syntax Error ...`), the line number with
-the error (`line 1`) is also indicated there. At first, error messages are difficult to understand,
-but over time you will learn the most common ones and will immediately
-understand what is wrong.
+For now, it will be important which line was highlighted in red by the IDE — the error is 
+approximately there. The text ("error message") is also important, usually containing 
+the word "Error" (in the example in the figure ``Syntax Error ...``), the nimber of the
+faulty line (``line 1``) is also there. At first, error messages are difficult
+to understand, but over time you will learn the most common ones and 
+immediately get what is wrong.
 
-In the meantime, look carefully at the line with the error (when running through a bug
-, python highlights it in red, when running through an arrow, it only writes the line number),
-and look at the lines next to it — and try
-to understand what is wrong there. In the example in the figure, I forgot the second digit 2 (as a
-result, it became unclear to the python what to multiply by). (In
-the example in the figure, I ran the program through the green arrow, and not
+In the meantime, look carefully at the line with the error (when running through
+a "bug", python highlights it in red, when running through an "arrow", it only writes
+the line number) and at the surrounding lines — and try to understand what's wrong.
+In the example in the figure, I forgot the second "2" number (as a result, 
+it became unclear to the Python what to multiply the first one by).
+(In the example in the figure, I ran the program through the "green arrow", and not
 through the "red bug", so there is no line highlighted in red.)
 
-Keep in mind that python is not a telepath and cannot pinpoint exactly where you
-made a mistake. It highlights in red the line where the program text
-first diverged from the language rules. Therefore, it happens that in fact
-your error is slightly higher than the highlighted line (and sometimes much higher
-above). But nevertheless, the place that python has allocated is usually
-useful when searching for an error.
+Keep in mind that Python is not a telepath and cannot pinpoint exactly where you
+made a mistake. It highlights the line where the program text first diverged 
+from the language rules. Therefore, it happens that in fact your error is 
+slightly above the highlighted line (and sometimes it is far above).
+But nevertheless, the place highlighted by Python is usually useful
+when you're searching for the error.
 
-Try to make different mistakes in your program and see how
-python reacts to them.
-Ошибки в программе
-------------------
+Try to make different mistakes in your program and see how Python reacts to them.
 
-В вашей программе могут быть серьёзные ошибки —
-такие, что питон «не понимает», что вы от него хотите (а могут быть и не
-столь серьёзные — программа отработает как бы нормально, но выдаст
-неверный результат). В случае таких серьезных ошибок питон выдаст
-сообщение, похожее на сообщение, показанное на рисунке выше. Оно обычно
-начинается со слова Traceback, а ближе к концу в нем есть слово Error.
-
-С ошибками удобнее разбираться, запуская программу в режиме «красного
-жучка». В таком случае Wing IDE подсвечивает строку около ошибки
-красным, а подробную информацию пишет в особом окошке справа.
-
-Пока для вас важным будет то, какую строку Wing IDE подсветила красным —
-примерно в том месте и ошибка. Важен также текст («сообщение об
-ошибке»), обычно содержащий слово «Error» (в примере на рисунке
-``Syntax Error ...``), там же рядом указан и номер строки с
-ошибкой (``line 1``). Поначалу сообщения об ошибке сложно понимать,
-но со временем вы выучите наиболее часто встречающиеся и будете сразу
-понимать, что не так.
-
-А пока посмотрите внимательно на строчку с ошибкой (при запуске через жучка
-питон подсвечивает ее красным, при запуске через стрелочку — только пишет номер строки), 
-и на строчки рядом — и попробуйте
-понять, что там не так. В примере на рисунке я забыл вторую цифру 2 (в
-результате чего питону стало непонятно, на что надо умножать). (В
-примере на рисунке я запускал программу через зеленую стрелочку, а не
-через «красного жучка», поэтому там нет подсвеченной красным строки.)
-
-Имейте в виду, что питон не телепат и не может точно определить, где вы
-допустили ошибку. Он подсвечивает красным ту строку, где текст программы
-впервые разошёлся с правилами языка. Поэтому бывает, что на самом деле
-ваша ошибка чуть выше, чем подсвеченная строка (а иногда — и намного
-выше). Но тем не менее место, которое выделил питон, обычно бывает
-полезно при поиске ошибки.
-
-Попробуйте в своей программе поделать разные ошибки и посмотрите, как на
-них отреагирует питон.
-
-Как работает эта программа
---------------------------
-
-Давайте разберём, как эта программа работает. Напомню её текст:
+How this program works
+----------------------
+Let's take a look at how this program works. Let me remind you of its text:
 
 ::
 
-    print("Test", 2*2)
+print("Test", 2*2)
 
-Вообще, любая программа — это, в первую очередь, последовательность
-команд, которые программист даёт компьютеру, а компьютер будет
-последовательно их выполнять.
+In general, any program is, first of all, a sequence of instructions that the programmer
+gives to the computer, and the computer consistently (one by one) executes them.
 
-В нашей программе одна команда — ``print("Test", 2*2)``. Команда
-``print`` обозначает «вывести на экран» (английское слово «print»
-обозначает «печатать»). В скобках после слова ``print`` указываются, как
-говорят, *аргументы* команды. Они разделяются запятыми, в данном случае
-у команды два аргумента: первый — ``"Test"``, и второй — ``2*2``.
+In our program there's an only instruction: ``print("Test", 2*2)``. The instruction
+``print`` means "display" (show on the screen). In parentheses after the word ``print``,
+the *arguments* of the instruction are specified. They are separated by commas. Here, 
+the command has two arguments: the first is `"Test"`, and the second is `2*2`.
 
-Если аргументом команды ``print`` является некоторая строка, заключённая
-в кавычки (символы ``"``), то команда ``print`` выводит эту строку на
-экран как есть (без кавычек). Поэтому первым делом наша команда выводит
-на экран текст ``Test``.
+If the argument of the ``print`` instruction is some string enclosed
+in quotes (``"`` characters), then ``print`` outputs this string on the
+screen as is (without quotes). Therefore, the first thing our instruction displays
+on the screen is the text ``Test``.
 
-Вторым аргументом команды ``print`` в нашем примере является
-арифметическое выражение ``2*2``. Если аргументом команды (любой
-команды, не обязательно именно ``print``, просто других мы пока не
-знаем) является арифметические выражение, то компьютер сначала вычислит
-его, а потом передаст команде. Поэтому в данном случае сначала компьютер
-вычислит :math:`2\cdot 2`, получит 4, а потом передаст результат команде
-``print``, которая выведет его на экран.
+The second argument of the ``print`` instruction in our example is
+the arithmetic expression ``2*2``. If the argument of an instruction (any of them, 
+not necessarily `print`, we just don't know the others yet) is an arithmetic expression,
+the computer will first calculate it, and then will pass it over. Therefore, in this case,
+the computer will first calculate :math:`2\cdot 2`, get 4, and then pass the result to the 
+instruction ``print``, which will display it on the screen.
 
-Команда ``print`` разделяет выводимые элементы пробелами, поэтому между
-``Test`` и ``4`` выведен пробел.
+``print`` separates the output elements with spaces, so between
+``Test`` and ``4`` there's space.
 
-В итоге получается, что наша программа выводит ``Test 4``.
+As a result, our program outputs ``Test 4``.
 
-Использование питона как калькулятора
--------------------------------------
+Using Python as a calculator
+----------------------------
 
 Таким образом можно использовать питон как калькулятор. Например, если
 надо посчитать значение выражения :math:`7+3\cdot(8-2)`, то можно
