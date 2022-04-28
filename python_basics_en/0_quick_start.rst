@@ -143,6 +143,44 @@ is that when you start via the "red bug", the output of previous programs is ove
 
 .. _sec:ce:
 
+Errors in the program
+------------------
+
+Your program may contain serious errors — so that Python "does not understand" what you want from it
+(or maybe not so serious — the program works seemingly fine, but gives the wrong result).
+In case of such serious errors, Python will issue a message similar to the message
+shown in the figure above. It usually starts with the word "Traceback",
+and towards the end it has the word "Error".
+
+It's more convenient to deal with errors by running the program in the "red
+bug" mode. In this case, Wing IDE highlights the line near the error
+in red, and writes detailed information in a special window on the right.
+
+For now, it will be important for you which line the Wing IDE highlighted in red —
+approximately in that place and the error. The text ("error message
+") is also important, usually containing the word "Error" (in the example in the figure
+``Syntax Error ...`), the line number with
+the error (`line 1`) is also indicated there. At first, error messages are difficult to understand,
+but over time you will learn the most common ones and will immediately
+understand what is wrong.
+
+In the meantime, look carefully at the line with the error (when running through a bug
+, python highlights it in red, when running through an arrow, it only writes the line number),
+and look at the lines next to it — and try
+to understand what is wrong there. In the example in the figure, I forgot the second digit 2 (as a
+result, it became unclear to the python what to multiply by). (In
+the example in the figure, I ran the program through the green arrow, and not
+through the "red bug", so there is no line highlighted in red.)
+
+Keep in mind that python is not a telepath and cannot pinpoint exactly where you
+made a mistake. It highlights in red the line where the program text
+first diverged from the language rules. Therefore, it happens that in fact
+your error is slightly higher than the highlighted line (and sometimes much higher
+above). But nevertheless, the place that python has allocated is usually
+useful when searching for an error.
+
+Try to make different mistakes in your program and see how
+python reacts to them.
 Ошибки в программе
 ------------------
 
