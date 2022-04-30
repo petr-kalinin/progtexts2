@@ -173,7 +173,7 @@ in red, and writes detailed information in a special window on the right.
 
 For now, it will be important which line was highlighted in red by the IDE — the error is 
 approximately there. The text ("error message") is also important, usually containing 
-the word "Error" (in the example in the figure ``Syntax Error ...``), the nimber of the
+the word "Error" (in the example in the figure ``Syntax Error ...``), the number of the
 faulty line (``line 1``) is also there. At first, error messages are difficult
 to understand, but over time you will learn the most common ones and 
 immediately get what is wrong.
@@ -308,155 +308,141 @@ You can also, as we saw earlier, mix text (in quotes) and arithmetic expressions
 
     print("Two by two is", 2 * 2, ".")
 
-Простейший ввод и вывод. Переменные
------------------------------------
+The basic input and output. Variables
+----------------------------------------
 
-Но не очень интересно писать программы, которые всегда выводят одно и то
-же. Хочется, чтобы программа что-нибудь запрашивала у пользователя, и
-работала с учётом того, что пользователь ввёл. Давайте, например,
-напишем программу, которая будет спрашивать у пользователя два числа и
-выводить на экран их сумму.
+It's not really interesting to write programs that always output the
+same thing. We'd rather want the program to request something from the user and
+run taking into account what the user has entered. For example, let's
+write a program that will ask the user for two numbers and
+display their sum on the screen.
 
-Но для этого нам придётся научиться ещё одной важной вещи. Когда
-пользователь вводит два числа, программе надо их как-то запомнить, чтобы
-потом сложить между собой и результат вывести на экран. Для этого у
-компьютера есть память (оперативная память). Программа может
-использовать эту память и положить туда числа, введённые пользователем.
-А потом посмотреть, что там лежит, сложить эти два числа, и вывести на
-экран.
+But for this we need to learn one more important thing. When
+a user enters two numbers, the program needs to remember them somehow, so
+that it can then add them up and display the result on the screen.
+To do this, in the computer there's memory (RAM). The program can use this memory 
+and put the numbers entered by the user there. And then see what lies there,
+add these two numbers, and display the result on the screen.
 
-Во многих языках, чтобы использовать память, надо особо попросить
-компьютер об этом. В питоне другой подход: питон достаточно умен, чтобы
-самому догадаться, что вам нужна память. Давайте напишем следующую
-программу:
-
+In many programming languages, in order to use memory, you need to use a set of
+specific instructions. In Python, the approach is different: Python is smart enough 
+to guess by itself that you need memory. Let's write the following program:
 ::
-
     a = input()
-    print("Вы ввели ", a, "!")
+    print("You entered ", a, "!")
 
-Прежде чем мы разберем, что обозначают все эти команды, наберите эту
-программу и попробуйте ее запустить. Сначала запустите «зеленой
-стрелочкой». В окошке Python Shell появится надпись
-``[evaluate ...]``, после чего будет моргать курсор, а наверху
-этого окошка будет надпись «Waiting for keyboard input», что обозначает
-«Ожидаем ввод с клавиатуры». Введите что-нибудь в этом окошке и нажмите
-Enter. Вы тут же увидите, что то, что вы ввели, вывелось еще одной
-строчкой на экран, с дополнительными словами («Вы ввели»), с дополнительными
-пробелами и восклицательным знаком. Именно это и делает программа: она выводит на экран то, что
-вы ей вводите, добавив еще текст.
+Before we discuss what does this code mean, type this the program 
+and try to run it. First, run via the "green arrow". A line ``[evaluate ...]``
+will appear in the Python Shell window. After that the cursor will blink, 
+and at the top of this window there will be an inscription 
+"Waiting for keyboard input". Enter something in this window and press
+Enter. You will immediately see that what you have entered is displayed
+on the screen in another line, with additional words ("You have entered"), additional
+spaces and an exclamation mark. This is exactly what the program does: it displays what
+you enter to it, adding more text.
 
-Если вы запустите программу «красным жучком», то все будет аналогично,
-только текст вам надо будет вводить в пустом окошке «Debug I/O», которое
-появится на месте окошка «Python Shell».
+If you run the program via a "red bug", everything will be the same.
+The only change is that you will need to enter the text in an empty "Debug I/O" window,
+which will appear instead of the "Python Shell" window.
 
-Теперь разберем, как эта программа работает.
+Now let's look at how this program works.
 
-Команда ``input()`` обозначает «подожди, пока пользователь введет
-что-нибудь с клавиатуры, и запомни то, что он ввел». Но просто так
-попросить «запомнить» довольно бессмысленно, нам ведь потом надо будет
-как-то сказать компьютеру, чтобы он вспомнил то, что он запомнил.
-Поэтому мы пишем ``a = input()``. Это обозначает «запомни то, что ввел
-пользователь, в памяти, и дальше это место в памяти мы будем называть
-буквой ``a``\ ». Соответственно, команда ``print(a)`` обозначает
-«посмотри, что лежит в памяти, называемой буквой ``a``, и выведи это на
-экран», а команда ``print("Вы ввели ", a, "!")`` обозначает «выведи сначала
-фразу ``Вы ввели``, потом то, что лежит в ``a``, потом восклицательный знак, 
-и раздели это все пробелами».
+The ``input()`` instruction means "wait until the user enters
+something from the keyboard, and remember what he entered". But just
+asking to "remember" is pretty useless, because after that we will
+have to somehow tell the computer to recall what it remembered.
+So we type ``a = input()``. This means "Remember what the user entered,
+put it in memory, and from now on we will call this place in memory
+the letter ``a``". Accordingly, the instruction ``print(a)`` means
+"look at what's stored in memory in a place that we call the letter ``a`` 
+and display it on the screen". And ``print("You entered ", a, "!")``
+means "print first the phrase ``You entered``, then what lies in ``a``, 
+then an exclamation mark, and divide it all with spaces."
 
-Обратите внимание, что ``a`` написано без кавычек. 
-Если бы мы написали ``print("Вы ввели ", "a", "!")``, то питон бы
-вывел просто букву ``a`` (ну и весь остальной текст), он не понял бы,
-что надо вывести то, что лежит в памяти ``a``.
+Note that ``a`` is written without quotes. If we had typed 
+``print("You entered ", "a", "!")``, Python would just output 
+the letter ``a`` (as well as the rest of the text), it wouldn't understand
+that we need it to output what lies in the memory part named ``a``.
 
-Вот такие «места в памяти» называются *переменные*. Т.е. говорят:
-«переменная ``a``\ ». Говорят: в первой строке мы считали, что ввел
-пользователь с клавиатуры, и записали это в переменную ``a``, а во
-второй строке мы прочитали, что записано в переменной ``a``, и вывели
-это на экран.
+These "places in computer's memory" are called *variables*. We will say:
+"variable ``a``". And also: in the first line, we read what the user 
+entered from the keyboard, and wrote it to the variable ``a``. And in
+the second line we read what was written in the variable ``a``, and put
+it on the screen.
 
-В программе можно заводить несколько переменных. Простейший вариант
-может выглядеть так:
-
+You can create several variables in the program. The simplest sample
+may look like this:
 ::
-
     a = input()
     b = input()
     print(b, a)
 
-Эта программа считывает две строки, которые вводит пользователь, и
-выводит их, причем сначала вторую, а потом первую.
+This program reads two lines that the user enters and
+outputs them in reverse oreder: first the second, and then the first.
 
-Но мы хотели написать программу, которая выводит сумму двух чисел.
-Простой подход тут не сработает:
-
+But we wanted a program that outputs the sum of two numbers.
+A simple approach won't work here:
 ::
-
     a = input()
     b = input()
     print(a + b)
 
-сделает вовсе не то, что вы могли ожидать: питон пока считает, что в
-``a`` и ``b`` могут лежать какие угодно строки, и не понимает, что вы
-имели в виду числа.
+This code will do absolutely not what you might expect: Python believes yet 
+that in ``a`` and ``b`` any strings can be stored. It doesn't understand you
+meant numbers.
 
-Чтобы объяснить, что вы имеете в виду числа, надо написать так:
-
+To explain that you meant numbers, you need to write it like this:
 ::
-
     a = int(input())
     b = int(input())
     print(a + b)
 
-Мы используем новую команду (точнее, функцию) — ``int``. Она обозначает:
-возьми то, что получилось у команды ``input()`` (т.е. ту строку, которую
-вводит пользователь), и преврати это в число. Пока это не надо до конца
-осознавать, просто запомните, что, чтобы считать одно число, надо
-написать ``... = int(input())``, где на место многоточия надо подставить
-имя той переменной, куда надо записать результат.
+We use a new instruction (more exactly, a function) ``int``. It means:
+take the result of the ``input()`` (i.e. the line that
+the user enters), and turn it into an integer number. 
+For now it's not necessary to fully realize this. 
+Just remember that in order to input one number, you need
+to type ``... = int(input())``, where the ellipsis should be replaced
+with the name of the variable the result should be written to.
 
-Запустите эту программу. В окошке ввода наберите какое-нибудь число,
-нажмите Enter, наберите второе число и еще раз нажмите Enter. Вы
-увидете, что программа вывела их сумму.
+Run this program. In the input window, type a number and press Enter.
+Then type the second number and press Enter again. You
+will see that the program printed their sum.
 
-Если вы этой программе попытаетесь ввести два числа на одной строке
-(т.е. введете «2 пробел 3 Enter»), то программа выдаст ошибку. Еще бы:
-вы пропросили строку «\ ``2 3``\ » превратить в число (в одно!) и
-записать в переменную ``a``, но ведь это не есть верная запись одного
-числа.
+If you try to input two numbers in one line (i.e. type "2 Space 3 Enter"), 
+the program will terminate with an error. Indeed:
+you asked it to convert the string "\``2 3``\" into a number (single number!) and
+write it to the variable ``a``, but this is, of course, not 
+a correct recording of a single number.
 
-Чтобы вводить числа через пробел, надо использовать другую конструкцию:
-
+To enter numbers separated by space, you need to use a different construction:
 ::
-
     a, b = map(int, input().split())
 
-Это пока магия, ее придется запомнить наизусть. Потом вы поймете, что
-здесь что значит. Обратите внимание, что после слова ``int`` тут нет
-скобок, а вот после ``input`` и ``split`` есть.
+For now this is a kind of magic that you'll have to learn by heart. Later
+you'll understand what it means here. Note that there are no brackets after ``int``
+, but there are after ``input`` and ``split``.
 
-Так можно вводить сколько угодно чисел; например, чтобы считать четыре
-числа, вводимые в одной строке, надо написать
-
+Using this method, you can enter as many numbers as you want; for example, to input four
+numbers in one line, you need to write
 ::
-
     a, b, c, d = map(int, input().split())
 
-Переменные не обязательно называть ``a`` и ``b``, можно использовать
-более-менее любые строки из английских букв и цифр (есть некоторые исключения,
-но пока это не так важно); например, можно было назвать переменные
-``first`` и ``second``, или ``x1`` и ``x2`` и т.п. Конечно, переменных можно делать столько,
-сколько вам понадобится; вообще, переменные — это основная вещь, с
-которой работают программы.
+Variables don't have to be called ``a`` and ``b``, you can use almost
+any strings of English letters and numbers (there are some exceptions,
+but it's not so important yet). For example, you could call variables
+``first`` and ``second``, or ``x1`` and ``x2``, etc. Of course, you can create
+as many variables as you need; in general, variables are the main things
+programs work with.
 
-Ещё несколько замечаний по нашей программе. Во-первых, программа не
-вывела на экран никаких «приглашений» типа «Введите a и b». Питон ничего
-за вас делать не будет; если вы хотите, чтобы программа вывела это на
-экран, то так и сделайте: ``print("Введите a и b")``. Но мы не будем
-выводить такие приглашения в наших программах, мы будем считать, что
-пользователь сам знает, что от него требуется. В задачах, которые вы
-будете решать, будет чётко написано, что надо вывести на экран — и
-ничего лишнего выводиться не должно.
+And a few more remarks on our program. First, this program did not
+display any "prompts" like "Enter a and b". Python is not going
+to do anything for you. If you really want the program to display 
+this message on the screen, then do so: type ``print ("Enter a and b")``. 
+But we will not print such invitations in our programs. We will assume that
+the user himself knows exactly what is required of him. In the problems you
+will be asked to solve, it will be stated clearly what needs to be output
+to the screen — and no extra messages should be displayed.
 
 Присваивания
 ------------
