@@ -558,152 +558,164 @@ from these constructions, as from a construction toy like Lego.
 Treat it exactly like a construction set: all programming is 
 the assembly of large programs from separate statements and expressions.
 
-Примеры решения задач
----------------------
+Sample problems and solutions
+-----------------------------
 
-Приведу несколько примеров задач, аналогичных тем, которые встречаются на олимпиадах
-и в моем курсе.
+Here are a few sample problems similar to ones you may come across on contests and in my course.
 
 .. task::
-    Вася купил :math:`N` булочек, а Маша — на :math:`K` булочек больше.
-    Сколько всего булочек купили ребята?
+    Vasya bought :math:`N` muffins and Masha bought :math:`K` muffins more.
+    What is the overall amount of muffins they bought?
 
-    **Входные данные**: На первой строке входных данных вводится одно число :math:`N`, на второй — одно число :math:`K`.
+    **Input**: On the first line there's an only number :math:`N` and on the second line an only number :math:`K`.
 
-    **Входные данные**: Выведите одно число — ответ на задачу.
+    **Output**: One number — the answer to the question of the problem.
 
-    **Пример**:
+    **Example**:
 
-    Входные данные::
+    Input::
 
         4
         2
 
-    Выходные данные::
+    Output::
 
         10
     |
     |
     |
 
-Ну, во-первых, надо считать данные. Два числа вводятся на двух отдельных строчках, поэтому
-они считываются так::
+Well, first of all, we need to read the data. Two numbers are entered 
+on two separate lines, so they we can read them like this::
 
     n = int(input())
     k = int(input())
 
-Дальше надо понять, по какой формуле вычисляется ответ. В этой задаче несложно догадаться, что ответ равен :math:`2\cdot N + K`.
-Так и выводим::
+Then we need to understand how the answer is calculated. In this problem, 
+it's easy to guess that the answer is just math:`2\cdot N + K'. So we print it::
 
     print(2 * n + k)
 
-Полная программа получается такая::
+The whole program will look so::
 
     n = int(input())
     k = int(input())
     print(2 * n + k)
 
-Можно было поступить и по-другому: можно было, считав данные, сначала отдельно посчитать, сколько булочек купила Маша::
+It's also possible to do it in another way: after reading the data, 
+first calculate separately how many muffins Masha bought::
 
     m = n + k
 
-после чего вывести ответ как сумму ``n`` и ``m``::
+and after that output the answer as the sum of ``n`` and ``m``::
 
     n = int(input())
     k = int(input())
     m = n + k
     print(n + m)
 
-Еще один альтернативный вариант — сохранить ответ в переменную, и только потом ее выводить, например, так::
+One more alternative way is to save the answer to a variable, 
+and only then output it. For example, like this::
 
     n = int(input())
     k = int(input())
     ans = 2 * n + k
     print(ans)
 
-Все эти варианты правильные, и несложно придумать еще ряд правильных вариантов.
+All of these ways are correct, and it is quite easy 
+to come up with a number of other correct solutions.
 
 .. task::
-    С начала суток прошло :math:`N` минут. Определите, сколько часов и минут будут показывать электронные часы в этот момент.
-    Гарантируется, что :math:`N` меньше 1440, т.е. что прошло меньше полных суток.
+    :math:`N` minutes have passed since the beginning of the day. 
+    Determine how many hours and minutes an electronic clock 
+    will show at this moment. It is guaranteed that :math:`N` is 
+    less than 1440, i.e. that less than a full day has passed.
 
-    **Входные данные**: Вводится целое число :math:`N`.
+    **Input**: An integer number :math:`N`.
 
-    **Входные данные**: Выведите ответ на задачу.
+    **Output**: Print the answer to the problem.
 
-    **Пример**:
+    **Example**:
 
-    Входные данные::
+    Input::
 
         150
 
-    Выходные данные::
+    Output::
 
         2 30
     |
     |
     |
 
-Тут, опять-таки, надо придумать, какой математической формулой решается задача.
-Если с ходу не очевидно, то подумайте: как бы вы сами решали задачу для конкретного ввода?
-Вот прошло с начала суток, например, 150 минут — как понять, сколько это часов и сколько минут?
+Here, again, we need to figure out what mathematical formula 
+gives the solution. If it's not obvious right away, then think about it: 
+how would you solve the problem yourself for a certain input?
+For example, 150 minutes have passed since the beginning of the day 
+— how do you know how many hours and how many minutes it is?
 
-Если немного подумать, то становится понятно, что надо :math:`N` разделить с остатком на 60 (количество минут в часе),
-после чего неполное частное будет как раз количеством часов, а остаток — количеством минут.
-Соответственно пишем программу::
+After thinking a little, it becomes clear that we need to divide 
+math:`N` by 60 (the number of minutes in an hour) with the remainder,
+so the quotient will be just the number of hours 
+and the remainder will be the number of minutes.
+Accordingly, we write it::
 
     n = int(input())
     print(n // 60, n % 60)
 
-Также, как и в прошлой задаче, можно было ответы сохранить в переменные при желании.
+As in the previous task, we could also optionally save 
+the answers to variables.
 
 .. task::
-    Маше надо купить :math:`A` больших бусин, :math:`B` средних и :math:`C` маленьких.
-    Одна большая бусина стоит :math:`X` рублей, средняя — :math:`Y` рублей, маленькая — :math:`Z` рублей.
-    Сколько всего рублей придется потратить Маше?
+    Masha needs to buy :math:`A` large beads, :math:`B` medium
+    and :math:`C` small. One large bead costs :math:`X` rubles, 
+    the medium one is :math:`Y` rubles, the small one is :math:`Z` rubles.
+    How many rubles will Masha spend in total? 
 
-    **Входные данные**: На первой строке вводятся три числа :math:`A`, :math:`B` и :math:`C`.
-    На второй строке вводятся три числа :math:`X`, :math:`Y` и :math:`Z`.
+    **Input**: On the first line there are three numbers: :math:`A`, :math:`B` and :math:`C`.
+    On the second line also three numbers: :math:`X`, :math:`Y` and :math:`Z`.
 
-    **Входные данные**: Выведите одно число — сколько рублей придется потратить Маше.
+    **Output**: One number — how many rubles Masha will spend.
 
-    **Пример**:
+    **Example**:
 
-    Входные данные::
+    Input::
 
         3 2 1
         6 5 4
 
-    Выходные данные::
+    Output::
 
         32
     |
     |
     |
 
-Очевидно, что ответ на задачу равен :math:`A\cdot X + B\cdot Y + C\cdot Z`.
-Осталось аккуратно ввести и вывести данные. Тут задаются две строки по три числа,
-поэтому вводить данные надо два раза через ``map(int(...``::
+Clearly, the answer to the problem is: :math:`A\cdot X + B\cdot Y + C\cdot Z`.
+All that's left is only to process the input and output accurately. 
+Here two lines of three numbers are given,
+so we need to input the data twice through `map(int(...`::
 
     a, b, c = map(int, input().split())
     x, y, z = map(int, input().split())
     print(a * x + b * y + c * z)
 
 .. task::
-   Машина едет со скоростью :math:`N` километров в час. Выведите эту информацию по-английский
-   по образцу: «The speed is :math:`N` kmph.», подставив вместо :math:`N` введенное число (см. пример).
+  The car is going at a speed of :math:`N` kilometers per hour.
+  Output this information as follows: "The speed is :math:`N` kmph.", 
+  substituting the entered number instead of :math:`N` (see the example).
 
-    **Входные данные**: Вводится одно число :math:`N`.
+    **Input**: One number :math:`N`.
 
-    **Входные данные**: Выведите строку.
+    **Входные данные**: Print a line.
 
-    **Пример**:
+    **Example**:
 
-    Входные данные::
+    Input::
 
         55
 
-    Выходные данные:
+    Output:
 
     .. code-block:: text
 
@@ -712,29 +724,29 @@ the assembly of large programs from separate statements and expressions.
     |
     |
 
-Считывание числа, думаю, уже не должно представлять проблем, а вот для вывода надо вспомнить,
-что можно выводить не только числа, но и строки::
+Reading a number, I think, shouldn't be a problem, 
+but for output it is necessary to remember
+that you can print not only numbers, but also strings::
 
     n = int(input())
     print("The speed is", n, "kmph.")
 
 
-Что дальше?
+What's next?
 -----------
 
-(Естественно, это раздел только для учеников моего курса.)
+(Certainly, this section is only for students of my course.)
 
-Во-первых, если вы еще этого не сделали, прочитайте на страничке курса
-все тексты в «шапке» курса, особенно раздел «Работа с сайтом...», после
-чего начинайте решать «Задачи на арифметические операторы». И двигайтесь
-дальше.
+First, if you haven't done this yet, read all the texts 
+in the header on the course page, especially the section 
+"How to work with the site...", then start doing 
+"Arithmetic operator problems". And move on.
 
-**Внимание!** Не надо прямо сейчас читать следующие разделы этого текста, 
-не надо нажимать кнопку «Next» ниже. Дальше идет теория для следующих тем,
-поэтому сначала прорешайте задачи на арифметические операции на сайте,
-потом уже переходите к следующим темам (по ссылкам на сайте).
+**Attention!** Do not read the following sections of this text right now,
+do not click the "Next" button below. There is the theory on the new topics,
+so first do the problems on arithmetic operations on the site, and only
+then move on to those topics (by the links on the site).
 
+And in case of any questions, write to me.
 
-И по любым вопросам пишите мне.
-
-.. [1] Конечно, предложения «написать мне» относятся только к ученикам моего курса.
+.. [1] Of course, the suggestions "write to me" are only referred to students of my course.
