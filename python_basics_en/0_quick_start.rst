@@ -6,7 +6,7 @@ Getting started in Python 3 and Wing IDE 101
 About Python versions
 ---------------------
 
-Currently, there are two main branches (versions) of Python language: Python 2 and Python 3.
+Currently there are two main branches (versions) of Python language: Python 2 and Python 3.
 Version 2 is officially considered deprecated (its support ends in 2020), version 3 is
 newer and more modern. We will study exactly the version 3. Version 2 is significantly
 different from version 3, and we will not discuss these differences here.
