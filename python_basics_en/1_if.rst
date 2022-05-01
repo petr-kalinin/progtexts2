@@ -318,9 +318,12 @@ Now the condition is a bit more sophisiticated: if the temperature is above give
     else:
         print("off")
 
-Here you need to point where the condition is strict ("greater than" or "greater than or equal to", same with "less than").
-In the problem description it's said that AC turns on if the temperature is **strictly above** given (exactly "greater than", not "greater than or equal to")
- and the humidity is **not higher** than 80% (so it's "less than or equal to", not just "less than").
+Note that here you need to take into account carefully where the condition is 
+strict ("greater than" or "greater than or equal to", same with "less than").
+In the problem description it's stated that AC turns on if the temperature 
+is **strictly above** given (exactly "greater than", 
+not "greater than or equal to")  and the humidity is **not higher** than 80% 
+(so it's "less than or equal to", not just "less than").
 
 .. task::
     In Masha's room there's a simple air conditioner. It turns on if the temperature in the room is above 20 degrees. If it's equal or below 20 degrees,
