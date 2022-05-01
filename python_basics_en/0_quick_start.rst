@@ -520,38 +520,43 @@ with the rest of the arithmetic operations: ``a /= 5`` means ``a = a / 5``,
 
 Comments in the code
 --------------------
-(Эта информация вам прямо сейчас не нужна, но будет полезна при чтении дальнейших разделов.)
+(You may not need this information right now, but it will be useful when reading further sections.)
 
-В программе можно оставлять так называемые *комментарии*. А именно, если где-то в программе
-встречается символ «решетка» (``#``), то этот символ и все, что идет за ним до конца строки,
-полностью игнорируется питоном. Таким образом можно в программе оставлять пометки для себя,
-или для других программистов, которые будут читать вашу программу. Например
-
+You can leave *comments* in your programs. That is, if the symbol 
+"grid" (``#``) is typed somewhere in the program, then this symbol 
+and everything that follows it to the end of the line
+is completely ignored by Python interpreter. Thus, you can leave notes 
+in the program for yourself or for other programmers 
+who will read your program. For example:
 ::
 
-    a = int(input())  # считали число
-    
-Здесь запись ``# считали число`` полностью игнорируется питоном, как будто этих символов нет вообще,
-а запись ``a = int(input())`` работает как и должна.
-    
-В частности, решетка может стоять в начале строки, тогда вся эта строка будет игнорироваться::
+a = int(input()) # reading one number
 
-    # для начала, считаем число
-    a = int(input())
-    
-Питону совершенно не важно, где и как вы оставляете комментарии, вы их оставляете только для себя,
-или для других людей, которые будут читать вашу программу. В простейших программах комментарии не нужны,
-и вам поначалу они не понадобятся, но я буду их использовать в дальнейших разделах этого курса,
-чтобы пояснять фрагменты кода.
+Here the inscription ``# reading one number`` is completely ignored by Python, 
+as if these characters do not exist at all,
+and ``a = int(input())`` works as it should.
 
-Язык программирования как конструктор
+In particular, the grid can be at the beginning of the line, 
+then this whole line will be ignored:
+::
+# to begin with, we read the number
+a = int(input())
+
+Python does not care where and how you leave comments,
+you leave them only for yourself or for other people 
+who will read your program. In the simplest programs
+comments are usually unnecessary, and you won't need them 
+at first, but I will use them in further sections
+of this course to explain code snippets.
+
+Programming language as a constructor
 -------------------------------------
 
-Выше я рассказал ряд самых основных конструкций языка питон. Теперь ваша
-задача будет из этих конструкций, как из конструктора, собирать
-программы. Относитесь к этому именно как к конструктору: все
-программирование — это сборка больших программ из таких отдельных
-команд.
+Above I have described some of the most basic constructions 
+of Python language. Now your task will be to assemble programs 
+from these constructions, as from a construction toy like Lego.
+Treat it exactly like a construction set: all programming is 
+the assembly of large programs from separate statements and expressions.
 
 Примеры решения задач
 ---------------------
