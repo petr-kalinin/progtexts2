@@ -503,7 +503,7 @@ a, b = 10, 20
 
 It means "to ``a`` to write 10, to ``b`` write 20".
 
-The notation ``a = 10`` should be read "assign 10 to the variable ``a``, 
+The notation ``a = 10`` should be read "assign 10 to the variable ``a``", 
 or more compact "assign 10 to ``a``". Do not say "``a`` is equal to 10" 
 because ``is equal`` is not an imperative, and it is not clear
 what action is being performed. Moreover, if the entry ``a = a + 1``
@@ -513,7 +513,7 @@ no solutions. Therefore, say "assign", not "equal".
 
 There are also a number of useful instructions that combine 
 arithmetic operation and assignment (they're called 
-augmented assignment operators). For example, ``a+= 10`` stands for 
+augmented assignment operators). For example, ``a += 10`` stands for 
 ``a = a + 10`` ("increase ``a`` by 10"). You can do the same 
 with the rest of the arithmetic operations: ``a /= 5`` means ``a = a / 5``,
 ``a %= 5`` means ``a = a % 5``, etc.
