@@ -428,12 +428,12 @@ numbers in one line, you need to write
 ::
     a, b, c, d = map(int, input().split())
 
-Variables don't have to be called ``a`` and ``b``, you can use almost
-any strings of English letters and numbers (there are some exceptions,
-but it's not so important yet). For example, you could call variables
-``first`` and ``second``, or ``x1`` and ``x2``, etc. Of course, you can create
-as many variables as you need; in general, variables are the main things
-programs work with.
+You don't have to call variables ``a`` and ``b``. To give a name to a variable
+you can use almost any string of English letters and numbers (there are 
+some exceptions, but it's not so important yet). For example, you could 
+call variables ``first`` and ``second``, or ``x1`` and ``x2``, etc. 
+Of course, you can create as many variables as you need; 
+in general, variables are the main things programs work with.
 
 And a few more remarks on our program. First, this program did not
 display any "prompts" like "Enter a and b". Python is not going
@@ -444,88 +444,82 @@ the user himself knows exactly what is required of him. In the problems you
 will be asked to solve, it will be stated clearly what needs to be output
 to the screen — and no extra messages should be displayed.
 
-Присваивания
-------------
-
-Пока мы умеем записывать в переменные только то, что пользователь ввел с
-клавиатуры. На самом деле, намного чаще приходится записывать в
-переменные значения, которые программа сама вычисляет. Для этого есть
-специальная команда, которая называется *присваивание* (и на самом деле
-мы ее уже видели):
-
+Assignment
+----------
+So far, we only know how to write to variables what the user entered from 
+keyboard. In fact, it is much more common to write to our variables
+values that the program calculates itself. There is
+a special instruction for this, which is called *assignment*
+(and in fact we've already seen her):
 ::
+a = 10
 
-    a = 10
+It means "to the variable ``a`` write 10".
 
-обозначает «в переменную ``a`` записать 10».
-
-Справа от знака «равно» можно писать любые выражения (например,
-``a = 10 + abs(5 - 9)``). Более того, там же можно использовать другие
-переменные, в которые уже что-то записано. Например, программа
-
+On the right of the equality sign you can write any expressions 
+(for example, ``a = 10 + abs(5 - 9)``). Moreover, you can also
+use other variables which some values are already assigned to. 
+For example, the program
 ::
+a = 20
+b = a + 10
+print(b)
 
-    a = 20
-    b = a + 10
-    print(b)
+will output 30, because first 20 is written to ``a``, then
+the computer looks at what is written to ``a``, adds 10 and
+writes the result to ``b``. Then it looks at what is written 
+to ``b`` and displays it on the screen.
 
-выведет на экран 30, потому что сначала в ``a`` записывается 20, потом
-компьютер смотрит, что записано в ``a``, прибавляет 10, и результат
-записывает в ``b``, потом смотрит, что записано в ``b``, и выводит на
-экран.
-
-Если в переменной уже было что-то записано, то после присваивания старое
-значение затирается:
-
+If some value was already assigned to the variable, then upon
+a new assignment the old value is being overwritten:
 ::
-
     a = 20
     a = 30
 
-в результате в ``a`` лежит 30, а про 20 все забыли.
+as a result, ``a`` is 30, and 20 is completely forgotten.
 
-Особый интересный вариант — справа можно упоминать ту же переменную,
-которая стоит слева — тогда будет использоваться ее предыдущее значение:
-
+A special interesting option is that on the right you can use 
+the same variable that is on the left — and then its previous 
+value will be used:
 ::
+a = 20
+a = a + 10
 
-    a = 20
-    a = a + 10
+This means "Write 20 to ``a``. Then look at what is in ``a``,
+add 10 to it and write the result back to ``a``". As a
+result, value of ``a`` will become 30.
 
-обозначает «в ``a`` запиши 20. Потом посмотри, что записано в ``a``,
-прибавь к этому 10 и то, что получится, запиши обратно в ``a``\ ». В
-итоге в ``a`` будет записано 30.
+That command ``a = input()`` we saw earlier is actually also
+an assignment. It says: "read what the user entered
+from the keyboard, and write it to ``a``".
 
-Та команда ``a = input()``, которую мы раньше видели, на самом деле тоже
-является присваиванием: она говорит: «прочитай то, что пользователь ввел
-с клавиатуры, и запиши это в ``a``\ ».
-
-Слева от знака «равно» можно указывать несколько переменных через
-запятую. Тогда справа тоже должно быть несколько значений через запятую
-(или специальные функции типа уже упоминавшейся ``map``, но их мы
-подробнее пока обсуждать не будем):
-
+On the left of the equality sign you can type several variables 
+separated by commas. Then there should also be several 
+comma-separated values on the right (or special functions 
+like the already mentioned ``map``, but for now 
+we will not discuss them in detail):
 ::
+a, b = 10, 20
 
-    a, b = 10, 20
+It means "to ``a`` to write 10, to ``b`` write 20".
 
-обозначает «в ``a`` записать 10, а в ``b`` — 20».
+The notation ``a = 10`` should be read "assign 10 to the variable ``a``, 
+or more compact "assign 10 to ``a``". Do not say "``a`` is equal to 10" 
+because ``is equal`` is not an imperative, and it is not clear
+what action is being performed. Moreover, if the entry ``a = a + 1``
+is read with "equal", then it turns to "``a`` is equal to ``a`` plus one", 
+which does not look like an instruction at all, but rather an equation that has
+no solutions. Therefore, say "assign", not "equal".
 
-Запись ``a = 10`` читается «переменной ``a`` присвоить 10», или кратко «``a`` присвоить 10». 
-Не надо говорить «``a`` равно 10», т.к. «равно» — это не глагол, и не понятно,
-какое действие совершается. Более того, если запись ``a = a + 1``
-прочитать с «равно», то получается «``a`` равно ``a`` плюс один», что
-никак не похоже на команду, а скорее на уравнение, которое не имеет
-решений. Поэтому говорите «присвоить», а не «равно».
+There are also a number of useful instructions that combine 
+arithmetic operation and assignment (they're called 
+augmented assignment operators). For example, ``a+= 10`` stands for 
+``a = a + 10`` ("increase ``a`` by 10"). You can do the same 
+with the rest of the arithmetic operations: ``a /= 5`` means ``a = a / 5``,
+``a %= 5`` means ``a = a % 5``, etc.
 
-Есть еще ряд полезных команд, которые совмещают арифметическое действие
-и присваивание. Например, запись ``a += 10`` обозначает ``a = a + 10``
-(«увеличить ``a`` на 10»). Аналогично можно поступать с остальными
-арифметическими действиями: ``a /= 5`` обозначает ``a = a / 5``,
-``a %= 5`` обозначает ``a = a % 5``, и т.п.
-
-Комментарии
------------
+Comments in the code
+--------------------
 (Эта информация вам прямо сейчас не нужна, но будет полезна при чтении дальнейших разделов.)
 
 В программе можно оставлять так называемые *комментарии*. А именно, если где-то в программе
