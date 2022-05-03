@@ -22,6 +22,7 @@ operations and then determines whether they need to be performed again.
 The code looks like this:
 
 ::
+
     while condition:
         code
 
@@ -55,8 +56,8 @@ is true, do the ``code``".
 
 Examples
 ~~~~~~~~
-
 ::
+
     n = int(input())
     a = 1
     while 2 * a < n:
@@ -82,8 +83,8 @@ no longer met (``2*a`` is 6, and ``n`` is 5), the loop ends.
 When the loop is terminated, we move on to the code after it, printing "Done".
 
 One more example, now quite sophisticated:
-
 ::
+
     n = int(input())
     a = 1
     while a < n:
