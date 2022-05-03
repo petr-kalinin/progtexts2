@@ -1,65 +1,62 @@
 .. highlight:: python
 
-Циклы
+Loops
 =====
 
-В программах довольно часто встречается необходимость повторить
-некоторое действие несколько раз. Часто вы даже не знаете заранее,
-сколько именно раз. Для этого существует специальная конструкция,
-команда языка — цикл.
+In programs, it is quite common that you have to repeat
+some operation(s) several times. Often you don't even know in advance
+how many times you exactly need. There is a special construction for this,
+the language statement called loop.
 
-В питоне есть циклы двух типов.
+There are two types of loops in python.
 
-(Я тут буду приводить примеры кодов. Конечно, экспериментируйте с ними
-для лучшего понимания.)
+(I will give some code samples here. Of course, explore them
+for a better comprehension.)
 
-Цикл while
+While loop
 ----------
 
-Цикл while — это простейший вариант цикла. Он выполняет некоторые
-действия, после чего определяет, не надо ли их выполнить еще раз.
-"Определяет" путем проверки указанного программистом условия. Выглядит
-код так:
+The while loop is the simplest version of the loop. It performs some
+operations and then determines whether they need to be performed again.
+"Determination" is done by checking the condition set by the programmer.
+The code looks like this:
 
 ::
+    while condition:
+        code
 
-    while условие:
-        код
+Here ``condition`` is a condition that has the same form as a condition for 
+the ``if``-statement. There can be reraltions, ``and``, ``or``, etc.
 
-Здесь ``условие`` — это условие в том же виде, в котором вы пишете
-условие ``if``'а. Там могут быть сравнения, ``and``, ``or`` и т.д.
+And the ``code`` is an arbitrary sequence of operations (it can take
+several lines) containing any instructions that you know or will
+learn later: assignments, if's, other loops, etc.
 
-А ``код`` — это произвольная последовательность комад (может занимать и
-несколько строк), содержащая любые команды, которые вы знаете или
-узнаете потом: присваивания, if'ы, даже другие циклы и т.д.
+What will the computer do when it encounters such a loop? First it
+will check if the condition is true. If it is, the computer
+will execute the indented code below and check the condition again. If it is still
+true, the computer will execute that code again. And so on, until 
+the next check reveals that the condition is false. Then the computer 
+will finish executing the loop and immediately move on to the code written after it.
 
-Что будет делать компьютер, когда дойдет до такого цикла? Сначала он
-проверит, выполняется ли условие. Если выполняется, то компьютер
-выполнит указанный код и опять проверит условие. Если оно все еще
-выполняется, то компьютер выполнит этот код еще раз, и так далее, до тех
-пор, пока при очередной проверке не окажется, что условие не
-выполняется. Тогда компьютер закончит выполнение цикла и перейдет к
-коду, написанному после него.
+How can the ``condition`` be several times true-true-ture and then suddenly stop
+being true? It's quite simple: the ``code`` can change variables upon whose values 
+the condition relies, and the check will fail. Actually, this is the whole point 
+of the process. (And if the ``code`` doesn't actually change anything, then
+the ``condition`` will always be true, and you will get a so-called 
+"infinite loop" — the program will hang. Don't do that.)
 
-Как может ``условие`` выполняться-выполняться, и вдруг перестать
-выполняться? Очень просто: ``код`` может изменить какие-то переменные,
-из-за которых условие перестанет выполняться. Собственно, в этом и
-состоит весь смысл процесса. (А если ``код`` ничего такого не меняет, то
-``условие`` будет выполняться всегда, и получится "бесконечный цикл" —
-программа зависнет. Не делайте так.)
+Particularly, it may occur that the loop condition will not be true 
+from the very beginning. Then the loop will not be run even once, 
+execution will immediately move on to instructions after the loop.
 
-В частности, может быть так, что условие цикла не будет выполняться с
-самого начала. Тогда цикл не выполнится ни разу, исполнение сразу
-перейдет на команды после цикла.
+The entire shape of the loop essentially means "while the ``condition`` 
+is true, do the ``code``".
 
-Слово "while" переводится как "пока", т.е. вся запись цикла по сути
-обозначает "пока выполняется ``условие``, делай ``код``".
-
-Примеры
-~~~~~~~
+Examples
+~~~~~~~~
 
 ::
-
     n = int(input())
     a = 1
     while 2 * a < n:
@@ -67,27 +64,26 @@
         a += 1
     print("Done")
 
-Что делает этот код? Он сначала считывает с клавиатуры значение ``n``.
-Пусть для примера пользователь вводит число 5. Далее в переменную ``a``
-записывается 1. А дальше начинается цикл.
+What does this code do? First, it reads the value of ``n`` from the keyboard.
+For example, let's suppose the user entered 5. Next, 1 is written to the 
+variable ``a``. And then the loop begins.
 
-Сначала компьютер проверяет, правда ли, что ``2 * a < n``.
-Действительно, ``2*a`` равно 2, а ``n`` равно 5, условие выполняется.
-Поэтому начинаем выполнять тот код, который написан внутри цикла. А
-именно, выводим на экран ``a``, т.е. 1. И прибавляем единицу к ``a``,
-получается ``a==2``. Код (говорят "тело цикла") закончился, поэтому
-проверяем условие еще раз. Оно все еще выполняется (``2*a`` равно 4, а
-``n`` равно 5), поэтому выполняем тело цикла заново. Выводим на экран 2
-и увеличиваем ``a`` еще на единицу. Проверяем условие еще раз, оно уже
-не выполняется (``2*a`` равно 6, а ``n`` равно 5), цикл закончился.
+First, the computer checks whether ``2 * a < n`` is true.
+Indeed, ``2 * a`` is 2, and ``n`` is 5, the condition is met.
+Therefore, we begin executing the code that is written inside the loop.
+Namely, we write ``a``, i.e. 1, on the screen. And add one to ``a``,
+resulting ``a == 2``. We've moved to the end of the code 
+(it's also called "the body of the loop"), so we check the condition again. 
+It's still true (``2 * a`` is 4, and ``n`` is equal to 5), 
+so we execute the body of the loop again. We display 2 on the screen
+and again increase ``a`` by one. We check the condition again, it is
+no longer met (``2*a`` is 6, and ``n`` is 5), the loop ends.
 
-Цикл закончился, поэтому переходим на то, что после цикла — выводим на
-экран Done.
+When the loop is terminated, we move on to the code after it, printing "Done".
 
-Еще один пример, уже довольно навороченный:
+One more example, now quite sophisticated:
 
 ::
-
     n = int(input())
     a = 1
     while a < n:
@@ -99,31 +95,31 @@
         print()
         a *= 2
 
-Здесь цикл, вложенный в цикл. Это работает следующим образом. Пусть
-пользователь ввел 6. Переменная ``a`` становится равна 1.
+Here is a loop put into another loop (nested loops). It works as follows: let's consider 
+the user entered 6. The variable ``a``, just like above, becomes equal to 1.
 
-Начинается внешний цикл (который ``while a < n``). Переменная ``b``
-становится равна ``a``, т.е. 1. Пока ``b>0`` мы делаем следующее
-(внутренний цикл): если ``b`` нечетное, то выводим на экран 1, после
-чего уменьшаем ``b`` на 1. В итоге на экран выведется 1, после чего
-``b`` станет равно 0, и внутренний цикл закончится.
+The outer loop begins (which is ``while a < n``). The variable ``b``
+becomes equal to ``a``, i.e. 1. While ``b > 0`` we do the following
+(inner loop): if ``b`` is odd, then we display 1, after
+which we reduce ``b`` by 1. As a result, 1 is displayed on the screen,
+``b`` becomes 0 and the inner loop ends.
 
-Но внешний цикл еще продолжается. Выполняется команда ``print()``,
-которая просто переводит строку, и переменная ``a`` увеличивается в 2
-раза и становится равна 2. Проверяем условие цикла: ``a`` все еще меньше
-``n``. Поэтому повторяем операции, но уже с новым ``a``. Переменная
-``b`` становится равна 2, начинается внутренний цикл, сначала (при
-``b==2``) на экран ничего не выводится (т.к. ``b`` четное), и ``b``
-становится равно 1, потом на экран выводится 1, и ``b`` становится равно
-0 и внутренний цикл заканчивается.
+But the execution of the outer loop still continues. The ``print()`` command is executed,
+which outputs nothing, just starting a new line, and the variable ``a`` is 
+multiplied by 2 and becomes 2. Checking the loop condition: ``a`` is still 
+less than ``n``. Therefore we repeat the operations, but with the new ``a`` value. 
+Variable `b` becomes equal to 2 and the inner loop begins. In it, first (when
+``b == 2``) output is not performed (because ``b`` is even), and ``b``
+becomes equal to 1. Then 1 is output to the screen, ``b`` becomes equal
+to 0 and the inner loop ends.
 
-Продолжается внешний цикл, выводится перевод строки и ``a`` становится
-равно 4. Это все еще меньше чем ``n``, поэтому входим заново во
-внутренний цикл, ``b`` становится равно 4 ... и за весь внутренний цикл
-на экран выводится 3 1 (я не буду уже подробно расписывать).
+The outer loop continues, another empty line is output and ``a`` becomes
+equal to 4. This is still less than ``n``, so we enter the inner loop again. 
+Now ``b`` becomes equal to 4... and during the entire inner loop
+on the screen is printed 3 1 (I will not describe it in detail).
 
-Далее опять выводим перевод строки, ``a`` становится равно 8, это уже
-больше чем ``n``, поэтому внешний цикл закончился.
+Next, we output the new line again and ``a`` becomes equal to 8. This is
+now more than ``n``, so the outer loop ends.
 
 Цикл for
 --------
