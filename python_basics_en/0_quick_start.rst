@@ -564,6 +564,7 @@ Sample problems and solutions
 Here are a few sample problems similar to ones you may come across on contests and in my course.
 
 .. task::
+
     Vasya bought :math:`N` muffins and Masha bought :math:`K` muffins more.
     What is the overall amount of muffins they bought?
 
@@ -626,6 +627,7 @@ All of these ways are correct, and it is quite easy
 to come up with a number of other correct solutions.
 
 .. task::
+
     :math:`N` minutes have passed since the beginning of the day. 
     Determine how many hours and minutes an electronic clock 
     will show at this moment. It is guaranteed that :math:`N` is 
@@ -667,6 +669,7 @@ As in the previous task, we could also optionally save
 the answers to variables.
 
 .. task::
+
     Masha needs to buy :math:`A` large beads, :math:`B` medium
     and :math:`C` small. One large bead costs :math:`X` rubles, 
     the medium one is :math:`Y` rubles, the small one is :math:`Z` rubles.
@@ -701,6 +704,7 @@ so we need to input the data twice through `map(int(...`::
     print(a * x + b * y + c * z)
 
 .. task::
+
   The car is going at a speed of :math:`N` kilometers per hour.
   Output this information as follows: "The speed is :math:`N` kmph.", 
   substituting the entered number instead of :math:`N` (see the example).
