@@ -105,9 +105,9 @@ becomes equal to ``a``, i.e. 1. While ``b > 0`` we do the following
 which we reduce ``b`` by 1. As a result, 1 is displayed on the screen,
 ``b`` becomes 0 and the inner loop ends.
 
-But the execution of the outer loop still continues. The ``print()`` command is executed,
-which outputs nothing, just starting a new line, and the variable ``a`` is 
-multiplied by 2 and becomes 2. Checking the loop condition: ``a`` is still 
+But the execution of the outer loop still continues. The ``print()`` insturction 
+is executed, which outputs nothing, just starting a new line, and the variable ``a`` 
+is  multiplied by 2 and becomes 2. Checking the loop condition: ``a`` is still 
 less than ``n``. Therefore we repeat the operations, but with the new ``a`` value. 
 Variable `b` becomes equal to 2 and the inner loop begins. In it, first (when
 ``b == 2``) output is not performed (because ``b`` is even), and ``b``
@@ -122,82 +122,79 @@ on the screen is printed 3 1 (I will not describe it in detail).
 Next, we output the new line again and ``a`` becomes equal to 8. This is
 now more than ``n``, so the outer loop ends.
 
-Цикл for
+For loop
 --------
 
-Цикл ``while`` работает тупо: проверяет условие и выполняет код, и так
-пока условие не перестанет выполняться. Это позволяет реализовать
-практически любые правила зацикленности, какие нужны в задаче, и потому
-часто применяется.
+The ``while`` loop works bluntly: it checks the condition and executes the code, 
+and so on until the condition stops being true. This allows you to implement
+almost any looping rules that are needed, and therefore is frequently used.
 
-Но кроме того, довольно часто бывает так, что надо выполнить один и тот
-же код несколько раз подряд, просто изменяя значения одной переменной
-некоторым очень простым образом. Для этого есть цикл ``for``. Он пишется
-так:
+But besides, quite often it happens that you need to execute the
+same code several times in a row, just changing the value of one variable
+in some very simple way. There is a ``for`` loop for this. It is written
+this way:
 
 ::
 
-    for переменная in список_значений:
-        код
+    for variable in list_values:
+        code
 
-Этот цикл работает так: указанной переменной присваивается первое
-значение из списка, и выполняется код. Потом ей присваивается следующее
-значение, и так далее.
+This loop works like this: the ``variable`` is assigned the first
+value is from the ``list_values`` and the ``code`` is executed.
+Then it is assigned the next value from that list and the ``code`` is executed
+again, and so on.
 
-Пример:
-
+Example:
 ::
 
     for i in 7, 42, 137:
         print(i)
 
-Этот код выведет на экран по очереди все три указанных числа (7, 42 и
-137).
+This code will output all three specified numbers (7, 42 and
+137), one after another.
 
-Список значений можно задавать как в примере выше, через запятую, а
-можно и разными другими способами. Общие правила тут вы узнаете позже,
-пока просто приведу наиболее распространенный вариант, который вам
-сейчас чаще всего будет нужен (а вариант с явным перечислением значений,
-как выше, вам сейчас довольно редко будет нужен).
+The list of values can be set as in the example above, separated by commas,
+or in variety of other ways. You will learn the general rules of this later,
+while I will just give the common way that you will often 
+use now (and the one with an explicit listing of values,
+as above, you will need quite rarely).
 
-А именно, очень часто вам надо, чтобы переменная цикла менялась,
-перебирая числа в некотором диапазоне по порядку, например, 1, 2, 3, 4,
-..., 10. Для этого есть конструкция ``range``. Пишется так:
-``for i in range(1, 11)`` — это перебирает все числа от 1 (включительно)
-до 11 (**невключительно**), т.е. как раз написанный выше набор чисел.
-Еще раз, потому что важно: первое число включительно, второе
-невключительно. Пример:
-
+So, very often you need to change the loop variable by going through 
+the numbers in a certain range one after another, for example, 1, 2, 3, 4,
+..., 10. There is a ``range`` operation for this. It is written like this:
+``for i in range(1, 11)`` — this iterates through all the numbers from 1
+(first bound is included) to 11 (but **second bound is not included**),
+i.e. just the range of numbers written above.
+Once again, because it is important: the first number is included, the last
+is not included. Example:
 ::
 
     for i in range(1, 21):
         print(i, "*", i, "=", i * i)
 
-выводит на экран таблицу квадратов всех чисел от 1 до 20 включительно
-(или до 21 невключительно).
+This code will output a sequence of squares of all numbers from 1 to 20
+including right endpoint (or up to 21 not including it).
 
-У команды ``range`` можно не указывать первый параметр, тогда он будет
-считаться равным 0: ``for i in range(4)`` переберет числа 0, 1, 2, 3.
-Это может показаться странным и непоследовательным, но в следующей теме
-(про массивы) вы поймете, что это очень естественно.
+You are free to omit the first parameter of ``range``, it will be
+implicitly considered zero:: ``for i in range(4)`` will result in 0, 1, 2, 3.
+This may seem odd and inconsistent, but in the next section (about arrays) 
+you will understand that this is quite native.
 
-И наоборот, у команды ``range`` можно указать третий параметр — шаг, с
-которым будет меняться значение переменной. Например, ``range(1, 7, 2)``
-обозначает "от 1 (включительно) до 7 (невключительно) с шагом 2", т.е.
-дает числа 1, 3, 5. Или ``range(0, 100, 10)`` дает числа 0, 10, 20, 30,
+Conversely, you can laso specify the third parameter for ``range`` — that
+will be the step with which the value of the variable will change. For example, 
+``range(1, 7, 2)`` means "from 1 (including it) to 7 (not including it) with step of 2", i.e.
+gives the numbers 1, 3, 5. And ``range(0, 100, 10)`` gives the numbers 0, 10, 20, 30,
 ..., 90.
 
-Особое применение этого третьего параметра — это перебор чисел в
-обратном порядке. ``range(10, 0, -1)`` дает 10, 9, 8, ..., 1. Обратите
-внимание, что 0 опять не включается. (Аналогично можно указывать шаг -2
-и т.п.)
+This third parameter is also used in a special way to iterate through the numbers 
+in reverse order. ``range(10, 0, -1)`` gives 10, 9, 8, ..., 1.
+Note that 0 is not included again. (Similarly, you can specify step -2, etc.)
 
-В ``range`` можно, конечно, указывать и переменные, выражения и т.д.
-Например, ``range(a - b, a + b + 1)`` перебирает числа от ``a-b`` до
-``a+b`` включительно (до ``a+b+1`` невключительно).
+Of course, in ``range`` you can use variables, expressions, etc.
+For example, ``range(a - b, a + b + 1)`` will iterate through the numbers from ``a-b`` to
+``a+b`` including (up to ``a+b+1`` not including it).
 
-И напоследок — еще один, более сложный, пример применения цикла ``for``:
-
+And finally — a more complex example of using the ``for`` loop:
 ::
 
     for i in range(1, 10):
@@ -205,13 +202,14 @@ now more than ``n``, so the outer loop ends.
             print(i * j, end="")
         print()
 
-выводит на экран таблицу умножения.
+this will output the multiplication table .
 
-Про команды break и continue
-----------------------------
+Break and continue
+------------------
 
-При работе с циклами есть две полезных команды — break и continue. Здесь
-я опишу, что они делают и как их использовать.
+There are two special constructions really useful for work with loops:
+``break`` and ``continue``. Here I will describe what they do and
+their basic appications.
 
 Понятие тела цикла и итерации
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
