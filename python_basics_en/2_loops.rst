@@ -31,7 +31,7 @@ the ``if``-statement. There can be reraltions, ``and``, ``or``, etc.
 
 And the ``code`` is an arbitrary sequence of operations (it can take
 several lines) containing any instructions that you know or will
-learn later: assignments, if's, other loops, etc.
+learn later: assignments, conditional statements, other loops, etc.
 
 What will the computer do when it encounters such a loop? First it
 will check if the condition is true. If it is, the computer
