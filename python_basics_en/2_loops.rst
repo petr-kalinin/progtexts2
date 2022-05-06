@@ -328,7 +328,7 @@ but similar cases exist):
         if p % 7 == 4:
             continue
         # all the remaining numbers are necessary
-        # so here we do some complex processing consisting of many instructions
+        # so here we do some complex processing with many instructions
         ...
 Here it's way more clear what you meant than if you wrote it using ``else``. 
 With ``else``, whoever is going to read your code would have to look where
