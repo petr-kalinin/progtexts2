@@ -211,137 +211,130 @@ There are two special constructions really useful for work with loops:
 ``break`` and ``continue``. Here I will describe what they do and
 their basic appications.
 
-Понятие тела цикла и итерации
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Loop body and iterations
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-Сначала введу/повторю несколько терминов, которые полезны при обсуждении циклов.
+First, I will set/remind a few terms that are useful on the topic of loops.
 
-**Тело** цикла — это собственно те команды, которые находятся внутри
-цикла. Например, в цикле
-
+The **body** of the loop is actually those instructions that are written inside
+the loop. For example, in the loop
 ::
 
     for i in range(1, n + 1):
-        a = i * i
-        print(i, a)
+    a = i * i
+    print(i, a)
     
+the loop body consists of two instructions: assignment and output.
 
-тело цикла состоит из двух команд: присваивания и вывода.
+The **iteration** is one separate pass the through the body of the loop.
+During the loop execution instructions of the loop body are repeated several times 
+— each such repetition is called an iteration. In the example above, we can say that
+the loop will do *n* iterations. For example, you can say that on the fifth
+iteration of the loop, the string "5 25" will be output.
 
-**Итерацией** называется каждый отдельный проход по телу цикла. Цикл
-всегда повторяет команды из тела цикла несколько раз — вот каждое такое
-повторение и называется итерацией. В примере выше можно сказать, что
-цикл сделает *n* итераций. Можно, например, сказать, что на пятой
-итерации цикла будет выведена строка "5 25".
+Break statement
+~~~~~~~~~~~~~~~
 
-Команда break
-~~~~~~~~~~~~~
+The ``break`` statement is used to interrupt the execution of the loop body 
+and go on to execute the code that comes after the loop. I.e. if at some
+point you decided that you don't need to loop anymore, as your loop has
+already produced all necessary data, and you need to move on to what is 
+written after it, then write ``break`` in that point. Note that if the break 
+happens in the middle of an iteration, this iteration will be interrupted 
+and the loop body will not be executed until the end.
 
-Команда break обозначает прервать выполнение цикла, и идти дальше
-выполнять те команды, которые идут после цикла. Т.е. если вы в некоторый
-момент решили, что больше вам циклиться не надо, и цикл уже отработал
-все, что надо, и вам нужно переходить к тому, что написано после цикла,
-то пишите break. Если это произошло посреди итерации, то итерация будет
-прервана — тело цикла до конца выполнено не будет.
-
-Пример:
-
+Example:
 ::
 
     for i in range(2, n + 1):
         if n % i == 0:
             print(i)
             break
-        print('Попробовали', i, ', не подходит')
-    print('Конец!')
+        print('Tried', i, ', not suitable')
+    print('The end!')
 
-— как только условие if'а выполнится, на экран будет выведено
-соответствующее *i*, и выполнение цикла будет прервано — дальше будет
-выведено слово "Конец!" и т.д. При этом строка "Попробовали..." будет
-выводиться для всех i, **не** включая то, на котором выполнилось условие
-цикла.
+As soon as the condition is met, the corresponding *i* will be
+output to the screen, and the execution of the loop will be interrupted 
+immediately after that. Then, "The end!" will be displayed, and etc. 
+In this case, the line "Tried..." will be output for every i 
+**not including** the one on which the condition was met.
 
-Например, для ``n==9`` вывод будет следующий:
-
+For example, for ``n == 9`` the output will be as follows:
 ::
-
-    Попробовали 2 , не подходит
+    
+    Tried 2 , not suitable
     3
-    Конец!
+    The end!
 
-(Правда, данный конкретный код было бы проще написать через while —
-подумайте, как)
+(Though this particular code would be easier to write 
+via ``while`` loop. Think of how to do that)
 
-Команду break можно также применять и с циклами while и repeat, один из
-примеров будет ниже.
+The ``break`` statement can also be used with ``while`` and 
+``repeat`` loops, one of the examples will be shown below.
 
-Команда continue
-~~~~~~~~~~~~~~~~
+Continue statement
+~~~~~~~~~~~~~~~~~~
 
-Команда continue обозначает прервать выполнение текущей итерации цикла и
-начать следующую итерацию. Т.е. как будто бы, не доделывая то, что
-написано ниже в теле цикла, прыгнуть на начало цикла, при этом выполнив
-все действия, которые должны быть выполнены после очередной итерации —
-т.е. в цикле for увеличив значение счетчика цикла на 1, а в циклах
-while/repeat проверив условие и, если оно не выполняется, то вообще
-прервав работу.
+The ``continue`` statement is used to interrupt the execution of 
+the current iteration of the loop and start the next iteration.
+I.e., it's like jumping to the beginning of the loop without completing
+what is written below in the body of the loop *but* with performing 
+all the actions that must be performed after any iteration —
+i.e. in the ``for`` loop increasing the value of the loop counter by 1,
+and in ``while``/``repeat`` loops checking the condition and,
+if it is not true, interrupting the whole loop.
 
-Пример:
-
-::
+Example::
 
     for i in range(2, n):
         if n % i != 0:
-            print('Попробовали', i, ', не подходит')
+            print('Tried', i, ', not siutable')
             continue
-        print(n, 'делится на', i)
+        print(n, 'is evelny divisible by', i)
 
-— здесь цикл пройдется по всем числам от ``2`` до ``n-1`` и для каждого выведет,
-делится ли ``n`` на ``i`` или нет. Например, при ``n==9`` вывод будет такой:
-
+Here the loop will go through all the numbers from ``2`` to ``n-1`` and for each will output
+whether ``n`` is divisible by ``i`` or not. For example, for ``n == 9`` the output will look so:
 ::
-
-    Попробовали 2 , не подходит
-    9 делится на 3
-    Попробовали 4 , не подходит
+    Tried 2 , not suitable
+    9 is evenly divisible by 3
+    Tried 4 , not suitable
     ...
-    Попробовали 8 , не подходит
+    Tried 8 , not suitable
 
-Пройдем подробнее по началу выполнения этого кода. Сначала i становится
-равным 2. Смотрим: ``9 % 2 != 0`` — значит, идем внутрь if. Выводим на
-экран "Попробовали...", и далее идет команда continue. Значит, сразу
-идем на следующую итерацию: увеличиваем ``i`` (!), оно становится равным 3,
-и идем на начало цикла. ``9 % 3 == 0``, поэтому в if не идем, выводим "9
-делится на 3", итерация закончилась — увеличиваем ``i`` и идем на следующую
-итерацию. И так далее.
+Let's look at the few first iterations in more detail. First, ``i`` becomes
+equal to 2. We check: ``9 % 2 != 0``, so we go inside our ``if``. We output
+"Tried..." to the screen, and then there's the ``continue`` statement. So we 
+immediately start the next iteration: increase ``i`` (!), it becomes 
+equal to 3, and we go to the beginning of the loop body. ``9 % 3 == 0``, so we 
+don't execute the ``if`` body and output "9 is evenly divisible by 3".
+This iteration is over. We increase `i` and go to the next one. And so on.
 
-Конечно, в этом примере можно было бы обойтись и без ``continue``, просто
-написать ``else``. Это было бы проще. Но бывает, что вам надо перебрать
-числа, и есть много случаев, когда какое-то число вам не надо
-рассматривать. Тогда писать кучу ``else`` было бы намного сложнее, чем
-несколько ``continue``. Например (пример выдуман из головы, но подобные
-случаи бывают):
-
+Of course, in this particular case it's possible to do without using 
+``continue``, just by writing ``else`` after ``if``. That would be easier. 
+But it happens that you need to sort out the numbers, and there are many 
+specific conditions upon those you don't need to take the number into account.
+Then writing a bunch of ``else`` statements would be much more difficult than
+a few ``continue`` statements. For example (this example is rather synthetic,
+but similar cases exist):
 ::
 
     for i in range(n):
-        # нам не нужны числа, делящиеся на 5
+        # we don' need numbers divisible by 5
         if i % 5 == 0:
             continue
-        # нам не нужны числа, квадрат которых дает остаток 4 при делении на 7
-        # обратите внимание, что мы можем делать какие-то действия до проверки условий
+        # we also don't need numbers that give remainder 4 when divided by 7
+        # note that we may process something befоre checking the condition from the comment above
         p = i * i
         if p % 7 == 4:
             continue
-        # все оставшиеся числа нам нужны,
-        # поэтому здесь делаем какую-нибудь сложную обработку из многих команд
+        # all the remaining numbers are necessary
+        # so here we do some complex processing consisting of many instructions
         ...
-
-— тут намного более понятно, что вы имели в виду, чем если бы вы писали
-с ``else``. С ``else`` тому, кто будет читать ваш код, пришлось бы смотреть, где
-``else`` заканчивается, и вдруг после конца ``else`` идут еще какие-нибудь
-команды, а здесь все понятно: если ``if`` выполняется, то пропускается все
-оставшееся тело цикла.
+Here it's way more clear what you meant than if you wrote it using ``else``. 
+With ``else``, whoever is going to read your code would have to look where
+``else`` ends, and whether there are some more instructions after that ``else``.
+In contrast, here everything is clear: if ``if`` is executed, the
+remaining part of the loop body is entirely skipped.
 
 while True и break
 ~~~~~~~~~~~~~~~~~~~~~
