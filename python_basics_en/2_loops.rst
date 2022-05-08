@@ -336,7 +336,7 @@ With ``else``, whoever is going to read your code would have to look where
 In contrast, here everything is clear: if ``if`` is executed, the
 remaining part of the loop body is entirely skipped.
 
-while True and break
+While True and break
 ~~~~~~~~~~~~~~~~~~~~
 
 One special case of ``break`` statement usage is the following.
