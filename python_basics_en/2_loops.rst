@@ -250,7 +250,7 @@ Example:
         if n % i == 0:
             print(i)
             break
-        print('Tried', i, ', not suitable')
+        print('Tried', i, ', failed')
     print('The end!')
 
 As soon as the condition is met, the corresponding *i* will be
@@ -262,7 +262,7 @@ In this case, the line "Tried..." will be output for every i
 For example, for ``n == 9`` the output will be as follows:
 ::
     
-    Tried 2 , not suitable
+    Tried 2 , failed
     3
     The end!
 
@@ -288,18 +288,18 @@ Example::
 
     for i in range(2, n):
         if n % i != 0:
-            print('Tried', i, ', not siutable')
+            print('Tried', i, ', failed')
             continue
         print(n, 'is evelny divisible by', i)
 
 Here the loop will go through all the numbers from ``2`` to ``n-1`` and for each will output
 whether ``n`` is divisible by ``i`` or not. For example, for ``n == 9`` the output will look so:
 ::
-    Tried 2 , not suitable
+    Tried 2 , failed
     9 is evenly divisible by 3
-    Tried 4 , not suitable
+    Tried 4 , failed
     ...
-    Tried 8 , not suitable
+    Tried 8 , failed
 
 Let's look at the few first iterations in more detail. First, ``i`` becomes
 equal to 2. We check: ``9 % 2 != 0``, so we go inside our ``if``. We output
