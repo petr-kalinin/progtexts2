@@ -5,8 +5,8 @@ Loops
 
 In programs, it is quite common that you have to repeat
 some operation(s) several times. Often you don't even know in advance
-how many times you exactly need. There is a special construction for this,
-the language statement called loop.
+how many times you exactly need. There is a lanugage construction
+designed specially for this, called loop.
 
 There are two types of loops in python.
 
