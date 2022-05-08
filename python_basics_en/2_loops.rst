@@ -336,54 +336,53 @@ With ``else``, whoever is going to read your code would have to look where
 In contrast, here everything is clear: if ``if`` is executed, the
 remaining part of the loop body is entirely skipped.
 
-while True и break
-~~~~~~~~~~~~~~~~~~~~~
+while True and break
+~~~~~~~~~~~~~~~~~~~~
 
-Один важный случай применения команды ``break`` состоит в следующем. Часто
-бывает так, что вам надо повторять какую-то последовательность действий,
-и проверять условие окончания вам хочется в середине этой
-последовательности. Например, вам надо считывать с клавиатуры числа,
-пока не будет введен ноль. Все числа, кроме нуля, надо как-то
-обрабатывать (для простоты будем считать, что выводить на экран — это
-нам не существенно).
+One special case of ``break`` statement usage is the following.
+It's typical that you need to repeat some sequence of operations
+and you want to check the exit condition *in the middle* of this
+sequence. For example, you need to read numbers from keyboard
+until zero is entered. All numbers, except zero, need to be
+processed somehow (It's not essential here how exactly.
+To simplify, we will just output them to the screen).
 
-Естественная последовательность действий следующая:
-
+The natural way to do this looks like this:
 ::
-
-    считать число
-    если ноль, то прерваться
-    вывести это число на экран
-    считать число
-    если ноль, то прерваться
-    вывести это число на экран
+    read a number
+    if it's equal to zero, stop and exit
+    output the number to the screen
+    read a number
+    if it's equal to zero, stop and exit
+    output the number to the screen
+    read a number
+    if it's equal to zero, stop and exit
+    output the number to the screen
     ...
 
-Очень четко видна цикличность, но если вы попытаетесь написать цикл без
-команды ``break``, ничего хорошего у вас не получится.
+The looping pattern seems quite clear, but if you try to write 
+a loop without using ``break``, nothing good would come of that.
 
-У вас будет несколько вариантов: например, так
-
+You will probably take one of the several options: for example, like this:
 ::
 
     a = int(input())
     while a != 0:
         print(a)
         a = int(input())
+        
+In fact, you've "cut off" the looping sequence at the monent where 
+the check must be performend and, as a result, were forced
+to duplicate the reading operation: you have it before the loop, and
+then again at the end of the loop. Code duplication is not very good
+(if you have to change it, you may forget that the same code is in two
+places); if you have a slightly more complex code instead of reading a number, 
+it will be even worse. This particular variant, also has another disadvantage:
+variable ``a`` has different values within one iteration of the loop. 
+It would be easier if each iteration of the loop
+corresponded to processing a certain entered number.
 
-Фактически вы "разрезали" циклическую последовательность действий на
-проверке условия окончания цикла, и в результате были вынуждены команду
-считывания числа задублировать: она у вас один раз перед циклом, и один
-раз в конце цикла. Дублирование кода — это не очень хорошо (если вам
-придется его менять, вы можете забыть, что один и тот же код в двух
-местах); если у вас вместо считывания числа будет чуть более сложный
-код, то будет еще хуже. Кроме того, в этой реализации не очень хорошо,
-что у вас в пределах одной итерации цикла есть разные значения
-переменной ``a``, было бы проще, если бы каждая итерация цикла
-соответствовала работе только с одним введенным числом.
-
-Второй вариант, который вам может придти в голову, такой:
-
+The second option you may come up with may be similar to this:
 ::
 
     a = 1
@@ -392,20 +391,21 @@ while True и break
         if a != 0:
             print(a)
 
-Этот вариант лучше в том смысле, что каждая итерация работает только с
-одним числом, но у него все равно есть недостатки. Во-первых, есть
-искуственная команда ``a = 1`` перед циклом. Во-вторых, условие ``a != 0``
-дублируется; если вам придется его менять, вы можете забыть, что оно
-написано в двух местах. В-третьих, у вас *основная* ветка выполнения
-цикла, ветка, по которой будет выполняться большинство итераций, попала
-в ``if``. Это не очень удобно с точки зрения кода: все-таки все числа, кроме
-последнего, будут не нулевыми, поэтому хотелось бы написать такой код, в
-котором обработка случая ``a = 0`` не потребует заворачивания основного
-варианта в ``if`` — так просто читать удобнее (особенно если бы у нас было
-бы не просто ``print(a)``, а существенно более сложный код обработки
-очередного числа, сам включающий несколько ``if``'ов и т.п.).
+This one is better, as each iteration only processes one number, 
+but it still has drawbacks. First, there is an artificial instruction 
+``a = 1`` before the loop. Second, the condition ``a != 0``
+is duplicated; if you have to change it, you may forget that it
+is used twice. Third, you are going through ``if`` body in the *main* 
+branch of the loop execution (i.e. the branch on which most iterations 
+will be executed). This is not very convenient (from the point of readability): 
+after all, all the numbers except the last one will not be zeros. 
+So I would better write code which wouldn't require almost every iteration
+to step into ``if`` for handling a rare case of ``a == 0``.
+It would be much easier to read (especially if the processing would be 
+not just ``print(a)``, but a much more complex code including 
+several ``if``-statements itself and etc.).
 
-Но можно сделать следующим образом:
+Finally, you can implement it in this way:
 
 ::
 
@@ -415,28 +415,26 @@ while True и break
             break
         print(a)
 
-Искусственная конструкция ``0==0`` — это условие, которое всегда верно: нам
-надо, чтобы ``while`` выполнялся до бесконечности, и мог бы завершиться
-только по ``break``. На самом деле в питоне есть специальное слово ``True``,
-которое обозначает условие, которое всегда верно (и симметричное слово
-``False``, которое обозначает условие, которое не верно никогда).
-Соответственно, еще лучше писать ``while True:``...
+The artificial expression ``0 == 0`` is a condition that is always true: 
+we need ``while`` to execute infinitely, and only stop via ``break``.
+In fact, Python has a special word ``True`` in its syntax, denoting a condition
+that is always true (and a symmetric word ``False" denoting a condition 
+that is never true). Accordingly, it's even better to type ``while True:``...
 
-Этот вариант свободен от всех указанных выше недостатков. Каждая
-итерация работает с очередным числом, код считывания не дублируется, код
-проверки не дублируется, общая последовательность действий понятна, и
-основная ветка выполнения цикла находится в основном коде.
+This option is free from all the disadvantages mentioned above.
+Each iteration works with one number, reading code is not duplicated,
+the check is not duplicated, the overall sequence of operations is clear,
+the main branch of the loop goes straight through the main code.
 
-Вот так и следует писать любые циклы, в которых проверка условия нужна
-*в середине* тела цикла:
-
+This is how you should write any loops where the you need to check 
+the conditin *in the middle* of loop body:
 ::
 
     while True:
-        что-то сделали
-        if надо завершить работу:
+        some processing
+        if exit_condition:
             break
-        сделали что-то еще
+        some more processing
 
 Примеры решения задач
 ---------------------
