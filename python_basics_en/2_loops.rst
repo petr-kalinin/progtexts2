@@ -529,40 +529,31 @@ starts with zero. So the whole code will be such as given::
 Here you are faced with the fact that you don't know in advance 
 (at the stage of writing the program) how many numbers you'll have to read.
 First, the number :math:`N` will be entered, and after that :math:`N` more numbers. 
-I.e. if 3 is input as the first number, then there will be 3 more numbers,
+I.e. if 3 is input as the first number, then there will be 3 more numbers following,
 and if 137 is input as the first number, there will be 137 more numbers. 
 This is radically different from what you did before,
-when you knew, for example, that exactly 6 numbers are always input.
+when you knew, for example, that exactly 6 numbers are always entered.
 
-But loops are the thing allowing you to repeat some operation certain times, 
-and at the stage of writing the program you (?) don't have to know how many times 
-you need to do it. In the example above, you output data inside the loop, and here, 
+But loops are exactly the thing allowing you to repeat some operation certain times, 
+and at the stage of writing the program it's not necessary to know how many times 
+you need to do it. In the example above, you've output data inside the loop, and here, 
 according to the task, you will have to *read* data inside the loop.
 
-!TMP DUPLICATED SEGMENT!
-Здесь вы сталкиваетесь с тем, что заранее (на этапе написания программы) вы не знаете, сколько чисел надо будет вводить.
-Вы должны сначала ввести число :math:`N`, а потом еще :math:`N` чисел, т.е. если вам первым числом вводят 3, значит, дальше будет еще 3 числа,
-а если первым числом вводят 137, то дальше будет еще 137 чисел. Это радикально отличается от того, что вы делали раньше,
-когда вы знали, например, что всегда вводится ровно 6 чисел.
-
-Но как раз циклы и позволяют повторить некоторую операцию заданное число раз, причем на этапе написания программы
-вам не обязательно знать, сколько раз надо это делать. В примере выше внутри цикла вы выводили данные,
-а тут по смыслу задачи внутри цикла вам придется *считывать* данные.
-!END TDS!
 First, you read :math:`N`::
 
     n = int(input())
 
-а дальше вам надо написать цикл, повторяющийся :math:`N` раз, и внутри цикла считывать числа::
+Then you need a loop iterating :math:`N` times and reading numbers inside it::
 
     for i in range(n):
         x = int(input())
         ...
 
-Дальше надо у каждого числа проверить, четное ли оно: ``if x % 2 == 0``, ну и если четное, то увеличить счетчик четных чисел на единицу.
-Такой счетчик, естественно, надо завести заранее. 
+Then each number must be checked if it's even: ``if x % 2 == 0``. If so,
+the even numbers counter should be increased by one.
+Obviously, you need to create such a counter beforehand.
 
-Итого получаем::
+Finally you'll get::
 
     n = int(input())
     k = 0
@@ -572,75 +563,86 @@ First, you read :math:`N`::
             k += 1
     print(k)
 
-Обратите внимание, что вывод ответа (``k``) надо делать после окончания цикла, поэтому команда ``print`` пишется без отступа.
+Note that the output of the answer (``k``) is outside the loop so
+``print`` doesn't have an indent.
 
 .. task::
 
-    Посчитайте сумму :math:`1+2+3+\ldots+N`.
+    Calculate the sum: :math:`1+2+3+\ldots+N`.
 
-    **Входные данные**: Вводится одно целое число :math:`N`.
+    **Input**: One integer number :math:`N`.
 
-    **Входные данные**: Выведите искомую сумму.
+    **Output**: Print the required sum.
 
-    **Пример**:
+    **Example**:
 
-    Входные данные::
+    Input::
 
         2
 
-    Выходные данные::
+    Output::
 
         3
 
-    Входные данные::
+    Input::
 
         5
 
-    Выходные данные::
+    Output::
 
         15
     |
     |
     |
 
-(Конечно, эту задачу можно решить известной формулой,
-но давайте все-таки напишем цикл.)
+(Of course, this problem can be solved in one line via a 
+well-known formula, but let's do it with a loop)
 
-(Обратите еще внимание, что ввод 2 корректен, и ответ на 2 равен 3, несмотря на то, что в формуле написана и двойка, и тройка, и :math:`N`.
-Это стандартная особенность таких математических обозначений: в формуле с многоточием пишется побольше слагаемых,
-чтобы была понятна логика, но если :math:`N` маленькое, то просто остается только столько слагаемых, сколько надо.)
+(Note as well: input 2 is correct and gives the answer 3 despite the fact 
+that both two, three and :math:`N` are written in the formula.
+This is a standard feature of such mathematical notation: in a formula 
+with an ellipsis, more terms are written for the logic to be clear, 
+but if :math:`N` is small, then only as many terms as necessary remain.
 
-В такой задаче полезно подумать, как бы вы считали ответ вручную.
-Часто говорят: сложил бы все числа.
-Но если подумать, вы же не сможете сложить сразу все пять чисел.
-Вы наверняка будете складывать числа по очереди:
-сначала к 1 прибавляете 2, потом к результату прибавляете 3,
-потом к результату прибавляете 4, и т.д.
+In such a problem, it is useful to think about how you'd count 
+the answer "by hand". A typical answer is: I would just add up all the numbers!
+But if you think about it, you'll realize you can't add up five numbers at once.
+You will probably add the them in turn:
+first add 2 to 1, then add 3 to the result,
+then add 4 to the result, and etc.
 
-Соответственно, какая картина вырисовывается: у вас много раз повторяется
-одно и то же действие: к текущей сумме прибавить очередное число. Значит, нам, во-первых,
-явно нужен цикл, перебирающий числа подряд, во-вторых, нам явно нужна
-переменная для текущей суммы, пусть это будет переменная :math:`k`. 
-Соответственно, получается что-то такого рода::
+Thus, a pattern emerges: you repeat one operation many times. 
+This operation is addition of the next number to the current sum.
+So first, we obviously need a loop iterating over the numbers one by one, 
+second, we clearly need a variable for the current sum, let it be :math:`k'.
+Accordingly, it's something like this::
 
     for i in .....:
         ... k + i
 
-т.е. вам надо к :math:`k` прибавить :math:`i`.
-Но просто так прибавлять смысла нет, надо куда-нибудь сохранить результат.
-И тут фокус, возможно, не очень очевидный: результат надо сохранять в :math:`k`!
-Потому что на следующей итерации цикла именно к этому результату
-надо будет прибавлять следующее :math:`i`::
+i.e. you need to add т.е. :math:`i` to :math:`k`.
+But there's no point in just adding, you need to save the result somewhere.
+And here's the trick may not be obvious: the result must be assigned to :math:`k` itself!
+Because on the next iteration of the loop you'll need to add next :math:`i` exactly to this result::
 
     for i in .....:
         k = k + i
+
+All that's left is to understand what are the bounds of the loop
+and what should be the initial value of :math:`k`.
+A typical option you may come up with is to initialize :math:`k` with 1 
+(the first summand), and to organize a loop from 2 to :math:`N`.
+But in fact it is a little easier to initially assign 0 to :math:`k`
+(an empty sum, as if there are no summands at all),
+and do the loop do from 1 to :math:`N` (of course, 
+including :math:`N`, so you need to use ``range(1, n + 1)``).
 
 осталось понять, в каких пределах надо запускать цикл, а также что изначально записать в :math:`k`.
 Напрашивается решение в :math:`k` записать 1 (первое слагаемое), а цикл делать от 2 до :math:`N`,
 но на самом деле немного проще изначально в :math:`k` записать 0 (пустую сумму, т.е. как будто нет слагаемых вообще),
 а цикл делать от 1 до :math:`N`, причем, естественно, :math:`N` включительно, поэтому надо писать ``range(1, n + 1)``.
 
-Итоговый код, вместе с вводом и выводом переменных::
+So here's the entire code with the input and output::
 
     n = int(input())
     k = 0
@@ -649,58 +651,60 @@ First, you read :math:`N`::
     print(k)
     
 .. task::
+    Masha wants to save up for a new phone. The phone costs :math:`N` rubles.
+    Masha can save :math:`K` rubles a day and does it every day except Sunday,
+    when she spends her money going to the cinema.
+    Masha starts saving on Monday. In how many days will she get the required amount?
 
-    Маша хочет накопить на новый телефон. Телефон стоит :math:`N` рублей.
-    Маша может откладывать :math:`K` рублей в день каждый день, за исключением воскресенья,
-    когда она тратит деньги на поход в кино.
-    Маша начинает копить в понедельник. За сколько дней она накопит нужную сумму?
+    **Input**: Two numbers :math:`N` and :math:`K`.
 
-    **Входные данные**: Вводятся два числа: :math:`N` и :math:`K`.
+    **Output**: Print the number of days Masha needs.
 
-    **Входные данные**: Выведите искомое количество дней
+    **Example**:
 
-    **Пример**:
-
-    Входные данные::
+    Input::
 
         100 50
 
-    Выходные данные::
+    Output::
 
         2
 
-    Входные данные::
+    Input::
 
         100 10
 
-    Выходные данные::
+    Output::
 
         11
     |
     |
     |
 
-В принципе, эту задачу не так уж и сложно решить формулой, без циклов (но скорее всего с if'ами),
-но давайте напишем цикл.
+In theory, it's not diificult to solve it with a formula and no loops
+(but most likely with an ``if``, maybe not only one). But let's work out a loop.
 
-Попробуем промоделировать, как будет увеличиваться сумма накопленных денег у Маши. Обозначим текущую сумму как :math:`s`.
-Каждый день, кроме воскресенья, к ней прибавляется :math:`K`.
-Логично написать цикл, чтобы одна итерация цикла соответствовала одному дню.
-Цикл надо продолжать до тех пор, пока не накопится нужная сумма, поэтому естественно написать цикл ``while``::
-
-    while s < n:
-
-Что мы делаем в цикле? Надо прибавить :math:`K` к :math:`s`, но только если текущий день не воскресенье::
+We'll try to replicate how the amount of Masha's saved money will increase.
+Let's denote the current sum as :math:`s`. Every day except Sunday :math:`K` 
+is added to it. It's reasonable to write a loop where one iteration 
+corresponds to one day. The loop should be executed until 
+the required amount is reached, so it is natural to use ``while`` loop::
 
     while s < n:
-        if .....:  # тут надо написать условие «не воскресенье»
+
+What shoud we do inside the loop? Add :math:`K` to :math:`s`... 
+but only if the current day is not Sunday
+
+    while s < n:
+        if .....:  # here must be a «not Sunday» condition
             s = s + k
 
-Как понять, воскресенье сейчас или нет? Естественно, нам нужен какой-нибудь счетчик дней, заодно он нам нужен будет
-и для вывода ответа. Заводим переменную :math:`day` — номер текущего дня. Маша начинает копить в понедельник,
-считая это днем 1, понимаем, что воскресенья — это дни, номера которых делятся на 7.
+How can we get if today's Sunday or not? Naturally, we need some kind of day counter,
+we'll then also use it to output the answer. Let's create a variable :math:`day` which
+will represent the number of the current day. Masha starts saving on Monday. Considering 
+it's  day 1, we easily get that Sundays are days whose numbers are evenly divided by 7.
 
-Получаем примерно такой код::
+The code will look like this::
 
     day = 1
     s = 0
@@ -709,8 +713,9 @@ First, you read :math:`N`::
             s = s + k
         day = day + 1
 
-Тут единственная проблема — мы заканчиваем цикл, уже перейдя к очередному дню, т.е. в этом коде :math:`day`
-получается всегда на 1 больше, чем нужно. Поэтому при выводе ответа надо вычесть единицу::
+Here's an only trouble left: the loop terminates already after moving to the next day,
+i.e. in this code :math:`day` will be always greater than we need by 1.
+Therefore, when we output the answer, you we to subtract 1::
 
     n, k = map(int, input().split())
     day = 1
