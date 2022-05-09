@@ -693,10 +693,10 @@ the required amount is reached, so it is natural to use ``while`` loop::
     while s < n:
 
 What shoud we do inside the loop? Add :math:`K` to :math:`s`... 
-but only if the current day is not Sunday
+but only if the current day is not Sunday::
 
     while s < n:
-        if .....:  # here must be a «not Sunday» condition
+        if .....:  # here must be a "not Sunday" condition
             s = s + k
 
 How can we get if today's Sunday or not? Naturally, we need some kind of day counter,
