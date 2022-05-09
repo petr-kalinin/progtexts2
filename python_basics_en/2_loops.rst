@@ -418,7 +418,7 @@ Finally, you can implement it in this way:
 The artificial expression ``0 == 0`` is a condition that is always true: 
 we need ``while`` to execute infinitely, and only stop via ``break``.
 In fact, Python has a special word ``True`` in its syntax, denoting a condition
-that is always true (and a symmetric word ``False" denoting a condition 
+that is always true (and a symmetric word ``False`` denoting a condition 
 that is never true). Accordingly, it's even better to type ``while True:``...
 
 This option is free from all the disadvantages mentioned above.
