@@ -436,28 +436,27 @@ the conditin *in the middle* of loop body:
             break
         some more processing
 
-Примеры решения задач
----------------------
+Sample problems and solutions
+-----------------------------
 
-Приведу несколько примеров задач, аналогичных тем, которые встречаются на олимпиадах
-и в моем курсе.
+Here are a few sample problems similar to those you may come across on contests and in my course.
 
 .. task::
 
-    В классе :math:`N` школьников. На уроке физкультуры тренер говорит «на первый-второй рассчитайтесь».
-    Выведите, что скажут ученики.
+    There are :math:`N` students in the class. On a PE lesson the teacher says "count off one to two".
+    Output what the students will say.
 
-    **Входные данные**: Вводится одно целое число — количество человек в классе.
+    **Input**: One integer number — the number of students in the class.
 
-    **Входные данные**: Выведите последовательность чисел 1 и 2, в том порядке, как будут говорить школьники.
+    **Output**: A sequence of numbers 1 and 2 in the order corresponding to what students will say.
 
-    **Пример**:
+    **Example**:
 
-    Входные данные::
+    Input::
 
         5
 
-    Выходные данные::
+    Output::
 
         1
         2
@@ -468,24 +467,30 @@ the conditin *in the middle* of loop body:
     |
     |
 
-Сначала, конечно, считываем :math:`N`::
+Firstly, of course, we read :math:`N`::
 
     n = int(input())
 
-Самое главное в задачах на циклы — понять, какая операция будет повторяться, и сколько раз или до какого условия,
-и чему будет соответствовать каждое повторение (итерация) цикла.
-В этой задаче более-менее понятно: надо :math:`N` раз вывести число, и каждая итерация
-будет соответствовать одному школьнику. Поэтому логично написать цикл ``for i in range(n)``,
-он как раз осуществит :math:`N` повторений.
+The most important thing in problems on the topic of loops is to understand 
+what operation(s) will be repeated, how many times or upon what condition,
+and what each repetition (iteration) of the cycle will correspond to.
+In this problem, it's more or less clear: we need to print a number :math:`N` times, 
+and each iteration will correspond to one student's answer. 
+Therefore, it's reasonable to write a loop ``for i in range(n)``
+which will give exactly :math:`N` repetitions.
 
-Дальше надо понять, что делать внутри каждого повторения. Здесь надо решить, что выводить — 1 или 2 —
-и соответственно вывести. В цикле ``for`` у нас как раз есть переменная ``i``, которая хранит номер текущего школьника.
-(Это очень важный момент — внутри цикла вы должны писать общий код, который будет работать
-в общем виде на каждой итерации, и обычно как раз стоит опираться на какие-то переменные,
-отражающие текущее состояние, в цикле ``for`` это обычно переменная цикла.)
+Then we need to understand what to do inside each repetition. 
+Here we have to decide what to output (1 or 2) and accordingly 
+output it. In our ``for`` loop, we have the variable ``i`` 
+in which the number of the current student is stored.
+(This is a very important point — inside the loop you have to 
+write code that will work in a generic way on each iteration, 
+and usually it's a good point to rely on some variables representing 
+the current state. In the ``for`` loop it's usually the looping variable.)
 
-Ясно, что число, которое надо вывести, зависит от четности ``i``. Надо еще учесть,
-что итерация цикла (``range(n)``) начинается с нуля, поэтому общий код получается такой::
+Here it's clear that the number we need to output depends on the parity of ``i``.
+We should also take into account that the iteration interval (``range(n)``)
+starts with zero. So the whole code will be such as given::
 
     n = int(input())
     for i in range(n):
@@ -496,15 +501,17 @@ the conditin *in the middle* of loop body:
 
 .. task::
 
-    Вводятся :math:`N` чисел. Посчитайте, сколько среди них четных.
+    :math:`N` numbers are given. Count how many of them are even.
 
-    **Входные данные**: На первой строке вводится одно число :math:`N`. Далее следуют :math:`N` строк по одному числу на каждой — заданные числа.
+    **Input**: On the first line there's one number :math:`N`.
+    On the following :math:`N` lines there are given numbers — 
+    one number on each line.
 
-    **Входные данные**: Выведите ответ на задачу.
+    **Output**: Print the quantity of even numbers.
 
-    **Пример**:
+    **Example**:
 
-    Входные данные::
+    Input::
 
         4
         10
@@ -512,13 +519,27 @@ the conditin *in the middle* of loop body:
         12
         13
 
-    Выходные данные::
+    Output::
 
         2
     |
     |
     |
+    
+Here you are faced with the fact that you don't know in advance 
+(at the stage of writing the program) how many numbers you'll have to read.
+First, the number :math:`N` will be entered, and after that :math:`N` more numbers. 
+I.e. if 3 is input as the first number, then there will be 3 more numbers,
+and if 137 is input as the first number, there will be 137 more numbers. 
+This is radically different from what you did before,
+when you knew, for example, that exactly 6 numbers are always input.
 
+But loops are the thing allowing you to repeat some operation certain times, 
+and at the stage of writing the program you (?) don't have to know how many times 
+you need to do it. In the example above, you output data inside the loop, and here, 
+according to the task, you will have to *read* data inside the loop.
+
+!TMP DUPLICATED SEGMENT!
 Здесь вы сталкиваетесь с тем, что заранее (на этапе написания программы) вы не знаете, сколько чисел надо будет вводить.
 Вы должны сначала ввести число :math:`N`, а потом еще :math:`N` чисел, т.е. если вам первым числом вводят 3, значит, дальше будет еще 3 числа,
 а если первым числом вводят 137, то дальше будет еще 137 чисел. Это радикально отличается от того, что вы делали раньше,
@@ -527,8 +548,8 @@ the conditin *in the middle* of loop body:
 Но как раз циклы и позволяют повторить некоторую операцию заданное число раз, причем на этапе написания программы
 вам не обязательно знать, сколько раз надо это делать. В примере выше внутри цикла вы выводили данные,
 а тут по смыслу задачи внутри цикла вам придется *считывать* данные.
-
-Вы считываете сначала :math:`N`::
+!END TDS!
+First, you read :math:`N`::
 
     n = int(input())
 
