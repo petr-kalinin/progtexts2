@@ -286,6 +286,7 @@ Here you need to read one number, compare it with 20 and, depending on the resul
         print("off")
 
 .. task::
+
     A new model of air conditioning system takes into account the level of humidity in the room. Because of the humidity rise upon cooling, the system
     will not turn on if the relative humidity is above 80%.
 
@@ -326,6 +327,7 @@ not "greater than or equal to")  and the humidity is **not higher** than 80%
 (so it's "less than or equal to", not just "less than").
 
 .. task::
+
     In Masha's room there's a simple air conditioner. It turns on if the temperature in the room is above 20 degrees. If it's equal or below 20 degrees,
     it turns off. Masha wants to cool the room, but she's smart and realizes that if the outside temperature is lower than inside,
     she just needs to open the window. Write a program that defines what Masha should do.
@@ -381,6 +383,7 @@ After that (as in many other problems) there are several solutions. For example,
 
 But it's possible to get rid of nested ``if``-statements via the opposite check: isn't Masha better open the window?
 ::
+
     t_in = int(input())
     t_out = int(input())
     if t_in > t_out:
@@ -391,12 +394,12 @@ But it's possible to get rid of nested ``if``-statements via the opposite check:
         print("ac off")
 
 .. task::
-    On a PE lesson the teacher (?)
-    На уроке физкультуры тренер говорит «на первый-второй рассчитайтесь». Вася стоит :math:`N`-ым по счету. Что он скажет, «первый» или «второй»?
+    On a PE lesson the teacher says "count off one to two". 
+    Vasya is :math:`N`th in a row. What should he say, "one" or "two"?
 
-    **Input**: The first line contains the only number :math:`N`.
+    **Input**: The first line contains one number :math:`N`.
 
-    **Output**: Выведите строку ``first``, если Вася скажет «первый», и ``second``, если «второй».
+    **Output**: Print ``one`` or ``two`` according to how Vasya should answer.
 
     **Example**:
 
@@ -408,7 +411,7 @@ But it's possible to get rid of nested ``if``-statements via the opposite check:
 
     .. code-block:: text
 
-        first
+        one
     |
     |
     |
@@ -417,9 +420,9 @@ Obviously, the answer depends on :math:`N` being odd or even. This can be checke
 
     n = int(input())
     if n % 2 == 1:
-        print("first")
+        print("one")
     else:
-        print("second")
+        print("two")
 
 
 .. [1] Of course, real air conditioners work differently. They have separated thresholds for turning on and off (it's called hysteresis).
