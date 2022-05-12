@@ -1,28 +1,30 @@
 .. highlight:: python
 
-Массивы
-=======
+Arrays
+======
 
-Часто в программах бывает надо работать с большим количество однотипных
-переменных. Например, пусть вам надо записать рост каждого человека в
-классе — это много целых чисел. Вы можете завести по одной переменной на
-каждого ученика, но это очень не удобно. Специально для этого придуманы
-массивы.
+It's a typical situation in programming that you need to work with 
+a large number of variables that are all of the same type. 
+For example, suppose you need to save the height of everybody in
+the class — this is a huge amount of integers. You can use one variable 
+for each student, but this is highly inconvenient. Arrays 
+were designed specifically for this purpose.
 
-Общее представление о массиве
------------------------------
+General idea of the array
+-------------------------
 
-Массив — это
-переменная, в которой хранится много значений. 
-(В питоне еще принято название «список», это то же самое,
-хотя в других языках программирования «список» и «массив» — это разные вещи.)
-Массив можно представлять
-себе в виде такой последовательности ячеек, в каждой из которых записано
-какое-то число:
+An array is a kind of variable (more strictly, a data type) 
+in which a number of values can be stored. 
+(In Python it's also called "list", in this particular case
+it's the same, but in other programming lanugages
+"list" and "array" mean radically diffrernt things)
+You can imagine an array like kind of cell sequence, where in each cell
+a certain number is written.
 
 |image0|
 
-Такие ячейки нумеруются последовательно, **начиная с нуля**. 
+These cells are enumerated consecutively, **starting from zero**.
+
 На картинке выше числа внутри
 квадратиков — это значения, хранящиеся в массиве (еще говорят «элементы» массива, а числа под
 квадратиками — номера этих элементов (еще говорят «индексы» элементов).
