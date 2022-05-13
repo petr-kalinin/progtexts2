@@ -10,8 +10,8 @@ the class — this is a huge amount of integers. You can use one variable
 for each student, but this is highly inconvenient. Arrays 
 were designed specifically for this purpose.
 
-General idea of the array
--------------------------
+General idea of arrays
+----------------------
 
 An array is a kind of variable (more strictly, a data type) 
 in which a number of values can be stored. 
@@ -72,50 +72,47 @@ an element of the array.
 
 Iterating through the array
 ---------------------------
-
-Но обычно вам надо работать сразу со всеми элементами массива. Точнее,
-сразу со всеми как правило не надо, надо по очереди с каждым (говорят:
-"пробежаться по массиву"). Для этого вам очень полезная вещь — это цикл
-``for``. Если вы знаете, что в массиве ``n`` элементов (т.е. если у вас
-есть переменная ``n`` и в ней хранится число элементов в массиве), то
-это делается так:
-
+Usually you need to work with all the elements at once. More precisely,
+not with all the elements simultaneously but with each one in order 
+(it's called "run through the array" or "iterate over the array"). 
+The ``for`` loop is quite useful for this. If you know that there are 
+``n`` elements in the array (i.e. if you have a variable `n` and 
+it stores the number of elements in the array), then it is done like this:
 ::
 
     for i in range(n):
-        ... что-то сделать с элементом a[i]
+        ... do something with element a[i]
 
-например, вывести все элементы массива на экран:
-
+For example, let's display all the elements 
+of the array on the screen:
 ::
 
     for i in range(n):
         print(a[i])
 
-или увеличить все элементы массива на единицу:
-
+or increase every element of the array by one:
 ::
 
     for i in range(n):
         a[i] += 1
 
-и т.п. Конечно, в цикле можно и несколько действий делать, если надо.
-Осознайте, что это не магия, а просто полностью соответствует тому, что
-вы знаете про работу цикла ``for``.
+And so on Of course, you can perform several operations in the loop 
+if you need. Note that there's no magic, this just fully corresponds 
+to what you already know about the ``for`` loop.
 
-Если же у вас нет переменной ``n``, то вы всегда можете воспользоваться
-специальной функцией ``len``, которая возвращает количество элементов в
-массиве::
+If there's no such variable ``n``, you can always use a special 
+``len`` function which returns the number of elements in
+the array::
 
     for i in range(len(a)):
         ...
 
-Функцию ``len``, конечно, можно использовать где угодно, не только в
-заголовке цикла. Например, просто вывести длину массива —
-``print(len(a))``.
+Of course, you can use ``len`` anywhere, not just in
+the loop header. For example, you may just output the 
+length of the array: ``print(len(a))``.
 
-Операции на массиве
--------------------
+Operations upon the array
+-------------------------
 
 Еще ряд полезных операций с массивами:
 
