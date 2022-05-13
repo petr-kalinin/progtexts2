@@ -25,49 +25,53 @@ a certain number is written.
 
 These cells are enumerated consecutively, **starting from zero**.
 
-На картинке выше числа внутри
-квадратиков — это значения, хранящиеся в массиве (еще говорят «элементы» массива, а числа под
-квадратиками — номера этих элементов (еще говорят «индексы» элементов).
-Например, элемент с индексом 2 имеет значение -3.
-Обратите внимание, что в массиве 6 элементов, но последний имеет номер
-5, т.к. нумерация начинается с нуля. Это важно!
+On the figure above, the numbers inside the cells represent the values 
+stored in the array (they're also called *elements* of the array)
+and the numbers under the cells are the "numbers of these elements" 
+(they're also called *indices* of the elements).
+For example, an element with index 2 has the value -3.
+Note that there are 6 elements in the array, but the last one has 
+index 5, because the numbering starts from zero. This is important!
 
-Соответственно, переменная теперь может хранить целиком такой массив.
-Создается такой массив, например, путем перечисления значений в
-квадратных скобках::
+So, one variable can store the entire array.
+Such an array can be created, for example, by listing all the values in
+square brackets::
 
     a = [7, 5, -3, 12, 2, 0]
 
-Теперь переменная ``a`` хранит этот массив. К элементам массива можно
-обращаться тоже через квадратные скобки: ``a[2]`` — это элемент номер 2,
-т.е. в нашем случае это ``-3``. Аналогично, ``a[5]`` — это ``0``. В
-квадратных скобках можно использовать любые арифметические выражения и
-даже другие переменные: ``a[2*2-1]`` — это ``12``, ``a[i]`` обозначает
-"возьми элемент с номером, равным значению переменной ``i``", аналогично
-``a[2*i+1]`` обозначает "возьми элемент с номером, равным ``2*i+1``", или
-даже ``a[a[4]]`` обозначает "возьми элемент с номером, равным четвертому
-элементу нашего массива" (в нашем примере ``a[4]`` — это ``2``, поэтому
-``a[a[4]]`` — это ``a[2]``, т.е. ``-3``).
+Now this array is wholly stored in ``a``.  
 
-Если указанный номер слишком большой (больше длины массива), то питон
-выдаст ошибку (т.е. в примере выше ``a[100]`` будет ошибкой, да и даже
-``a[6]`` тоже). Если указан отрицательный номер, то тут действует хитрое
-правило. Отрицательные номера обозначают нумерацию массива с конца:
-``a[-1]`` — это всегда последний элемент, ``a[-2]`` — предпоследний и
-т.д. В нашем примере ``a[-6]`` равно 7. Слишком большой отрицательный
-номер тоже дает ошибку (в нашем примере ``a[-7]`` уже ошибка).
+Array elements can also be accessed through square brackets:
+``a[2]`` is element number 2, i.e. in our case it is ``-3``.
+Similarly, ``a[5]`` is ``0``. You can put any arithmetic expressions
+and even other variables into square brackets: ``a[2*2-1]`` is ``12``, 
+``a[i]`` means "take the element with the index equal to the value of 
+the variable ``i``", similarly ``a[2*i+1]`` means "take the element 
+with the index equal to ``2*i+1``", and even even ``a[a[4]]`` means 
+"take the element whose index is equal to the value of the fourth
+ element of our array" (in our example, ``a[4]`` is ``2`` so
+``a[a[4]]`` is `a[2]", i.e. ``-3``)
 
-С элементами массива можно работать как с привычными вам переменными.
-Можно им присваивать значения: ``a[3] = 10``, считывать с клавиатуры:
-``a[3] = int(input())``, выводить на экран: ``print(a[3])``,
-использовать в выражениях: ``a[3+i*a[2]] = 3+abs(a[1]-a[0]*2+i)`` (здесь
-``i`` — какая-то еще целочисленная переменная для примера), использовать
-в if'ах: ``if a[i]>a[i-2]:``, или ``for a[2] in range(n)`` и т.д. Везде,
-где вы раньше использовали переменные, можно теперь использовать элемент
-массива.
+If the specified number is too big (greater than the length of the array),
+then Python will stop running the program and output an error 
+(i.e. in the example above, ``a[100]`` will cause an error, and even
+``a[6]`` too). If a negative number is given, then a tricky
+rule applies here. Negative numbers define enumerating the array from the end:
+``a[-1]`` is always the last element, ``a[-2]`` is the one before last, 
+and etc. In our example, ``a[-6]`` is 7. Too big negative number 
+will also cause an error (in our example, ``a[-7]`` is already faulty).
 
-Обход массива
--------------
+You can work with array elements as with usual variables.
+You can assign values to them: ``a[3] = 10``, input from keyboard:
+``a[3] = int(input())``, output to the screen: ``print(a[3])``,
+use in expressions: ``a[3+i*a[2]] = 3+abs(a[1]-a[0]*2+i)``
+(here ``i`` is some sample integer variable), use in if: 
+``if a[i]>a[i-2]: ...``, or ``for a[2] in range(n)``, etc.
+Wherever you've used variables before, you can also use
+an element of the array.
+
+Iterating through the array
+---------------------------
 
 Но обычно вам надо работать сразу со всеми элементами массива. Точнее,
 сразу со всеми как правило не надо, надо по очереди с каждым (говорят:
