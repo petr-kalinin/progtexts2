@@ -70,8 +70,8 @@ use in expressions: ``a[3+i*a[2]] = 3+abs(a[1]-a[0]*2+i)``
 Wherever you've used variables before, you can also use
 an element of the array.
 
-Iterating through the array
----------------------------
+Iterating over the array
+------------------------
 Usually you need to work with all the elements at once. More precisely,
 not with all the elements simultaneously but with each one in order 
 (it's called "run through the array" or "iterate over the array"). 
@@ -111,100 +111,100 @@ Of course, you can use ``len`` anywhere, not just in
 the loop header. For example, you may just output the 
 length of the array: ``print(len(a))``.
 
-Operations upon the array
--------------------------
+Array operations
+----------------
 
-Еще ряд полезных операций с массивами:
+Here's a set of useful operations which can be applied to arrays:
+-   ``a[i]`` (repeating it just to make it easier to find) — 
+    returns the element of the array with the index (number) ``i``.
+-   ``len(a)`` (repeating it just to make it easier to find) — 
+    returns the length of the array.
+-   ``a.append(x)`` — appends a new element with the value ``x``
+    to the array. As a result, the length of the array increases by 1.
+    Of course, any arithmetic expression can be used instead of x.
+-   ``a.pop()`` — symmetric to the previous one, removes the last 
+    element from the array. The length of the array decreases by 1.
+    If you need to save the value of the deleted element, you may just 
+    save the result of the call to a new variable: ``res = a.pop()``.
+-   ``a * 3`` — returns an array obtained by appending the array ``a`` to itself 
+    three times. For example, ``[1, 2, 3] * 3`` will return
+    ``[1, 2, 3, 1, 2, 3, 1, 2, 3]``. Of course, instead of the number 3 
+    here can be any arithmetic expression. The most common use of this
+    construction is such: if you need an array of length ``n`` filled with,
+    for example, zeros, just write ``[0] * n``.
+-   ``b = a`` — assignment of arrays. Now in ``b`` is written exactly
+    the same array as in ``a``. The same — in the literal sense: now
+    ``a`` and ``b`` mean **the same array**, and all **changes in** ``b`` 
+    **will be reflected in** ``a`` **and vice versa.** Once again,
+    because this is very important. Assigning arrays (and generally any 
+    complex objects) in python **does not copy the array**, but simply 
+    makes both variables refer to the same array, and via changing 
+    any of them you in fact change one array. But actually at the same time 
+    there are many nuances, just be ready for the unexpected things.
+-   ``b = a[1:4]`` ("slice") — makes a new array consisting of elements
+    the old array beginning from the first (remember numbering from zero!)
+    and ending with the third (i.e. up to the fourth but not inclusive,
+    similar to how ``range`` works); this array is saved to ``b``.
+    For the example above, it will result ``[5, -3, 12]``. Of course, 
+    istead of 1 and 4 can be any arithmetic expression. Moreover, these
+    indexes can be omitted. If so, the beginning and the end of
+    the original array will be implied respectively. For example, 
+    ``a[:3]`` means the first three elements of the array
+    (zero, first and second),
+    ``a[1:]`` — all elements except zero,
+    ``a[:-1]`` — all elements except the last one (!), and 
+    ``a[:]`` is a copy of the entire array. And this is exactly
+    a **copy**, i.e. the notation ``b = a[:]`` naturally copies
+    the array, the resulting arrays are not related in any way,
+    and here changes in ``b`` will not affect ``a`` (unlike ``b = a``).
 
--  ``a[i]`` (на всякий случай повторю, чтобы было легче найти) — элемент
-   массива с номером ``i``.
--  ``len(a)`` (на всякий случай повторю, чтобы было легче найти) — длина
-   массива.
--  ``a.append(x)`` — приписывает к массиву новый элемент со значением
-   ``x``, в результате длина массива становится на 1 больше. Конечно,
-   вместо x может быть любое арифметическое выражение.
--  ``a.pop()`` — симметричная операция, удаляет последний элемент из
-   массива. Длина массива становится на 1 меньше. Если нужно запомнить
-   значение удаленного элемента, надо просто сохранить результат вызова
-   ``pop`` в новую переменную: ``res = a.pop()``.
--  ``a * 3`` — это массив, полученный приписыванием массива ``a`` самого
-   к себе три раза. Например, ``[1, 2, 3] * 3`` — это
-   ``[1, 2, 3, 1, 2, 3, 1, 2, 3]``. Конечно, на месте тройки тут может
-   быть любое арифметическое выражение. Самое частое применение этой
-   конструкции — если вам нужен массив длины ``n``, заполненный,
-   например, нулями, то вы пишете ``[0] * n``.
--  ``b = a`` — присваивание массивов. Теперь в ``b`` записан тот же
-   массив, что и в ``a``. Тот же — в прямом смысле слова: теперь и
-   ``a``, и ``b`` соответствуют **одному и тому же массиву**, и
-   **изменения в** ``b`` **отразятся в** ``a`` **и наоборот.** Еще раз, потому
-   что это очень важно. Присваивание массивов (и вообще любых сложных
-   объектов) в питоне **не копирует массив**, а просто обе переменные
-   начинают ссылаться на один и тот же массив, и изменения массива через
-   любую из них меняет один и тот же массив. При этом на самом деле тут
-   есть многие тонкости, просто будьте готовы к неожиданностям.
--  ``b = a[1:4]`` ("срез") — делает новый массив, состоящий из элементов
-   старого массива начиная со первого (помните про нумерацию с нуля!) и
-   заканчивая третьим (т.е. до четвертого, но не включительно,
-   аналогично тому, как работает ``range``); этот массив сохраняется в
-   ``b``. Для примера выше получится ``[5, -3, 12]``. Конечно, на месте
-   1 и 4 может быть любое арифметическое выражение. Более того, эти
-   индексы можно вообще не писать, при этом автоматически
-   подразумевается начало и конец массива. Например, ``a[:3]`` — это
-   первые три элемента массива (нулевой, первый и второй), ``a[1:]`` —
-   все элементы кроме нулевого, ``a[:-1]`` — все элементы кроме
-   последнего (!), а ``a[:]`` — это копия всего массива. И это именно
-   **копия**, т.е. запись ``b = a[:]`` именно копирует массив,
-   получающиеся массивы никак не связаны, и изменения в ``b`` не влияют
-   на ``a`` (в отличие от ``b = a``).
+Input and output of an array
+----------------------------
 
-Ввод-вывод массива
-------------------
+How to input an array? At first, let's assume that all its elements
+are on the one line of the input file. Then there are two ways.
+The first is rather long but pretty clear::
 
-Как вам считывать массив? Во-первых, если все элементы массива задаются
-в одной строке входного файла. Тогда есть два способа. Первый — длинный,
-но довольно понятный:
-
-::
-
-    a = input().split()  # считали строку и разбили ее по пробелам
-                         # получился уже массив, но питон пока не понимает, что в массиве числа
+    a = input().split()  # reading a line and  splitting it in places of spaces
+                         # the result is already an array, but Python doesn't yet know it contains numbers
     for i in range(len(a)):
-        a[i] = int(a[i])  # прошли по всем элементам массива и превратили их в числа
+        a[i] = int(a[i])  # taking each element and turning it into an integer number
 
-Второй — покороче, но попахивает магией:
-
-::
+The second one is shorter but looks kind of magic::
 
     a = list(map(int, input().split()))
 
-Может показаться страшно, но на самом деле ``map(int, input().split())``
-вы уже встречали в конструкции
 
-::
+May seem scary, but in fact you've already seen ``map(int, input().split())``
+in this construction::
 
     x, y = map(int, input().split())
 
-когда вам надо было считать два числа из одной строки. Это считывает
-строку (``input()``), разбивает по пробелам (``.split()``), и превращает
-каждую строку в число (``map(int, ...)``). Для чтения массива все то же
-самое, только вы еще заворачиваете все это в ``list(...)``, чтобы явно
-сказать питону, что это массив.
+where you had to input two numbers from one line.
+This instruction set inputs a string (``input()``),
+splits it according to location of spaces (``.split()``)
+and turns each of the resulting strings into an integer number (``map(int, ...)``).
+When reading an array it's all the same, but besides 
+you also need to wrap it into ``list(...)`` to 
+explicitly tell Python that you need the result as an array
+(as ``list`` is a regular name for array type in Python).
 
-Какой из этих двух способов использовать для чтения данных из одной
-строки — выбирать вам, особой разницы нет.
+Which of these two way to use for reading arrays from one line?
+You may choose yourself, there's no significant difference.
 
-Обратите внимание, что в обоих способах вам не надо знать заранее,
-сколько элементов будет в массиве — получится столько, сколько чисел в
-строке. В задачах часто бывает что задается сначала количество
-элементов, а потом (обычно на следующей строке) сами элементы. Это
-удобно в паскале, c++ и т.п., где нет способа легко считать числа до
-конца строки; в питоне вам это не надо, вы легко считываете сразу все
-элементы массива до конца строки, поэтому заданное число элементов вы
-считываете, но дальше не используете:
+Note that in both ways you don't need to know in advance
+how many elements will the array contain — you will get as many
+as the quantity of numbers in the string. In tasks it's
+really typical that first the number of elements is given,
+and then (usually on the next line) the elements themselves are set.
+This is convenient in Pascal, C++, etc., where there is no way 
+to easily read numbers up to the end of the line.
+In Python you don't need it, as you cal easily read at once all
+the elements of the array up to the end of the line.
+So you have to read the given number of elements
+but have no need to use it afterwards::
 
-::
-
-    n = int(input())  # больше n не используем
+    n = int(input())  # n is not used anymore
     a = list(map(int, input().split()))
 
 Еще бывает, что числа для массива задаются по одному в строке. Тогда вам
@@ -219,40 +219,34 @@ Operations upon the array
     for i in range(n):
         a.append(int(input()))  # считали число и сразу добавили в конец массива
 
-Более сложные варианты — последовательность элементов по одному в
-строке, заканчивающаяся нулем, или задано количество элементов и сами
-элементы в той же строке — придумайте сами, как сделать (можете подумать
-сейчас, можете потом, когда попадется в задаче). Вы уже знаете всё, что
-для этого надо.
+Besides what we've just discussed, there are more complex cases, such as:
+a sequence of lines with one element in each line, ending with zero,
+or the number of elements and then elements themselves on the same line.
+Think of processing them by yourself (you may do it now or later when you'll
+come across them in problems). Now you already know everything you need for that.
 
-Как выводить массив? Если надо по одному числу в строку, то просто:
-
-::
+How to output an array? If it's ok to write one element in one line, it's simple::
 
     for i in range(len(a)):
         print(a[i])
 
-Если же надо все числа в одну строку, то есть два способа. Во-первых,
-можно команде ``print`` передать специальный параметр ``end=" "``,
-который обозначает "заканчивать вывод пробелом (а не переводом строки)":
-
-::
+Whereas if you need to put all elements in one line, there are two ways.
+First, you may use ``print`` with a special parameter ``end=" "``
+which means "terminate the output with a space (instead of line break)"::
 
     for i in range(len(a)):
         print(a[i], end=" ")
 
-Есть другой, более простой способ:
-
-::
+There's another, more simple way::
 
     print(*a)
 
-Эта магия обозначает вот что: возьми все элементы массива ``a`` и
-передай их отдельными аргументами в одну команду ``print``. Т.е.
-получается ``print(a[0], a[1], a[2], ...)``.
+This magic means the following: "take all the elements of the array ``a``
+and pass it as separate arguments to the ``print`` instruction".
+So, it's like ``print(a[0], a[1], a[2], ...)``. 
 
-Двумерные массивы
------------------
+Two-dimensional arrays
+----------------------
 
 Выше везде элементами массива были числа. Но на самом деле элементами
 массива может быть что угодно, в том числе другие массивы. Пример:
