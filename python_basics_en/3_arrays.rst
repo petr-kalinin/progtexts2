@@ -158,8 +158,8 @@ Here's a set of useful operations which can be applied to arrays:
     the array, the resulting arrays are not related in any way,
     and here changes in ``b`` will not affect ``a`` (unlike ``b = a``).
 
-Input and output of an array
-----------------------------
+How to input and output an array
+--------------------------------
 
 How to input an array? At first, let's assume that all its elements
 are on the one line of the input file. Then there are two ways.
