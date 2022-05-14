@@ -49,7 +49,7 @@ and even other variables into square brackets: ``a[2*2-1]`` is ``12``,
 the variable ``i``", similarly ``a[2*i+1]`` means "take the element 
 with the index equal to ``2*i+1``", and even ``a[a[4]]`` means 
 "take the element whose index is equal to the value of the fourth
- element of our array" (in our example, ``a[4]`` is ``2`` so
+element of our array" (in our example, ``a[4]`` is ``2`` so
 ``a[a[4]]`` is `a[2]", i.e. ``-3``)
 
 If the specified number is too big (greater than the length of the array),
@@ -115,6 +115,7 @@ Array operations
 ----------------
 
 Here's a set of useful operations which can be applied to arrays:
+
 -   ``a[i]`` (repeating it just to make it easier to find) — 
     returns the element of the array with the index (number) ``i``.
 -   ``len(a)`` (repeating it just to make it easier to find) — 
