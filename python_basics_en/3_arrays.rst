@@ -248,103 +248,100 @@ So, it's like ``print(a[0], a[1], a[2], ...)``.
 Two-dimensional arrays
 ----------------------
 
-Выше везде элементами массива были числа. Но на самом деле элементами
-массива может быть что угодно, в том числе другие массивы. Пример:
-
-::
+Above, the array elements were only numbers. But in fact,
+array elements can contain anything, including other arrays. For example::
 
     a = [10, 20, 30]
     b = [-1, -2, -3]
     c = [100, 200]
     z = [a, b, c]
 
-Что здесь происходит? Создаются три обычных массива ``a``, ``b`` и
-``c``, а потом создается массив ``z``, элементами которого являются как
-раз массивы ``a``, ``b`` и ``c``.
+What's going on here? Three usual arrays ``a``, ``b`` and ``c`` are created, 
+and then the array ``z`` is created, whose elements are
+exaclty the arrays ``a``, ``b`` and ``c``.
 
-Что теперь получается? Например, ``z[1]`` — это элемент №1 массива
-``z``, т.е. ``b``. Но ``b`` — это тоже массив, поэтому я могу написать
-``z[1][2]`` — это то же самое, что ``b[2]``, т.е. ``-3`` (не забывайте,
-что нумерация элементов массива идет с нуля). Аналогично,
-``z[0][2]==30`` и т.д.
+What does it mean? For example, ``z[1]`` is element #1 of the array
+``z``, i.e. it's ``b``. But ``b`` is also an array, so 
+``z[1][2]`` is the same as `b[2]`, i.e. ``-3`` (do not forget
+that the enumeration of array elements starts from zero).
+Similarly, ``z[0][2] == 30``, etc.
 
-То же самое можно было записать проще:
-
-::
+The same thing can be implemented easier::
 
     z = [[10, 20, 30], [-1, -2, -3], [100, 200]]
 
-Получилось то, что называется двумерным массивом. Его можно себе еще
-представить в виде любой из этих двух табличек:
+Here we got what's called two-dimensional array. You can 
+as well represent it as one of the two following tables: 
 
 |image1| |image2|
 
-Первую табличку надо читать так: если у вас написано ``z[i][j]``, то
-надо взять строку №\ ``i`` и столбец №\ ``j``. Например, ``z[1][2]`` —
-это элемент на 1 строке и 2 столбце, т.е. -3. Вторую табличку надо
-читать так: если у вас написано ``z[i][j]``, то надо взять столбец
-№\ ``i`` и строку №\ ``j``. Например, ``z[1][2]`` — это элемент на 2
-столбце и 1 строке, т.е. -3. Т.е. в первой табличке строка — это первый
-индекс массива, а столбец — второй индекс, а во второй табличке
-наоборот. (Обычно принято как раз обозначать ``i`` первый индекс и ``j``
-— второй.)
+The first table should be interpreted like this: if you see ``z[i][j]``,
+then you need to take row number ``i`` and column number ``j``.
+For example, ``z[1][2]`` is the element on row #1 and column #2, i.e. -3. 
+The second table should be interpreted like this: if you see ``z[i][j]``,
+you need to take the column number ``i`` and the row number ``j``.
+For example, ``z[1][2]`` is the element on column #2 and row #1, i.e. -3.
+So, in the first table the row is the first index of the array
+and the column is the second index, while in the second table it's vice versa.
+(It's typical to use ``i`` as the first index and ``j`` as the second.)
 
-Когда вы думаете про таблички, важно то, что питон на самом деле не
-знает ничего про строки и столбцы. Для питона есть только первый индекс
-и второй индекс, а уж строка это или столбец — вы решаете сами, питону
-все равно. Т.е. ``z[1][2]`` и ``z[2][1]`` — это разные вещи, и питон их
-понимает по-разному, а будет 1 номером строки или столбца — это ваше
-дело, питон ничего не знает про строки и столбцы. Вы можете как хотите
-это решить, т.е. можете пользоваться первой картинкой, а можете и второй
-— но главное не запутайтесь и в каждой конкретной программе делайте
-всегда всё согласованно. А можете и вообще не думать про строки и
-столбцы, а просто думайте про первый и второй индекс.
+When you think of the tables, the important thing is that Python
+doesn't really know anything about rows and columns. For Python, there's 
+only the first index and the second index, and whether it's a row or a column — 
+you may decide for yourself, Python doesn't care. So, ``z[1][2]`` and ``z[2][1]`` 
+are different, and Python certainly distinguishes that. But will 1 be
+the row number or column number — that's your business, Python knows nothing 
+about rows and columns. You may choose it as you wish, choose the one that is
+better for your perception. You can use the first figure or the second one
+— but it's highly important not to get confused and to use
+it consistently in each program. Or you may even throw away rows and
+columns and just think of the first and second index.
 
-Обратите, кстати, внимание на то, что в нашем примере ``z[2]`` (массив,
-являющийся вторым элементом массива ``z``) короче остальных массивов (и
-поэтому на картинках отсутствует элемент в правом нижнем углу). Это
-общее правило питона: питон не требует, чтобы внутренние массивы были
-одинаковой длины. Вы вполне можете внутренние массивы делать разной
-длины, например:
-
-::
+Also note that in our example ``z[2]`` (the array which is the
+second element of array ``z``) is shorter than other arrays
+(that's why there's no number in the lower right corner of both tables).
+It's a general rule: Python doesn't require the inner arrays to be
+of the same length. You can easily create subarrays of different size, like this::
 
     x = [[1, 2, 3, 4], [5, 6], [7, 8, 9], [], [10]]
 
-здесь нулевой массив имеет длину 4, первый длину 2, второй длину 3,
-третий длину 0 (т.е. не содержит ни одного элемента), а четвертый длину
-1. Такое бывает надо, но не так часто, в простых задачах у вас будут все
-подмассивы одной длины.
+here the array number zero has length 4, the first one has length 2,
+the second one has length 3, the third has length 0 
+(it does not contain any elements), and the fourth has length 1.
+This happens to be essetinal, but not so often,
+in simple problems you will have all the subarrays of the same length.
 
-(На самом деле даже элементы одного массива не обязаны быть одного типа.
-Можно даже делать так: ``y = [[1, 2], 3, 4]``, здесь нулевой элемент
-массива ``z`` — сам является массивом, а еще два элемента — просто
-числа. Но это совсем редко бывает надо.)
+(In fact, elements of one array even do not have to be of the same type.
+You can type this: ``y = [[1, 2], 3, 4]``. Here the zero element
+of the array ``z`` is an array itself, and two following elements are just
+numbers. But it's needed very rarely.)
 
-Операции над двумерным массивом
--------------------------------
 
-Собственно, никаких новых операций над двумерными массивами нет. Вы
-всегда работаете или с внешним массивом, или с каким-то внутренним
-массивом, и можете использовать все операции, которые знаете для
-одномерных массивов. Например, ``len(z)`` — это длина "внешнего" массива
-(в примере выше получается 3, т.к. ``z`` содержит три элемента, и не
-важно, что каждый из них тоже массив), а ``len(z[2])`` — длина
-внутреннего массива на позиции 2 (т.е. 2 в примере выше). Для массива
-``x`` выше (того, у которого каждый подмассив имеет свою длину) получим
-``len(x)==5``, и, например, ``len(x[3])==0``.
+Operations for two-dimensional arrays
+-------------------------------------
 
-Аналогично работают все остальные операции. ``z.append([1,2])``
-приписывает к "внешнему" массиву еще один "внутренний" массив, а
-``z[2].append(3)`` приписывает число 3 к тому "внутреннему" массиву,
-который находится на позиции 2. Далее, ``z.pop()`` удаляет последний
-"внутренний" из "внешнего" массива, а ``z[2].pop()`` удаляет последний
-элемент из "внутреннего" массива на позиции 2. Аналогично работают
-``z[1:2]`` и ``z[1][0:1]`` и т.д. — все операции, которые я приводил
-выше.
+Actually, there are no new operations specific for two-dimensional arrays.
+You always work either with an external array, or with an internal array, 
+and you can use all the operations that you know for one-dimensional arrays.
+For example, ``len(z)`` is the length of the "outer" array (according to 
+the example above, it will return 3 because ``z`` contains three elements,
+and it doesn't matter that each of them is also an array),
+and ``len(z[2])`` is the length of the internal array on position 2
+(i.e. 2 in the example above). For the array ``x`` above
+(the one where each subarray has its own length) we get
+``len(x)==5``, and, for example, ``len(x[3])==0``.
 
-Обход двумерного массива
-------------------------
+All other operations work in a similar way. ``z.append([1,2])``
+appends another internal array to the end of external array,
+and ``z[2].append(3)`` appends the number 3 to the "inner" array
+that is ``z[2]``. Then, ``z.pop()`` removes the last
+internal from the external array, and ``z[2].pop()`` removes the last
+element from the "inner" array on position 2. The same are slices 
+(``z[1:2]``, ``z[1][0:1]``) and all other operations that I listed above.
+
+
+Iterating over a two-dimensional array
+--------------------------------------
 
 Конечно, чтобы обойти двумерный массив, надо обойти каждый его
 "внутренний" массив. Чтобы обойти внутренний массив, нужен цикл ``for``,
