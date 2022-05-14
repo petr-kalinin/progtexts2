@@ -330,7 +330,7 @@ and it doesn't matter that each of them is also an array),
 and ``len(z[2])`` is the length of the internal array on position 2
 (i.e. 2 in the example above). For the array ``x`` above
 (the one where each subarray has its own length) we get
-``len(x)==5``, and, for example, ``len(x[3])==0``.
+``len(x) == 5``, and, for example, ``len(x[3]) == 0``.
 
 All other operations work in a similar way. ``z.append([1,2])``
 appends another internal array to the end of external array,
