@@ -81,7 +81,7 @@ it stores the number of elements in the array), then it is done like this:
 ::
 
     for i in range(n):
-        ... do something with element a[i]
+        ... processing element a[i]
 
 For example, let's display all the elements 
 of the array on the screen:
@@ -208,17 +208,16 @@ but have no need to use it afterwards::
     n = int(input())  # n is not used anymore
     a = list(map(int, input().split()))
 
-Еще бывает, что числа для массива задаются по одному в строке. Тогда вам
-проще всего заранее знать, сколько будет вводиться чисел. Обычно как раз
-так данные и даются: сначала количество элементов, потом сами элементы.
-Тогда все вводится легко:
-
-::
+There's also an option that one value in each line is given.
+Then it's good to know their overall quantity. Usually 
+in such case the data is given exactly in the following way:
+first the number of elements, then the elements themselves,
+one per line. Then the input is quite easy::
 
     n = int(input())
-    a = []  # пустой массив, т.е. массив длины 0
+    a = []  # an empty array, i.e. of zero length
     for i in range(n):
-        a.append(int(input()))  # считали число и сразу добавили в конец массива
+        a.append(int(input()))  # reading a number and appending it to the end of the array
 
 Besides what we've just discussed, there are more complex cases, such as:
 a sequence of lines with one element in each line, ending with zero,
@@ -344,16 +343,16 @@ element from the "inner" array on position 2. The same are slices
 Iterating over a two-dimensional array
 --------------------------------------
 
-Конечно, чтобы обойти двумерный массив, надо обойти каждый его
-"внутренний" массив. Чтобы обойти внутренний массив, нужен цикл ``for``,
-и еще один ``for`` нужен, чтобы перебрать все внутренние массивы:
-
-::
+Of course, to iterate over all values of a two-dimensional array,
+you need to iterate over all "inner" arrays.
+To do it, you need a ``for`` loop for each "inner" array
+and another ``for`` to iterate over these "inner" arrays,
+as follows::
 
     for i in range(len(z)):
-        # будем теперь обходить массив z[i]
+        # iterating over "inner" array z[i]
         for j in range(len(z[i])):
-            ...что-то сделаем с элементом z[i][j]
+            ...processing element z[i][j]
 
 Создание двумерного массива
 ---------------------------
