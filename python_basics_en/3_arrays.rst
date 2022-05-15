@@ -10,8 +10,8 @@ the class — this is a huge amount of integers. You can use one variable
 for each student, but this is highly inconvenient. Arrays 
 were designed specifically for this purpose.
 
-General idea of arrays
-----------------------
+General idea
+------------
 
 An array is a kind of variable (more strictly, a data type) 
 in which a number of values can be stored. 
@@ -245,8 +245,8 @@ This magic means the following: "take all the elements of the array ``a``
 and pass it as separate arguments to the ``print`` instruction".
 So, it's like ``print(a[0], a[1], a[2], ...)``. 
 
-Two-dimensional arrays
-----------------------
+Two-dimensional (2D) arrays
+---------------------------
 
 Above, the array elements were only numbers. But in fact,
 array elements can contain anything, including other arrays. For example::
@@ -293,8 +293,8 @@ are different, and Python certainly distinguishes that. But will 1 be
 the row number or column number — that's your business, Python knows nothing 
 about rows and columns. You may choose it as you wish, choose the one that is
 better for your perception. You can use the first figure or the second one
-— but it's highly important not to get confused and to use
-it consistently in each program. Or you may even throw away rows and
+— but it's highly important not to get confused and to use it 
+in a unified way throughout your program. Or you may even throw away rows and
 columns and just think of the first and second index.
 
 Also note that in our example ``z[2]`` (the array which is the
@@ -317,8 +317,8 @@ of the array ``z`` is an array itself, and two following elements are just
 numbers. But it's needed very rarely.)
 
 
-Operations for two-dimensional arrays
--------------------------------------
+Operations for 2D arrays
+------------------------
 
 Actually, there are no new operations specific for two-dimensional arrays.
 You always work either with an external array, or with an internal array, 
@@ -340,8 +340,8 @@ element from the "inner" array on position 2. The same are slices
 (``z[1:2]``, ``z[1][0:1]``) and all other operations that I listed above.
 
 
-Iterating over a two-dimensional array
---------------------------------------
+Iterating over a 2D array
+-------------------------
 
 Of course, to iterate over all values of a two-dimensional array,
 you need to iterate over all "inner" arrays.
@@ -354,50 +354,51 @@ as follows::
         for j in range(len(z[i])):
             ...processing element z[i][j]
 
-Создание двумерного массива
----------------------------
+Creating a 2D array
+-------------------
 
-Неожиданно нетривиальная операция на двумерных массивах — это создание
-двумерного массива определенного размера, заполненного, например,
-нулями. Вы помните, что одномерный массив длины ``n`` можно создавать
-как ``[0] * n``. Возникает желание написать ``a = [[0] * m] * n``, чтобы
-создать двумерный массив размера ``n x m`` (мы хотим, чтобы первый
-индекс массива менялся от 0 до ``n-1``, а второй индекс до ``m-1``,
-поэтому это именно ``[[0] * m] * n``, а не ``[[0] * n] * m``). Но это
-сработает не так, как вы можете думать. Дело опять в том, что в питоне
-массивы по умолчанию не копируются полностью, поэтому то, что получается
-— это массив длина ``n``, в котором *каждый* элемент соответствует
-*одному и тому же* массиву длины ``m``. В итоге, если вы будете менять,
-например, ``a[1][2]``, то так же будет меняться и ``a[0][2]``, и
-``a[3][2]`` и т.д. — т.к. все внутренние массивы на самом деле
-соответствуют одному и тому же массиву.
+Unexpectedly, a non—trivial operation is the creation
+of a two-dimensional array of a certain size filled, for example,
+with zeros. As described above, a one-dimensional array 
+of length ``n`` can be created via ``[0] * n``.
+So you may expect that writing ``a = [[0] * m] * n``
+will create a two-dimensional array of size ``n x m``
+(we want the first index of the array to range from 0 to ``n-1``
+and the second index from 0 to ``m-1``, therefore, 
+it is exactly ``[[0] * m] * n``, not ``[[0] * n] * m``).
+Sadly, it won't work in the way you might think. Again, the point is 
+that in Python arrays are not wholly copied by default. So the result
+here is an external array of length ``n`` where *each* element
+corresponds to **the same* array of length ``m``.
+As a result, if you change ``a[1][2]`` for example,
+then ``a[0][2]`` will also change, and ``a[3][2]``, and etc. 
+— because all internal arrays actually correspond to the same array.
 
-Поэтому массив размера ``n x m`` делается, например, так:
-
-::
+Therefore, an array of size ``n x m`` is created, for example, like this::
 
     a = []
     for i in range(n):
         a.append([0] * m)
 
-мы вручную ``n`` раз приписали к массиву ``a`` один и тот же массив.
+Here, the new "inner" array is appended to ``a`` manually ``n`` times. 
 
-Или еще есть магия в одну строчку::
+Or you can do it via another single-line magic::
 
    a = [[0] * m for i in range(n)]
 
-Я пока не буду объяснять, как это работает, просто можете запомнить. Или
-пользоваться предыдущим вариантом.
+I won't yet describe in details how it works, you may 
+just learn it by heart. Or use the previous option.
 
-Обратите внимание, что тут важный момент — хотим мы, чтобы ``n``
-соответствовало первому индексу или второму. В примерах выше ``n`` —
-размер первого индекса (т.е. размер "внешнего" массива), a ``m`` —
-размер второго индекса (т.е. размер каждого "внутреннего" массива). Если
-вы хотите, то можно делать и наоборот, но это вы сами должны решить и
-делать согласованно во всей программе.
+Note here that an important point is whether we want ``n``
+to correspond to the first index or to the second. In the examples above,
+``n`` is the range of the first index (i.e., the size of the "outer" array)
+and ``m`` is the range of the second index (i.e., the size of each "inner" array).
+If you want, you can do vice versa, but it's up to you to decide and
+do it in a unified way throughout the program.
 
-Ввод-вывод двумерного массива
------------------------------
+
+Input and output of a 2D array
+------------------------------
 
 Обычно двумерный массив вам задается как ``n`` строк по ``m`` чисел в
 каждой, причем числа ``n`` и ``m`` вам задаются заранее. Такой двумерный
@@ -440,8 +441,8 @@ as follows::
             print(a[i][j], end=" ")
         print()  # сделать перевод строки
 
-Многомерные массивы
--------------------
+Multidimensional arrays
+-----------------------
 
 Аналогично двумерным, бывают и трехмерные и т.д. массивы. Просто каждый
 элемент "внутреннего" массива теперь сам будет массивом:
