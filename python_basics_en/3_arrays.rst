@@ -138,7 +138,7 @@ Here's a set of useful operations which can be applied to arrays:
     ``a`` and ``b`` mean **the same array**, and all **changes in** ``b`` 
     **will be reflected in** ``a`` **and vice versa.** Once again,
     because this is very important. Assigning arrays (and generally any 
-    complex objects) in python **does not copy the array**, but simply 
+    complex objects) in Python **does not copy the array**, but simply 
     makes both variables refer to the same array, and via changing 
     any of them you in fact change one array. But actually at the same time 
     there are many nuances, just be ready for the unexpected things.
@@ -400,63 +400,59 @@ do it in a unified way throughout the program.
 Input and output of a 2D array
 ------------------------------
 
-Обычно двумерный массив вам задается как ``n`` строк по ``m`` чисел в
-каждой, причем числа ``n`` и ``m`` вам задаются заранее. Такой двумерный
-массив вводится эдакой комбинацией двух способов ввода одномерного
-массива, про которые я писал выше:
+Usually, a two-dimensional array is set as ``n`` rows
+with ``m`` numbers in each, and the numbers ``n`` and ``m`` 
+are set in advance. Such a two-dimensional array 
+is input by a combination of two options of inputting 
+one-dimensional arrays, which were described above::
 
-::
-
-    n, m = map(int, input().split())  # считали n и m из одной строки
-    # m дальше не будет нужно
+    n, m = map(int, input().split())  # reading n and m from one line
+    # m is not used anymore
     a = []
     for i in range(n):
         a.append(list(map(int, input().split())))
 
-Мы считываем очередную строку и получаем очередной "внутренний" массив:
-``list(map(int, input().split()))``, и приписываем его (``append``) ко
-внешнему массиву.
+Here every single time we input a line and get the next 
+corresponding "internal" array:``list(map(int, input().split()))``,
+and then write it to the end of an external array (``append``).
 
-Обратите внимание, что здесь мы уже четко решили, что первый индекс
-нашего массива соответствует *строкам* входного файла, а второй индекс —
-столбцам, т.е. фактически мы уже выбрали левую из двух картинок выше. Но
-это связано не с тем, как питон работает с двумерными массивами, а с
-тем, как заданы входные данные во входном файле.
+Note that here we've already clearly decided that the first index
+of our array corresponds to the *rows* of the input file,
+and the second index corresponds to the columns,
+i.e., in fact, we have already selected the left one
+from  the two tables above. But this is not due to
+how Python works with two-dimensional arrays,
+but due to how the data is set in the input file.
 
-Вывод двумерного массива, если вам его надо вывести такой же табличкой,
-тоже делается комбинацией способов вывода одномерного массива, например,
-так:
-
-::
+The output of a two-dimensional array,
+if you need to output it in a shape of such a table,
+is also done by a combination of options of outputting
+a one-dimensional array. For example, like this::
 
     for i in range(len(a)):
         print(*a[i])
 
-или так:
-
-::
+or like this::
 
     for i in range(len(a)):
         for j in range(len(a[i])):
             print(a[i][j], end=" ")
-        print()  # сделать перевод строки
+        print()  # break the line
 
 Multidimensional arrays
 -----------------------
-
-Аналогично двумерным, бывают и трехмерные и т.д. массивы. Просто каждый
-элемент "внутреннего" массива теперь сам будет массивом:
-
-::
+Analogous to two-dimensional ones, there are also 
+three-dimensional and etc. arrays. Just each
+element of the "internal" array will be an array itself::
 
     a = [[[1, 2], [3, 4]], [[5, 6], [7, 8]]]
 
-Здесь ``a[0]`` — это двумерный массив ``[[1, 2], [3, 4]]``, и ``a[1]`` —
-двумерный массив ``[[5, 6], [7, 8]]``. Например, ``a[1][0][1] == 6``.
+Here ``a[0]`` is a two-dimensional array ``[[1, 2], [3, 4]]``. And ``a[1]`` —
+is a two-dimensional array ``[[5, 6], [7, 8]]``. For example, ``a[1][0][1] == 6``.
 
-Многомерные массивы в простых задачах не нужны, но на самом деле бывают
-полезны и не представляют из себя чего-то особо сложного. С ними все
-аналогично тому, что мы обсуждали про двумерные массивы.
+You won't need multidimensional arrays in simple tasks, but in fact 
+they're useful and do not represent something really complex. Processing them 
+is wholly similar to what we discussed for two-dimensional arrays.
 
 .. |image0| image:: data:image/png;base64,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
 
