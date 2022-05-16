@@ -460,65 +460,67 @@ is wholly similar to what we discussed for two-dimensional arrays.
 
 .. |image2| image:: data:image/png;base64,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
 
-Примеры решения задач
----------------------
+Sample problems and solutions
+-----------------------------
 
-Приведу несколько примеров задач, аналогичных тем, которые встречаются на олимпиадах
-и в моем курсе.
+Here are a few sample problems similar to those 
+you may come across on contests and in my course.
 
 .. task::
+    There are :math:`N` students in the class. On a PE lesson the teacher says "count off one to two".
+    Output what the students will say: first, create an array with numbers and then print it.
 
-    В классе :math:`N` школьников. На уроке физкультуры тренер говорит «на первый-второй рассчитайтесь».
-    Выведите, что скажут ученики — сначала сформируйте массив с числами, а потом его вывдите.
+    **Input**: One integer number — the number of students in the class.
 
-    **Входные данные**: Вводится одно целое число — количество человек в классе.
+    **Output**: A sequence of numbers 1 and 2 in the order corresponding to what students will say.
 
-    **Входные данные**: Выведите последовательность чисел 1 и 2, в том порядке, как будут говорить школьники.
+    **Example**:
 
-    **Пример**:
-
-    Входные данные::
+    Input::
 
         5
 
-    Выходные данные::
+    Output::
 
         1 2 1 2 1
     |
     |
     |
 
-Это в некотором плане искусственная задача, потому что массивы тут на самом деле не нужны.
-Но давайте представим себе, что нам действительно надо сформировать такой массив.
-Для этого есть два подхода.
+This problem is kind of synthetic, because in fact 
+we don't just need an array to solve it.
+But let's imagine we really need to obtain such an array.
+There are two options for that.
 
-Во-первых, мы можем сразу заготовить «пустой» массив длины :math:`N`. Точнее, конечно, не пустой,
-а заполненный чем-то, не важно, чем, пусть, для примера, числами :math:`-1`::
+The first one is to initialize an "empty" array 
+containting :math:`N` elements. Accurately speaking,
+it will not be empty indeed but filled with something.
+Let's assign :math:`-1` to each element 
+(the particular value is not really important)::
 
     n = int(input())
     a = [-1] * n
 
-Далее нам надо собственно установить в массиве элементы в правильные значения.
-Для этого надо сделать какие-то действия с каждым элементом массива,
-т.е. надо написать цикл::
+After that, we need to actually set the proper values
+of our elements. For that, we should process each element
+in some way, i.e. write a loop::
 
     for i in range(len(a)):
 
-На каждой итерации цикла нам надо решить, что делать с текущим, т.е. :math:`i`-м, элементом массива.
-В зависимости от четности :math:`i` надо записать туда или 1, или 2::
+On each iteration we should decide what to do with the current
+(:math:`i`-th) element of the array. Depending on the parity of
+:math:`i` we put there 1 or 2::
 
     if i % 2 == 0:
         a[i] = 1
     else:
         a[i] = 2
 
-Ну и наконец вывести массив, чтобы вывести в одну строку, надо написать
-
-::
+And at last, we need to output the whole array in a single line::
 
     print(*a)
 
-Итоговый код::
+Finally, the whole cde::
 
     n = int(input())
     a = [-1] * n
@@ -529,7 +531,8 @@ is wholly similar to what we discussed for two-dimensional arrays.
             a[i] = 2
     print(*a)
 
-Альтернативное решение — создать сначала пустой массив, а дальше приписывать к нему числа по одному::
+An alternative option is to create a literally empty array
+and then append numbers to it one by one::
 
     n = int(input())
     a = []
@@ -542,60 +545,63 @@ is wholly similar to what we discussed for two-dimensional arrays.
 
 .. task::
 
-    Дан массив из :math:`N` чисел. Выведите их в обратном порядке.
+    An array of :math:`N` numbers is given. Output them in reverse order.
 
-    **Входные данные**: На первой строке вводится одно целое число :math:`N`. На второй строке вводятся :math:`N` чисел — заданный массив.
+    **Input**: On the first line there's one integer number :math:`N`.
+    On the second line there are :math:`N` numbers representing the given array.
 
-    **Входные данные**: Выведите массив в обратном порядке.
+    **Output**: Output the array in reverse order.
 
-    **Пример**:
+    **Example**:
 
-    Входные данные::
+    Input::
 
         5
         10 30 20 40 50
 
-    Выходные данные::
+    Output::
 
         50 40 20 30 10
     |
     |
     |
 
-Во-первых, считаем массив. Тут задается сначала число элементов, на следующей строке — сами элементы массива.
-В питоне нам число элементов не нужно, мы можем использовать функцию ``len``, но считать число элементов все равно надо,
-потому что оно есть во входных данных::
+First, let's input the array. Here the number of elements is set first, 
+and on the next line are the elements of the array themselves. In Python, 
+we don't need the number of elements because we can use ``len`` function, 
+but we still need to input it, as it's present the input data::
 
     n = int(input())
     a = list(map(int, input().split()))
 
-Далее надо вывести элементы в обратном порядке. Это можно сделать разными способами.
+Now we have to output elements in reverse order. There are several ways to do that.
 
-Например, можно взять срез, дающий элементы в обратном порядке, сохранить в другой массив и вывести::
+For example, we may use a reversed slice, save it to another array and output::
 
     b = a[::-1]
     print(*b)
 
-или сразу, без промежуточной переменной::
+or directly without an intermatiate variable::
 
     print(*a[::-1])
 
-Полный код::
+Entirely::
 
     n = int(input())
     a = list(map(int, input().split()))
     print(*a[::-1])
 
-Альтернативный вариант — сделать цикл по убыванию и выводить числа::
+Another way is to make a descending loop output the values in it::
 
     for i in range(len(a) - 1, -1, -1):
         print(a[i])
 
-Единственная проблема — этот цикл выводит числа «в столбик», а не в одну строку. Во многих задачах в реальных тестирующих системах
-это не так страшно, но если важно, можно попросить ``print`` не переводить строку после вывода числа,
-а просто выводить пробел: ``print(a[i], end=' ')``.
+Here's an issue: this loop will output the numbers in a "column",
+not in one line. In real judging environments this often doesn't really matter,
+but if it does, we can make ``print`` not break the line and 
+terminate the output with a space instead: ``print(a[i], end=' ')``.
 
-Полный код::
+Entirely::
 
     n = int(input())
     a = list(map(int, input().split()))
