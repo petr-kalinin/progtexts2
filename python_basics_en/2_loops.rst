@@ -313,9 +313,9 @@ Of course, in this particular case it's possible to do without using
 ``continue``, just by writing ``else`` after ``if``. That would be easier. 
 But it happens that you need to sort out the numbers, and there are many 
 specific conditions upon those you don't need to take the number into account.
-Then writing a bunch of ``else`` statements would be much more difficult than
-a few ``continue`` statements. For example (this example is rather synthetic,
-but similar cases exist):
+Then writing a bunch of ``else`` statements would be much more complicated than
+a few ``continue`` statements. For example (this one is rather synthetic,
+but similar cases really exist):
 ::
 
     for i in range(n):
