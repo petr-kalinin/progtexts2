@@ -610,57 +610,64 @@ Entirely::
 
 .. task::
 
-    В вагоне поезда :math:`N` мест, занумерованных от 1 до :math:`N`. Всего в этот вагон продано :math:`K` билетов, занумерованных от 1 до :math:`K`. 
-    В каждом билете указано место, на котором поедет пассажир, в разных билетах указаны разные места. 
-    Занумеруем пассажиров в соответствии с их билетами от 1 до :math:`K`. Для каждого места
-    выведите номер пассажира, который на нем поедет.
+    In a train carriage there are :math:`N` seats numbered from 1 до :math:`N`. 
+    Passengers bought :math:`K` tickets in this carriage numbered from 1 to :math:`K`. 
+    In each ticket, the passenger's seat is specified. Different tickets specify
+    different seats. Let's enumerate the passengers from 1 to :math:`K` according to 
+    numbers of their tickets. For each seat, output the number of the passenger who
+    will sit on it.
 
-    **Входные данные**: На первой строке вводятся два целых числа — :math:`N` и :math:`K`. На второй строке вводятся :math:`K` чисел — 
-    номера мест, указанные в билетах (начиная с первого билета и заканчивая :math:`K`-м).
+    **Input**: On the first line there are two integer numbers — :math:`N` and :math:`K`.
+    On the second line there are :math:`K` integer numbers — numbers of seats specified 
+    in the tickets (starting from ticket number 1 and ending on number :math:`K`).
 
-    **Входные данные**: Выведите :math:`N` чисел — для каждого места от 1 до :math:`N` выведите номер пассажира, который поедет
-    на этом месте, или 0, если место останется пустым.
+    **Output**: :math:`N` numbers — for each seat from 1 to :math:`N` output the number
+    of the passenger who will sit there, or 0 if the seat will remain unoccupied.
 
-    **Пример**:
+    **Example**:
 
-    Входные данные::
+    Input::
 
         5 3
         2 5 1
 
-    Выходные данные::
+    Output::
 
         3 1 0 0 2
     |
     |
     |
 
-Сначала, конечно, считаем данные::
+First, of course, we should input the data::
 
     n, k = map(int, input().split())
     a = list(map(int, input().split()))
 
-Дальше самый простой способ состоит в следующем. Заведем новый массив для ответов, сразу длины :math:`N`, заполненный нулями
-(как будто пока все места пустые)::
+Then the easiest way get the result is the following. Let's create
+a new array of size :math:`N` for the answer and fill it with zeros
+(as if all seats are yet unoccupied)::
 
     b = [0] * n
 
-Далее, пройдем по массиву билетов и каждого пассажира посадим на его место, т.е. прямо в массив :math:`b` на нужное место запишем
-номер пассажира::
+Then, let's interate over the array representing tickets and
+put each passenger onto the corresponding seat. I.e. 
+just save the passenger's number to ``b`` on the right place::
 
     for i in range(len(a)):
         b[a[i] - 1] = i + 1
 
-Что здесь происходит? :math:`a[i]` — это номер места, на котором едет :math:`i`-й пассажир, 
-соответственно, это индекс в массиве :math:`b`, куда надо поставить номер этого пассажира.
-Только одна проблема — по условию, места нумеруются начиная с 1, а в массиве индексы нумеруются начиная с 0,
-поэтому на самом деле нужный индекс в массиве :math:`b` равен не :math:`a[i]`, а :math:`a[i] - 1`.
+What is this code doing? :math:`a[i]` is the number of seat that 
+passenger number :math:`i` will sit on. So it's the index of the array :math:`b`
+("index of the seat") that we should use to save this passenger's number. 
+But there's an issue: according to the task, seats are numbered from 1,
+while in arrays indices start from 0. So actually the right index
+in the array :math:`b` is not :math:`a[i]` but :math:`a[i] - 1`.
 
-Соответственно, в этот элемент массива :math:`b`, т.е. в :math:`b[a[i] - 1]`, записываем номер пассажира, т.е. :math:`i`.
-Тут опять-таки проблема с тем, что по условию пассажиры нумеруются начиная с 1, а в программе
-получается нумерация с нуля, поэтому надо записывать не :math:`i`, а :math:`i + 1`.
+So, we save passenger's number (i.e. :math:`i`) to :math:`b[a[i]-1]`.
+But here we once again face the fact that real passengers' numbers start from 1
+and index :math:`i` starts with zero, so we should save :math:`i+1`, not :math:`i`. 
 
-Остается только вывести массив :math:`b`. Полный код::
+It remains only to output the array :math:`b`. The entire code::
 
     n, k = map(int, input().split())
     a = list(map(int, input().split()))
@@ -669,9 +676,9 @@ Entirely::
         b[a[i] - 1] = i + 1
     print(*b)
 
-
-Альтернативное решение могло быть следующим: не будем создавать массив :math:`b`, а просто для каждого места
-будем заново проходить по всему массиву :math:`a` и искать, кто же едет на этом месте::
+An alternative solution is such as this: we won't create a new array :math:`b`.
+Instead, we will for each seat interate anew over the array :math:`a` and find out
+who is sitting on it::
 
     n, k = map(int, input().split())
     a = list(map(int, input().split()))
@@ -682,91 +689,102 @@ Entirely::
                 p = j + 1
         print(p, end=' ')
 
-но это решение значительно дольше, потому что оно каждый раз заново бегает по массиву.
+But this one is significantly slower because here 
+we iterate over the array again and again for each seat. 
 
 .. task::
 
-    Дан массив из :math:`N` чисел. Переставьте элементы прямо в этом массиве в обратном порядке. Дополнительные массивы
-    использовать запрещается.
+    An array of :math:`N` numbers is given. Rearrange its elements in reverse order.
+    The result should be saved to the same array. Usage of any auxiliary arrays is prohibited.
     |
     |
     |
 
-Я не буду в этой задаче указывать формат входных и выходных данных, потому что не в них суть. Надо придумать,
-как, имея уже готовый массив, поменять его так, чтобы элементы шли в обратном порядке, но в целом в этом же массиве
-(а не в новом). Естественно, можно использовать дополнительные переменные, но не массивы.
+I will not specify the format of input and output data in this task,
+because it's not the point. We need to figure out how to, having a given array,
+change it so that the elements will have reverse order, but in the same array
+(not in the new one). Certainly, you can use additional variables, but not arrays.
 
-Решение этой задачи я тут писать не буду, напишу только подсказку, как решение можно придумать.
+I won't describe a full solution here, I will only give a hint on it.
 
-Представьте себе автомобильную паркову на :math:`N` мест в ряд. На ней стоят :math:`N` разных автомобилей.
-Эта парковка — ваш массив, а автомобили — элементы массива.
-Вам надо переставить их в обратном порядке, чтобы автомобиль, стоящий на первом месте,
-оказался бы на последнем, и т.д. Вы можете передвигать любой автомобиль, но при этом у вас нет никаких помощников, вы
-должны все делать в одиночку (т.е., например, вы не можете одновременно двигать два автомобиля). Зато у вас есть свободная площадка
-снаружи — дополнительные переменные. Вы не можете туда перегнать все автомобили сразу (потому что это значит использовать
-новый массив), но по 1-2 автомобиля перегонять туда вы можете.
+Imagine a car park with :math:`N` parking spots in a row. There are :math:`N` 
+different cars on it. This car park is your array, and the cars are its elements.
+You need to rearrange them in reverse order so that the car on the first spot
+would be on the last, etc. You can move any car, but you don't have any assistants, you
+have to do everything alone (i.e., for example, you can't move two cars at the same time). 
+But you have a free area outside — the additional variables. You can't relocate all the cars 
+there at once (because it would mean using a new array), but you can move 1-2 cars there.
 
-Если в уме сложно придумать, найдите дома несколько (4-5) игрушечных машинок, и поэкспериментируйте на них.
-Если нет машинок, возьмите другие однотипные элементы — ручки, карандаши и т.п.
+If it's hard to imagine, find a few (4-5) toy cars at home, and experiment with them.
+If there are no toy cars, take other items similar to each other: pens, pencils, etc.
 
 .. task::
+    Figure skating competition is judged by :math:`N` judges.
+    The competition is attended by :math:`K` athletes.
+    Each judge gives a score to each athlete. The total score 
+    of each athlete is equal to the sum of :math:`N` scores
+    given by all judges. According to these scores,
+    determine the total score of each athlete.
 
-    Соревнования по фигурному катанию судят :math:`N` судей. В соревнованиях участвуют :math:`K` спортсменов.
-    Каждый судья выставляет оценку каждому спорстмену.
-    Итоговый балл каждого спортсмена равен сумме его :math:`N` оценок. По данным оценкам определите итоговый балл каждого спортсмена.
+    **Input**: On the first line there are two numbers: :math:`N` and :math:`K`.
+    The following:math:`N` lines contain :math:`K` numbers in it —
+    each judge's score given to the athlete.
 
-    **Входные данные**: На первой строке вводятся два целых числа — :math:`N` и :math:`K`. Далее следуют :math:`N` строк
-    по :math:`K` чисел в каждой — оценки каждого судьи.
+    **Output**: :math:`K` numbers — total scores of each athlete.
 
-    **Входные данные**: Выведите :math:`K` чисел — суммарный балл каждого спорстмена.
+    **Example**:
 
-    **Пример**:
-
-    Входные данные::
+    Input::
 
         2 3
         1 2 3
         2 3 1
 
-    Выходные данные::
+    Output::
 
         3 5 4
     |
     |
     |
 
-Здесь надо уже работать с двумерными массивами. Давайте сначала считаем массив::
+Here we need to work with two-dimensional array. First, let's just input an array::
 
     n, k = map(int, input().split())
     a = []
     for i in range(n):
         a.append(list(map(int, input().split())))
 
-(Обратите внимание, что нам повезло, что первое из введенных чисел равно количеству строк во входных данных дальше, а второе 
-— количеству столбцов. Так чаще всего двумерные массивы и задаются. Но бывает и по-другому, например,
-вполне могло бы сначала задаваться количество спортсменов, а потом количество судей, а дальше оценки в том же формате.
-Тогда надо было бы аккуратно суметь не перепутать :math:`N` и :math:`K`.)
+(Note that we are lucky that the first of the entered numbers is 
+the number of following rows in the input data, and the second is 
+the number of columns. This is how two-dimensional arrays are most often set.
+But it also could happen in a different way, for example, the number 
+of athletes could have been set first, and then the number of judges, 
+and then the scores *in the same format*. Then we should to be careful 
+not to confuse :math:`N` and :math:`K`.)
 
-Далее заведем массив для итоговых баллов каждого спортсмена::
+Then, let's create an array for athletes' total scores::
 
     b = [0] * k
 
-Изначально массив заполнен нулями.
+Initially it's filled with zeros.
 
-Дальше пройдемся по массиву :math:`a`, и каждую оценку прибавим к баллу соответствующего спорстмена.
+Next, we'll iterate over the scores array (:math:`a`) and add 
+each judge's score to the total score of the corresponding athlete.
 
-Обходить двумерный массив можно так::
+We can iterate in this way::
 
     for i in range(n):
         for j in range(k):
 
-Теперь мы стоим в клетке :math:`(i, j)`, т.е. работает с элементом :math:`a[i][j]`. Здесь :math:`i` — номер судьи,
-а :math:`j` — номер спортсмена (порядок индексов именно такой, потому что мы так вводили массив).
-Значит, эту оценку надо прибавить к баллу :math:`j`-го спортсмена, т.е. к :math:`b[j]`::
+So we are "standing" in the cell indexed :math:`(i, j)`, processing the element :math:`a[i][j]`.
+Here :math:`i` is the number of the judge and :math:`j` the number of the athlete
+(such order if indices corresponds to how we were inputting the array).
+So we should add this value to the total score of the athlete number :math:`j`,
+i.e. to :math:`b[j]`::
 
     b[j] += a[i][j]
 
-Итоговый код получается такой::
+Finally, the whole code will be such::
 
     n, k = map(int, input().split())
     a = []
