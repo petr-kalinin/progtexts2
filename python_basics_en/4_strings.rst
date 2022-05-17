@@ -265,24 +265,23 @@ any spaces in the string::
         if s[i] == ' ':
             ...
 
-int и т.п.
+int, float and str
 ------------------
 
-Есть еще три полезных команды:
-
-::
+There are three more useful instructions::
 
     int
     float
     str
 
-Они переводят числа в строки и обратно, с ``int`` вы уже сталкивались.
+They convert numbers to strings and vice versa.
+And ``int`` is the one you've already used.
 
 ::
 
-    print(str(23) + 'abc' + str(45));     # выводит 23abc45
-    print(float('2.5') * 2);              # выводит 5.0000e0
-    print(str(2.5) + 'a');                # выводит 2.5000e0a
+    print(str(23) + 'abc' + str(45));     # outputs 23abc45
+    print(float('2.5') * 2);              # outputs 5.0
+    print(str(2.5) + 'a');                # outputs 2.5
 
 Другие операции
 ---------------
