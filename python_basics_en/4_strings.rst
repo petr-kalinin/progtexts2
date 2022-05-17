@@ -1,42 +1,42 @@
 .. highlight:: python
 
-Символы и строки
-================
+Characters and strings
+======================
 
-До сих пор наши программы работали только с числами. Но многим
-программам надо работать с текстовыми данными. Для этого есть два
-основных объекта — *символы* и *строки*.
+So far, our programs were only processing numbers. But many
+programs work with text data. And there are two main 
+data types designed for this — *characters* and *strings*.
 
-Символьный тип данных
------------------------------
+Character data type
+-------------------
 
-В питоне, чтобы сохранить символ в переменной, надо просто написать
-
+In Python, to save a character to
+a variable, you need to type
 ::
 
     ch1 = "a"
     ch2 = "$"
 
-и т.п. В итоге в переменной ``ch1`` хранится символ ``a``, а в ``ch2`` — символ ``$``.
+and so on. As a result, in ``ch1`` will be stored
+the character ``a`` and in ``ch2`` — ``$`` accordingly.
 
-Вводить символы можно обычной командой ``input()``:
-
+You can read characters via a common ``input()`` statement:
 ::
 
     ch = input()
 
-(именно прямо так), выводить — обычным ``print``:
-
+(yes, just like this!), and print via common ``print``:
 ::
 
     print(ch)
 
-(На самом деле, в питоне нет отдельного "типа" для символов, символ в
-питоне — это просто строка длины 1, про строки см. ниже. Но часто удобно
-думать про символы отдельно от строк.)
+(In fact, in Python there is no separate "data type"for characters,
+a character in Python is just a string of length 1,
+strings  will be discussed below. But it is often useful
+to think about characters apart from strings.)
 
-Коды символов
--------------------------------------------------
+Character codes
+---------------
 
 На самом деле, конечно, в памяти компьютера хранятся не символы (т.е.
 если мы написали ``ch="$"``, то нигде
