@@ -283,42 +283,37 @@ And ``int`` is the one you've already used.
     print(float('2.5') * 2);              # outputs 5.0
     print(str(2.5) + 'a');                # outputs 2.5a
 
-Другие операции
----------------
+Other operations
+----------------
 
-Вы знаете ряд хитрых команд работы с массивами, и иногда будет
-возникать желание их использовать при работе со строками. Лучше их не
-используйте, пока вы точно не будете понимать не только что, но и
-насколько быстро они работают. В большинстве случаев можно обойтись без
-них (и так даже будет проще!), плюс вы точно не знаете, как долго они
-работают. 
+You already know several tricky array operations and sometimes
+you may wish to use them with strings. It is better not to use them 
+until you understand exactly not only how, but also how fast they work. 
+In most cases, you can do without them (and it will even be easier!),
+moreover, you don't know how much time their work will take.
 
-Аналогично есть другие функции специально для строк, про которые вы 
-можете где-то еще прочитать, например, ``find``.
-Я не советую их использовать, пока вы не понимаете, как конкретно они работают
-и насколько долго.
+Futhermore, there are other operations specific for strings that you
+can learn somewhere else, like ``find``.
+I don't recommend using them until you understand exactly 
+how they work and how fast.
 
-Например, пусть вам надо из строки удалить все
-пробелы. Можно писать примерно так (считаем, что у вас уже есть исходная
-строка ``s``):
-
-::
+For example, let's suppose you need to remove all spaces from the string.
+You can write something like this (assuming that you already have
+the original string ``s``)::
 
     while s.find(" ") != -1:
-        s = s[:s.find(" ")] + s[s.find(" ")+1:]  # вырезаем этот символ
+        s = s[:s.find(" ")] + s[s.find(" ")+1:]  # cutting out this character
 
-Но это работает долго (поверьте мне :) ) и требует от вас помнить все
-эти команды, а еще и осознавать не самый тривиальный код. Проще так:
-
-::
+But it works way slower (just believe me :) ) and requires you to remember all
+these operations, and also to think of the code that isn't really trivial.
+This way is easier::
 
     s1 = '';
     for i in range(len(s)):
         if s[i] != ' ':
             s1 = s1 + s[i]; 
 
-Результат лежит в ``s1``. Поймите, как это работает.
-
+The result is in ``s1``. Understand how it works.
 
 Примеры решения задач
 ---------------------
