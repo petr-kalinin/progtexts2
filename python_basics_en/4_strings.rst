@@ -281,7 +281,7 @@ And ``int`` is the one you've already used.
 
     print(str(23) + 'abc' + str(45));     # outputs 23abc45
     print(float('2.5') * 2);              # outputs 5.0
-    print(str(2.5) + 'a');                # outputs 2.5
+    print(str(2.5) + 'a');                # outputs 2.5a
 
 Другие операции
 ---------------
