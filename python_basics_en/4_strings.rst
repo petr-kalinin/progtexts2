@@ -30,7 +30,7 @@ You can read characters via a common ``input()`` statement:
 
     print(ch)
 
-(In fact, in Python there is no separate "data type"for characters,
+(In fact, in Python there is no separate "data type" for characters,
 a character in Python is just a string of length 1,
 strings  will be discussed below. But it is often useful
 to think about characters apart from strings.)
@@ -38,24 +38,24 @@ to think about characters apart from strings.)
 Character codes
 ---------------
 
-На самом деле, конечно, в памяти компьютера хранятся не символы (т.е.
-если мы написали ``ch="$"``, то нигде
-в памяти не будет *нарисован доллар*). Компьютер умеет работать только с
-числами, и вместо символов он хранит тоже числа.
+In fact, of course, characters are not stored in the computer's memory
+(i.e. if we typed ``ch="$"``, there won't be *a dollar sign drawn* anywhere in memory). 
+The computer is able only to work with numbers. And instead of symbols it also stores numbers.
 
-Есть общепринятая договоренность, которая каждому числу от 0 до 255
-ставит в соответствие некоторый символ. Точнее, таких договоренностей
-есть несколько, они называется *кодировки*, но для латинских букв, цифр
-и частоупотребимых символов типа того же доллара, запятой или плюса, во
-всех кодировках соответствующие числа одинаковы. Для русских букв это не
-так: в разных кодировках им соответствуют разные числа, но это отдельная
-тема.
+There is a general arrangement that matches each number from 0 to 255
+to a certain symbol. More precisely, there are several such agreements. 
+They are called *character encodings*, but for Latin letters, numbers
+and frequently used symbols such as dollar sign, comma or plus, 
+the corresponding numbers are the same in all encodings.
+For Russian letters, for example, this is not true: in different encodings 
+they  have different numbers associated.
 
 .. _ascii_table:
 
-Эта общепринятая сейчас кодировка для латинских букв, цифр и
-частоупотребимых символов называется ASCII, иногда говорят *таблица
-ASCII*. Основная часть этой таблицы выглядит так:
+This is the conventional encoding for Latin letters, numbers and
+frequently used characters. It is called ASCII (abbreviated from 
+"American Standard Code for Information Interchange"), sometimes 
+referred to as *ASCII table*. The main part of the table looks like this:
 
 =====  =======  ==  =====  =======  ==  =====  =======  ==  =====  =======  ==  =====  =======  ==  =====  =======
   32   |space|        48    ``0``         64    ``@``         80    ``P``         96    |back|       112    ``p``       
@@ -76,11 +76,13 @@ ASCII*. Основная часть этой таблицы выглядит т�
   47    ``/``         63    ``?``         79    ``O``         95    ``_``        111    ``o``        127    —       
 =====  =======  ==  =====  =======  ==  =====  =======  ==  =====  =======  ==  =====  =======  ==  =====  =======
 
-Здесь символ номер 32 — это пробел.
+Here, the #32 is the space character (blank area " ").
 
-Символы с номерами от 0 до 31 — это так называемые *управляющие* символы, они нам пока не очень интересны (равно как и символ 127),
-поэтому в таблице они не показаны. Символы с кодами больше 128 зависят от кодировки, мы пока это не будем обсуждать.
-(См. подробнее в разделе :ref:`про кодировки<encodings>`, но пока вам это не нужно.)
+Characters enumerated from #0 to #31 are the so-called *control codes* 
+which aren't really interesting to us yet (as well as the character #127),
+that'swhy they aren't shown in the table. Characters with codes greater 
+than #128 depend on the encoding, we will not discuss this now.
+.. (See more in the :ref:`encodings section<encodings>`, but you won't need it yet.)
 
 .. |space| raw:: html
 
@@ -90,47 +92,44 @@ ASCII*. Основная часть этой таблицы выглядит т�
 
     <code class="docutils literal notranslate"><span class="pre">&#96;</span></code>
 
-Например, символ доллар имеет номер (говорят *код*) 36, а символ ``N`` — 78.
+For example, the dollar sign has number (the common term is *code*) 36,
+and the capital letter ``N`` — code 78.
 
 
 
-Обратите внимание, что все цифры идут подряд, все заглавные буквы идут
-подряд, и все маленькие буквы идут подряд. Это нам будет очень полезно.
-(Для русских букв это выполняется не всегда.)
+Note that all digits go in a row, all capital letters go
+in a row, and all small letters go in a row. It's very useful.
+(This is not always true for Russian letters.)
 
-Узнать код символа в питоне можно операцией ord, а
-узнать символ по коду можно операцией chr. Например:
+In Python, you can get the code of the character using the ``ord`` operation,
+and get the symbol by specifying the code using the ``chr`` operation. For example::
 
-::                                   
+    ch = input()         # read a character...
+    print(ord(ch))       # and print its code
 
-    ch = input()         # считали символ...
-    print(ord(ch))       # и вывели его код
-
-    i = ord('$')         # записали в i код доллара
+    i = ord('$')         # assign the code of dollar sign to i
     print(i)
 
-    i = int(input())     # считали код
-    print(chr(i))       # и вывели соответствующий символ
+    i = int(input())     # read the code...
+    print(chr(i))        # and print the corresponding character
 
     ch = chr(ord('$') + 1)
-    print(ch)            # вывели символ, следующий за долларом
+    print(ch)            # print the character next to the dollar sign in the table
 
+In most cases, you won't need to know the exact character codes — you
+can always calculate them through ``ord`` if you need. For example, let's suppose 
+we know that the value of the variable ``ch`` is a digit
+(i.e. a character representing a numerical digit) — how to save this digit 
+into the variable ``i`` as a number (i.e. 0, 1, 2, ..., or 9)?
+I.e. how to convert a digit-symbol into a number?
 
-В большинстве случаев точное знание кодов символов вам не надо — вы
-всегда можете что надо вычислить через ``ord``. Например, если мы знаем, что
-в переменной ``ch`` у нас цифра (т.е. символ, соответствующий цифре) — как в
-переменную ``i`` записать значение этой цифры (т.е. 0, 1, 2, ..., или 9)?
-Т.е. как перевести цифру-символ в число?
-
-Нам поможет то, что все цифры идут подряд. Поэтому достаточно из кода
-цифры вычесть код нуля:
-
-::
+We'll use the fact that all digits go in a row. Therefore, it is enough
+to subtract the code of zero from the code of the given digit::
 
     i = ord(ch) - ord('0')
 
-Обратите внимание: нам не надо знать, что код нуля — 48. Мы прямо пишем
-``ord('0')``, а не 48, компьютер сам вычислит код нуля за нас!
+Note that we don't need to know that the zero code is 48. We just type 
+``ord('0')``, not 48, and the computer will calculate the code for us!
 
 Сравнения символов
 ---------------------------------------
