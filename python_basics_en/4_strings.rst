@@ -76,7 +76,7 @@ referred to as *ASCII table*. The main part of the table looks like this:
   47    ``/``         63    ``?``         79    ``O``         95    ``_``        111    ``o``        127    —       
 =====  =======  ==  =====  =======  ==  =====  =======  ==  =====  =======  ==  =====  =======  ==  =====  =======
 
-Here, the #32 is the space character (blank area " ").
+Here, the #32 is the space character (blank spot " ").
 
 Characters enumerated from #0 to #31 are the so-called *control codes* 
 which aren't really interesting to us yet (as well as the character #127),
@@ -128,162 +128,139 @@ to subtract the code of zero from the code of the given digit::
 
     i = ord(ch) - ord('0')
 
-Note that we don't need to know that the zero code is 48. We just type 
+Note that we don't need to know that the code of zero is 48. We just type 
 ``ord('0')``, not 48, and the computer will calculate the code for us!
 
-Сравнения символов
----------------------------------------
+Comparing characters
+--------------------
 
-Символы можно сравнивать операторами =, >, <, >=, <=. На самом деле
-сравниваются их коды:
+Characters can be compared using common operators: =, >, <, >=, <=. 
+In fact, just their codes are being compared::
 
-::
-
-    if ch1 == ch2:  # если два символа совпадают...
+    if ch1 == ch2:  # if two characters are the same
         ....
-    if ch1>ch2:  # если код первого символа больше кода второго
+    if ch1>ch2:  # if the code of the 1st character is greater than the code of the 2nd
         ....
 
-Благодаря тому, что однотипные символы идут подряд, очень легко можно
-проверять тип символа. Например, чтобы проверить, является ли символ
-цифрой, можно написать:
-
-::
+Due to the fact that the symbols of same type go in a row, it's very easy 
+to check the type of symbol. For example, you can check 
+if the character is a digit by this::
 
     if ch>='0' and ch<='9': 
         ... 
 
-Массивы и циклы
------------------------
+Arrays and loops
+----------------
 
-Если вам надо сделать массив, в
-элементах которого хранить что-то, связанное с цифрами, то надо
-переходить к кодам:
+If you need to use an array with elements
+representing something related to characters,
+then you need should work with codes::
 
-::
-
-    a = [0] * 256  # у нас всего 256 символов
-    a[ord('d')] = 10  # в элемент, соответствующий d, записали 10
+    a = [0] * 256  # there are 256 characters у нас всего 256 символов
+    a[ord('d')] = 10  # save value 10 to the element associated with character 'd'
     ...
     for x in range(ord('a'), ord('z')+1):
         ch = chr(x)
-        print(ch)  # выводим все символы от a до z
+        print(ch)  # print all characters from 'a' to 'z'
 
-Но вообще это продвинутая тема, сейчас пока вам не особо нужная.
+But in fact it's an advanced topic which isn't essential now.
 
-Строки
-------
+Strings
+-------
 
-Строка — это последовательность символов. Поэтому представляется
-естественным использовать для хранения строк массив символов:
-
-::
+A string is a sequence of characters. So it seems natural
+to use an array of characters for processing a string::
 
     s = ["T", "e", "s", "t"]
-    # Но так делать не надо!
+    # You souldn't do this!
 
 
-Но так делать не надо! Чтобы записать строку в переменную, надо просто записать
-строку в переменную:
-
-::
+But don't do it in this way! To put a string into a variable,
+you just should assign a string to that variable:: 
 
     s = "Test"
 
-В питоне строка — это *массив*, каждым элементом
-которого является символ, но это не просто массив, а массив с
-дополнительными функциями.
+In Python, a string actually *is an array*, and each element
+of this array is a characters. But it's not a simple array, but
+an array with extra features.
 
-Длину строки, как и у массива, можно узнать командой ``len(s)``:
-
-::
+The same as with arrays, you can get the string length via ``len(s)``::
 
     print(len(s))
 
-Далее, строки, конечно, можно считывать и выводить. На питоне это
-делается стандартными командами: вывод обычным ``print``, а ввод — обычным ``input()``,
-никакой лишней конвертации не надо, пишете ``s = input()``:
-
-::
+Of course, you can input and output strings. In Python,
+it's done with standard operations: 
+output via the common ``print``, input via the common ``input()``.
+You don't need any extra conversion. Just type ``s = input()``:: 
 
     s = input()
     print(s)
 
-В-третьих, строки можно складывать. Сложить две строки — значит
-приписать к одной строке другую:
-
-::
+Next, you can "add" strings to each other. This is actually 
+is called *concatenation* which means
+appending the second string to the end of the first one::
 
     s1 = input()
     s2 = input()
     s = s1 + s2
-    print(s)  # выведет две строки одну за другой
+    print(s)  # will output both strings seamlessly in one line
 
-Прибавлять можно и символы:
-
-::
+You can also add characters to the string::
 
     s = s + 'A'
 
-Наконец, *строковые константы* — это уже привычные вам
-последовательности символов в кавычках:
-
-::
+Finally *string literals* are just common sequences of characters
+enclosed in quotes::
 
     s = "Test"
     s = s + '2'
-    print(s)  # выводит Test2
+    print(s)  # will output Test2
 
-На самом деле, в питоне можно использовать как апострофы (символы
-``'``), так и кавычки (символы ``"``)
+In fact, in Python you can use both apostrophes (``'``)
+and quotation marks (``"``). But of course, if you started your string
+using, for example, an apostrophe, end it with an apostrophe accordingly,
+or the interpreter won't understand your code.
 
-Может возникнуть вопрос, как в строковой константе ввести собственно
-символ апостроф или кавычку. Просто так написать ``'It's a string'`` не
-получится, т.к.питон подумает, что строка закончилась
-на втором апострофе; аналогично не сработает ``"Text"Text"``.
-Поэтому надо приписывать символ ``\`` перед апострофом или кавычкой.
-Например, чтобы записать в переменную строку ``It's a string``, надо
-написать так:
-
-::
+Here you may ask a question on how to enter an apostrophe 
+or quotation mark in a string literal. Just typing 
+``'It's a string'`` won't work, as Python will think that 
+the string ends on the second apostrophe; ``"Text"Text"`` won't work as well
+for the same reason. Therefore, it is necessary to type the character ``\`` 
+(backslash) before the apostrophe or quotation mark.
+For example, to assign a string ``It's a string`` to a variable, you need
+to do it like this::
 
     s = 'It\'s a string'
-    # или так
+    # or like this
     s = "It's a string"
-    # а если нужны и апострофы, и кавычки:
+    # and if you need both apostrophes and qoutes:
     s = "It's a \"string\""
 
-Аналогично для записи символа "апостроф"/"кавычка" в переменную типа
-char:
-
-::
+Similarly, assiging the character "apostrophe" or "quotation mark"
+to a character variable is done via one of the following::
 
     ch = '\''
     ch = "'"
     ch = "\""
     ch = '"'
 
-Поскольку символ ``\`` имеет такой особый смысл, то чтобы записать в строку
-прямо этот символ, его надо написать два раза::
+As the character ``\`` has this special meaning,
+to write it to the string you should type it twice::
 
     s = "test\\test\\\\test"
 
-получится строка ``test\test\\test``.
+this will result in ``test\test\\test``.
 
-Еще частный случай строки — *пустая* строка, т.е. строка длины ноль:
+Another special example of a string literal is an *empty* string,
+i.e. a string of zero length::
 
-::
+    s = ""
 
-    s = ""  # питон
+And finally, as your string is an array of characters, you can 
+use all known array operations (``s[i]`` to access the character
+number ``i`` and etc.). For example, let's check if there are
+any spaces in the string::
 
-Ну и наконец, строка — это все-таки массив символов. Можно использовать
-все известные вам операции над массивами (писать s[i], чтобы получить
-доступ к i-му символу строки, и т.д.). Например, так можно проверить, есть ли в
-строке пробелы:
-
-::
-
-    # питон
     for i in range(len(s)):
         if s[i] == ' ':
             ...
