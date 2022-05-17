@@ -11,7 +11,7 @@ Character data type
 -------------------
 
 In Python, to save a character to
-a variable, you need to type
+a variable, you may type
 ::
 
     ch1 = "a"
