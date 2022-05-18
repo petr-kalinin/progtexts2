@@ -2,34 +2,32 @@
 
 .. _pythonBasicsFloat:
 
-Вещественные числа
-==================
+Floating-point numbers
+======================
 
-Вещественные, или действительные, числа — это, грубо говоря, и целые и
-дробные. Они, конечно, нередко возникают в задачах, но при работе с ними
-возникают серьезные проблемы, которые не в каждой книге по
-программированию будут описаны.
+Real numbers include, roughly speaking, both integers and
+fractions. Floating-point numbers are kind of 
+"approximation for real numbers" used in computers.
+Of course, they often appear in tasks, 
+but operating with them arises serious problems which
+typically are not described in a common programming book.
 
-На самом деле эта тема неожиданно сложная. Постарайтесь понять всё,
-что написано в этом разделе, но если что-то не поймете по началу,
-это не страшно. Главное — два правила работы с вещественными числами,
-которые я напишу ниже.
+In fact, this topic is unexpectedly complicated. Try to understand
+everything that is written in this section, but if you don't understand 
+something at first, it's okay. The main thing is two rules for working 
+with floating-point numbers, which will be given below.
 
-Запись чисел с плавающей точкой
--------------------------------
+Floating-point notation
+-----------------------
 
-Вы точно знаете, что вещественные числа можно записывать в виде «12.34»
-— это «двенадцать целых тридцать четыре сотых». 
+You certainly know that real numbers can be written such as "12.34".
+This means "twelve point thirty-four hundredths".
 
 .. note ::
-
-   Иногда вместо точки используется
-   запятая, но даже в обычной жизни сейчас, кажется, чаще используют точку,
-   а уж в программировании и подавно почти всегда используется точка.
-   Вообще, в контексте записи вещественных чисел слова «точка» и «запятая» являются синонимами, 
-   например, можно сказать, что в числе 12.34 две цифры после запятой, хотя
-   на самом деле я там написал точку. Или, например, фразы «с плавающей точкой»
-   и «с плавающей запятой» обозначают одно и то же.
+   Sometimes a comma is used instead of a point (it depends on the country).
+   But nevertheless in programming the point is almost always used.
+   Generally, in the context of denoting floating-point numbers,
+   words "point" and "comma" are synonyms.
 
 Но есть также и другой формат записи — так называемая запись чисел «с плавающей точкой».
 (По идее это должны проходить в школе классе эдак в 8, поэтому
