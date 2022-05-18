@@ -315,40 +315,41 @@ This way is easier::
 
 The result is in ``s1``. Understand how it works.
 
-Примеры решения задач
----------------------
+Sample problems and solutions
+-----------------------------
 
-Приведу несколько примеров задач, аналогичных тем, которые встречаются на олимпиадах
-и в моем курсе.
+Here are a few sample problems similar to those 
+you may come across on contests and in my course.
 
 .. task::
 
-    Дан символ. Определите, верно ли, что он является маленькой латинской буквой.
+    A single character is given. Determine if it is a small Latin letter.
 
-    **Входные данные**: Вводится один символ.
+    **Input**: One character.
 
-    **Входные данные**: Выведите ``yes``, если это маленькая латинская буква, и ``no`` в противном случае.
+    **Output**: Print ``yes`` if the entered character is a small Latin letter, or ``no`` otherwise.
 
-    **Пример**:
+    **Example**:
 
-    Входные данные::
+    Input::
 
         t
 
-    Выходные данные::
+    Output::
 
         yes
     |
     |
     |
 
-Считаем символ::
+Let's input a character::
 
     ch = input()
 
-Далее надо проверить, является ли этот символ маленькой латинской буквой. Тут (как и в других аналогичных примерах)
-нужно воспользоваться тем, что символы в таблице ASCII идут подряд. Поэтому достаточно проверить ``'a' <= ch and ch <='z'``. 
-Итоговый код::
+Next, we need to check whether this character is a small Latin letter.
+Here (and in other similar examples) we may take advantage of the fact that 
+the same-type characters in the ASCII table go in a row. Therefore, 
+it is enough to check `'a' <= ch and ch <='z"`. The whole code::
 
     ch = input()
     if 'a' <= ch and ch <='z':
@@ -358,32 +359,37 @@ The result is in ``s1``. Understand how it works.
 
 .. task::
 
-    Дана цифра. Считайте ее как символ, и переведите в число (в ``int``), не пользуясь стандартными функциями типа ``int``.
+    A digit is given. Input it as a character and convert into a number
+    (``int``) without using standard ``int`` statement.
 
-    **Входные данные**: Вводится один символ — цифра.
+    **Input**: A single character which is a digit.
 
-    **Входные данные**: Выведите число.
+    **Output**: Print a number.
 
-    **Пример**:
+    **Example**:
 
-    Входные данные::
-
-        1
-
-    Выходные данные::
+    Input::
 
         1
+
+    Output::
+
+        1
     |
     |
     |
 
-Конечно, чтобы чисто пройти все тесты, в этой задаче можно просто вывести то же самое, что и вводится. Но давайте честно научимся превращать цифру в число.
-Считываем символ::
+Of course, in this one you can pass all the tests just 
+by printing exaclty the same that was input. But let's 
+fairly learn how to transform a digit character to a number.
+So, input a character::
 
     ch = input()
 
-и дальше надо понять, какая это цифра. Все цифры в таблице ASCII идут подряд, поэтому достаточно из кода символа вычесть код нуля. В итоге получаем
-
+and then we need to figure out what digit it represents. 
+As all the digits in the ASCII table go in a row, 
+it's enough to subtract the code of zero from the code of our character.
+As a result, we get
 ::
 
     ch = input()
@@ -391,35 +397,38 @@ The result is in ``s1``. Understand how it works.
 
 .. task::
 
-    Дана строка. Посчитайте, сколько в ней маленьких латинских букв.
+    A string is given. Count the number of small Latin letters in it.
+    
+    **Input**: One string.
 
-    **Входные данные**: Вводится одна строка.
+    **Output**: Print one number — the answer.
 
-    **Входные данные**: Выведите одно число — ответ на задачу.
+    **Example**:
 
-    **Пример**:
-
-    Входные данные::
+    Input::
 
         foo bar 123
 
-    Выходные данные::
+    Output::
 
         6
     |
     |
     |
 
-Давайте считаем строку::
+First, just input a string::
 
     s = input()
 
-Далее надо пройтись по строке::
+Then, we need to interate over this string::
 
     for i in range(len(s)):
 
-и очередной символ (:math:`s[i]`) проверить: буква это или нет. Как проверять, мы уже знаем: ``if s[i] >= 'a' and s[i] <= 'z'``.
-Если буква, то увеличиваем счетчик, надо еще этот счетчик заранее завести. Итоговый код::
+and for the current character (:math:`s[i]`) check whether 
+it's a letter or not. We already know how to perform this check:
+``if s[i] >= 'a' and s[i] <= 'z'``. If it is a letter, then we should
+increase the counter by one. We also should create this counter in advance.
+So, the code will look like this::
 
     s = input()
     ans = 0
