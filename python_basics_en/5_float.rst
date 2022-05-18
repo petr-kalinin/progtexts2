@@ -21,7 +21,7 @@ Floating-point notation
 -----------------------
 
 You certainly know that real numbers can be written such as "12.34".
-This means "twelve point thirty-four hundredths".
+This means "twelve and thirty-four hundredths".
 
 .. note ::
    Sometimes a comma is used instead of a point (it depends on the country).
@@ -29,10 +29,10 @@ This means "twelve point thirty-four hundredths".
    Generally, in the context of denoting floating-point numbers,
    words "point" and "comma" are synonyms.
 
-Но есть также и другой формат записи — так называемая запись чисел «с плавающей точкой».
-(По идее это должны проходить в школе классе эдак в 8, поэтому
-я описываю тут это в первую очередь для младшеклассников, а также для тех,
-кто успел забыть; ну и чтобы четко обозначить термины «мантисса» и «экспонента».)
+But there is also another way to record real numbers — it's called "floating point format".
+(In theory, this should be explained at school somewhere in the 8th grade, so
+I describe it here primarily for secondary school students and as well for those
+who have managed to forget; and also to clearly define the terms "mantissa" and "exponent".)
 
 При записи чисел с плавающей точкой запись имеет следующий вид: 1.234e1. 
 Она состоит из двух частей, разделенных английской буквой ``e`` (может использоваться
