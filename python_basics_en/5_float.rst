@@ -25,11 +25,11 @@ This means "twelve and thirty-four hundredths".
 
 .. note ::
    Sometimes a comma is used instead of a point (it depends on the country).
-   But nevertheless in programming the point is almost always used.
+   But in programming the point is the most common decimal separator.
    Generally, in the context of denoting floating-point numbers,
    words "point" and "comma" are synonyms.
 
-But there is also another way to record real numbers — it's called "floating point format".
+But there is also another notation for real numbers — it's called "floating point format".
 (In theory, this should be explained at school somewhere in the 8th grade, so
 I describe it here primarily for secondary school students and as well for those
 who have managed to forget; and also to clearly define the terms "mantissa" and "exponent".)
