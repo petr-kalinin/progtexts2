@@ -34,54 +34,57 @@ But there is also another notation for real numbers — it's called "floating po
 I describe it here primarily for secondary school students and as well for those
 who have managed to forget; and also to clearly define the terms "mantissa" and "exponent".)
 
-При записи чисел с плавающей точкой запись имеет следующий вид: 1.234e1. 
-Она состоит из двух частей, разделенных английской буквой ``e`` (может использоваться
-как маленькая, так и заглавная буква, хотя сейчас вроде чаще используют маленькую).
-Такая запись обозначает: «возьми число 1.234 и сдвинь в нем точку на 1 позицию направо» —
-соответственно, получается то же 12.34. Аналогично, возможна запись 0.1234e2 — взять число 0.1234 
-и сдвинуть точку на две позиции направо, это будет
-то же 12.34. Число после ``e`` может быть быть нулем, это значит, что точку сдвигать не надо:
-12.34e0 — это то же самое, что 12.34. Число может быть отрицательным, что значит,
-что точку надо сдвигать влево, а не вправо: 123.4e-1 или 1234e-2 — это все тоже 12.34.
-(Обратите внимание, что в записи 1234e-2 вообще отсутствует точка —
-она тогда, конечно, неявно подразумевается на конце записи числа 1234, точно так же,
-как 1234 и 1234.0 — это одно и то же.)
+Notation of floating-point numbers looks is as follows: 1.234e1.
+It consists of two parts separated by the English letter ``e`` (may be
+eqither a small or a capital letter, although now it seems that small one is more common).
+This means: "take the number 1.234 and move the decimal point in it by 1 position to the right" —
+so, you'll get 12.34. As well it may be written as 0.1234e2 — here we need to take 0.1234 
+and move the point by two digits to the right, and get the same 12.34.
+The number after ``e`` may be zero — this obviously means you don't need to move the point:
+12.34e0 is the same as 12.34. The number may also be negative — this means that the point
+should be moved to the left instead: 123.4e-1 or 1234e-2 is still the same as 12.34.
+(Note here that the notation 1234e-2 has no point at all — it's implied
+to be at the end of number 1234, as we know that 1234 and 1234.0 are the same.)
 
-То есть еще раз: 0.1234e2, 1.234e1, 12.34e0, 12.34, 123.4e-1, 1234e-2, и даже 123400e-4 
-и 0.001234e4 — это все записи одного и того же числа 12.34. Записи разные, число одно и то же.
+Once again: 0.1234e2, 1.234e1, 12.34e0, 12.34, 123.4e-1, 1234e-2 and even 123400e-4 
+and 0.001234e4 are just ways to write down one number 12.34.
+The notations look diffrerent, the number is the same.
 
-Видно, что одно и то же число можно записать разными способами.
-Чаще пишут так, чтобы либо перед точкой была ровно одна
-ненулевая цифра (1.234e1), или чтобы перед точкой был ноль, зато сразу после точки шла ненулевая цифра
-(0.1234e2), но в целом любая из приведенных в предыдущем абзаце записей является правильной,
-и есть много правильных записей, которые не приведены выше.
+So, the same number can be written in different ways. Which one to choose?
+The most common is either the one where there's only one non-zero digit before
+the point (1.234e1) or the one where before the point there's zero, but
+the next digit after the point is not zero (0.1234e2). But in general,
+any of the examples used above is correct, and there are also plenty of 
+correct notations which weren't specified above.
 
-Еще примеры: 1.3703599907444e2 и 13703599907444e-11 — это 137.03599907444.
+Some more examples: 1.3703599907444e2 and 13703599907444e-11 are exactly equal to 137.03599907444.
 
-Отрицательные числа записываются, естественно, с минусом перед самим числом: -1.234e1, или -1234e-2
-— это то же самое, что и -12.34.
+Negative numbers, of course, are written with minus before the number itself:
+-1.234e1 or -1234e-2 is the same as -12.34.
 
 .. note ::
+   Sometimes, especially in printed books (and before the advent of computers — quite often),
+   instead of using ``e``, an equivalent notation is used which includes multiplication
+   by 10 raised to a certain power. For example, instead of 0.1234e2 it is written as :math:`0.1234\cdot 10^2`,
+   instead of 123.4e1 it is :math:`1.234\cdot 10^{-1}` and so on. It's easy to see that
+   these notations are completely equivalent, and that multiplication by ten raised to a power
+   is completely equivalent to shifting the point. In fact, as far as I understand, the notation with ``e``
+   appeared just when computers appeared, because it's quite complicated, and sometimes impossible,
+   to type power (superscript) on the keyboard. But now, thanks to ubiquity of the computers,
+   the notation with ``e`` is already often used even in printed literature.
+   
+Floating-point notation is quite convenient when you need to operate with extremely huge or
+extremely small numbers. For example, the distance between the Earth and the Sun is about 
+147 million kilometers, i.e. 147000000000 meters. It is very inconvenient to write this way,
+because you have to carefully count the zeros. It is much easier to write 147e9 — 
+it immediately becomes clear that there will be nine zeros, and that this is 147 billion.
+Or, for example, a hydrogen atom weighs about 1.66e-24 grams, i.e. 0.00000000000000000000000166 grams
+(unless I missed some zeroes or typed some extra :)). Clearly, the first notation is much more convenient.
 
-   Иногда, особенно в печатной литературе (а до появления компьютеров — особенно часто)
-   вместо записи через ``e`` используют эквивалентную запись через умножение на 10 в нужной степени,
-   например, вместо 0.1234e2 пишут :math:`0.1234\cdot 10^2`, вместо 123.4e-1 пишут :math:`1.234\cdot 10^{-1}`
-   и т.п. Несложно видеть, что это полностью эквивалентные записи, и что умножение на десять в нужной степени
-   полностью эквивалентно сдвигу точки. На самом деле, насколько я понимаю, запись через ``e`` появилась
-   как раз когда появились компьютеры, потому что запись через степень десятки довольно сложно, а иногда и невозможно, 
-   набирать на клавиатуре. Но сейчас, благодаря повсеместному распространению компьютеров, запись через ``e``
-   уже нередко встречается и в печатной литературе.
-
-
-Запись чисел с плавающей точкой особенно удобна, когда вам надо хранить очень большие
-или очень маленькие числа. Например, расстояние от Земли до Солнца примерно 147 миллионов километров,
-т.е. 147000000000 метров. Так записывать очень неудобно, потому что надо тщательно считать нолики.
-Намного удобнее написать 147e9 — сразу понятно, что будет девять ноликов, и сразу понятно, что это 147 миллиардов.
-Или, например, атом водорода весит примерно 1.66e-24 грамм, т.е. 0.00000000000000000000000166 грамм
-(если я не ошибся в количестве ноликов :) ). Ясно, что первая запись намного удобнее.
-
-Эти две части, составляющие запись числа с плавающей точкой, называются «мантисса» — это часть до ``e``, 
-— и «экспонента» — это число после ``e``. Например, в записи 1.234e1 мантисса равна 1.234, а экспонента равна 1.
+These two parts of which a floating-point number consist, are called as follows:
+the pare prior to ``e`` is **mantissa** (or "significand"),
+and the one after is **exponent** (or "scale"). For example, in 1234e1
+the mantissa is equal to 1.234, and the exponent is 1.
 
 Как компьютер хранит вещественные числа
 ---------------------------------------
