@@ -155,49 +155,55 @@ Therefore,
    It Python, standard floating-point type is called ``float``,
    stores 15-16 digits of mantissa and limits the exponent approximately by ±300.
 
-Про «значащие цифры»
---------------------
+Significant digits
+------------------
 
-Как мы видели, одно и то же число можно записать с плавающей точкой по-разному.
-Чисто 12.34 можно записать как 0.0000000001234e11, и как 1234000000000e-11, и т.п.
-Конечно, компьютер будет хранить число каким-то конкретным образом. Более того,
-если, например, попробовать записать 0.0000000001234e11 например в single,
-то вы можете сказать, что будут записаны только нули (потому что мантисса хранит только 7-8 цифр).
+As discussed above, the same number can be written in floating-point format in different ways.
+12.34 can be written as 0.0000000001234e11 or 1234000000000e-11, etc.
+Of course, the computer stores the number in some certain form. Moreover,
+if you try to, for example, assign 0.0000000001234e11 to a variable which is ``single``,
+then you may say that only zeros will be saved
+(because the mantissa of ``single`` type stores only 7-8 digits).
 
-На самом деле компьютер хранит числа чуть сложнее. В первом приближении можно считать,
-что компьютер хранит числа так, чтобы до точки была ровно одна ненулевая цифра
-(про это я писал выше), т.е. число 12.34 компьютер будет хранить как 1.234e-1 и никак иначе,
-а например расстояние от Земли до Солнца в метрах — как 1.47e11 и не иначе.
-(А на самом деле еще сложнее из-за двоичной системы счисления).
+In fact, things are a bit more complicated. Basically, we can assume the following:
+the computer  stores numbers in such a way that there is exactly one non-zero digit
+before the point (as described above). I.e. 12.34 will be actually stored
+in the memory as 1.234e-1 and not the other way, and, for example, the distance
+between the Earth and the Sun in meters is stored as 1.47e11.
+(And in fact it is even more tricky because of the binary numeral system).
 
-Поэтому компьютер никогда не будет хранить в мантиссе ведущих нулей. В этом смысле говорят
-о «значащих цифрах» — это цифры в записи числа, начиная с первой ненулевой цифры.
-Например, в числе 12.3405 значащие цифры — это 1, 2, 3, 4, 0, 5, а в числе 0.00000000000000000000000000166
-значащие цифры — это 1, 6 и 6 (и компьютер будет хранить это число как 1.66e-27).
+That's why the computer will never store leading zeros in the mantissa.
+In this sense, it's more accurate to speak of "significant digits" —
+these are the digits in the notation of a number which start with the first non-zero digit.
+For example, in 12.3405, the significant digits are 1, 2, 3, 4, 0, 5 (all),
+and in 0.00000000000000000000000000166 the significant digits are 1, 6 and 6
+(and the computer will store this number as 1.66e-27).
 
-Поэтому говорят, что тип single хранит 7-8 значащих цифр, double — 15-16 значащих цифр, extended — 19-20.
+So we can say that ``single`` type stores 7-8 significant digits, ``double`` — 15-16, ``extended`` — 19-20.
 
-Про дырки между числами
------------------------
+"Holes" between the numbers
+---------------------------
 
-(Понимание про «дырки» для начальных задач  не особо нужно, но в дальнейшем бывает полезно.)
+(The concept of "holes" isn't really necessary on the basic level, but may be useful in the future.)
 
-Из-за того, что компьютер хранит строго определенное количество значащих цифр, получается,
-что между соседними числами конкретного типа есть «дыры». Например, пусть мы возьмем тип single.
-В него невозможно записать число 1.2345678901234 — можно записать только 1.234567 или 1.234568.
-Получается, что между числами 1.234567 или 1.234568 есть целая «дыра» длиной 0.000001, в которой
-нет ни одного числа, которое может храниться в single.
+Due to the fact that the computer stores only a ceratin number of significant digits, it turns
+out that there are "holes" between neighboring numbers of a particular type. For example, 
+let's take a ``single`` type variable. It's impossible to assign the number 1.2345678901234 
+to it — only 1.234567 or 1.234568. The result is that between the numbers 
+1.234567 and 1.234568 there is a "hole" having a width of 0.000001, 
+in which there are no numbers that can be stored in a single.
 
-Когда сами числа не очень большие, то и «дыры» не очень длинные. Но когда числа становятся большими,
-то и «дыры» тоже становятся больше. Например, число 123456789 тоже невозможно записать в single,
-можно записать только 123456700 или 123456800 — «дыра» получается уже длины 100!
+While the numbers themselves are not very large, the "holes" aren't wide.
+But when the numbers get bigger, the "holes" get bigger too.
+For example, the number 123456789 is also impossible to assign to ``single``.
+You can only assign 123456700 or 123456800 — the "hole" is already of width 100!
 
-(На самом деле конкретные числа, которые возможно записать — они немного другие, 
-опять же из-за двоичной системы счисления, и соответственно размеры «дырок» тоже другие,
-они будут степенями двойки, а не десятки,
-но качественно все описанное выше верно.)
+(In fact, the specific numbers that can be stored are a little different,
+once again because of the binary numeral system. Accordingly, the sizes of "holes" 
+are also different, they are powers of two instead of ten,
+but qualitatively everything described above is true.)
 
-Базовые операции
+Basic operations
 ----------------
 
 С вещественными числами доступны все привычные уже вам операции: +-\*/, abs,
