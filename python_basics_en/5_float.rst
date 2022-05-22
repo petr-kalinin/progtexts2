@@ -81,81 +81,79 @@ it immediately becomes clear that there will be nine zeros, and that this is 147
 Or, for example, a hydrogen atom weighs about 1.66e-24 grams, i.e. 0.00000000000000000000000166 grams
 (unless I missed some zeroes or typed some extra :)). Clearly, the first one is much more convenient.
 
-These two parts of which a floating-point number consist, are called as follows:
+These two parts of which a floating-point number consist, are referred to as follows:
 the pare prior to ``e`` is **mantissa** (or "significand"),
 and the one after is **exponent** (or "scale"). For example, in 1234e1
 the mantissa is equal to 1.234, and the exponent is 1.
 
-Как компьютер хранит вещественные числа
----------------------------------------
+How real numbers are stored in the computer
+-------------------------------------------
 
-Вещественные числа, с которыми может иметь дело компьютер, могут быть
-как очень большими, так и очень маленькими. С другой стороны,
-вещественные числа в принципе невозможно хранить *абсолютно точно*, т.к.
-в них могут быть очень много знаков (даже бесконечно много) после
-точки.
+On the one hand, real numbers that the computer operates with
+can be either very large or very small. On the other hand,
+it's generally impossible to store the *exact value* of a real number, 
+because it can have many digits (even infinitely many) after the point.
 
-Поэтому компьютер хранит числа в записи с плавающей точкой, при этом он хранит мантиссу
-и экспоненту по отдельности (но рядом в памяти, конечно, и в конечном счете, конечно, 
-для вас как для программиста это будет одна переменная, хранящая вещественное число,
-а не две отдельных переменных, хранящих мантиссу и экспоненту).
-Более того, поскольку вообще говоря в вещественных числах в мантиссе может быть
-бесконечно много цифр, компьютер хранит лишь несколько первых цифр мантиссы.
+Therefore, the computer stores numbers using floating-point notation,
+and it stores the mantissa and the exponent separately (but side by side in memory,
+and for you as a programmer it will be one variable representing a real number,
+not two separate variables representing the mantissa and the exponent).
+Moreover, since there can be infinitely many digits in the mantissa of a real number, 
+the computer only stores few digits from its beginning.
 
 .. note ::
-
-   Вообще, на самом деле компьютер хранит числа в двоичной системе счисления
-   (т.е. на самом деле компьютер хранит не *десятичную* экспоненту, как это было описано выше,
-   а *двоичную*), но это вам будет пока не особенно важно, потому что весь ввод-вывод
-   вещественных чисел использует все-таки десятичную экспоненту.
+   In fact, the computer stores numbers in binary numeral system
+   (i.e. the exponent in fact is not the power of *ten*, as it was
+   described above, but the power of *two*) but this won't be really
+   significant to you yet, as all input and output operations 
+   still use decimal system and therefore decimal exponent.
 
 .. _pythonBasicsFloatTypes:
 
-Типы данных
------------
+Data types
+----------
 
-Все современные компьютеры умеют работать со следующими тремя типами
-данных:
+All modern computers are able to operate with 
+the three following floating-point data types:
 
--  **single** — хранит 7-8 цифр мантиссы, экспоненту до примерно ±40,
-   занимает в памяти 4 байта, работает сравнительно быстро;
--  **double** — хранит 15-16 цифр мантиссы, экспонента до примерно ±300, занимает 8 байт,
-   работает несколько медленнее;
--  **extended** — хранит 19-20 цифр мантиссы, экспонента
-   до примерно ±5000, занимает в памяти 10 байт, работает намного медленнее;
+-  **single** — stores 7-8 digits of mantissa, limits the exponent approximately by ±40,
+   takes 4 bytes of memory, works rather fast;
+-  **double** — stores 15-16 digits of mantissa, limits the exponent approximately by ±300,
+   takes 8 bytes of memory, works a bit slower;
+-  **extended** — stores 19-20 digits of mantissa, limits the exponent approximately by ±5000, 
+   takes 10 bytes of memory, works way slower;
 
 .. note :: 
+   Let me clarify the meaning of "X digits of mantissa" and "limits the exponent by Y".
+   
+   As I mentioned above, only few first digits of the mantissa are stored.
+   So, these are 7-8 digits in ``single`` data type, 15-16 in ``double`` and
+   19-20 in ``extended``. So if you try to assign 1.234567890123456789e20 to
+   a varibale which is ``single``, you'll get something like 1.234567e20, 
+   and all the extra digits will be dropped. (In fact it's a bit more tricky
+   as all the numbers in the computer are binary. That's why I write that there are
+   "7-8 digits" — it depends on the binary representation.)
 
-   Уточню, что значит «столько-то цифр мантиссы» и «такая-то экспонента». 
-   Как я писал выше, в мантиссе хранится только несколько первых цифр.
-   Собственно, в single хранится только 7-8 цифр, в double 15-16, в expended 19-20.
-   То есть например, если вы попытаетесь в single записать число 1.234567890123456789e20,
-   то на самом деле запишется примерно 1.234567e20, остальные цифры будут отброшены.
-   (На самом деле все немного сложнее из-за того, что числа хранятся в двоичной системе счисления,
-   собственно поэтому я и пишу 7-8 цифр, потому что на самом деле как повезет 
-   в плане двоичной системы счисления.)
+   And the limit of the exponent means that you'll simply fail trying to save a number 
+   with exponent too big for the certain type (for example, 1.23e100 will not fit into ``single``).
+   Such an instruction will either raise an error, or result in a special "infinity" value;
+   and the numbers with too big negative exponent will simply be considered equal to zero
+   ((if you try to write 1.23e-100 to ``single``, you will get 0). 
 
-   Ограничение же на экспоненту обозначает, что числа со слишком большой экспонентой
-   вы просто не сможете записать в нужный тип (например, 1.23e100 не влезет в single),
-   будет или ошибка, или получится специальное значение «бесконечность»; а числа 
-   со слишком большой отрицательной экспонентой просто будут считаться равными нулю
-   (если вы попробуете записать 1.23e-100 в single, то получится 0).
+These types are supported by the processor (i.e. the processor is able 
+to execute the command "add two numbers of type single" or "subtract two numbers 
+of type extended", etc.). Therefore, these types are present (possibly with other
+names) in almost all existing programming languages.
 
-Эти типы поддерживаются процессором (т.е. процессор умеет выполнять
-команду «сложить два числа типа single» или «вычесть два числа типа
-extended» и т.п.). Поэтому эти типы присутствуют (возможно, с другими
-названиями) почти во всех существующих языках программирования.
-
-К сожалению, конкретно в питоне нет простой возможности выбрать один из этих трех 
-типов, можно работать только с double, причем в питоне вместо слова double используется
-название float (что вообще странно, потому что в других языках float — это single, а вовсе не double).
-Таким образом, 
+Unfortunately, specifically in Python there is no easy way to choose one of these 
+three types. You can only work with ``double``, and in Python, the name ``float`` 
+is used instead of ``double`` (which is generally odd 
+because in other languages ``float`` is equivalent to ``single``, not ``double`` at all).
+Therefore,
 
 .. important::
-
-   Стандартные вещественные числа в питоне называются float, 
-   хранят 15-16 цифр в мантиссе и экспоненту до примерно ±300.
-
+   It Python, standard floating-point type is called ``float``,
+   stores 15-16 digits of mantissa and limits the exponent approximately by ±300.
 
 Про «значащие цифры»
 --------------------
