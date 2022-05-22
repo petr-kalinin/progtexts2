@@ -206,80 +206,79 @@ but qualitatively everything described above is true.)
 Basic operations
 ----------------
 
-С вещественными числами доступны все привычные уже вам операции: +-\*/, abs,
-sqrt, ввод-вывод через
-float(input()), map(float, ...) и print. Также
-работает деление с остатком (// и %).
+With floating-point numbers you can perform all the operations 
+which we've already discussed: +-\*/, abs, sqrt, input/output via
+float(input()), map(float, ...) and print. Division with remainder (// and %) also works.
 
-При этом в ваших программах, а также при вводе вы можете задавать числа
-как в записи с фиксированной точкой, так и с плавающей, т.е. вы можете
-писать, например, ``a = 1.23 + 2.34e-1;``, и при считывании чисел можете
-вводить значения тоже как в формате ``1.23``, так и в формате ``2.34e-1``.
+Meanwhile, in your programs, as well as in the input data, you can set numbers
+both in fixed-point and floating-point notations. I.e. you can type,
+for example, ``a = 1.23 + 2.34e-1``, and when inputting numbers, you can
+also enter values in both formats: ``1.23`` and ``2.34e-1``.
 
-Про вывод подробнее
--------------------
-
-Часто в наших задачах вы можете встретить фразу «выведите ответ с
-точностью до 5 знаков после запятой», или «с пятью верными знаками» и
-т.п. Такие фразы почти всегда обозначают, что ваш ответ должен содержать
-5 верных цифр после запятой, но они не запрещают вам выводить больше
-цифр. Вы можете вывести хоть 20 цифр — если первые пять из них верные,
-то ответ будет зачтен. И наоборот, вы можете вывести меньше цифр — если
-невыведенные цифры — нули, то ответ тоже будет зачтен. Вообще, строго
-говоря, такая фраза в условии просто обозначает, что ваш ответ должен
-отличаться от верного не более чем на 1e-5.
-
-Пример: если правильный ответ на задачу — 0.123456789, то вы можете
-вывести 0.12345, или 0.123459876, или даже 1.2345e-1 (т.к. это то же
-самое, что и 0.12345). А если правильный ответ — 0.10000023, то вы
-можете вывести 0.10000, 0.10000987 или даже просто 0.1 или 1e-001 (т.к.
-это то же самое, что и 0.10000).
-
-В частности, это обозначает, что вы можете пользоваться стандартной
-функцией вывода (print) без каких-либо особых ухищрений; не
-надо округлять число, не надо форматировать вывод и т.д.
-
-Вот если в задаче строго сказано «вывести ровно с 5 знаками после
-запятой», то это другое дело. Но на приличных олимпиадах такое бывает
-очень редко.
-
-Полезные функции
+Output in detail
 ----------------
 
-В питоне есть несколько функций, которые вам будут
-полезны при работе с вещественными числами. Для ряда из этих функций
-надо в самом начале программы написать
-``from math import *`` (как вы уже писали для квадратного корня).
-Кроме того, имейте в виду, что с этими функциями
-также могут возникать проблемы погрешностей (см. ниже).
+In the problems you may often find the sentence "print the answer with
+an accuracy of 5 digits after the point", or "with five correct characters", etc.
+They almost always mean that your answer should contain 5 correct digits 
+after the decimal point, but they do not forbid you to output more digits. 
+You can output even 20 digits — if the first five of them are correct,
+then the answer will be accepted. And vice versa, you can output fewer digits — if
+the missing digits are zeros, then the answer will also be accepted.
+In general, strictly speaking, such a phrase in the task simply means
+that your answer should differ from the correct one by no more than 1e-5.
 
--  **floor** ("пол") — округляет число *вниз*, т.е. определяет ближайшее
-   целое число, которое *меньше или равно* данного вещественного.
-   Например, ``floor(2.4) == 2``, ``floor(2) == 2``, ``floor(-2.4) == -3``, и
-   ``floor(2.8) == 2``.
--  **ceil** ("потолок") — округляет число *вверх*, т.е. определяет
-   ближайшее целое число, которое *больше или равно* данного
-   вещественного. Например, ``ceil(2.4) == 3``, ``ceil(2) == 2``,
-   ``ceil(-2.4) == -2``, и ``ceil(2.8) == 3``.
--  **trunc** — округляет число *в сторону нуля*. Например,
-   ``trunc(2.4) == 2``, ``trunc(2) == 2``, ``trunc(-2.4)== -2``, и
-   ``trunc(2.8) == 2``.
--  **round** — округляет число *к ближайшему целому числу* («по школьным
-   правилам», за исключением ситуации, когда дробная часть числа строго
-   равна 0.5 — тогда в зависимости от числа может быть округление то в
-   одну, то в другую сторону). Например, ``round(2.4) == 2``,
-   ``round(2) == 2``, ``round(-2.4) == -2``, и ``round(2.8) == 3``.
-- Еще повторю, что работают операции деления с остатком (``//`` и ``%``),
-  в частности, ``x % 1`` дает дробную часть числа ``x``.
+For example, if the correct answer to the problem is 0.123456789,
+you can output 0.12345, or 0.123459876, or even 1.2345e—1
+(because this is the same as 0.12345).
+And if the correct answer is 0.10000023, then you
+can output 0.10000, 0.10000987 or even just 0.1 or 1e—001
+(because these two are the same as 0.10000).
 
-Пример программы, использующей эти функции::
+In particular, this means that you can use the standard
+output function (``print``) without any special tricks;
+there's no need to round the number, no need to format the output, etc.
+
+But if it's strictly stated "output should contain exactly 5 digits 
+after the decimal point", then this is another case.
+But on regular contests this happens very rarely.
+
+Useful functions
+----------------
+
+In Python, there are several functions that will be useful to you 
+when working with real numbers. For some of these functions,
+it is necessary to type ``from math import *`` in the beginning 
+of the program (as you already did for the square root).
+Also, keep in mind that these functions may lead to rounding issues (see below).
+
+-  **floor**  — rounds the number *down*, i.e. returns the nearest
+   integer that is *less than or equal to* a given real.
+   Examples: ``floor(2.4) == 2``, ``floor(2) == 2``,
+   ``floor(-2.4) == -3``, ``floor(2.8) == 2``.
+-  **ceil** — rounds the number *up*, i.e. returns
+   the nearest integer that is *greater than or equal to* a given real.
+   Examples: ``ceil(2.4) == 3``, ``ceil(2) == 2``,
+   ``ceil(-2.4) == -2``, ``ceil(2.8) == 3``.
+-  **trunc** — rounds the number *towards zero*.
+   Examples: ``trunc(2.4) == 2``, ``trunc(2) == 2``,
+   ``trunc(-2.4) == -2``, ``trunc(2.8) == 2``.
+-  **round** — rounds the number *to the nearest integer*
+   ("according to school rules", except when the fractional part of the number
+   is exactly equal to 0.5 — then, depending on the number, it may be rounded
+   in one direction or the other). Examples: ``round(2.4) == 2``,
+   ``round(2) == 2``, ``round(-2.4) == -2``, ``round(2.8) == 3``.
+-  I'll say once again that operations of division with remainder (``//`` and ``%``)
+   work, and in particular, ``x % 1`` gives the fractional part of the number ``x``.
+
+Example of a program using these functions::
 
     from math import *               
 
-    print(floor(-2.4))  # выводит -3 
-    print(ceil(2.4))  # выводит 3    
-    print(trunc(2.8) + (2.4 + 0.4) % 1)  # выводит 2.8                         
-    print(round(3.9))  # выводит 4   
+    print(floor(-2.4))  # outputs -3 
+    print(ceil(2.4))  # outputs 3    
+    print(trunc(2.8) + (2.4 + 0.4) % 1)  # outputs 2.8                         
+    print(round(3.9))  # outputs 4   
 
 Погрешности
 -----------
