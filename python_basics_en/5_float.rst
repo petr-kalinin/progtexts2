@@ -79,7 +79,7 @@ extremely small numbers. For example, the distance between the Earth and the Sun
 because you have to carefully count the zeros. It is much easier to write 147e9 — 
 it immediately becomes clear that there will be nine zeros, and that this is 147 billion.
 Or, for example, a hydrogen atom weighs about 1.66e-24 grams, i.e. 0.00000000000000000000000166 grams
-(unless I missed some zeroes or typed some extra :)). Clearly, the first one is much more convenient.
+(unless I missed some zeroes or typed some extra :) ). Clearly, the first one is much more convenient.
 
 These two parts of which a floating-point number consist, are referred to as follows:
 the pare prior to ``e`` is **mantissa** (or "significand"),
