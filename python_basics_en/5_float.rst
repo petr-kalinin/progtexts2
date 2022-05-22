@@ -36,7 +36,7 @@ who have managed to forget; and also to clearly define the terms "mantissa" and 
 
 Notation of floating-point numbers looks is as follows: 1.234e1.
 It consists of two parts separated by the English letter ``e`` (may be
-eqither a small or a capital letter, although now it seems that small one is more common).
+either small or capital letter, although now it seems that small one is more common).
 This means: "take the number 1.234 and move the decimal point in it by 1 position to the right" —
 so, you'll get 12.34. As well it may be written as 0.1234e2 — here we need to take 0.1234 
 and move the point by two digits to the right, and get the same 12.34.
@@ -79,7 +79,7 @@ extremely small numbers. For example, the distance between the Earth and the Sun
 because you have to carefully count the zeros. It is much easier to write 147e9 — 
 it immediately becomes clear that there will be nine zeros, and that this is 147 billion.
 Or, for example, a hydrogen atom weighs about 1.66e-24 grams, i.e. 0.00000000000000000000000166 grams
-(unless I missed some zeroes or typed some extra :)). Clearly, the first notation is much more convenient.
+(unless I missed some zeroes or typed some extra :)). Clearly, the first one is much more convenient.
 
 These two parts of which a floating-point number consist, are called as follows:
 the pare prior to ``e`` is **mantissa** (or "significand"),
