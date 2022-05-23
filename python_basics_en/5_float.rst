@@ -280,119 +280,116 @@ Example of a program using these functions::
     print(trunc(2.8) + (2.4 + 0.4) % 1)  # outputs 2.8                         
     print(round(3.9))  # outputs 4   
 
-Погрешности
------------
+Errors
+------
 
-Два правила работы с вещественными числами
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Two rules of using floating-pont numbers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Сначала напишу два главных правила работы с вещественными числами:
-
-.. important::
-
-   **Правило первое: не работайте с вещественными числами**. А именно, если
-   возможно какую-то задачу решить без применения вещественных чисел, и это
-   не очень сложно, то лучше ее решать без вещественных чисел.
+First, I will define two main rules of using floating-point numbers:
 
 .. important::
 
-   **Правило второе: если уж работаете, то используйте** ``eps``. При
-   любых [#f]_ сравнениях вещественных чисел надо использовать
-   ``eps``.
+   **Rule one: don't use floating-point numbers**. That is, if it's
+   possible and not very difficult to solve the problem without using
+   flotaing-point numbers, it's better to solve it in that way.
 
-.. [#f] за исключением случаев, когда вам не важно, что произойдет в случае точного равенства, см. ниже
+.. important::
 
+   **Rule two: if you are using them, then use** ``eps``.
+   For any [#f]_ comparisons of floating-point numbers,
+   you should use ``eps``.
 
-Ниже я разъясняю оба этих правила.
+.. [#f] except when you don't care what happens in case of exact equality (see below).
 
-Необходимость использования ``eps``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Both of these rules are explained below.
 
-Как уже говорилось выше, компьютер не может хранить *все* цифры числа,
-он хранит только несколько первых значащих цифр. Поэтому, если,
-например, разделить 1 на 3, то получится не 0.33333... (бесконечно много
-цифр), а, например, 0.33333333 (только несколько первых цифр). Если
-потом умножить результат обратно на 3, то получится не ровно 1, а
-0.99999999. (Аналогичный эффект есть на простых калькуляторах; на
-продвинутых калькуляторах он тоже есть, но проявляется сложнее.)
+The necessity of ``eps``
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-(Вы можете попробовать потестировать, правда ли, что ``(1/3)*3`` равно 1,
-и обнаружить, что проверка ``if (1 / 3) * 3 == 1`` выполняется.
-Да, тут повезло — опять-таки из-за двоичной системы получилось округление в правильную сторону. 
-Но с другими числами это может не пройти,
-например, проверка ``if (1 / 49) * 49 == 1`` не срабатывает.)
+As mentioned above, a computer can't store *all* digits of a number,
+it stores only the few beginning significant digits. Therefore, if,
+for example, we divide 1 by 3, we get not 0.333333... (infinitely many
+digits), but something like 0.3333333 (only the first few digits).
+If, after that, you multiply the result by 3, you get not exactly 1, but
+0.99999999. (A similar effect exists on simple calculators;
+it also exists on advanced calculators, but is more complicated to reveal.)
 
-На самом деле все еще хуже: компьютер работает в двоичной системе
-счисления, поэтому даже числа, в которых в десятичной системе счисления
-имеют конечное число цифр, в компьютере могут представляться неточно. Поэтому,
-например, сравнение ``if 0.3 + 0.6 == 0.9`` тоже не сработает: если сложить
-0.3 и 0.6, то получится не ровно 0.9, а слегка отличающее число
-(0.899999 или 0.900001 и т.п.)
+(You can give it a try and check whether it is true that ``(1/3)*3`` is equal to 1,
+and find that the condition ``if (1 / 3) * 3 == 1`` is true. Yes, we were lucky here 
+— again, because of the binary system, rounding worked in the right direction.
+But with other numbers this may not work. For example, check ``if (1 / 49) * 49 == 1`` fails.)
 
-Действительно, напишите и запустите следующую программу::
+Actually, things are even worse: the computer works in binary system,
+so even numbers which have a finite number of digits in decimal system 
+can be represented imprecisely in the computer. Therefore,
+for example, the check `if 0.3 + 0.6 == 0.9" will not work either:
+if you add up 0.3 and 0.6, you will get not exactly 0.9,
+but a slightly different number (0.899999 or 0.900001, etc.)
+
+Indeed, write and run the following program::
 
    if 0.3 + 0.6 == 0.9:
       print("Ok")
    else:
       print("Fail")
 
-и вы увидите, что она выводит Fail.
+and you'll see that it outputs *Fail*.
 
-(Более того, ``print(0.3+0.6)`` выводит у
-меня 0.8999999999999999.)
+(Moreover, on my machine ``print(0.3+0.6)`` outputs 0.8999999999999999.)
 
-Итак, погрешности, возникающие при любых вычислениях, — это основная
-проблема работы с вещественными числами. Поэтому **если вам надо сравнить
-два вещественных числа, то надо учитывать, что, даже если на самом деле
-они должны быть равны, в программе они могут оказаться не равны**.
+So, the errors that occur in any calculations are the main
+problem of floating-point numbers. Therefore, **if you need to compare
+two floating-point numbers, then take into account the fact that,
+even if they should be actually equal, they may not be equal in the program**.
 
-Стандартный подход для борьбы с этим — выбрать маленькое число ``eps``
-(от названия греческой буквы ε — «эпсилон», «epsilon»), и два числа
-считать равными, если они отличаются не более чем на ``eps``.
+The standard approach to deal with this issue is to choose a small number ``eps``
+(refers to the Greek letter ε — "epsilon"),
+and consider two numbers equal if they differ by no more than ``eps``.
 
-Про то, как выбирать это ``eps``, обсудим ниже, пока будем считать, что
-мы взяли ``eps=1e-6``. Тогда в начале программы пишем
-
+Below we'll discuss how to choose this ``eps``. Let's assume for a while that
+we took ``eps=1e-6``. Then at the beginning of the program we type
 ::
 
    eps = 1e-6                       
 
-— и далее в коде когда нам надо сравнить два числа, мы вместо ``if x=y``
-пишем ``if abs(x - y) < eps``, т.е. проверяем, правда ли, что
-:math:`|x-y| < \varepsilon`.
+— and further in the code, when we need to compare two numbers,
+instead of ``if x=y`` we should write ``if abs(x - y) < eps``,
+i.e. we check whether it is true that :math:`|x-y| < \varepsilon`.
 
-То есть мы предполагаем, что если два числа на самом деле должны быть
-равны, но отличаются из-за погрешности, то они отличаться будут менее
-чем на ``eps``; а если они на самом деле должны различаться, то
-различаться они будут более чем на ``eps``. Таким образом, ``eps``
-разделяет ситуации «два числа равны» и «два числа не равны».
-(Естественно, это будет работать не при любом ``eps``, т.е. ``eps`` надо
-аккуратно выбирать — про это см. ниже.)
+So, we assume that if two numbers should actually be
+equal, but may differ due to an error, then they will differ by
+no more than ``eps``; and if they should really be different,
+then they will differ by more than ``eps``. Thus, ``eps``
+separates the situations "two numbers are equal" and "two numbers are not equal".
+(Of course, this will not work with arbitrary ``eps``,
+i.e. ``eps`` must be chosen with care — see below about this.)
 
-Аналогично, если нам надо проверить ``if x >= y``, то надо писать
-``if x >= y - eps`` или ``if x > y - eps``. (Обратите внимание, что тут не
-важно, писать строгое или нестрогое равенство — вероятность того, что
-окажется точно ``x == y - eps`` очень мала из-за тех же погрешностей: скорее
-всего окажется или больше, или меньше. Более того, если оказалось, что
-точно ``x == y - eps``, это обозначает, что мы неправильно выбрали ``eps``,
-т.к мы не смогли отделить ситуацию «числа ``x`` и ``y`` равны» и ситуацию
-«числа не равны». См. еще ниже в разделе про выбор ``eps``.)
+Similarly, if we need to check ``if x >= y``, then we should write
+``if x >= y - eps`` or ``if x > y - eps``. (Note that it doesn't
+matter whether to write strict or non—strict inequality, as the probability that
+it will be exactly ``x == y - eps`` is very small, again, due to the errors. Highly likely
+it will be either more or less. Moreover, if it turned out that exactly ``x == y - eps``,
+it means that we chose an inappropriate ``eps``, because we failed to separate the situation 
+"the numbers ``x`` and ``y`` are equal" and the situation "the numbers are not equal".
+See more on this below in the section about the choice of `eps`.)
 
-Если нам надо написать условие ``if x > y``, то его тоже надо переписать,
-ведь нам важно (подробнее см. ниже), чтобы при ``x == y`` условие не
-выполнилось! Поэтому переписать его надо так: ``if x > y + eps``.
-Аналогичные соображения действуют для любых других сравнений
-вещественных чисел.
+The condition ``if x > y`` has to be modified as well,
+because it is important to us (see below for more details)
+that the condition is false upon ``x == y``!
+Therefore, it should be rewritten like this: ``if x > y + eps``.
+And any other comparisons of real numbers 
+should be considered and modified in a similar way.
 
-Итак, именно поэтому получаем
+So, that's why we get
 
 .. important::
 
-   **Правило второе: если уж работаете, то используйте** ``eps``. При
-   любых [#f]_ сравнениях вещественных чисел надо использовать
-   ``eps``.
+   **Rule two: if you are using them, then use** ``eps``.
+   For any [#f]_ comparisons of floating-point numbers,
+   you should use ``eps``.
 
-(Первое правило будет дальше :) )
+(The Rule one will be discussed a bit later :) )
 
 Выбор ``eps``
 ~~~~~~~~~~~~~
