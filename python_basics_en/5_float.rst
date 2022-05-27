@@ -508,8 +508,7 @@ let alone it is simple, but nevertheless.) Therefore,
 if you can think out and write such a solution, it is better to write it.
 
 Additional topic. "Rough" problems: when ``eps`` is unnecessary
-Дополнительный материал. «Грубые» задачи: когда ``eps`` не нужно
-----------------------------------------------------------------
+---------------------------------------------------------------
 
 Рассмотрим следующие код (``x``, ``y``, ``max`` -- вещественные числа):
 
