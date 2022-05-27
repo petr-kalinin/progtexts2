@@ -391,119 +391,123 @@ So, that's why we get
 
 (The Rule one will be discussed a bit later :) )
 
-Выбор ``eps``
-~~~~~~~~~~~~~
+Choosing ``eps``
+~~~~~~~~~~~~~~~~
 
-Выбор ``eps`` — это весьма нетривиальная задача, и далеко не всегда она
-вообще имеет правильное решение. Нам надо выбрать такое ``eps``, чтобы,
-если два числа должны быть равны (но отличаются из-за погрешностей), то
-их разность точно была меньше ``eps``, а если они не равны, то точно
-была больше ``eps``. Ясно, что в общем случае эта задача не имеет
-решения: может быть так, что в одной программе будут два числа, которые
-должны быть равны, но отличаются, например, на 0.1 из-за погрешности, и
-два числа, которые действительно различны, но отличаются только на 0.01.
+Choosing ``eps`` is quite a non—trivial problem, and it even might not
+have a correct solution at all. We need to choose an ``eps`` that meets
+the two following criteria: if two numbers should be equal (but differ
+due to errors), then their difference must be much less than ``eps``,
+and if they are not equal, then it must be much more than ``eps``.
+It's clear that in general this problem has no solution:
+just in one same program there may be two numbers that
+should be equal, but differ, for example, by 0.1 due to error, and
+two numbers that are really different, but differ only by 0.01.
 
-Но обычно считают, что в «разумных» задачах все-таки такое ``eps``
-существует, т.е. числа, которые должны быть равны, отличаются не очень
-сильно, а те, которые должны отличаться, отличаются намного сильнее. И
-``eps`` выбирают где-нибудь посередине. (В частности, поэтому, как
-говорилось выше, не бывает так, что ``x == y - eps`` точно.) (В более сложных
-задачах может понадобиться применять более сложные техники, но мы их
-сейчас не будем обсуждать.)
+But it is usually considered that in "adequate" tasks such an ``eps``
+exists, i.e. the numbers that should be equal do not differ very
+much, and those that should differ are fairly more different.
+So ``eps`` should be chosen somewhere in the middle.
+(In particular, as mentioned above, that's why it doesn't happen 
+that exactly ``x == y - eps``.) (In advanced tasks,
+more complex techniques may be needed, but we won't discuss them now.)
 
-В некоторых, самых простых, задачах такое ``eps`` можно вычислить строго. Например,
-пусть задача: даны три числа :math:`a`, :math:`b` и :math:`c`, каждое не больше 1000, и
-каждое имеет не более 3 цифр после десятичной запятой. Надо проверить,
-правда ли, что :math:`a+b=c`. Из изложенного выше понятно, что тупое решение
-``if a + b == c`` не сработает: может оказаться, что должно быть :math:`a + b = c`, но
-из-за погрешностей получится, что :math:`a+b \neq c`. Поэтому надо проверять
-``if abs(a + b - c) < eps``, но какое брать ``eps``?
+In some simplest tasks, such an ``eps`` can be calculated precisely.
+For example, let the problem be like: "Three numbers :math:`a`, :math:`b' and :math:`c`
+are given, each is no more than 1000, and each has no more than 3 digits after
+the decimal point. Check if it is true that :math:`a + b = c`." From the discussed above
+it's clear that the stupid solution via ``if a + b == c`` won't work:
+you'll definitely come across a situation where it should be :math:`a + b = c`,
+but due to errors you get :math:`a + b \neq c`. Therefore, it is necessary to perform 
+the check in this way: ``if abs(a + b - c) < eps``. But what should ``eps`` be like?
 
-Подумаем: пусть действительно :math:`a+b=c`. Какой может быть разница :math:`a+b-c`
-с учетом погрешностей? Мы знаем, что :math:`a`, :math:`b` и :math:`c` не превосходят 1000.
-Мы используем тип данных ``float`` (который на самом деле ``double``), в
-котором хранятся 15-16 верных цифр, значит, погрешности будут примерно в
-15-16-й значащей цифре. Для максимальных возможных значений чисел (т.е.
-для 1000) погрешности будут порядка ``1e-12`` или меньше, т.е. можно
-рассчитывать, что если :math:`a+b=c`, то в программе :math:`|a+b-c|` будет порядка
-``1e-12`` или меньше.
+On the one hand, let's suppose it's :math:`a + b = c` indeed. What could the difference :math:`a+b-c`
+be due to the errors? We know that :math:`a`, :math:`b' and :math:`c` does not exceed 1000.
+We use the ``float`` data type (which is actually ``double``),
+which stores 15-16 digits, so the errors will be approximately in
+the 15th-16th significant digit. For the maximum possible values of our numbers
+(i.e. for 1000), the errors will be around ``1e-12`` or less,
+i.e. it can be fairly considered that if :math:`a + b = c`,
+then in the program :math:`|a + b - c|` will be around ``1e-12`` or less.
 
-С другой стороны, пусть :math:`a+b \neq c`. Какой тогда может быть разница
-:math:`|a+b-c|`? По условию, все числа имеют не более трех цифр после
-запятой, поэтом понятно, что эта разница будет равна 0.001 или больше.
+On the other hand, let it be non-equal: :math:`a+b \neq c`. What then could the difference
+:math:`|a+b-c|` be? As given in the task, all numbers have no more than three digits
+after the decimal point, so it's clear that this difference will be equal to 0.001 or more.
 
-Итого мы видим, что если числа должны быть равны, то они отличаются не более чем на ``1e-12``,
-а если не равны, то как минимум на ``1e-3``. Поэтому можно, например, взять ``eps=1e-5``. 
-С одной стороны, если на
-самом деле :math:`a+b=c`, то в программе :math:`|a+b-c|` точно получится намного
-меньше ``eps``, а с другой стороны, если на самом деле :math:`a+b\neq c`, то
-:math:`|a+b-c|` будет точно намного больше ``eps``. Итак, в этом примере мы
-смогли точно вычислить подходящее ``eps``.
+As a result, we see that if the numbers should be equal,
+then they differ by no more than ``1e-12``, and
+if they should be different, then differ by at least ``1e-3``.
+Therefore, we can take, for example ``eps = 1e-5``.
+So on the one hand, if in fact :math:`a + b = c`, then in the program
+:math:`|a + b - c|` will definitely be much less than ``eps``,
+and on the other hand, if in fact :math:`a + b \neq c`, then
+:math:`|a + b - c|` will be definitely much more than ``eps``.
+So, in this example, we are able to just calculate the appropriate ``eps``.
 
-(И вообще, конечно,
-вариантов много — подошло бы любое число, которое существенно меньше
-1e-3 и существенно больше 1e-12. Вот это и есть «хорошая» ситуация,
-когда варианты «равны» и «не равны» разделены очень сильно.
-А если бы они не были бы так разделены, то весь фокус с ``eps`` не прошел бы.
-Это то, про что я писал немного выше.).
+(And in general, of course, there are many options —
+any number that is significantly less than :math:`1e-3`
+and significantly more than :math:`1e-12` would be suitable.
+This is the "good" situation, where the options "equal" and "not equal"
+are strongly separated. And if they weren't so, then the whole ``eps`` trick
+wouldn't work. This is what I mentioned a little above.).
 
-Но бывают задачи, где так просто вычислить подходящее ``eps`` не
-получается. На самом деле таких задач большинство — как только
-вычисления у вас становятся сложнее чем сложить два числа, за
-погрешностями уже становится сложно уследить. Можно, конечно, применять
-какие-нибудь сложные техники, но обычно принято просто брать
-какое-нибудь ``eps`` порядка ``1e-6``..\ ``1e-10``.
+But there are problems where it is not so easy to calculate the appropriate ``eps``.
+In fact, such are the most of the problems — as soon as your calculations
+become more sophisticated than just adding two numbers, it becomes difficult
+to keep track of the errors. You can, of course, use some complex techniques,
+but it is a common practice to just take ``eps`` somewhere in range ``1e-6``..\ ``1e-10``.
 
-Но в итоге вы не можете быть уверены, что вы выбрали правильное ``eps``.
-Если ваша программа не работает — это может быть потому, что у вас
-ошибка в программе, а может быть просто потому, что вы выбрали неверный
-``eps``. Бывает так, что достаточно поменять ``eps`` — и программа
-пройдет все тесты. Конечно, это не очень хорошо, но ничего не поделаешь.
+But in the end you can't be sure that you have chosen the right ``eps``.
+If your program doesn't work, it may be because you have an error in the program,
+or simply because you've chosen an inappropriate ``eps``. It happens
+that it is enough to change the ``eps`` and the program will pass all the tests.
+Of course, this is not really good, but there's nothing to do.
 
-В частности, поэтому на олимпиадах очень не любят давать задачи, которые
-реально требуют вычислений с вещественными числами — никто, даже само
-жюри, не может быть уверено в том, что у них ``eps`` выбрано верно. Но
-иногда такие задачи все-таки дают, т.к. никуда не денешься.
+In particular, this is why on the contests tasks that indeed require calculations
+with real numbers are quite unpopular and rarely appear — no one,
+even the jury itself, can be sure that their ``eps`` is chosen correctly.
+But sometimes you may still come across such tasks.
 
-И поэтому получаем
+And therefore we get
 
 .. important::
 
-   **Первое правило работы с вещественными числами: не работайте с
-   вещественными числами**. А именно, если возможно какую-то задачу решить
-   без применения вещественных чисел, и это не очень сложно, то лучше ее
-   решать без вещественных чисел, чтобы не думать про все эти погрешности и ``eps``.
+   **Rule one of operating with floating-point numbers: don't use floating-point numbers**.
+   That is, if it's possible and not very difficult to solve the problem without using
+   flotaing-point numbers, it's better to solve it in that way and not to care about all those errors and ``eps``. 
 
-Пример: пусть у вас в программе есть четыре *целых* (int)
-положительных числа :math:`a`, :math:`b`, :math:`c` и :math:`d`, и вам надо сравнить две дроби:
-:math:`a/b` и :math:`c/d`. Вы могли бы написать ``if a / b > c / d``, но это плохо: в
-результате деления получаются вещественные числа, и вы сравниваете два
-вещественных числа со всеми вытекающими последствиями. (Конкретно в этом
-случае, возможно, ничего плохого не случится, но в чуть более сложных
-случаях уже может случиться, да и в этом случае возможно и случится, я
-не проверял.) А именно, может оказаться, например, что :math:`a / b = c / d` на
-самом деле, но из-за погрешностей в программе получится :math:`a/b>c/d` и
-``if`` выполнится. Вы можете написать ``eps``, думать, каким его
-выбрать... но можно проще. Можно просто понять, что при положительных
-(по условию) числах это сравнение эквивалентно условию ``if a * d > c * b``.
-Здесь все вычисления идут только в целых числах, поэтому это условие
-работает всегда, и не требует
-никаких ``eps`` (да еще и работает быстрее, чем предыдущий вариант). Его
-написать не сложнее, чем вариант с делением, поэтому всегда следует так
-и писать. Всегда, когда в решении вы переходите от целых к вещественным
-числам, задумайтесь на секунду: а нельзя ли обойтись без вещественных
-чисел? Если да, то постарайтесь так и поступить — и никаких проблем с
-точностью у вас не возникнет.
+A natural example: suppose you have four *integer* (int) positive numbers
+in your program: :math:`a`, :math:`b`, :math:`c` and :math:`d'.
+And you need to compare two fractions: :math:`a/b` and :math:`c/d'.
+You could write ``if a/b > c/d``, but this is not good:
+as a result of division, real numbers are obtained, and you compare two
+real numbers and bear with all the consequences.
+(In this specific case, perhaps nothing bad will happen,
+but in slightly more complex cases it already may happen.
+And even in this case it may happen, I didn't check.)
+That is, it may, for example, be actually a true equality :math:`a/b = c/d`,
+but due to roundoff errors in the program it will result in :math:`a/b > c/d`,
+s ``if`` will be executed. You can write it with ``eps`` and think how to choose it...
+but the solution can be way more simple. You can just understand that,
+for positive numbers (as given), this condition is equivalent
+to the condition ``if a * d > c * b``. Here, all calculations are with integers,
+so this condition always works properly and does not require any ``eps``
+(and even works faster than the previous version). It's just as easy to write
+as the one with division, so you should always write this way.
+Whenever you have an intention to move from integers to real (in fact, floating-point)
+numbers in a solution, think for a second: is it possible to do without real numbers?
+If yes, then try to do so — and you won't run into any issues with precision and roundoff.
 
-В частности, в будущем вы заметите, что во многих задачах, которые,
-казалось бы, подразумевают вещественные входные данные (например, задачи
-на геометрию), входные данные тем не менее обычно целочисленны. Это
-сделано именно для того, чтобы можно было написать решение полностью в
-целых числах, и не иметь проблем с погрешностью. (Не всегда такое
-решение возможно, и уж тем более не всегда оно простое, но тем не
-менее.) Поэтому если вы можете написать такое решение, лучше написать
-именно его.
+In particular, in the future you will notice that in many problems that
+seem to imply real input data (for example, geometry problems),
+the input data is nevertheless usually integer.
+This is done exactly so that you can write the solution completely
+in integers, and not have issues with the roundoff error.
+(There's no guarantee that such a solution exists,
+let alone it is simple, but nevertheless.) Therefore,
+if you can think out and write such a solution, it is better to write it.
 
+Additional topic. "Rough" problems: when ``eps`` is unnecessary
 Дополнительный материал. «Грубые» задачи: когда ``eps`` не нужно
 ----------------------------------------------------------------
 
