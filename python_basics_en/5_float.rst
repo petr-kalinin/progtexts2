@@ -413,7 +413,7 @@ that exactly ``x == y - eps``.) (In advanced tasks,
 more complex techniques may be needed, but we won't discuss them now.)
 
 In some simplest tasks, such an ``eps`` can be calculated precisely.
-For example, let the problem be like: "Three numbers :math:`a`, :math:`b' and :math:`c`
+For example, let the problem be like: "Three numbers :math:`a`, :math:`b` and :math:`c`
 are given, each is no more than 1000, and each has no more than 3 digits after
 the decimal point. Check if it is true that :math:`a + b = c`." From the discussed above
 it's clear that the stupid solution via ``if a + b == c`` won't work:
@@ -422,7 +422,7 @@ but due to errors you get :math:`a + b \neq c`. Therefore, it is necessary to pe
 the check in this way: ``if abs(a + b - c) < eps``. But what should ``eps`` be like?
 
 On the one hand, let's suppose it's :math:`a + b = c` indeed. What could the difference :math:`a+b-c`
-be due to the errors? We know that :math:`a`, :math:`b' and :math:`c` does not exceed 1000.
+be due to the errors? We know that :math:`a`, :math:`b` and :math:`c` does not exceed 1000.
 We use the ``float`` data type (which is actually ``double``),
 which stores 15-16 digits, so the errors will be approximately in
 the 15th-16th significant digit. For the maximum possible values of our numbers
@@ -477,8 +477,8 @@ And therefore we get
    flotaing-point numbers, it's better to solve it in that way and not to care about all those errors and ``eps``. 
 
 A natural example: suppose you have four *integer* (int) positive numbers
-in your program: :math:`a`, :math:`b`, :math:`c` and :math:`d'.
-And you need to compare two fractions: :math:`a/b` and :math:`c/d'.
+in your program: :math:`a`, :math:`b`, :math:`c` and :math:`d`.
+And you need to compare two fractions: :math:`a/b` and :math:`c/d`.
 You could write ``if a/b > c/d``, but this is not good:
 as a result of division, real numbers are obtained, and you compare two
 real numbers and bear with all the consequences.
