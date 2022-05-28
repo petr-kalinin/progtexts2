@@ -507,50 +507,46 @@ in integers, and not have issues with the roundoff error.
 let alone it is simple, but nevertheless.) Therefore,
 if you can think out and write such a solution, it is better to write it.
 
-Additional topic. "Rough" problems: when ``eps`` is unnecessary
+Additional topic. "Rough" problems: when you don't need ``eps``
 ---------------------------------------------------------------
 
-Рассмотрим следующие код (``x``, ``y``, ``max`` -- вещественные числа):
-
-::                                   
+Let's look at this code (where ``x``, ``y`` and ``max`` are floating-point numbers)::
                                      
    if x > y:                        
       max = x                      
    else:                            
       max = y                      
 
-Здесь мы сравниваем два вещественных числа, чтобы найти максимум из них.
-Казалось бы, в соответствии со сказанным выше, в сравнении нужен
-``eps``... но нет! Ведь если два числа на самом деле равны, то нам *все
-равно*, в какую из веток ``if`` мы попадем — обе ветки будут верными!
-Поэтому ``eps`` тут не нужен.
+Here we compare two real numbers to find the maximum.
+It may seem, according to discussed above, that you need
+``eps`` in the condition... but actually you don't!
+Because if two numbers are equal indeed, then we
+*don't care* which of the ``if`` branches we get into —
+in both branches the result will be correct!
+Therefore, ``eps`` is not needed here.
 
-Так иногда бывает — когда вам все равно, в какую ветку if'а вы попадете,
-если два сравниваемых числа на самом деле равны между собой. В таком
-случае ``eps`` использовать не надо. Но каждый раз тщательно думайте: а
-правда ли все равно? Всегда лучше перестраховаться и написать ``eps``
-(выше с ``eps`` тоже все работало бы), за исключением совсем уж простых
-случаев типа приведенного выше вычисления максимума.
+This happens sometimes that you don't care which branch of ``if`` you get into
+when two comared numbers are actually equal to each other. In this
+case, you souldn't use ``eps``. But think carefully each time:
+does it really matter? It is always better to be safe and write ``eps``
+(above, everything would also work with ``eps``), except for very simple
+cases like the calculation of the maximum above.
 
-Еще пример: считаем сумму положительных элементов массива
+Another example: calculating the sum of all positive elements of the array::
 
-::                                   
-                                     
-   # x -- массив вещественых чисел  
-   s = 0                            
-   for i in range(len(x)):          
-      if x[i] > 0:                 
-         s += x[i]                
-                                     
-                                     
-Здесь, опять-таки, если должно быть :math:`x_i=0`, то не важно, добавим мы
-его в сумму или нет: сумма от добавления нуля не изменится. Поэтому
-``eps`` писать не надо (но ничего страшного не будет, если и написать).
+   # x is an array of floats
+   s = 0
+   for i in range(len(x)):
+      if x[i] > 0:
+         s += x[i]
 
-Еще пример, где уже ``eps`` необходим: определим, *какое* из двух чисел
-больше:
 
-::
+Here, again, if :math:`x_i == 0`, then it doesn't matter whether we add
+it to the sum or not: the sum won't cahnge from adding zero. Therefore
+you don't need to write ``eps`` (but it won't be a big deal if you do).
+
+Another example where ``eps`` is already necessary:
+let's determine *which* of the two numbers is greater::
 
    ...                              
    if x > y + eps:                  
@@ -560,34 +556,33 @@ Additional topic. "Rough" problems: when ``eps`` is unnecessary
    else:                            
       ans:=0                      
 
-Вообще, тут полезно следующее понятие. Назовем задачу (или фрагмент
-кода) *грубым*, если ответ на задачу (или результат работы этого
-фрагмента) меняется не очень сильно (не скачком) при небольшом изменении
-входных данных, и *негрубым* в противоположном случае. (Понятие грубости
-пришло из физики.)
+In general, the following concept is useful here. Let's call a problem
+(or a code fragment) *rough* if the answer to that problem
+(or the result of execution of this fragment) does not change significantly
+(abruplty) upon a small change in the input data, and *not rough* in the opposite case.
+(The concept of roughness initially came from physics.)
 
-Тогда в задаче (фрагменте кода) ``eps`` нужен, если задача является
-негрубой: тогда существуют такие входные данные, которые вам важно
-отличить от очень близких им. Например, если надо определить, какое из
-двух чисел больше, то при входных данных «0.3 0.3» надо ответить «они
-равны», но при очень небольшом изменении входных данных, например, на
-«0.300001 0.3» ответ резко меняется: надо отвечать «первое больше».
+Then, ``eps`` is needed in the task (code fragment) if this task *is not rough*.
+Then there is such input data that you have to distinguish from very similar to it. 
+For example, if you need to determine which of the two numbers is greater,
+then on the input data "0.3 0.3" the answer is "they are equal".
+But let's make a very small change in the input data, for example, "0.300001 0.3",
+and the result changes dramatically: now the answer is "the first is greater".
 
-Если же задача (или фрагмент кода) является грубым, то, скорее всего, в
-нем можно обойтись без ``eps``: если вы чуть-чуть ошибетесь при
-вычислениях, ответ тоже изменится не очень сильно. Например, если вы
-вычисляете максимум из двух чисел, то на входных данных «0.3 0.3» ответ
-0.3, а на входных данных «0.300001 0.3» ответ 0.300001, т.е. изменился
-не очень сильно.
+If the task (or code fragment) *is rough*, then highly likely you can do
+without ``eps``: if you obtain a little error in the calculations,
+the answer will not change very much. For example, if you need to calculate 
+a maximum of two numbers, then on the input data "0.3 0.3" the answer is 0.3, 
+and on the input data "0.300001 0.3" the answer is 0.300001,
+i.e. the answer has not changed very much.
 
-Но, конечно, все приведенное выше рассуждение про грубые задачи — очень
-примерно, и в каждой задаче надо отдельно думать.
+But, of course, all this discussion on rough tasks is quite abstract,
+and you should think separately of applying it to each specific task.
 
-Примеры решения задач
----------------------
+Sample problems and solutions
+-----------------------------
 
-Приведу несколько примеров задач, аналогичных тем, которые встречаются на олимпиадах
-и в моем курсе.
+Here are a few sample problems similar to ones you may come across on contests and in my course.
 
 .. task::
 
