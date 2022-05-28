@@ -586,74 +586,81 @@ Here are a few sample problems similar to ones you may come across on contests a
 
 .. task::
 
-    Маша наблюдает из дома за грозой. Она увидела молнию, а через :math:`T` секунд услышала гром от молнии.
-    Она знает, что в той стороне, где была молния, есть одинокое дерево, и боится, не попала ли молния в это дерево.
-    Расстояние от Машиного дома до дерева равно :math:`L` метров, скорость звука равна :math:`V` метров в секунду, скорость света считаем бесконечной.
-    Определите, могла ли молния попасть в дерево.
+   Masha is staying at home and watching the thunderstorm outside. She saw lightning strike,
+   and :math:`T` seconds later she heard thunder from that strike. She knows that there is a single tree
+   on the side where the lightning hit, and she is afraid that lightning had hit this tree.
+   The distance from Masha's home to the tree is :math:`L` meters, the speed of sound is :math:`V` meters per second,
+   the speed of light is considered infinite. Determine if lightning could hit the tree.
 
-    **Входные данные**: На одной строке вводятся три вещественных числа — :math:`T`, :math:`L` и :math:`V`.
+    **Input**: Three real numbers in one line: :math:`T`, :math:`L` and :math:`V`.
 
-    **Входные данные**: Выведите ``yes``, если молния могла попасть в дерево, и ``no`` в противном случае.
+    **Output**: Print ``yes``, if the lightning could hit the tree, and ``no`` otherwise.
 
-    **Пример**:
+    **Example**:
 
-    Входные данные::
+    Input::
 
         2.5 750 300
 
-    Выходные данные::
+    Output::
 
         yes
     |
     |
     |
 
-Несложно понять, что расстояние от Машиного дома до молнии равно :math:`V\cdot T`. Осталось проверить, равно ли это :math:`L`.
-Можно было бы написать ``if v * t == l``, но, поскольку все числа вещественные, так просто не заработает
-— из-за погрешностей результат умножания может оказаться не равен ``l``, даже если на самом деле он должен быть равен.
-(Не говоря уж о том, что в реальной жизни значения :math:`V`, :math:`L` и :math:`T` известны не совсем точно,
-и поэтому :math:`V\cdot T` может оказаться не равно :math:`L` банально из-за погрешностей измерения.)
-Поэтому надо проверять, что ``v*t`` *примерно* равно ``l``, т.е. что разница ``abs(l - v * t)`` не слишком велика.
-Выберем какое-нибудь ``eps`` и будем сравнивать с ним.
+It is easy to understand that the distance between Masha's home and the strike location 
+is:math:`V\cdot T`. So it's needed to check whether it is equal to :math:`L`.
+The natural idea is to write ``if v * t == l``, but since all numbers are real,
+it will not work just like this. Due to errors, the multiplication result may not
+be equal to `l`, even if in fact it should be equal. (Not to mention the fact that
+in real life the values of :math:`V`, :math:`L` and :math:`T` are not precise,
+and therefore :math:`V\cdot T` may not be equal to :math:`L` just due to measurement errors.)
+Therefore, it is necessary to check that ``v*t`` is *approximately* equal to ``l``,
+i.e. that the difference ``abs(l - v *t)`` isnt' too big. Let's choose some ``eps``
+and compare the calculated result with it.
 
-Итоговый код получается такой::
+So, the code will look like this::
 
-   t, v, l = map(float, input().split())
-   eps = 1e-6
-   if abs(l - v * t) < eps:
-      print("yes")
-   else:
-      print("no")
+    t, v, l = map(float, input().split())
+    eps = 1e-6
+    if abs(l - v * t) < eps:
+        print("yes")
+    else:
+        print("no")
 
-Выбор ``eps`` тут в существенной мере произвольный, подробнее про выбор ``eps`` описано выше в основной части теории.
+Here, the choice of ``eps`` here is rather arbitrary. See more details
+on choosing ``eps`` above in the main part of the topic.
 
 .. task::
+    Vasya drove :math:`L` kilometers in :math:`T` hours. On the road he was driving on,
+    speed limit is :math:`V` kilometers per hour: you can drive at any speed not exceeding :math:`V'.
+    Determine if Vasya violated the limit.
 
-    Вася проехал :math:`L` километров за :math:`T` часов. На той дороге, по которой он ехал,
-    ограничение скорости :math:`V` километров в час: можно ехать с любой скоростью, не превышающей :math:`V`.
-    Определите, нарушил ли Вася правила.
+    **Input**: Three real numbers in one line: :math:`T`, :math:`L` and :math:`V`.
 
-    **Входные данные**: На одной строке вводятся три вещественных числа — :math:`T`, :math:`L` и :math:`V`.
+    **Outout**: Print ``yes`` if Vasya violated the speed limit, and ``no`` otherwise.
 
-    **Входные данные**: Выведите ``yes``, если Вася нарушил правила, и ``no`` в противном случае.
+    **Example**:
 
-    **Пример**:
-
-    Входные данные::
+    Input::
 
         2.5 750 300
 
-    Выходные данные::
+    Output::
 
         no
     |
     |
     |
 
-Скорость Васи равна :math:`L/T`. Если она строго больше чем :math:`V`, то Вася нарушил правила, иначе нет.
-Но надо помнить, что если :math:`L/T` на самом деле точно равно :math:`V` (как в примере), то из-за погрешностей
-может получиться :math:`L/T` чуть больше :math:`V`. Поэтому написать ``if l / t > v`` нельзя, это может выдать ``yes``,
-если Вася ехал со скоростью ровно ``v``. Надо добавить небольшой запас ``eps``::
+Vasya's speed is equal to :math:`L/T`. If it is strictly greater than :math:`V`,
+then Vasya violated the limit, otherwise he didn't. But we must remember
+that if :math:`L/T` is actually precisely equal to :math:`V`, then due to errors
+it may turn out that :math:`L/T` is slightly greater than :math:`V`.
+Therefore, instruction ``if l / t > v`` is faulty, as it can give a result ``yes``
+if Vasya was driving at the speed precisely equal to ``v``.
+We need to add a small ``eps`` to take this into account::
 
    t, v, l = map(float, input().split())
    eps = 1e-6
@@ -662,8 +669,11 @@ Here are a few sample problems similar to ones you may come across on contests a
    else:
       print("no")
 
-Обратите внимание, что по смыслу нам было нужно *строгое* сравнение :math:`L/T>V`, и для учета погрешностей пришлось его переписать как
-``l / t > v + eps``.
-Если бы нам нужно было бы *нестрогое* сравнение :math:`L/T\geqslant V`, то для учета погрешностей пришлось бы добавить запас с другой стороны, 
-и написать ``l / t > v - eps``. При этом в обоих случаях можно было бы писать и ``>=`` (например, ``l / t >= v - eps``), как раз 
-это не имеет никакого значения. Значение имеет знак перед ``eps``, т.е. делаем мы запас в одну или в другую сторону.
+Note that here we used a *strict*  inequality :math:`L/T>V`, and
+to account for errors we had to rewrite it as ``l / t > v + eps``.
+If we'd need a *non-strict* inequality :math:`L/T \geqslant V`,
+then to account for the errors we would have to add a margin on the other side
+and write ``l/t > v - eps``. At the same time, in both cases
+it's possible to write ``>=`` (for example, ``l / t >= v - eps``),
+as this doesn't matter (as discussed above). Instead, the sign
+before ``eps`` matters, i.e. we make a margin on one side or the other.
