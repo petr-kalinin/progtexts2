@@ -1,46 +1,53 @@
 .. highlight:: python
 
-Функции
-=======
+Functions
+=========
 
-Общее представление
--------------------
+General idea
+------------
 
-Вы уже сталкивались со стандартными функциями: ``abs``, ``sqrt``, да даже ``print`` и ``input`` — это все функции.
-По сути, функция — это отдельный фрагмент кода, который вы можете вызывать из более-менее любого места своей программы.
+You have already met standard functions: ``abs``, ``sqrt``,
+even ``print`` and `input` are all functions.
+In fact, a function is a separate piece of code
+that you can call from any point in your program.
 
-Поговорим для примера про функцию взятия модуля ``abs``. Если вам в программе надо взять модуль какого-то числа,
-вы, конечно, можете просто написать честный ``if``. Конкретно, пусть вам надо вычислить значение выражения :math:`abs(x)`,
-и записать его в переменную y. Вы можете написать вот так:
-
-::
+For example, let's duscuss the modulus function (``abs``).
+If you need to take a modulus of some value in the program,
+of course, you can just write a simple ``if``. Let's consider 
+that you need to calculate the value of the expression :math:`abs(x)`,
+and save it to the variable y. You can do it like this::
 
    if x < 0:
       y = -x
    else:
       y = x
 
-Но если у вас в программе много раз вычисляются модули разных величин, то это может быть неудобно.
-Стандартная функция ``abs`` намного удобнее. Вы можете написать просто
-
+But if you need to calculate moduli of different values calculated
+and do it many times, then this is quite inconvenient.
+The standard ``abs`` function is much more useful, as you can write simply
 ::
 
    y = abs(x)
 
-Более того, вы можете аргументом функции ``abs`` передавать любое сложное 
-выражение, например,
-если надо, писать ``abs(2 - 3 * x)``, и результат вычисления функции вы тоже можете не просто сохранять
-в переменную, а использовать его как надо, например, вы можете написать ``print(10 + 137 * abs(2 - 3 * x))``.
-Ясно, что писать все это через ``if``\ ы было бы сложнее.
+Moreover, you can use any complex expression
+as an argument of the ``abs`` function, for example,
+like ``abs(2 - 3 * x)``. You can also not only save 
+the result of calculating the function to a variable,
+but use it in any other way. For example, you can write
+``print(10 + 137 * abs(2 - 3* x))``.
+It's quite clear that writing all this through ``if``\ s would be more tricky.
 
-Функция ``abs`` — она *стандартная*, т.е. питон автоматически ее знает, она встроена в язык.
-Но можно писать и свои функции, и в этой теме мы про это и поговорим.
+``abs`` is a *standard function*, i.e. Python automatically
+recognizes it. In other words, it is built into the language.
+But you can write your own functions, and in this topic we discuss this.
 
-Как объявлять функции
----------------------
+How to declare functions
+------------------------
 
-Давайте напишем функцию, которая вычисляет знак числа, т.е. которая будет равна -1, если число отрицательно,
-0, если число равно нулю, и 1, если число положительно. Пишется это так::
+Let's create a function that calculates the sign of a number,
+i.e. it's result will be -1 if the number is negative,
+0 if the number is zero, and 1 if the number is positive.
+It is done like this::
 
    def sign(a):
       if a < 0:
@@ -50,8 +57,8 @@
       else:
          return 0
 
-
-(Я тут считаю, что наша функция будет работать только с целыми числами, иначе сразу возник бы вопрос погрешностей.)
+(Here I assume that our function will only process integers,
+otherwise the question of errors would immediately arise.)
 
 Давайте разберем, что тут написано. Сначала идет служебное слово ``def``, которое собственно и обозначает, что это определение функции.
 Дальше идет имя функции (в нашем случае ``sign``) — именно это имя мы будем в дальнейшем использовать, когда нам надо будет
