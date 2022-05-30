@@ -207,9 +207,9 @@ In general, any program is, first of all, a sequence of instructions that the pr
 gives to the computer, and the computer consistently (one by one) executes them.
 
 In our program there's an only instruction: ``print("Test", 2*2)``. The instruction
-``print`` means "display" (show on the screen). In parentheses after the word ``print``,
-the *arguments* of the instruction are specified. They are separated by commas. Here, 
-the command has two arguments: the first is `"Test"`, and the second is `2*2`.
+``print`` means "display" (show on the screen). In brackets after the word ``print``,
+the *arguments* of the instruction are set. They are separated by commas. Here, 
+the instruction has two arguments: the first is `"Test"`, and the second is `2*2`.
 
 If the argument of the ``print`` instruction is some string enclosed
 in quotes (``"`` characters), then ``print`` outputs this string on the
@@ -235,7 +235,7 @@ So, you can use Python as a calculator. For example, if you need to calculate
 the value of the expression :math:`7+3\cdot(8-2)`, you can
 write ``print(7+3*(8-2))`` and run the program — the result will be displayed
 on the screen. Note that the brackets will be taken into account correctly\
-and the order of calculations will be right. There are two parentheses at
+and the order of calculations will be right. There are two brackets at
 the end of the instruction — the first one is a part of the expression,
 and the second ends the list of arguments of ``print`` instruction.
 
@@ -252,7 +252,7 @@ You can use the following operators in arithmetic expressions:
 
 -   ``%`` — remainder (see below).
 
--   Parentheses (round only) are used for grouping operations. You can
+-   Brackets (round only) are used for grouping operations. You can
     use nested brackets, for example, `2*(3-(4+6))`.
 
 A little more about the division. There are three operators related to division:
@@ -270,8 +270,8 @@ Furthermore, there are so-called *functions*:
 
 -   The notation `abs(-3)` means taking the absolute value of the number: :math:`|{-}3|`.
     Please note that first *the name of the function* is written (in this case
-    ``abs``), and then in parentheses — what to apply this function to (of what number to
-    take the absolute value in this case). What is in parentheses is also called the *argument of the function*.
+    ``abs``), and then in brakets — what to apply this function to (of what number to
+    take the absolute value in this case). What is in brackets is also called the *argument of the function*.
 
 -   Similarly, the notation ``sqrt(4)`` means taking the square root
     (if you don't know what it is, then skip this point for now), but,
@@ -489,7 +489,7 @@ This means "Write 20 to ``a``. Then look at what is in ``a``,
 add 10 to it and write the result back to ``a``". As a
 result, value of ``a`` will become 30.
 
-That command ``a = input()`` we saw earlier is actually also
+That instruction ``a = input()`` we saw earlier is actually also
 an assignment. It says: "read what the user entered
 from the keyboard, and write it to ``a``".
 
