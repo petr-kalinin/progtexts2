@@ -7,7 +7,7 @@ General idea
 ------------
 
 You have already met standard functions: ``abs``, ``sqrt``,
-even ``print`` and `input` are all functions.
+even ``print`` and `input` are functions.
 In fact, a function is a separate piece of code
 that you can call from any point in your program.
 
@@ -41,8 +41,8 @@ It's quite clear that writing all this through ``if``\ s would be more tricky.
 recognizes it. In other words, it is built into the language.
 But you can write your own functions, and in this topic we discuss this.
 
-How to declare functions
-------------------------
+How to define functions
+-----------------------
 
 Let's create a function that calculates the sign of a number,
 i.e. it's result will be -1 if the number is negative,
@@ -60,28 +60,38 @@ It is done like this::
 (Here I assume that our function will only process integers,
 otherwise the question of errors would immediately arise.)
 
-Давайте разберем, что тут написано. Сначала идет служебное слово ``def``, которое собственно и обозначает, что это определение функции.
-Дальше идет имя функции (в нашем случае ``sign``) — именно это имя мы будем в дальнейшем использовать, когда нам надо будет
-вызывать функцию. Имена, конечно, можно использовать какие угодно в разумных пределах, аналогично именам переменных.
-Дальше в скобках указывается то, что называется списком аргументов, про него еще поговорим ниже, а со следующей строки
-с отступом идет *тело функции* — собственно команды, которые надо выполнить.
+Let's look at this piece of code in detail.
+First comes the keyword ``def``, which actually means
+that this is the definition of a function.
+Next comes the name of the function (in our case it's ``sign``)
+— this is the name that we'll use further in the program
+when we need to call the function. Of course, you can use
+any names you want (within reason, similar to variable names).
+Then, in brackets, the *list of arguments* is set,
+we'll discuss it below. And from the next line
+with an indent comes the *body of the function* — 
+these are the instructions that will be
+executed upon a function call.
 
-Как это будет работать? После того, как мы определили такую функцию, дальше в основной программе
-мы можем написать, например
-
+How will it work? After defining such a function,
+further in the main program we can write, for example
 ::
 
    y = sign(2)
 
-это значит, что надо вызвать функцию ``sign``, передав ей аргументом число 2
-(аналогично тому, как запись ``y = abs(x)`` обозначает, что надо вызвать функцию ``abs`` от числа ``x``).
-По такой строчке происходит следующее: запускается код функции (начиная со строки ``if a < 0``), 
-при этом в переменную ``a`` внутри функции записывается значение 2, потому что именно оно было указано
-при вызове функции (в записи ``sign(2)``).
+this means that Python should call the ``sign`` function, 
+passing a number 2 to it as an argument, (similar to the notation 
+``y = abs(x)`` which means that you need to apply 
+the ``abs`` function to the number `x`). At this line,
+the following actually happens: the function code is executed 
+(starting from the line ``if a < 0``), and value 2 is assigned 
+to the inner variable ``a``, because it was listed as an argument
+when the function was called (in the notation ``sign(2)``).
 
-Соответственно, функция выполняет проверку, правда ли, что ``a < 0``, но поскольку в ``a`` записано 2,
-то проверка не срабатывает. Поэтому функция дальше проверяет, правда ли, что ``a > 0``,
-на этот раз проверка срабатывает, и выполняется команда ``return 1``.
+Accordingly, the function performs the check whether ``a < 0`` is true, 
+but since 2 is assigned to ``a``, this check fails.
+Therefore, the further check is performed whether it's true that ``a > 0``.
+this time the check is successful, and the instruction ``return 1`` is executed.
 
 Тут вы видите новую, незнакомую команду ``return``. Это специальная команда, которая используется только в функциях.
 Она обозначает: прекратить выполнение функции, вернуться (return) в то место, откуда функция была вызвана,
