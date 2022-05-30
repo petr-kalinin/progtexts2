@@ -93,24 +93,30 @@ but since 2 is assigned to ``a``, this check fails.
 Therefore, the further check is performed whether it's true that ``a > 0``.
 this time the check is successful, and the instruction ``return 1`` is executed.
 
-Тут вы видите новую, незнакомую команду ``return``. Это специальная команда, которая используется только в функциях.
-Она обозначает: прекратить выполнение функции, вернуться (return) в то место, откуда функция была вызвана,
-при этом в качестве результата функции считать то значение, которое указано после ``return``, т.е. в нашем случае 1.
+Here you see a new, unfamiliar instruction ``return``. This is
+a special keyword that is used only in functions.
+It means: stop executing the function and return to the point 
+the function was called from, and meanwhile take the value specified
+after ``return`` and use it as a result of the function. 
+So, in our case it is 1.
 
-Поэтому по этой команде функция завершится, выполнение программы вернется обратно на строку ``y = sign(2)``,
-при этом значением функции будет считаться 1, поэтому получится, что в переменную ``y`` будет записано число 1.
+Therefore, on this line the function execution will terminate,
+the program execution will return back to the line ``y = sign(2)``,
+while the value of the function will be considered 1. 
+So the number 1 will be assigned to the variable `y`.
 
-Аналогично, функцию ``abs``, про которую мы говорили выше, если бы ее не было стандартной, можно было бы написать так::
+Similarly, the ``abs`` function, which was mentioned above,
+if it wasn't a standard function, could be implemented like this::
 
-   def abs(x):
-      if x < 0:
-         x = -x
-      return x
+    def abs(x):
+        if x < 0:
+            x = -x
+        return x
 
-Попробуйте это осознать.
+Try to comprehend how it works.
 
-Аргументы функции
------------------------
+Arguments of the function
+-------------------------
 
 То, что написано внутри скобок, как при объявлении функции, так и при ее вызове, называется *аргументами*
 (еще говорят *параметры*, это синонимы).
