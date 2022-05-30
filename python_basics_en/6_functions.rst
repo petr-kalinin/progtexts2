@@ -118,33 +118,44 @@ Try to comprehend how it works.
 Arguments of the function
 -------------------------
 
-То, что написано внутри скобок, как при объявлении функции, так и при ее вызове, называется *аргументами*
-(еще говорят *параметры*, это синонимы).
-То есть когда мы написали ``def sign(a):`` — мы объявили функцию ``sign``, которая принимает один аргумент ``a``.
-Когда мы потом пишем ``y = sign(2)``, мы вызываем эту функцию, передавая ей аргумент 2.
-(На самом деле это, конечно, два разных смысла одного слова. Есть даже специальные термины для этого: формальные 
-и фактические аргументы. Но мы не будем сейчас углубляться в терминологию, тем более что в реальной жизни
-и то, и то называется просто аргументами.)
+What is written in brackets, both when defining a function 
+and when calling it, is called *arguments* (may also be referred to
+as *parameters*, these are synonyms). That is, by writing ``def sign(a):`` 
+we declared a ``sign`` function that takes a single argument ``a``.
+When, after that, we write ``y = sign(2)``, we call this function, passing to it 
+a number 2 as the argument. (In fact, of course, these are two different meanings 
+of the same word. There are even special terms for this: formal
+and actual arguments. But we won't go further into terminology now,
+especially since in real life both are simply called arguments.)
 
-Поговорим подробнее про это. Аргументы функции — это по сути специальные переменные, которые будут видны
-только внутри этой функции, и которые должны быть заданы извне при вызове этой функции. Написав ``def sign(a):``,
-мы указали, что внутри функции появится переменная ``a``, начальное значение которой задается извне.
-Важно то, что это отдельная специальная переменная (говорят *локальная* переменная, про это еще будет ниже),
-никак не связанная с переменной ``a`` в основной программе (более того, в основной программе переменной ``a`` может вообще не быть).
+Let's discuss this in more detail. Arguments of the function in fact 
+are special variables which will be "visible" only inside this function,
+and which must be set externally when calling this function. By writing ``def sign(a):``,
+we stated that the variable ``a`` will appear inside the function,
+and meanwhile that its initial value will be set from outside.
+The important thing is that this is a special separate variable
+(it's called *local* variable, also described below)
+that is not related to the variable ``a`` in the main program in any way
+(moreover, there may be no variable ``a`` in the main program at all).
 
-У функции может быть сколько угодно аргументов; их имена, естественно, должны быть корректными именами переменных. 
-Например, вы можете написать ``def foo(bar, buz, bee):`` — у этой функции три аргумента. 
+A function can have as many arguments as you wish.
+Their names, of course, must be correct variable names.
+For example, you can write ``def foo(bar, buz, bee):``
+— this function has three arguments.
 
-Соответственно, при вызове функции вы должны указать значения для всех аргументов. Как вы уже прекрасно знаете,
-это делается перечислением значений для аргументов в скобках после имени функции; если аргументов больше одного,
-то аргументы разделяются запятыми. При вызове функции в качестве аргументов можно использовать любые выражения,
-например, можно писать ``sign(2 + 3 * x)`` (и тогда в функции получится ``a = 2 + 3 * x``), или ``foo(2 + 3 * x, 2 - 3 * x, 3 * x)``
-(это чисто пример, конечно). Более того, в выражениях, конечно, можно использовать и другие, или даже те же самые функции,
-например, ``sign(2 + 3 * abs(3 - sign(x)))``.
+Accordingly, when calling the function, you must specify values of all its arguments. 
+As you already know very well, this is done by listing the values of the arguments 
+in brackets after the function name. If there are two or more arguments,
+they are separated by commas. When calling a function, you can use any expressions as arguments,
+for example, you can call ``sign(2 + 3 * x)`` (so inside the function it will be 
+"implicitly assigned" as ``a = 2 + 3 * x``), or ``foo(2 + 3 * x, 2 - 3 * x, 3 * x)``
+(this is just an abstract example, of course). Moreover, you can, of course, use in expressions 
+some other functions. Or even the same one, for example, ``sign(2 + 3 * abs(3 - sign(x)))``.
 
-Если при вызове функции вы указали слишком много или слишком мало аргументов, это, конечно, будет ошибкой.
+Trying to specify too many or too few arguments when calling the function, of course, will cause an error.
 
-Аргументов может и не быть, тогда и при объявлении, и при вызове функции надо просто ставить пустые скобки::
+The function also may have no arguments. Then both when declaring and 
+when calling such a function, you just need to type empty brackets::
 
    def abc():
        ...
@@ -152,21 +163,25 @@ Arguments of the function
    ...
    x = abc()
 
-Аргументы не обязаны быть числами; они могут принимать любые значения, которые могут принимать переменные
-(массивы, строки и т.д.).
-Естественно, при этом вам надо, чтобы трактова аргумента внутри функции и при ее вызове была одинаковой:
-если функция ожидает, что ей в качестве аргумента будет передан массив, а вы передали число,
-то скорее всего ничего хорошего не произойдет. Функция попробует выполнить свой код, 
-но скорее всего где-то просто наткнется на ошибку. (Это, конечно, относится не только к *типам* аргументов, но и к аргументам в целом.
-Конечно, у каждого аргумента, как и у каждой переменной в программе, должен быть какой-то смысл, какое-то назначение,
-и если вы передали значение, которое не соответствует этому смыслу, то ничего хорошего скорее всего не выйдет...)
+Arguments do not have to be numbers; they can take any values that
+common variables can take (arrays, strings, etc.). Certainly at the same time 
+you need the interpretation of the argument inside the function 
+and assignment of this argument when calling it to be the same:
+if the function expects an array to be passed to it as an argument,
+and you pass a number, then hardly anything good will happen.
+The function will try to execute the code, but highly likely it will 
+just stumble upon an error somewhere. (This, of course, should be applied
+not only to *types* of arguments, but also to arguments in general.
+Every argument, like every variable in the program, must have some meaning,
+some purpose. And if you pass a value that doesn't correspond to this meaning,
+nothing good will likely come out...)
 
-В простейших случаях аргументы функции оказываются «отвязаны» от внешних переменных; если вы пишете ``sign(x)``,
-то аргумент ``a`` внутри функции ``sign`` не будет связан никак с переменной ``x`` в основной программе (только
-значение ``x`` скопируется в ``a``). Если функция будет менять значение ``a``, то значение ``x`` меняться не будет.
-Но при передаче в функцию массивов и других сложных объектов будут наблюдаться те же спецэффекты,
-что и при обычном копировании массива. Если вы пишете::
-
+In the simplest cases, the arguments of the function are "disconnected" from external variables: 
+if you write ``sign(x)``, then the argument ``a`` inside the ``sign`` function will not be connected 
+in any way with the variable ``x`` in the main program (only the value ``x`` is copied to ``a``).
+If the value of ``a`` is changed in the function, the value of `x` will not change.
+But when passing arrays and other complex objects to the function, you'll encounter
+the same tricky effects as upon copying of arrays. If you write::
 
    def foo(a):
        a[1] = 10
@@ -176,15 +191,15 @@ Arguments of the function
    x = [1, 2, 3]
    foo(x)
 
-то и переменная ``x`` основной программы, и аргумент ``a`` в функции будут указывать на один и тот же массив,
-и изменения в ``a`` будут видны в ``x``. (И это полностью аналогично обычному копированию массивов: ``a = x``.)
+then both the variable ``x`` of the main program and the argument ``a`` 
+of the function will refer to the same array, and changes in ``a`` will be visible in ``x``. 
+(And this is completely analogous to the usual copying of arrays: ``a = x``.)
 
 .. note::
-
-   На самом деле, то, что описано выше — это простейший вариант задания аргументов; питон поддерживает и более хитрые варианты
-   (например, изложенным выше способом вы не можете создать функции типа ``print``, у которых количество аргументов
-   неизвестно заранее, и которые, более того, умеют принимать *именованные* аргументы типа ``sep=' '``). Но про эти продвинутые варианты
-   мы сейчас говорить не будем.
+   In fact, what is described above is just the simplest way to set arguments. 
+   Python supports more tricky options (for example, in this way you can't create functions like ``print``, 
+   whose number of arguments is unknown in advance, and which, moreover, are able to take *named* arguments 
+   like ``sep=' '``). But we won't discuss these advanced options now.
 
 Локальные переменные
 --------------------
