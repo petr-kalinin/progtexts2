@@ -201,27 +201,34 @@ of the function will refer to the same array, and changes in ``a`` will be visib
    whose number of arguments is unknown in advance, and which, moreover, are able to take *named* arguments 
    like ``sep=' '``). But we won't discuss these advanced options now.
 
-Локальные переменные
---------------------
+Local variables
+---------------
 
-Внутри функции вы можете заводить и использовать переменные. Такие переменные называются *локальными*; они видны только внутри функции,
-и не доступны снаружи; если у вас в основной программе есть переменная с тем же именем (говорят: *глобальная* переменная), 
-то она никак не будет связана с одноименной локальной переменной.
+You can create and use variables in the function. These variables 
+are called *local*:  they are visible only inside the function, 
+and can't be accessd from the outside. If you have a variable 
+with the same name in the main program (it's called a *global* variable), 
+it will not be associated with the eponymous local variable in any way.
 
-С другой стороны, вы можете в функции использовать и глобальные переменные, если у вас нет локальной переменной с тем же именем. 
+But nevertheless, you can use global variables in a function 
+if you don't have a same-name local variable.
 
 .. note::
 
-   Точнее, поскольку в питоне нет специального синтаксиса для объявления переменных, то различие глобальных и локальных переменных
-   довольно тонкое и на первый взгляд неочевидное. 
-   Правило такое: если в функции вы что-то *присваиваете* переменной, то эта переменная считается локальной
-   (и не будет связана с одноименной глобальной, если такая есть); если же вы ничего не присваиваете, а только как-то по-другому
-   упоминаете переменную, то будет считаться, что вы хотите работать с глобальной переменной. В целом будьте готовы к разным неожиданностям здесь.
+   Actually, since Python doesn't have a special syntax for declaring variables, 
+   the difference between global and local variables is quite subtle 
+   and at first glance not obvious. The rule is such: if you assign something 
+   to a variable inside a function, then this variable is considered local
+   (and will not be associated with the same-name global variable, if there is one). 
+   If you don't assign anything, but only touch the variable in some other way, 
+   then it will be assumed that you work with a global variable.
+   In general, be ready for various tricks here.
 
-Как уже говорилось выше, аргументы — это по сути те же локальные переменные, просто их начальное значение задается извне.
-Дальше они ведут себя полностью как локальные переменные; в частности, им можно присваивать новые значения, если надо.
+As already mentioned above, arguments are essentially the same local variables,
+just their initial value is set from the outside. Then they behave completely 
+like local variables; in particular, they can be assigned new values if necessary.
 
-Пример::
+Example::
 
    a = 30
    c = 40
@@ -234,25 +241,33 @@ of the function will refer to the same array, and changes in ``a`` will be visib
 
    do_something(c)
 
-Что здесь происходит: есть три глобальные переменные ``a``, ``c`` и ``z``. В строке ``do_something(c)`` вызывается функция ``do_something``,
-ей в качестве аргумента передается значение переменной ``c`` (т.е. 40). Входим в функцию, ее аргумент ``x`` получается равным 40.
-В локальную переменную ``a`` записываем ``x + 10``, т.е. 50. (При этом значение глобальной переменной ``a`` никак не изменилось.)
-В локальную переменную ``b`` записываем ``a - 20``, т.е. 30 (При этом глобальной переменной ``b`` вообще нет, ну и не страшно.)
-Возвращаем значение ``b + z``, причем ``b`` тут имеется в виду локальная (т.к. мы раньше в нее записали 30), а ``z`` — глобальная (т.к. такую
-локальную переменную мы не создавали).
+How does this code work? There are three global variables: ``a``, ``c`` and ``z``. 
+In the line ``do_something(c)``, the function ``do_something`` is called, 
+the value of ``c`` (i.e. 40) is passed to it as an argument. 
+The function execution starts, and its argument ``x`` turns out to be equal to 40.
+Then `x + 10`, i.e. 50, is assigned to the local variable ``a``.
+(By this, the value of the global variable ``a`` isn't affected in any way.)
+After that, ``a - 20``, i.e. 30, is assigned to the local variable ``b`` 
+(Aе the same time, there is no global variable ``b`` at all, and it's alright.)
+Finally, we return the value ``b + z``, where ``b`` is local 
+(because we previously wrote 30 to it), and ``z`` is global 
+(because we didn't create such a local variable).
 
 .. note::
 
-   На самом деле, можно изменять глобальные переменные внутри функции, написав специальную конструкцию ``global``::
+   Actually, you can change global variables 
+   inside a function by using a special keyword ``global``::
 
       def do_something(x):
          global a
          a = x + 10
+         
+   here you specify that you want to operate with the global variable ``a``, 
+   and all the changes in ``a`` will be visible from the outside.
+   But this is needed quite rarely.
 
-   тут вы указываете, что хотите работать именно с глобальной переменной ``a``, и изменения в ``a`` будут видны и снаружи. Но это бывает нужно довольно редко.
-
-Возвращаемое значение
----------------------
+Return value
+------------
 
 Как мы уже обсуждали, возвращаемое значение — это то, что указывается в команде ``return``, и что потом будет использоваться в качестве значения
 функции в месте ее вызова (т.е. что будет сохранено в переменную ``y``, если мы, например, пишем ``y = sign(x)``).
