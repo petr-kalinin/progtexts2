@@ -269,24 +269,30 @@ Finally, we return the value ``b + z``, where ``b`` is local
 Return value
 ------------
 
-Как мы уже обсуждали, возвращаемое значение — это то, что указывается в команде ``return``, и что потом будет использоваться в качестве значения
-функции в месте ее вызова (т.е. что будет сохранено в переменную ``y``, если мы, например, пишем ``y = sign(x)``).
+As we have already discussed, the return value is what is set 
+after the ``return`` instruction, and what will then be used as the "value"
+of the function at the place where it's been called(i.e., what will, for example, 
+be assigned to the variable ``y`` if we write ``y = sign(x)``).
 
-Конечно, в команде ``return`` можно писать любое выражение, причем это, конечно, не обязательно должно быть число.
-Аналогично, использовать в месте вызова результат выполнения функции мы можем как угодно, а не только сохранять в переменную, 
-например, написав ``y = 20 + sign(x)`` и даже ``print(a[sign(x)])``, если у вас есть массив ``a``.
+Of course, you can write any expression in the ``return`` statement, 
+it does not have to be a number. Similarly, you can use the result 
+of the function execution  as we like, not just save it to a variable. 
+For example, by writing ``y = 20 + sign(x)`` 
+and even ``print(a[sign(x)])`` if you have an array named ``a``.
 
-В частности, мы можем в месте вызова функции никак не использовать возвращаемое значение, написав просто отдельную команду (на отдельной строке) типа
+In particular, we can just refuse processing the return value in any way, 
+simply by writing a standalone instruction (on a separate line), like this
 
 ::
 
    do_something(x)
 
-В таком случае код функции отработает, а результат, указанный в ``return``, будет просто забыт. Это бывает полезно, если
-функция вам нужна не для простых вычислений (как ``abs`` или наша ``sign``), а для каких-то действий,
-которые эта функция производит. Типичный пример — функция ``print``. Нет никакого смысла писать ``x = print(y)``,
-а запись просто ``print(y)`` вполне имеет смысл; вы вызываете ``print`` не ради возвращаемого значения, а ради вывода на экран.
-Соответственно, вы вполне можете и сами писать такие функции.
+In this case, the function code will be executed, but the result specified in ``return`` 
+will be just thrown away. This can be useful if you need a function not for simple calculations 
+(like ``abs`` or our ``sign``), but for performing some "external" actions. 
+A typical example is the ``print`` function. There is no point in writing ``x = print(y)``,
+at the same time ``print(y)`` makes perfect sense; you are calling ``print`` not to get the return value, 
+but to output something on the screen. You may as well write such functions by yourself.
 
 В частности, если вам надо просто выйти из функции, не возвращая никакого значения, и вы понимаете, что в месте вызова никакого значения не ожидается,
 то вы можете просто написать ``return`` без аргументов. Аналогичное произойдет, если код функции дойдет до конца, не встретив по дороге ``return``, например,
