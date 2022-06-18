@@ -294,52 +294,63 @@ A typical example is the ``print`` function. There is no point in writing ``x = 
 at the same time ``print(y)`` makes perfect sense; you are calling ``print`` not to get the return value, 
 but to output something on the screen. You may as well write such functions by yourself.
 
-В частности, если вам надо просто выйти из функции, не возвращая никакого значения, и вы понимаете, что в месте вызова никакого значения не ожидается,
-то вы можете просто написать ``return`` без аргументов. Аналогичное произойдет, если код функции дойдет до конца, не встретив по дороге ``return``, например,
-так::
+In particular, if you just need to terminate the function without returning any value,
+and you know that no value is expected at the moment of the call, then you can 
+simply write ``return`` without arguments. The same thing will happen if the function code 
+executes to the end without a single ``return`` statement on the way, for example, like this::
 
    def foo(x):
       print(x + 20)
 
-Тут нет ни одного ``return``, поэтому функция просто доработает до конца своего тела и вернется.
+Here, there's no ``return``, so the function will execute until the end and return the control to the main program.
 
 .. note::
 
-   На самом деле пустой ``return``, а также завершение функции без ``return`` не возвращает ничего, а возвращает специальное значение ``None``.
+   In fact, a ``return`` with no arguments, as well as exiting the function without ``return``
+   doesn't "return absolutely nothing", but instead returns a special ``None`` value. 
    
-   Вообще, иногда говорят о разделении на *функции* и *процедуры* — функциями в этом, узком, смысле слова называют функции, которые *возвращают*
-   какое-либо значение, а *процедурами* — то, что не возвращает никакое значение.
-   В некоторых языках (в первую очередь в паскале) это яркое синтаксическое различие: есть два разных служебных слова:
-   ``procedure`` и ``function`` для объявления процедур и функций, и в принципе эти два термина стараются не путать. В других языках (C++, Java) используется
-   только термин «функция», но для функций, которые не возвращают никакое значение, используется специальный тип
-   такого «возвращаемого» значения — ``void``, — и такие функции ведут себя немного по-другому (их результат в принципе
-   нельзя никуда сохранить, компилятор не позволит), поэтому все-таки небольшая разница между процедурами и функциями есть,
-   пусть даже термин «процедура» не используется.
+   In general, sometimes the division into *functions* and *procedures* is introduced.
+   Functions in this narrow sense of the word are the functions that *return* some value, 
+   and *procedures* are ones that do not return any value. In some languages (primarily in Pascal), 
+   this makes a salient syntactic difference: there are two different keywords
+   ``procedure`` and ``function`` respectively, and there these two terms,
+   generally, shouldn't be mixed. In other languages (C++, Java) only "function" is used, 
+   but for functions that do not return any value, there's a special ``void`` type of such  "return value", 
+   and moreover, such functions behave a little differently (you just can't save their result anywhere, 
+   the compiler won't allow you), so there is still a slight difference between procedures and functions, 
+   even though the term "procedure" is not used.
 
-   В питоне такой разницы нет. Вы вполне можете написать функцию, которая в определенных случаях будет возвращать что-то,
-   а в определенных случаях не будет возвращать ничего::
+   There is no such difference in Python. You may easily declare a function 
+   that in certain cases will return something,
+   and in certain cases won't return anything::
 
       def test(x):
          if x < 0:
             return 10
          if x > 0:
             return
-      
-   тут если ``x < 0``, то возвращается значение 10, если ``x > 0``, то попадаем на пустой ``return``, а если ``x == 0``, то функция вообще просто дойдет до конца своего тела
-   без ``return``'ов. (И в соответствии со сказанным выше в двух последних случаях на самом деле будет возвращено ``None``.)
+   
+   Here, if ``x < 0``, then the value 10 is returned.
+   If ``x > 0``, then we get to an empty ``return``. 
+   And if ``x == 0``, then the function will just execute to the end of its body
+   without meeting any ``return``. (And according to what was said above,
+   in the last two cases, it will actually return ``None``.)
 
-   Но так делать не надо (ну, за исключением совсем особых случаев). Лучше и понятнее код, в котором у каждой функции есть вполне понятный смысл
-   и назначение; и такие функции или всегда возвращают что-то, или никогда ничего (кроме ``None`` не возвращают). 
-   Поэтому если вы предполагаете, что возвращаемое значение функции имеет смысл использовать,
-   то пишите явный ``return`` со значение во всех возможных ветках, а если нет — то пишите везде пустой ``return`` (ну кроме самого конца функции,
-   где его можно не писать.)
+   But you shouldn't do this (except some very special cases). The code is better and clearer 
+   when each function in it has an understandable meaning and purpose — and such functions 
+   either always return something, or never return anything (always return ``None``).
+   Therefore, if you assume that the return value of the function may be used,
+   then write an explicit ``return`` with a value in all possible branches,
+   and if not, then write an empty ``return`` everywhere
+   (except for the very end of the function, where it can be omitted).
+   
+   Nevertheless, it may happen that in a function that usually returns something,
+   you sometimes need to return ``None`` (for example, this is a typical case
+   in the search functions: they return either the found object or ``None``).
+   But then type explicitly ``return None`` to make it clear that you are doing this intentionally.
 
-   При этом бывает так, что в функции, которая обычно что-то возвращает, вам иногда надо вернуть ``None`` (например, так нередко делают
-   в функциях поиска какого-нибудь объекта: возвращается или найденный объект, или ``None``). Но тогда пишите явно ``return None``,
-   чтобы было видно, что вы это делаете намеренно.
-
-Зачем нужны функции
--------------------
+What are functions designed for?
+--------------------------------
 
 На самом деле, спектр применения функций очень широк. В серьезных программах пишут огромное количество функций, можно даже сказать,
 что функции, наравне с переменными и объектами — это основные строительные блоки кода.
