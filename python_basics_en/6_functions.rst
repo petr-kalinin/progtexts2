@@ -352,47 +352,67 @@ Here, there's no ``return``, so the function will execute until the end and retu
 What are functions designed for?
 --------------------------------
 
-На самом деле, спектр применения функций очень широк. В серьезных программах пишут огромное количество функций, можно даже сказать,
-что функции, наравне с переменными и объектами — это основные строительные блоки кода.
+Actually, functions are applied very widely. In serious programs, a huge number of functions
+is being implemented and used, one can even say that functions, 
+along with variables and objects, are the main construction blocks of the code.
 
-В простейших ситуациях (с которыми вы и столкнетесь в первую очередь) можно выделить следующие причины, зачем вам нужны функции.
+In the basic cases (which you will meet first) there are several reasons 
+why you need functions and they are the following.
 
-Первое и, может быть, самое главное для вас сейчас — это исключение дублирования кода. Собственно, мы это уже видели в самом начале этого раздела:
-функция ``abs`` позволяет не писать громоздкий ``if`` каждый раз, когда она нам понадобилась. Вообще, в принципе надо всегда избегать дублирования кода;
-если вы видите, что одни и те же вычисления у вас повторяются в нескольких местах программы — вынесите их в функцию.
+The first and perhaps the most important reason for you now is to avoid code duplication. 
+Actually, we have already seen this at the very beginning of this section:
+the ``abs`` function allows us not to write a cumbersome ``if`` every time we need 
+the absolute value of a number. It's general rule in progrrmming that you should 
+avoid code duplication; if you see that the same calculations are repeated 
+in several places of the program — put them into a function.
 
-Второе — это возможность выделения смысловых блоков программы. Функция в идеале должна быть некоторым законченным фрагментом кода,
-который выполняет некоторую понятную задачу. И тогда, когда вы эту функцию вызываете, сразу понятно, что происходит.
-В принципе, это видно даже на примере функции ``abs``: если вы пишете ``abs(5 - x)``, сразу понятно, что вы имеете в виду :math:`|5 - x|`.
-А если бы вы писали бы через ``if``, то это было бы не очень очевидно, вам пришлось бы потратить несколько секунд на размышления и понимание того,
-что этот ``if`` обозначает просто модуль.
+The second is the ability to highlight semantic blocks of the program. 
+The function should ideally be some complete piece of code that performs some understandable task. 
+So when you call this function, it is immediately clear what is happening upon its execution.
+Generally, you can see it even by the example of the ``abs`` function: 
+if you write ``abs(5 - x)``, it is immediately clear that you mean :math:`|5 - x|`.
+And if you were using ``if`` instead, then it would not be very obvious, you'd have to 
+spend a few seconds thinking and understanding that this ``if`` simply means the modulus.
 
-Это еще важнее в более крупных программах, где нужная последовательность действий состоит из нескольких крупных шагов.
-Пусть, например, вы делаете систему умного дома, и вам надо скачать прогноз погоды из интернета, выделить прогноз осадков в ближайшие 6 часов, 
-и в зависимости от этого открыть или закрыть окно в комнате.
-Даже если эти шаги нигде не повторяются, зачастую удобно их вынести в отдельные функции, чтобы сразу было видно:
-тут мы скачиваем данные, тут решаем, открыть или закрыть, а вот тут собственно подаем команды на управляющий блок окна. Если каждый шаг не очень тривиален, 
-то выделение шагов в функции резко повышает понятность и читаемость программ. (Конечно, для этого надо выбрать адекватное название для каждой функции.)
-Кроме того, вам намного проще будет потом менять программу; если вы захотите поменять принцип, по которому открывается или закрывается окно,
-вам вообще не придется трогать часть функций.
-Заодно еще одно удобство — вы можете использовать локальные переменные, и они не будут мешаться друг другу.
+This is even more important in large and complex programs, where the desired sequence of operations 
+consists of several big steps. Let's imagine, for example, you are developing a smart home system, 
+and you need to download the weather forecast from the Internet, process the 6-hour precipitation forecast
+and, depending on it, open or close a window in the room. Even if these steps are not repeated anywhere else, 
+it's often useful to put them in separate functions so that it can be immediately seen:
+here we download data, here we decide whether to open or close, 
+and here we actually send instructions to the window control unit. If each step is not very trivial, 
+associating steps in a function dramatically increases the clarity and readability of programs. 
+(Of course, you also need to choose an adequate name for each function.) 
+Moreover, it will be much easier for you to change the program later; if you want to change the condition 
+by which the window is opened or closed, you won't need to touch some of the functions at all.
+At the same time, another convenience is that you can use local variables, and they will not interfere with each other.
 
-Третья причина для использования функций, ну или на самом деле комбинация первой и второй, но заслуживающая отдельного упоминания — это создание *параметризуемого* кода.
-То есть пусть у вас есть какая-то операция, какой-то фрагмент кода, который выполняется несколько раз, но каждый раз слегка по-разному.
-Зачастую вы его тоже можете легко выделить в функцию, а это самое различие передавать просто аргументами функции.
-Аналогично, если у вас есть какой-то смысловой блок, который тоже может выполняться по-разному (например, окно можно открыть, а можно и закрыть),
-вы его тоже можете выделить в функцию, сделав параметром указание на то, как именно надо выполнять этот блок (надо конкретно открывать или закрывать окно).
+The third reason for using functions, or actually rather a combination of the first and second, 
+but worthy of special mention, is the creation of *parameterizable* code. Let's explain what this means.
+Suppose you have some operation, some piece of code that is executed several times, but each time 
+slightly differently. Often you can also easily transform it to a function,
+and transmit this difference simply via arguments. Similarly, if you have some semantic block,
+which can also be executed in different ways (for example, a window can be opened, or it can be closed), 
+you can also turn it into a function and introduce a parameter indicating exactly how to perform this block 
+(you need specifically to open or to close the window).
 
-Четвертая причина — это *рекурсия*. Вообще, понятно, что из функции вы в принципе можете вызывать другие функции (например, вы можете написать функцию ``foo``,
-которая внутри себя будет использовать функцию ``abs``, если ей надо — почему бы нет?), но также вы из функции можете вызывать *её же саму*. Это и называется рекурсией.
-(Естественно, надо делать какое-то ограничение таких вызовов, чтобы не получилась бесконечная рекурсия). Я не будут про это писать подробнее,
-но если вы все, что было написано выше, уже поняли, то можете обдумать этот абзац отдельно.
+The fourth reason is *recursion*. In general, it is clear that you can call other functions from a function
+(for example, you can write a function ``foo``, which will call ``abs`` inside itself, if it needs to — why not?), 
+but the function can also call *itself* from inside. This is called recursion.
+(Of course, it's necessary to set some limit of such calls to avoid infinite recursion).
+I will not describe it here in detail, but if you've already understood
+everything discussed above, you can think about this paragraph separately.
 
-Ну и пятая причина, которая на самом деле является вариацией второй причины (про смысловые блоки), но заслуживает отдельного упоминания — это, как говорят, *инкапсуляция* кода.
-Функции позволяют вам скрыть всю свою сложность, всю нетривиальность, позволив вам в основной программе не задумываться о том, как функция устроена внутри,
-а просто вызвать эту функцию. Ярким примером этого принципа являются функции ``print`` и ``input``. Вы сейчас, скорее всего, даже теоретически не понимаете,
-что же такое делают эти функции внутри себя, как так получается, что функция ``print`` выводит текст на экран, а ``input`` считывает текст с клавиатуры.
-Но вам это и не важно; вы просто пишете ``input`` и не задумываетесь о том, что там происходит внутри.
-На это же можно посмотреть и с другой стороны: если у вас есть какая-то сложная система (например, тот же автоматический открыватель-закрыватель окна),
-вы пишете функцию, которая открывает окно, подавая нужные сигналы на блок управления, и вот как раз эта функция должна будет знать,
-как общаться с этим блоком. А в остальной программе уже не думаете, как конкретно открывается окно, а просто вызываете функцию.
+And the fifth reason, which is actually a variation of the second one (about semantic blocks), 
+but deserves a special mention is *encapsulation* of the code.
+Functions allow you to hide all their complexity, non-triviality, 
+allowing you to escape thinking in the main program about how the function is organized inside,
+and simply call this function. Striking examples of this principle are the ``print`` and ``input`` 
+functions. Right now you might have no idea what do these functions do inside themselves,
+how does it happen that ``print`` outputs text to the screen and ``input`` reads text from the keyboard.
+But it doesn't matter to you; you just write ``input`` and don't think about what's going on inside.
+You can also look at it from the other side: if you have some kind of complex system
+(for example, the same automatic window opener-and-closer), you create a function that opens the window 
+by giving the necessary signals to the control unit, and only this function needs to know
+how to communicate with this unit. And in the rest of the program you no longer think of
+how exactly the window opens, but simply call this function.
