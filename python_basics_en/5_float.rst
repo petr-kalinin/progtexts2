@@ -464,7 +464,7 @@ that it is enough to change the ``eps`` and the program will pass all the tests.
 Of course, this is not really good, but there's nothing to do.
 
 In particular, this is why on the contests tasks that indeed require calculations
-with real numbers are quite unpopular and rarely appear — no one,
+with real numbers are quite unpopular and appear rarely — no one,
 even the jury itself, can be sure that their ``eps`` is chosen correctly.
 But sometimes you may still come across such tasks.
 
