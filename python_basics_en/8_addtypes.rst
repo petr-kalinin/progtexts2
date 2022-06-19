@@ -1,11 +1,12 @@
 .. highlight:: python
 
-Дополнительные типы данных и прочие замечания
-=============================================
+Additional data types and miscellaneous remarks
+===============================================
 
-Здесь я приведу разные дополнительные замечания по питону. Большая часть этой информации
-не особо нужна для простейших задач, но в той или иной мере будет полезна в дальнейшем.
-В основном я буду говорить про различные типы данных, с которыми вы раньше не очень много работали.
+Here I will give various additional comments on Python. Most of this information
+is not particularly necessary for the simplest tasks, but more or less it
+will be useful in the future. Basically, I'm going to discuss various 
+data types that you haven't worked with very much before.
 
 int
 ---
