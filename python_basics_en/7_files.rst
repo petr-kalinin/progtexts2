@@ -133,32 +133,31 @@ so that the data will actually be written to the disk
 How to use it on contests?
 --------------------------
 
-Основное достоинство ввода из файлов при решении алгоритмических задач
-(на олимпиадах, тут на сайте и т.д.) — что вам не надо каждый раз заново
-вводить весь тест. Если вы отлаживаете программу на некотором тесте,
-разбираетесь, почему она не работает, пытаетесь исправить ошибки,
-вы будете много раз запускать программу на одном и том же тесте.
-Каждый раз его вводить — сложно и долго. Намного проще его один раз записать в файл,
-и дальше делать ввод из файла.
+The main advantage of inputting from files when solving algorithmic problems
+(on the contests, here on algoprog, etc.) is that you do not have
+to re-enter the entire test every time. If you are debugging your program 
+on some test, figuring out why it doesn't work, trying to fix errors,
+you'll definitely need to run the program many times on the same test.
+It is difficult and takes time to enter it manually every time. It's much easier 
+to save it to a file once, and then organize the input from that file.
 
-Вторая причина использовать файлы — вы намного легче можете «жонглировать» тестами.
-Вы можете записать несколько тестов в другой, вспомогательный, файл,
-и просто копировать нужный тест во входной файл.
-Более того, в большинстве случаев вы можете даже хранить много тестов
-прямо во входном файле. 
+The second reason to use file input is that you can "juggle" tests much more easily.
+You can write several tests to an auxiliary file, and simply
+copy the desired test to the input file. Moreover, in most cases
+you can even store a lot of tests just in your input file.
 
-А именно, во многих задачах у вас чтение данных идет не до конца файла
-— например, вы считываете только два числа, или только одну строку, или вам 
-задается число ``N`` и дальше ``N`` чисел — во всех этих случаях
-программе не важно, что идет после этих данных. Вы там можете хранить
-другие тесты, а потом, когда вам нужно, переносите просто нужный тест
-в самое начало файла.
+Namely, in many tasks you don't have to read data to the end of the file.
+For example, you need read only two numbers, or only one line, or you
+are given the number ``N`` and then ``N`` more numbers — in all these cases,
+the program doesn't care what comes after this data. You can store
+other tests there, and then, upon you need a certain test, just move it
+to the beginning of the file.
 
-(А вообще, можете даже написать программу так, чтобы она обрабатывала
-вообще все тесты, которые есть во входном файле — это так называемый мультитест.
-На тестирующем сервере будет только один тест, и программа отработает только 
-его, а при вашем тестировании программа будет сразу запускаться на многих тестах.
-А еще, бывают задачи, где во входных данных сразу мультитест, т.е. задается сразу много тестов.
-Тогда тем более вы можете тестировать сразу на многих тестах.)
+(In general, you can even write your program in such a way so that it processes
+all the tests that the input file contains — this is the so-called *multitest*.
+There will be only one test at once in the testing system, and the program 
+will run on it, and during your testing, your program will immediately run on many tests.
+And yet, there are tasks where there is a multitest in the input data, 
+i.e. many tests are set at once. Then especially you can debug on many tests at once.)
 
-Ну и при :ref:`стресс-тестировании <stresstesting>` ввод из файла вам тоже будет удобнее.
+And well, in :ref:`stress testing <stresstesting>` the input from the file will also be more convenient.
