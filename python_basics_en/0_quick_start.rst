@@ -270,7 +270,7 @@ Furthermore, there are so-called *functions*:
 
 -   The notation `abs(-3)` means taking the absolute value of the number: :math:`|{-}3|`.
     Please note that first *the name of the function* is written (in this case
-    ``abs``), and then in brakets — what to apply this function to (of what number to
+    ``abs``), and then in brackets — what to apply this function to (of what number to
     take the absolute value in this case). What is in brackets is also called the *argument of the function*.
 
 -   Similarly, the notation ``sqrt(4)`` means taking the square root
