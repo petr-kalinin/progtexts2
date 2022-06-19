@@ -1,93 +1,81 @@
 .. highlight:: python
 
-Работа с файлами
-=======================
+File input and output
+=====================
 
-На серьезных олимпиадах, а также во многих других ситуациях, вам надо
-читать данные не с клавиатуры, а из файла, и выводить данные в файл, а
-не на "экран". 
+On some contests, as well as in many other situations, you may need
+to input data not from keyboard, but from a file,
+and output data to a file, not to the abstract "screen".
 
-(В таком случае, конечно, вы должны знать имена этих файлов; в
-задачах они, как правило, указаны; на алгопроге имена файлов почти
-всегда — ``input.txt`` для входных данных и ``output.txt`` для выходных.)
+(For this, of course, you should know the names of these files. They are usually specified 
+in the tasks. On the algoprog, the file names are almost always these:
+``input.txt`` for input data and ``output.txt`` for the output.)
 
-Во многих языках программирования ввод/вывод данных через файлы очень
-похож на ввод/вывод с клавиатуры — те же команды, только немного другие
-параметры. В питоне, к сожалению, отличия более существенны.
+In many programming languages, data input from/output to files is very similar 
+to keyboard input/output — the instructions are the same, and parameters are just 
+slightly different. Unfortunately, in Python the differences are more significant.
 
-Ввод данных
------------
+Inputting data
+--------------
 
-Чтение по аналогии с input
-``````````````````````````
+Inputting analogous to standard ``input``
+`````````````````````````````````````````
 
-Чтобы считать данные из файла, вам надо сначала «открыть файл на чтение».
-Это делается командой 
-
-::
+To read data from a file, you first need to "open the file for reading".
+This is done by the following instruction::
 
     f = open("input.txt", "r")
 
-Здесь ``input.txt`` — файл, откуда надо считать данные, параметр ``"r"``
-указывает, что вы собираетесь именно *читать* (**r**\ ead) данные, а не
-записывать (**w**\ rite, см. ниже).
+Here ``input.txt`` is exactly the file from which you need to read the data, 
+and the parameter ``"r"`` indicates that you are going to **r**\ead the data, 
+and not write (then you should use ``"w"`` instead, see this below).
 
-Далее с полученным объектом ``f`` можно работать. Самая простая операция
-— ``f.readline()`` — возвращает очередную строку файла.
-Это полный аналог ``input()``, за исключением того, что на конце 
-полученной строки будет специальный символ перевода строки ``"\n"``
-(при выводе строки на экран он не будет заметен, но переведет лишний раз строку).
-Как правило, он вам будет мешать, но вы его можете легко убрать методом ``.rstrip("\n")``,
-например, ``f.readline().rstrip("\n")``.
+Then you can work with the received object ``f``. The simplest operation is
+``f.readline()``, which returns the next line of the file.
+This is a complete analog of ``input()``, except for that at the end
+of the received string there will be a special line break character ``"\n"``
+(when the line is output to the screen, it will not be visible, 
+but will break the line and start a new one). Highly likely it will bother you, 
+but you can easily remove it using the ``.rstrip("\n")`` method,
+for example, ``f.readline().rstrip("\n")``.
 
-Пример. Пусть во входном файле два числа по одному на строке. С клавиатуры
-вы бы считывали так:
-
-::
+Here's an example. Let there be two numbers in the input file, one per line.
+From the keyboard you would read it like this::
 
     a = int(input())
     b = int(input())
 
-Тогда из файла надо считывать так:
-
-::
+Then the input from the file is done as follows::
 
     f = open("input.txt", "r")
     a = int(f.readline().rstrip("\n"))
     b = int(f.readline().rstrip("\n"))
 
-Аналогично, если два числа в одной строке. С клавиатуры это считывается так:
-
-::
+The case with two numbers on the same line is quite similar.
+When reading from the keyboard, it's like this::
 
     a, b = map(int, input().split())
 
-Тогда из файла считываем так:
-
-::
+And from the file like this::
 
     f = open("input.txt", "r")
     a, b = map(int, f.readline().rstrip("\n").split())
 
-Более сложный пример: сначала число ``N``, а потом ``N`` строк по одному
-числу в каждой. С клавиатуры:
-
-::
+A more complex example: let's assume we need first the number ``N``, 
+and then ``N`` lines of one number in each. From the keyboard::
 
     n = int(input())
     for i in range(n):
         x = int(input())
-        #... что-то делаем с x
+        ...     # processing x
 
-Из файла:
-
-::
+From the file::
 
     f = open("input.txt", "r")
     n = int(f.readline().rstrip("\n"))
     for i in range(n):
         x = int(f.readline().rstrip("\n"))
-        #... что-то делаем с x
+        ...     # processing x
 
 Чтение до конца файла
 `````````````````````
@@ -124,8 +112,8 @@
 (в том числе в середине этой строки могут быть символы перевода строки,
 но это все равно будет одна большая строка, а не массив строк).
 
-Вывод
------
+Output
+------
 
 Для вывода данных вы можете открыть файл *на вывод*::
 
