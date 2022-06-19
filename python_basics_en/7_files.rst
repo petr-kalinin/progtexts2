@@ -15,8 +15,8 @@ In many programming languages, data input from/output to files is very similar
 to keyboard input/output — the instructions are the same, and parameters are just 
 slightly different. Unfortunately, in Python the differences are more significant.
 
-Inputting data
---------------
+File input
+----------
 
 Inputting analogous to standard ``input``
 `````````````````````````````````````````
@@ -27,8 +27,8 @@ This is done by the following instruction::
     f = open("input.txt", "r")
 
 Here ``input.txt`` is exactly the file from which you need to read the data, 
-and the parameter ``"r"`` indicates that you are going to **r**\ead the data, 
-and not write (then you should use ``"w"`` instead, see this below).
+and the parameter ``"r"`` stands for "**r**\ead", so it indicates that you are going 
+to read the data, not to write (then you should use ``"w"`` instead, see this below).
 
 Then you can work with the received object ``f``. The simplest operation is
 ``f.readline()``, which returns the next line of the file.
@@ -77,59 +77,61 @@ From the file::
         x = int(f.readline().rstrip("\n"))
         ...     # processing x
 
-Чтение до конца файла
-`````````````````````
+Reading the file to the end
+```````````````````````````
 
-Пока файл не кончился, функция ``readline`` будет вам всегда возвращать 
-*непустую* строку (в ней будет как минимум символ ``"\n"``). Как только файл кончится,
-``readline`` вернет пустую строку. Поэтому читать до конца файла можно так::
+Until the file ends, the ``readline`` function will always return
+*a non-empty* string (it will contain at least the line break character ``"\n"``).
+As soon as the file ends, ``readline`` will return an empty string.
+Therefore, you can read the file to the end like this::
 
     f = open("input.txt", "r")
     while True:
         s = f.readline()
         if s == "":
             break
-        # обрабатываем s, в частности, теперь можно вызвать s = s.rstrip("\n")
+        # processing s; particularly, may start with "s = s.rstrip("\n")"
 
-
-Альтернативный вариант — можно сразу считать весь файл в массив строк::
+There's an alternative way — you can read the file entirely
+at once and put it into an array of strings::
 
     data = open("input.txt", "r").readlines()
 
-Теперь ``data`` — это массив строк, каждый элемент которого — это
-очередная строка из входного файла. Например, если в файле было написано
-
-::
+Now ``data`` is an array of strings. Each element of it contains 
+a corresponding line of the input file. For example, 
+if the content of that file is as follows::
 
     1 2 3
     4 5 6
     some text
 
-то ``data`` будет содержать массив
-``["1 2 3\n", "4 5 6\n", "some text\n"]``, и дальше вы можете работать с этим массивом как вам надо.
+then ``data`` will be an array looking just like this:
+``["1 2 3\n", "4 5 6\n", "some text\n"]``, 
+and thereafter you may process it as you wish.
 
-Еще можно написать ``open("input.txt", "r").read()``, это считает весь файл в одну большую строку
-(в том числе в середине этой строки могут быть символы перевода строки,
-но это все равно будет одна большая строка, а не массив строк).
+You can also use this method: ``open("input.txt ", "r").read()``.
+It reads the entire file and puts it into one big string
+(and there may be line break characters in the middle of this string,
+but it will still be one big string, not an array of strings).
 
-Output
-------
+File output
+-----------
 
-Для вывода данных вы можете открыть файл *на вывод*::
+To save your data to a file, you should open it for output::
 
     f = open("output.txt", "w")
 
-(буква ``w`` обозначает write, запись). И дальше можно использовать ``f``
-в качестве опционального аргумента уже знакомой вам функции ``print``::
+here, ``"w"`` means "**w**\rite". Ater that, you can use ``f``
+as an optional argument of a common ``print`` function::
 
     print(a, b, file=f)
+    
+After the overall end of the output, it's recommended to call ``f.close()``
+so that the data will actually be written to the disk
+(although in most cases everything works without it).
 
-После окончания всего вывода рекомендуется вызвать ``f.close()``,
-чтобы данные реально оказались записаны на диск
-(хотя в большинстве случаев все работает и без этого).
-
-Как это использовать в олимпиадах
----------------------------------
+How to use it on contests?
+--------------------------
 
 Основное достоинство ввода из файлов при решении алгоритмических задач
 (на олимпиадах, тут на сайте и т.д.) — что вам не надо каждый раз заново
