@@ -46,37 +46,36 @@ of the operation will most likely be completely different from what you expected
 bool
 ----
 
-Логический тип данных, или bool — это тот самый тип данных, который вы пишете в разных условиях: в ``if``, в ``while`` и т.п.
-Например, вы можете написать ``if a > 0``, а можно написать и так::
+Boolean (or logical) data type, named ``bool``, is exactly the type used in various conditions:
+in ``if``, ``while`` and so on. For example, you can write ``if a > 0``, but may instead write this way::
 
     x = a > 0
     if x:
         ...
 
-Тут вы сравниваете ``a`` с нулем, но не сразу используете результат сравнения в ``if``, а сначала сохраняете результат сравнения
-в переменную ``x``, и дальше уже в ``if`` считываете результат сравнения из ``x`` и в зависимости от значения ``x`` или идете в ``if``,
-или нет. Вот эта переменная ``x`` как раз и будет иметь тип данных bool, или, как говорят, логический тип.
+Here you compare ``a`` with zero, but do not immediately use the comparison result in ``if``, but save this result
+to the variable ``x``. After that, in ``if`` you retrieve it from ``x`` and, depending on the value of ``x``,
+either execute the body of ``if`` or not. This variable ``x`` will have the ``bool`` data type.
 
-Естественно, такое сравнение может иметь только два результата: или истина (``a`` больше нуля), или ложно (``a`` не больше нуля).
-Соответственно, тип bool имеет лишь два значения, они обозначаются ``True`` (истина) и ``False`` (ложь).
-Их можно использовать и напрямую::
+Certainly, such a comparison can only have one of the two results: either true (``a`` is greater than zero) 
+or false (``a`` is not greater than zero). Accordingly, the ``bool`` type has only two values,
+they are denoted as ``True`` and ``False`` (capitals are important here). They can also be used directly::
 
     x = True
 
-но чаще вы будете использовать какие-либо сравнения или другие проверки, как в примере выше.
+but more often you'll use them in some kind of comparisons or other checks, as in the example above.
 
-Естественно, тут можно использовать и ``and``, ``or`` и ``not``; на самом деле, ``and``, ``or`` и ``not`` — это просто операторы,
-работающие с логическим типом данных — логические операторы (аналогично тому, как есть арифметические операторы ``+``, ``-`` и т.п.,
-и они работают с числовым типом данных). Соответственно, вы можете писать
+Of course, you can use ``and``, ``or`` and ``not`` here; in fact, ``and``, ``or`` and ``not`` are just operators
+over the logical data type — logical operators (similar to how there are arithmetic operators `+`, `-` and etc.,
+and they work with a numeric data types). Accordingly, you can write
 
 ::
-
     x = (a > 0 or c == 0) and d < e
     y = not x
     if y and q < w:
         ...
 
-и т.д.
+and so on.
 
 Скорее всего, вы уже раньше местами применяли так называемые «переменные-флажки», в которые помечали, выполняется ли какое-нибудь условие. 
 Например, если вам надо проверить, есть ли в данном массиве число ноль, вы могли писать примерно так::
