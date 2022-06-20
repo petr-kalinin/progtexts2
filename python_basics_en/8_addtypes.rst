@@ -68,8 +68,8 @@ but more often you'll use them in some kind of comparisons or other checks, as i
 Of course, you can use ``and``, ``or`` and ``not`` here; in fact, ``and``, ``or`` and ``not`` are just operators
 over the logical data type — logical operators (similar to how there are arithmetic operators `+`, `-` and etc.,
 and they work with a numeric data types). Accordingly, you can write
-
 ::
+
     x = (a > 0 or c == 0) and d < e
     y = not x
     if y and q < w:
