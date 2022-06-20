@@ -10,37 +10,38 @@ data types that you haven't worked with very much before.
 
 int
 ----
+This is a common integer data type that you've already worked with a lot.
+But it has one peculiarity to keep in mind — it is overflow.
 
-Это обычный целочисленный тип данных, с которым вы уже много работали. Но у него есть одна особенность,
-которую надо иметь в виду — это переполнения.
+Computer processors are able to work with integers only within a certain value range.
+For modern processors, the maximum value with which the processor can work directly,
+without various tricks, is :math:`2^{64}-1`, ie :math:`18\,446\,744\,073\,709\,551\,615`.
+(Actually, from the processor's point, there are several different data types that differ by these maximum values.)
 
-Процессоры компьютеров умеют работать с целыми числами только в пределах определенного диапазона значений.
-На современных процессорах максимальное значение, с которым процессор может работать напрямую,
-без разных ухищрений — это :math:`2^{64}-1`, т.е. :math:`18\,446\,744\,073\,709\,551\,615`.
-(На самом деле с точки зрения процессора есть несколько разных типов данных, различающихся этими максимальными значениями.)
+If you need to work with even bigger numbers, then most likely you'll have to work separately with each digit,
+write the "columnar addition" (and not directly ask the processor to add two numbers), etc.
+This is what is called "long arithmetic"; right now you don't need to get into it.
 
-Если вам надо работать с еще бóльшими числами, то как правило приходится работать отдельно с каждой цифрой,
-писать сложение «в столбик» (а не напрямую просить процессор сложить два числа), и т.д.
-Это то, что называется «длинная арифметика»; прямо сейчас вам в этом разбираться не надо.
+Python hides all these difficulties from you. Python int can store arbitrarily large numbers
+(until you run out of RAM). Python sends small numbers directly to the processor, and with very large ones 
+Python automatically switches to long arithmetic, and at first glance you will not notice anything at all.
 
-Питон скрывает от вас все эти сложности, питоновский int может хранить сколь угодно большие числа
-(пока у вас не кончится оперативная память). Маленькие числа питон отправляет в процессор напрямую, с очень большими
-— питон сам перейдет к длинной арифметике, и вы на первый взгляд вообще ничего не заметите.
+But there is a problem: adding two small numbers is a single processor instruction,
+and if you need to use long arithmetic, then you need to perform a lot more actions.
+Therefore, while your numbers are not very large (roughly speaking, no more than :math:`2^{64}`,
+although since there are also negative numbers, it is more likely to be approximately :math:`\pm2^{63}`,
+and in 32-bit versions of Python it can be up to :math:`2^{32}` or approximately :math:`\pm2^{31}`), 
+then all operations will be relatively fast. But as soon as your numbers become longer,
+their processing in Python will get noticeably slower.
 
-Но есть одна проблема: сложить два небольших числа — это одна инструкция процессора, а если надо использовать
-длинную арифметику, то надо совершать намного больше действий. Поэтому пока вы работаете с не очень большими числами
-(грубо говоря, не больше того же :math:`2^{64}`, хотя поскольку еще бывают отрицательные числа, то скорее до примерно :math:`\pm2^{63}`,
-а в 32-битных версиях питона может быть до :math:`2^{32}` или примерно :math:`\pm2^{31}`), то все операции будут относительно быстрыми.
-Но как только ваши числа станут длиннее, операции с ними в питоне будут выполняться заметно медленнее.
+In regular tasks you'll hardly meet long numbers, but anything may happen. 
+For example, in dynamic programming, in tasks for counting the number of objects
+you can easily get very large numbers. Pay attention to this fact.
 
-В обычных задачах у вас вряд ли будут очень длинные числа, но всякое бывает. 
-Например, в динамическом программировании в задачах на подсчет количества объектов
-вы легко можете попасть на очень большие числа. Будьте внимательны.
-
-(А еще хуже на других языках типа C++ или паскаля. Там автоматического перехода к длинной арифметике не произойдет,
-и если результат какой-то операции выйдет за пределы, поддерживаемые соответствующим типом данных,
-то произойдет собственно переполнение, и результат операции получится, скорее всего, совсем не тот,
-который вы ожидали.)
+(The situation is even worse in other languages like C++ or Pascal. There will be no automatic switch 
+to long arithmetic, and if the result of some operation goes beyond the limits supported
+by the corresponding data type, then an overflow will actually occur, and the result
+of the operation will most likely be completely different from what you expected.)
 
 bool
 ----
