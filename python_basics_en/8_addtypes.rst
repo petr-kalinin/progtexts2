@@ -15,7 +15,7 @@ But it has one peculiarity to keep in mind — it is overflow.
 
 Computer processors are able to work with integers only within a certain value range.
 For modern processors, the maximum value with which the processor can work directly,
-without various tricks, is :math:`2^{64}-1`, ie :math:`18\,446\,744\,073\,709\,551\,615`.
+without various tricks, is :math:`2^{64}-1`, i.e. :math:`18\,446\,744\,073\,709\,551\,615`.
 (Actually, from the processor's point, there are several different data types that differ by these maximum values.)
 
 If you need to work with even bigger numbers, then most likely you'll have to work separately with each digit,
