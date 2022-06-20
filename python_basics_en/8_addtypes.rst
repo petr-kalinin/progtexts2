@@ -140,7 +140,7 @@ But don't do it like that! This is way easier::
 (or even just ``return x % 2 == 0``).
 
 Because the result of the comparison ``z == 0`` is exactly 
-either ``True`` or ``False``, as you need, so there is no need to use an extra ``if``.
+either ``True`` or ``False``, as you need, so there is no reason to use an extra ``if``.
 
 .. note::
 
