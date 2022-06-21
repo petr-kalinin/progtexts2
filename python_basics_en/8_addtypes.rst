@@ -4,7 +4,7 @@ Additional data types and miscellaneous remarks
 ===============================================
 
 Here I will give various additional comments on Python. Most of this information
-is not particularly necessary for the simplest tasks, but more or less it
+is rather unnecessary for the simplest tasks, but more or less it
 will be useful in the future. Basically, I'm going to discuss various 
 data types that you haven't worked with very much before.
 
