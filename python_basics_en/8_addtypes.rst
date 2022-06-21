@@ -187,7 +187,7 @@ either ``True`` or ``False``, as you need, so there is no reason to use an extra
         if z % 2:
 
     doesn't mean at all what you might think: it doesn't mean "if ``z`` is evenly divisible by 2",
-    but "if `z` **is not** evenly divisible by 2" (i.e. "if the remainder is not zero").
+    but "if ``z`` **is not** evenly divisible by 2" (i.e. "if the remainder is not zero").
     It's extremely easy to make a mistake and get confused here, so don't use this
     implicit comparison with zero until there is an unambiguous and obvious Boolean interpretation.
 
@@ -225,50 +225,50 @@ You can work this way with strings (iterate over all characters) and tuples.
 Dictionaries (dict)
 -------------------
 
-Вы уже знаете массивы — в них элементы индексируются последовательными целыми 
-числами, начиная с нуля. Есть очень похожая на первый взгляд конструкция
-— ассоциативные массивы, в питоне они называются «словари». В первом приближении 
-это массив, в котором элементы могут адресоваться примерно чем угодно.
-Нам будет в первую очередь интересна возможность в качестве индексов словарей 
-использовать произвольные числа (не обязательно подряд), а также строки.
+Arrays, where elements are indexed by consecutive integers, starting from zero,
+are already familiar to you. There is data structure which is at first glance
+very similar: associative arrays. In Python they are called "dictionaries" (``dict`` type).
+In the first approximation it's like an array in which elements can be addressed by almost anything.
+First of all, we are interested in the ability to use arbitrary numbers 
+(not necessarily in a row) and strings as dictionary indices.
 
-Пишется это так::
+Dictionaries are declared in this way::
 
-    d = {}  # так создается пустой словарь. В нем нет ни одного элемента
-    d[3] = 10  # теперь в словаре только один элемент, но его индекс — 3
-    d[17] = 137  # теперь два элемента, с индексами 3 и 17
-    d["abc"] = 42  # а теперь три элемента, с индексами 3, 17, и "abc"
+    d = {}  # an empty dictionary. It has no elements.
+    d[3] = 10  # we added one element to d, but its index is 3
+    d[17] = 137  # now there are two elements with indices 3 and 17
+    d["abc"] = 42  # now three elements with indices 3, 17 and "abc"
     
-    # к элементам словаря обращаетесь как к элементам массива:
+    # dictionary elements are accessed to just as array elements:
     print(d[3] + d[17])  
     d["abc"] = d["abc"] + 1
 
-    # конечно, в квадратных скобках можно использовать любые выражения:
+    # you may put in brackets any reasonable expression 
     print(d[4 - 1])
     print(d["ab" + "c"])
     s = input()
-    d[s] = 10  # индексом будет введенная строка
+    d[s] = 10  # the obtained string will be the index
 
-    # конечно, значениями элементов словаря может быть что угодно
-    d[10] = "qwe"  # строка
-    d["abc"] = [1, 2, 3]  # массив
-    d["qwe"] = {}  # даже другой словарь, и т.д.
+    # of course, values may contain anything
+    d[10] = "qwe"  # a string
+    d["abc"] = [1, 2, 3]  # an array
+    d["qwe"] = {}  # even another dictionary, etc
 
-    # а вот так можно создать словарь с заранее заданным содержимым:
+    # you can also create a dictionary with some content:
     pairs = { 
-        # через двоеточие задаем индекс и значение
+        # index and corresponding vaue are separated by colon
         "(": ")",
         "[": "]",
         "{": "}"
     }
-    print(pairs["("])  # выведет )
+    print(pairs["("])  # will print )
 
-(Конечно, в реальной программе в каждом конкретном словаре у вас обычно индексами будут или 
-только числа, или только строки. Питон позволяет смешивать типы индексов,
-но вам как правило это не будет нужно, а, наоборот, будет неудобно.)
+(Of course, in a real programs, in each particular dictionary you'll usually have either
+only numbers or only strings as indices. Python allows you to mix index types,
+but generally you won't need it. Vice versa, it will mostly be inconvenient.)
 
-Когда работают со словарями, часто вместо слова «индекс» (массива) говорят «ключ» (словаря). 
-Например, «записать значение ``10`` в словарь ``d`` по ключу ``3``» ­— это значит ``d[3] = 10``.
+When processing dictionaries, the commonly used term is "(dictionary) key" instead of "(array) index". 
+For example, "assigning the value ``10`` to the dictionary ``d`` on the key ``3``" means ``d[3] = 10``.
 
 .. note::
 
