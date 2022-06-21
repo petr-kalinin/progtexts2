@@ -144,26 +144,27 @@ either ``True`` or ``False``, as you need, so there is no reason to use an extra
 
 .. note::
 
-    На самом деле, в ``if`` вы можете использовать напрямую не только логический тип данных.
-    Например, даже если у вас переменная ``a`` хранит целое число, вы можете написать ``if a:`` 
-    — в питоне это будет обозначать «если ``a`` не равно нулю». Но вот так делать я вам очень не советую,
-    потому что проверка целых чисел — это на самом деле не очень естественная операция. Действительно,
-    пусть ``a`` равно 42. Тогда запись ``if a:`` читается как «если 42». Так 42 — это истинно или ложно?
-    Видите, что вопрос звучит в принципе странно? Вы можете спросить «если 42 больше 0» или что-то подобное, 
-    но вопрос «если 42» большого смысла не имеет.
+    In fact, in ``if`` you can use not only just Boolean expressions.
+    For example, even if your variable ``a`` stores an integer number, you can write ``if a:``.
+    In Python, this means "if ``a`` is not zero". But I strongly advise you not to do this,
+    because checking integers is actually quite not a natural operation. Indeed, let ``a`` be 42. 
+    Then the notation ``if a:`` is equivalent to "if 42". So is 42 true or false? 
+    Do you see that the question generally sounds weird? You can ask "if 42 is greater than 0"
+    or something similar, but the question "if 42" does not make much sense.
 
-    А для логических переменных такой проблемы нет; наоборот, они используются в ``if`` напрямую и очень естественно. 
-    Если у вас ``x`` равно например ``True``, то запись ``if x`` обозначает «если истина», что очень логично: 
-    истинное утверждение же истинно, такой проблемы как с 42 нет, наоборот, скорее тут получается тавтология.
+    At the same time, there is no such problem for Boolean variables; they are used in ``if`` directly 
+    and it's quite natural. If you have ``x`` equal to, for example, ``True``, then 
+    the notation ``if x`` means "if true", which is purely logical: the true statement is true, 
+    there is no such problem as with 42. Vice versa, here there's rather a tautology.
 
-    Единственный случай, когда имеет смысл писать не-bool переменные напрямую в ``if`` — 
-    когда эти переменные имеют еще и очень понятный bool-смысл, если сравнение с нулем 
-    отвечает не просто на вопрос «равна ли переменная нулю», а имеет и какой-то 
-    более понятный и естественный смысл. Например, если у вас в переменной ``a`` хранится 
-    количество каких-то объектов, то проверку ``if a`` можно понимать как «если эти объекты вообще есть»
-    (действительно, если ``a==0``, то объектов нет, иначе они есть), поэтому такая проверка имеет смысл.
+    The only case where it makes sense to use non-Boolean variables in a condition
+    is when these variables also have a very clear Boolean meaning. I.e., if 
+    comparing them to zero answers not just the question "is the variable equal to zero?",
+    but has some special, comprehensible meaning. For example, if a variable ``a`` stores
+    the number of some objects, then the check ``if a`` can be seen as "if these objects exist at all"
+    (indeed, if ``a == 0``, then there are no objects, otherwise they exist), so such a check makes sense.
 
-    Пример — задача про нули, которую обсуждали выше. Вы можете написать так::
+    An example of such a case is the problem about zeros in an array, which was discussed above. You can write like this::
 
         count = 0
         for i in range(n):
@@ -174,26 +175,25 @@ either ``True`` or ``False``, as you need, so there is no reason to use an extra
         else:
             print("no")    
 
-    Тут проверка ``if count`` очень понятна: «если мы нашли хотя бы один ноль».
+    Here the check ``if count`` is very clear: "if we found at least one zero".
 
-    (В данном конкретном случае с bool-переменной лучше, потому что вам это количество само по себе не нужно. 
-    Но если вам это количество потом куда-то надо будет еще использовать, или если
-    количество вы не сами считаете, а сразу откуда-то получаете, то напрямую проверять количество в ``if`` вполне можно.)
+    (In this particular case, it's better with a Boolean variable, because you don't need this amount by itself.
+    But if you'd use the amount of zeros somewhere else later, or if you don't count it by yourself 
+    but get it from somewhere, then it is quite natural to directly check the quantity in ``if``.)
 
-    А вот проверка на четность — это пример, когда так писать не надо. Проверка
-
+    However, the simplest parity check is an example when it's *bad* to use integers in a condition. The check
     ::
 
         if z % 2:
 
-    обозначает вовсе не то, что вы можете подумать: она обозначает не «если ``z`` делится на 2», 
-    а «если ``z`` **не** делится на 2» (т.е. «если остаток не ноль»).
-    Тут очень легко ошибиться и запутаться, поэтому не используйте такое 
-    неявное сравнение с нулем, когда нет однозначной и очевидной bool-трактовки.
+    doesn't mean at all what you might think: it doesn't mean "if ``z`` is evenly divisible by 2",
+    but "if `z` **is not** evenly divisible by 2" (i.e. "if the remainder is not zero").
+    It's extremely easy to make a mistake and get confused here, so don't use this
+    implicit comparison with zero until there is an unambiguous and obvious Boolean interpretation.
 
-    И да, конечно, все сказанное в этом примечании относится к тому, как стоит писать программу, 
-    а не к тому, что конкретно питон вам разрешает. Питон спокойно вам разрешит писать 
-    ``if z % 2:``, но это не значит, что так делать надо.
+    And yes, of course, everything stated in this note is related to how to write a program,
+    and not to what specifically Python allows you to do. Python will easily allow you to write
+    ``if z %2:``, but this doesn't mean you should do so.
 
 tuple
 -----
