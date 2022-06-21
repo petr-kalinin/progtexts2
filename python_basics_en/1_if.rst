@@ -393,7 +393,7 @@ But it's possible to get rid of nested ``if``-statements via the opposite check:
 .. task::
 
     On a PE lesson the teacher says "count off one to two". 
-    Vasya is :math:`N`th in a row. What should he say, "one" or "two"?
+    Vasya is :math:`N`\th in a row. What should he say, "one" or "two"?
 
     **Input**: The first line contains one number :math:`N`.
 
