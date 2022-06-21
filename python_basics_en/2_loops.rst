@@ -614,7 +614,7 @@ then add 4 to the result, and etc.
 Thus, a pattern emerges: you repeat one operation many times. 
 This operation is addition of the next number to the current sum.
 So first, we obviously need a loop iterating over the numbers one by one, 
-second, we clearly need a variable for the current sum, let it be :math:`k'.
+second, we clearly need a variable for the current sum, let it be :math:`k`.
 Accordingly, it's something like this::
 
     for i in .....:
