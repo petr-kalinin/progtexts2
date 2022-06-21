@@ -713,7 +713,7 @@ so we need to input the data twice through `map(int(...`::
 
     **Input**: One number :math:`N`.
 
-    **Входные данные**: Print a line.
+    **Output**: Print a line.
 
     **Example**:
 
