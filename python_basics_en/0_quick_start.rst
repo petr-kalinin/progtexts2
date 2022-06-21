@@ -595,7 +595,7 @@ on two separate lines, so they we can read them like this::
     k = int(input())
 
 Then we need to understand how the answer is calculated. In this problem, 
-it's easy to guess that the answer is just math:`2\cdot N + K'. So we print it::
+it's easy to guess that the answer is just math:`2\cdot N + K`. So we print it::
 
     print(2 * n + k)
 
