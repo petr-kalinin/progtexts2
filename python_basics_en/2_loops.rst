@@ -293,8 +293,8 @@ Example::
         print(n, 'is evelny divisible by', i)
 
 Here the loop will go through all the numbers from ``2`` to ``n-1`` and for each will output
-whether ``n`` is divisible by ``i`` or not. For example, for ``n == 9`` the output will look so:
-::
+whether ``n`` is divisible by ``i`` or not. For example, for ``n == 9`` the output will look so::
+
     Tried 2 , failed
     9 is evenly divisible by 3
     Tried 4 , failed
@@ -315,8 +315,7 @@ But it happens that you need to sort out the numbers, and there are many
 specific conditions upon those you don't need to take the number into account.
 Then writing a bunch of ``else`` statements would be much more complicated than
 a few ``continue`` statements. For example (this one is rather synthetic,
-but similar cases really exist):
-::
+but similar cases really exist)::
 
     for i in range(n):
         # we don' need numbers divisible by 5
@@ -330,6 +329,7 @@ but similar cases really exist):
         # all the remaining numbers are necessary
         # so here we do some complex processing with many instructions
         ...
+
 Here it's way more clear what you meant than if you wrote it using ``else``. 
 With ``else``, whoever is going to read your code would have to look where
 ``else`` ends, and whether there are some more instructions after that ``else``.
@@ -347,8 +347,8 @@ until zero is entered. All numbers, except zero, need to be
 processed somehow (It's not essential here how exactly.
 To simplify, we will just output them to the screen).
 
-The natural way to do this looks like this:
-::
+The natural way to do this looks like this::
+
     read a number
     if it's equal to zero, stop and exit
     output the number to the screen
