@@ -352,14 +352,14 @@ as follows::
     for i in range(len(z)):
         # iterating over "inner" array z[i]
         for j in range(len(z[i])):
-            ...processing element z[i][j]
+            ... # processing element z[i][j]
 
 Creating a 2D array
 -------------------
 
-Unexpectedly, a non—trivial operation is the creation
-of a two-dimensional array of a certain size filled, for example,
-with zeros. As described above, a one-dimensional array 
+Unexpectedly, the creation of a two-dimensional array of a certain size 
+filled, for example, with zeros, is a non—trivial operation.
+As described above, a one-dimensional array 
 of length ``n`` can be created via ``[0] * n``.
 So you may expect that writing ``a = [[0] * m] * n``
 will create a two-dimensional array of size ``n x m``
