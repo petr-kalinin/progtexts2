@@ -8,7 +8,7 @@ some operation(s) several times. Often you don't even know in advance
 how many times you exactly need. There is a lanugage construction
 designed specially for this, called loop.
 
-There are two types of loops in python.
+There are two types of loops in Python.
 
 (I will give some code samples here. Of course, explore them
 for a better comprehension.)
