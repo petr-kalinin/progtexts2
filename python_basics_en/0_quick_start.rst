@@ -71,11 +71,11 @@ Launch the Wing IDE. The following window will appear:
 First, make sure that in the lower right corner, on the panel entitled Python Shell,
 a text similar to the one shown in the figure appeared; in particular, the Python version
 that you installed should be shown there. Make sure it's version 3 (in the picture
-it's version 3.5.2). If this is not, then try using the ``Edit — Configure Python`` 
+it's version 3.5.2). If this is not, then try using the *Edit — Configure Python* 
 menu option to specify the path to Python manually (see the picture below) — in
 "Python Executable" field, you need to type something like ``C:\Python3\python.exe``
 if you have installed Python in the directory ``C:\Python3``. Perhaps you also should 
-add ``C:\Python3`` to the ``Python Path`` list. You may have to explore it to find
+add ``C:\Python3`` to the *Python Path* list. You may have to explore it to find
 the right settings. If you have both versions of Python installed on your computer 
 (both 2 and 3), perhaps the Wing IDE will "pick up" Python 2 by default. 
 In this case, also manually specify that you need to work with version 3.
@@ -83,12 +83,12 @@ In this case, also manually specify that you need to work with version 3.
 .. image:: ../python_basics/0_quick_start/wing_ide_config.png
 
 If you fail, write to me [1]_, pointing where you installed Python and sending screenshots
-of the main Wing IDE window and the ``Edit — Configure Python`` dialog.
+of the main Wing IDE window and the *Edit — Configure Python* dialog.
 
 The first program
 -----------------
 
-In the main menu of the Wing IDE, select ``File — New``. A window for editing
+In the main menu of the Wing IDE, select *File — New*. A window for editing
 the text of the program will appear. In this window, type the following text:
 
 ::
@@ -103,7 +103,7 @@ It should turn out like this:
 
 
 Make sure there are no typos. Save the program: press Ctrl-S or select the menu option
-``File — Save As``. Wing IDE will prompt you to choose a file name to save,
+*File — Save as*. Wing IDE will prompt you to choose a file name to save,
 for the first program you can choose any name.
 
 .. note::
@@ -141,7 +141,7 @@ any mistakes), and see what exactly is written in the "Python Shell" window. The
 you can see the Python header(including the version number), then the line
 ``>>> [evaluate tmp.py]`` (instead of ``tmp.py`` there will be the name of the file
 where you saved the program). This line was printed at the moment when Wing IDE
-started running your program. And finally, there is the line `Test 4`,
+started running your program. And finally, there is the line ``Test 4``,
 which was printed by the program.
 Below we'll discuss why it printed exactly this.
 
@@ -209,7 +209,7 @@ gives to the computer, and the computer consistently (one by one) executes them.
 In our program there's an only instruction: ``print("Test", 2*2)``. The instruction
 ``print`` means "display" (show on the screen). In brackets after the word ``print``,
 the *arguments* of the instruction are set. They are separated by commas. Here, 
-the instruction has two arguments: the first is `"Test"`, and the second is `2*2`.
+the instruction has two arguments: the first is ``"Test"``, and the second is ``2*2``.
 
 If the argument of the ``print`` instruction is some string enclosed
 in quotes (``"`` characters), then ``print`` outputs this string on the
@@ -220,7 +220,7 @@ The second argument of the ``print`` instruction in our example is
 the arithmetic expression ``2*2``. If the argument of an instruction (any of them, 
 not necessarily `print`, we just don't know the others yet) is an arithmetic expression,
 the computer will first calculate it, and then will pass it over. Therefore, in this case,
-the computer will first calculate :math:`2\cdot 2`, get 4, and then pass the result to the 
+the computer will first calculate :math:`2\cdot 2`, get :math:`4`, and then pass the result to the 
 instruction ``print``, which will display it on the screen.
 
 ``print`` separates the output elements with spaces, so between
@@ -240,9 +240,10 @@ the end of the instruction — the first one is a part of the expression,
 and the second ends the list of arguments of ``print`` instruction.
 
 You can use the following operators in arithmetic expressions:
-- `+` and `-` — addition and subtraction (including what is called
-*unary* minus for writing negative numbers: to write
-:math:`2\cdot(-4)`, you need to type ``2*(-4)``);
+
+-   ``+`` and ``-`` — addition and subtraction (including what is called
+    *unary* minus for writing negative numbers: to write
+    :math:`2\cdot(-4)`, you need to type ``2*(-4)``);
 
 -   ``*`` — multiplication;
 
@@ -253,14 +254,14 @@ You can use the following operators in arithmetic expressions:
 -   ``%`` — remainder (see below).
 
 -   Brackets (round only) are used for grouping operations. You can
-    use nested brackets, for example, `2*(3-(4+6))`.
+    use nested brackets, for example, ``2*(3-(4+6))``.
 
 A little more about the division. There are three operators related to division:
 one operator for regular division (``/``), and two operators for Euclidean division
 (division with remainder) (``//`` and ``%``). Remember the primary school and the division
 with remainder: 16 divided by 3 will give the quotient 5 and the remainder 1.
-Here `//` calculates the integer quotient, and ``%`` gives the remainder. It is written
-like this: ``16 // 3`` and ``16 % 3``, as if ``//`` and `%` were the operation symbols,
+Here by ``//`` the integer quotient is calculated, and ``%`` gives the remainder. It is written
+like this: ``16 // 3`` and ``16 % 3``, as if ``//`` and ``%`` were the operation symbols,
 like plus or asterisk. (Space around ``//`` and ``%`` are not required, but in Python
 they're traditionally put there.)
 (When operating with negative numbers, the result may seem unexpected to you. 
@@ -268,7 +269,7 @@ We will discuss this later.)
 
 Furthermore, there are so-called *functions*:
 
--   The notation `abs(-3)` means taking the absolute value of the number: :math:`|{-}3|`.
+-   The notation ``abs(-3)`` means taking the absolute value of the number: :math:`|{-}3|`.
     Please note that first *the name of the function* is written (in this case
     ``abs``), and then in brackets — what to apply this function to (of what number to
     take the absolute value in this case). What is in brackets is also called the *argument of the function*.
@@ -411,9 +412,9 @@ will see that the program printed their sum.
 
 If you try to input two numbers in one line (i.e. type "2 Space 3 Enter"), 
 the program will terminate with an error. Indeed:
-you asked it to convert the string "\``2 3``\" into a number (single number!) and
+you asked it to convert the string "``2 3``" into a number (single number!) and
 write it to the variable ``a``, but this is, of course, not 
-a correct recording of a single number.
+a correct record for a single number.
 
 To enter numbers separated by space, you need to use a different construction::
 
@@ -513,7 +514,7 @@ is read with "equal", then it turns to "``a`` is equal to ``a`` plus one",
 which does not look like an instruction at all, but rather an equation that has
 no solutions. Therefore, say "assign", not "equal".
 
-There are also a number of useful instructions that combine 
+There are also some useful instructions that combine 
 arithmetic operation and assignment (they're called 
 augmented assignment operators). For example, ``a += 10`` stands for 
 ``a = a + 10`` ("increase ``a`` by 10"). You can do the same 
@@ -570,7 +571,7 @@ Here are a few sample problems similar to ones you may come across on contests a
     Vasya bought :math:`N` muffins and Masha bought :math:`K` muffins more.
     What is the overall amount of muffins they bought?
 
-    **Input**: On the first line there's an only number :math:`N` and on the second line an only number :math:`K`.
+    **Input**: On the first line there's a single number :math:`N` and on the second line a single number :math:`K`.
 
     **Output**: One number — the answer to the question of the problem.
 
@@ -595,7 +596,7 @@ on two separate lines, so they we can read them like this::
     k = int(input())
 
 Then we need to understand how the answer is calculated. In this problem, 
-it's easy to guess that the answer is just math:`2\cdot N + K`. So we print it::
+it's easy to guess that the answer is just :math:`2\cdot N + K`. So we print it::
 
     print(2 * n + k)
 
@@ -659,7 +660,7 @@ For example, 150 minutes have passed since the beginning of the day
 — how do you know how many hours and how many minutes it is?
 
 After thinking a little, it becomes clear that we need to divide 
-math:`N` by 60 (the number of minutes in an hour) with the remainder,
+:math:`N` by 60 (the number of minutes in one hour) with the remainder,
 so the quotient will be just the number of hours 
 and the remainder will be the number of minutes.
 Accordingly, we write it::
