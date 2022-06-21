@@ -66,8 +66,8 @@ These can be just numbers or variables, but can also be complex, such as followi
 
     if sqrt(a*b+10) >= abs(2*(3-c)) + 5:
 
-Logical operators
---------------------
+Logical (Boolean) operators
+---------------------------
 
 Second, you can combine several conditions in your ``if``.
 E.g., if you need to check that ``a == 10`` **and** ``b == 20``, here you go::
@@ -105,7 +105,7 @@ Here's a more distinct example for brackets. Compare the following::
 These two expressions are different. E.g., a case when ``a==1``, ``b==1``, ``c==0`` fits the second condition, but not the first one.
 Find out on your own why and also consider other cases when these conditions have different results. 
 
-That's why in any complex logical expressions brackets are obligatory to set the order of operations.
+That's why in any complex Boolean expressions brackets are obligatory to set the order of operations.
 Notation ``if a == 0 and b == 0 or c == 0`` is unclear. Of course, the computer will somehow choose a certain order,
 but it's better to always set it explicitly.
 
@@ -135,7 +135,7 @@ because it's absolutely unclear what ``40 or 30`` is equal to.
 .. note::
     Notation ``if (a or b) == 0`` also makes sense indeed, but also not that you could expect. Let's explain details of this case.
     Python, as any other programming language, is quite formal and not alike human language, despite sometimes it may seem to be.
-    In particular, all expressions, arithmetical or logical, are calculated in a certain order. For example, it's common that in
+    In particular, all expressions, arithmetical or Boolean, are calculated in a certain order. For example, it's common that in
     arithmetic operations addition goes after multiplication. E.g. if you have an expression ``10 + 20 * 30``, you shuold first
     multiply ``20 * 30`` getting 600, and then summarise ``10 + 600``. Likewise, here ``(a or b) == 0`` is done this way:
     first calculate ``a or b`` and then check if the result is equal to zero. It's not a separate check of a being zero and b being zero
@@ -143,7 +143,7 @@ because it's absolutely unclear what ``40 or 30`` is equal to.
 
 .. note::
     Of course it's more accurate here to speak of the *logical (or Boolean) data type*. This is exactly what you get as a result of several
-    relations and logical operations, and what you can put straight into ``if``. This is a date type that only can store two values, which
+    relations and Boolean operations, and what you can put straight into ``if``. This is a date type that only can store two values, which
     in Python are ``True`` (the condition is true) and ``False`` (otherwise). For example, statement ``10 > 0`` is ``True``, and ``True and False`` is ``False``.
     And if you'd type::
     
@@ -153,8 +153,6 @@ because it's absolutely unclear what ``40 or 30`` is equal to.
     ``True and False`` and gets ``False``, so this statement is false.
     
     But for basic comprehension of ``if``-statement it's not necessary.
-
-..Уточнить, Boolean или logical!!!
 
 Body of the conditional statement
 ---------------------------------
