@@ -11,7 +11,7 @@ The section was added not because it is necessary for learning further material
 it's not necessary to know Python in order to study algorithms; on the other hand,
 further sections require more basic knowledge than given in this section).
 The section was added primarily because I still write notes about Python 
-for my `algorithmic course <https://algoprog.ru >`_ 
+for my `algorithmic course <https://algoprog.ru>`_ 
 and it's convenient to have a unified place to refer to.
 
 Therefore, in particular, the text is addressed to the students studying on my course.
