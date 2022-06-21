@@ -659,7 +659,7 @@ how would you solve the problem yourself for a certain input?
 For example, 150 minutes have passed since the beginning of the day 
 — how do you know how many hours and how many minutes it is?
 
-After thinking a little, it becomes clear that we need to divide 
+After a little thinking, it becomes clear that we need to divide 
 :math:`N` by 60 (the number of minutes in one hour) with the remainder,
 so the quotient will be just the number of hours 
 and the remainder will be the number of minutes.
