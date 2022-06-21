@@ -3,10 +3,9 @@
 Loops
 =====
 
-In programs, it is quite common that you have to repeat
-some operation(s) several times. Often you don't even know in advance
-how many times you exactly need. There is a lanugage construction
-designed specially for this, called loop.
+In programs, it is quite common that you have to repeat some operation(s) 
+several times. Often you don't even know in advance how many times you exactly need 
+to do it. There is a lanugage construction designed specially for this, called loop.
 
 There are two types of loops in Python.
 
@@ -16,7 +15,7 @@ for a better comprehension.)
 While loop
 ----------
 
-The while loop is the simplest version of the loop. It performs some
+The ``while`` loop is the simplest version of the loop. It performs some
 operations and then determines whether they need to be performed again.
 "Determination" is done by checking the condition set by the programmer.
 The code looks like this:
@@ -74,13 +73,13 @@ Indeed, ``2 * a`` is 2, and ``n`` is 5, the condition is met.
 Therefore, we begin executing the code that is written inside the loop.
 Namely, we write ``a``, i.e. 1, on the screen. And add one to ``a``,
 resulting ``a == 2``. We've moved to the end of the code 
-(it's also called "the body of the loop"), so we check the condition again. 
+(it's also called "the loop body"), so we check the condition again. 
 It's still true (``2 * a`` is 4, and ``n`` is equal to 5), 
-so we execute the body of the loop again. We display 2 on the screen
+so we execute the loop body again. We display 2 on the screen
 and again increase ``a`` by one. We check the condition again, it is
 no longer met (``2*a`` is 6, and ``n`` is 5), the loop ends.
 
-When the loop is terminated, we move on to the code after it, printing "Done".
+Once the loop is terminated, we move on to the code after it, printing "Done".
 
 One more example, now quite sophisticated:
 ::
@@ -188,7 +187,7 @@ gives the numbers 1, 3, 5. And ``range(0, 100, 10)`` gives the numbers 0, 10, 20
 
 This third parameter is also used in a special way to iterate through the numbers 
 in reverse order. ``range(10, 0, -1)`` gives 10, 9, 8, ..., 1.
-Note that 0 is not included again. (Similarly, you can specify step -2, etc.)
+Note that 0 is not included again. (Similarly, you can specify step equal to -2, etc.)
 
 Of course, in ``range`` you can use variables, expressions, etc.
 For example, ``range(a - b, a + b + 1)`` will iterate through the numbers from ``a-b`` to
@@ -207,7 +206,7 @@ this will output the multiplication table .
 Break and continue
 ------------------
 
-There are two special constructions really useful for work with loops:
+There are two special statements really useful for work with loops:
 ``break`` and ``continue``. Here I will describe what they do and
 their basic appications.
 
@@ -221,12 +220,12 @@ the loop. For example, in the loop
 ::
 
     for i in range(1, n + 1):
-    a = i * i
-    print(i, a)
+        a = i * i
+        print(i, a)
     
 the loop body consists of two instructions: assignment and output.
 
-The **iteration** is one separate pass the through the body of the loop.
+The **iteration** is one separate pass the through the loop body.
 During the loop execution instructions of the loop body are repeated several times 
 — each such repetition is called an iteration. In the example above, we can say that
 the loop will do *n* iterations. For example, you can say that on the fifth
@@ -363,7 +362,7 @@ The natural way to do this looks like this::
 The looping pattern seems quite clear, but if you try to write 
 a loop without using ``break``, nothing good would come of that.
 
-You will probably take one of the several options: for example, like this:
+You'll probably take one of the several options. For example, like this:
 ::
 
     a = int(input())
@@ -427,7 +426,7 @@ the check is not duplicated, the overall sequence of operations is clear,
 the main branch of the loop goes straight through the main code.
 
 This is how you should write any loops where the you need to check 
-the conditin *in the middle* of loop body:
+the condition *in the middle* of loop body:
 ::
 
     while True:
@@ -636,11 +635,6 @@ But in fact it is a little easier to initially assign 0 to :math:`k`
 (an empty sum, as if there are no summands at all),
 and do the loop do from 1 to :math:`N` (of course, 
 including :math:`N`, so you need to use ``range(1, n + 1)``).
-
-осталось понять, в каких пределах надо запускать цикл, а также что изначально записать в :math:`k`.
-Напрашивается решение в :math:`k` записать 1 (первое слагаемое), а цикл делать от 2 до :math:`N`,
-но на самом деле немного проще изначально в :math:`k` записать 0 (пустую сумму, т.е. как будто нет слагаемых вообще),
-а цикл делать от 1 до :math:`N`, причем, естественно, :math:`N` включительно, поэтому надо писать ``range(1, n + 1)``.
 
 So here's the entire code with the input and output::
 
