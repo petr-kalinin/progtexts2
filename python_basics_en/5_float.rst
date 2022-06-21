@@ -323,7 +323,7 @@ But with other numbers this may not work. For example, check ``if (1 / 49) * 49 
 Actually, things are even worse: the computer works in binary system,
 so even numbers which have a finite number of digits in decimal system 
 can be represented imprecisely in the computer. Therefore,
-for example, the check `if 0.3 + 0.6 == 0.9" will not work either:
+for example, the check ``if 0.3 + 0.6 == 0.9`` will not work either:
 if you add up 0.3 and 0.6, you will get not exactly 0.9,
 but a slightly different number (0.899999 or 0.900001, etc.)
 
@@ -634,7 +634,7 @@ on choosing ``eps`` above in the main part of the topic.
 
 .. task::
     Vasya drove :math:`L` kilometers in :math:`T` hours. On the road he was driving on,
-    speed limit is :math:`V` kilometers per hour: you can drive at any speed not exceeding :math:`V'.
+    speed limit is :math:`V` kilometers per hour: you can drive at any speed not exceeding :math:`V`.
     Determine if Vasya violated the limit.
 
     **Input**: Three real numbers in one line: :math:`T`, :math:`L` and :math:`V`.
