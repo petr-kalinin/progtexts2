@@ -82,8 +82,7 @@ Python has folloing operators of this type ("logical operators", or "Boolean ope
 
 - ``and`` — conjunction. Condition ``... and ...`` is true only if both of the expressions replaced by ``...`` are true.
 - ``or`` — disjunction. Condition ``... or ...`` is true if at least one of the given expressions is true (and also if they're both true)
-- ``not`` — negation. It is applied only to one expression (unlike the previous)  and inverts its meaning:
-``not ...`` is true only when expression replaces by ``...`` is false.
+- ``not`` — negation. It is applied only to one expression (unlike the previous)  and inverts its meaning: ``not ...`` is true only when expression replaced by ``...`` is false.
 
 Example::
 
@@ -392,6 +391,7 @@ But it's possible to get rid of nested ``if``-statements via the opposite check:
         print("ac off")
 
 .. task::
+
     On a PE lesson the teacher says "count off one to two". 
     Vasya is :math:`N`th in a row. What should he say, "one" or "two"?
 
