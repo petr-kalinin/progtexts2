@@ -198,28 +198,29 @@ either ``True`` or ``False``, as you need, so there is no reason to use an extra
 tuple
 -----
 
-Кортеж, он же tuple — это почти то же самое, что и массив, только его нельзя никак изменять. Вы один раз записываете значение,
-дальше можете по нему итерироваться, копировать и т.д., но никакие операции изменения вам не будут доступны, максимум вы можете создать новый кортеж.
-Кортеж создается так же, как и массив, только вместо квадратных скобок используются круглые::
+Tuple type is almost the same as array, but it cannot be changed in any way. You create a set of values once,
+then you can iterate over it, copy, etc., but no modification operations are available. At most you can create a new tuple.
+A tuple is created in the same way as an array, but with round brackets instead of square brackets::
 
     a = (1, 10, 100)
-    print(a[1])  # выведет 10
+    print(a[1])  # will print 10
 
-В первом приближении вам кортежи не особенно нужны, в простейших случаях вы всегда можете вместо них использовать массивы. Но, например,
-в словарях (см. ниже) кортежи можно использовать в качестве индексов, а массивы — нет.
+At first, you won't really need tuples, as in the basic cases you can always use arrays instead.
+But, for example, in dictionaries (see below) tuples can be used as indices, while arrays can't.
 
 Arrays and the ``for`` loop
 ---------------------------
 
-В теме про циклы мы обсуждали, что элементы массива можно обойти циклом ``for i in range(len(a))``. 
-Но если вам нужны только значения, а индексы элементов не нужны,
-то можно просто писать ``for i in a`` — теперь переменная ``i`` будет последовательно принимать все значения, 
-которые хранятся в ``a``. Например, так можно массив вывести на экран::
+In the loops section, we discussed that you can iterate over the array elements 
+by using the ``for i in range(len(a))`` loop. But if you only need values,
+and the indices of the elements are unused, then you can simply write ``for i in a``.
+Now the variable ``i`` will sequentially take all *values* stored in ``a``.
+For example, this is how an array can be output to the screen::
 
     for i in a:
         print(i)
 
-Аналогично можно работать с строками (перебирать все символы) и с кортежами.
+You can work this way with strings (iterate over all characters) and tuples.
 
 Dictionaries (dict)
 -------------------
