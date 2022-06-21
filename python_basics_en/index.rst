@@ -1,28 +1,24 @@
 
 .. _pythonBasics:
 
-Основы программирования на питоне
-=================================
+Basics of Python
+================
 
-Этот раздел выбивается из остальной части заметок; в нем описываются
-не алгоритмы, а самые основы программирования на питоне.
-Раздел добавлен не потому, что он необходим
-для дальнейшего материала (вообще, все алгоритмы
-не зависят от конкретного языка, и потому не обязательно
-знать именно питон, чтобы изучать алгоритмы; с другой стороны,
-для дальнейших разделов потребуется больше базовых знаний,
-чем те, которые приведены в этом разделе). 
-Раздел добавлен сюда в первую очередь потому,
-что я все равно пишу тексты про питон для своего 
-`курса по алгоритмам <https://algoprog.ru>`_,
-и мне удобно иметь единое место, куда ссылаться.
+This section stands out from the rest of the notes. It describes
+not algorithms, but the very basics of Python programming.
+The section was added not because it is necessary for learning further material 
+(in general, all algorithms don't depend on a specific language, therefore 
+it's not necessary to know Python in order to study algorithms; on the other hand,
+further sections require more basic knowledge than given in this section).
+The section was added primarily because I still write notes about Python 
+for my `algorithmic course <https://algoprog.ru >`_ 
+and it's convenient to have a unified place to refer to.
 
-Поэтому, в частности, текст написан как обращение к ученикам,
-занимающимся у меня в курсе.
+Therefore, in particular, the text is addressed to the students studying on my course.
 
 .. toctree::
    :maxdepth: 2
-   :caption: Оглавление:
+   :caption: Table of contents:
 
    0_quick_start
    1_if
