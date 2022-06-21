@@ -271,30 +271,29 @@ When processing dictionaries, the commonly used term is "(dictionary) key" inste
 For example, "assigning the value ``10`` to the dictionary ``d`` on the key ``3``" means ``d[3] = 10``.
 
 .. note::
+    In addition to numbers and strings, other data types can also be used as indices,
+    but not all. Particularly, only types whose values are unchangeable can be used as indices.
+    Namely, arrays or other dictionaries can't be indices, but tuples and Booleans can.
 
-    Помимо чисел и строк, конечно, в качестве индексов можно использовать другие типы данных, 
-    но не все. А именно, в качестве индексов можно использовать только типы, значения которых 
-    невозможно изменить. В частности, массивы или другие словари в качестве индексов использовать 
-    нельзя, а вот кортежи (tuple) и bool'ы можно.
-
-Основная операция при работе с массивом — это обход массива,
-обычно через ``for i in range(len(a))``. Со словарями так просто не получится,
-потому что элементы словаря не занумерованы по порядку. Тут есть два способа::
+The main operation array operation is iterating over all elements,
+usually done through ``for i in range(len(a))``. With dictionaries, it won't work just like that,
+because dictionary elements are unordered. There are two ways here::
 
     for key in d:
-        ....  # переменная key переберет все ключи словаря
-        ....  # дальше что-то делаете с d[key]
+        ... # key will iterate over all keys
+        ... # do something with d[key]
 
-или сразу можно перебирать пары (ключ, значение)::
+or you can immediately iterate over the pairs (key, value)::
 
     for key, value in d.items():
-        ...
+        ... # key and value will represent essentially each key and corresponding value 
 
-Удалить элемент из словаря можно командой ``del``, например, ``del d[3]``. 
-Проверить, если ли какой-то ключ в словаре — проверкой ``if 3 in d``.
+There are also some special operations. You can delete an element from a dictionary 
+with the ``del`` statement, for example, ``del d[3]``, 
+and check whether a certain key exists in a dictionary by a condition ``if 3 in d``.
 
-Словари удобно использовать, когда вам надо действительно использовать строки как индексы 
-(например, вы пишете какой-нибудь компилятор, который должен знать информацию обо всех переменных), 
-или когда интервал возможных числовых значений очень широк, а из них реально используется очень мало. 
-Но не надо использовать словарь, когда достаточно обычного массива;
-массив работает побыстрее, и в целом, если вам нужен именно массив, то программа с массивом будет понятнее.
+Dictionaries are useful when you really need to use strings as indices
+(for example, you are developing a compiler that needs to gather information about all variables),
+or when the range of possible numeric values is very wide, but very few of them are actually used.
+But don't use a dictionary when a common array is enough: arrays work faster, and in general,
+if you need an array, the program with an array will be easier to read.
