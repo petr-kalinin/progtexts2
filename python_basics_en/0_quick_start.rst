@@ -1,7 +1,7 @@
 .. highlight:: python
 
 Getting started in Python 3 and Wing IDE 101
-=======================================
+============================================
 
 About Python versions
 ---------------------
@@ -18,7 +18,7 @@ from the third branch, preferably at least 3.3, but if there are no special reas
 install the latest available version.
 
 Installing Python
-----------------
+-----------------
 
 Python is a free cross-platform software, so it can be easily downloaded from
 the official website, can be freely distributed, and can be installed on all
@@ -38,7 +38,7 @@ the package is usually called ``python3`` (and just ``python`` is the python
 of the second version).
 
 Installing Wing IDE
-------------------
+-------------------
 
 Python itself is only a code interpreter. It runs your programs, but doesn't contain a
 convenient editor. Therefore, to write programs I advise you to use a integrated
@@ -86,7 +86,7 @@ If you fail, write to me [1]_, pointing where you installed Python and sending s
 of the main Wing IDE window and the ``Edit — Configure Python`` dialog.
 
 The first program
-----------------
+-----------------
 
 In the main menu of the Wing IDE, select ``File — New``. A window for editing
 the text of the program will appear. In this window, type the following text:
@@ -326,8 +326,8 @@ add these two numbers, and display the result on the screen.
 
 In many programming languages, in order to use memory, you need to use a set of
 specific instructions. In Python, the approach is different: Python is smart enough 
-to guess by itself that you need memory. Let's write the following program:
-::
+to guess by itself that you need memory. Let's write the following program::
+
     a = input()
     print("You entered ", a, "!")
 
@@ -371,8 +371,8 @@ the second line we read what was written in the variable ``a``, and put
 it on the screen.
 
 You can create several variables in the program. The simplest sample
-may look like this:
-::
+may look like this::
+
     a = input()
     b = input()
     print(b, a)
@@ -381,8 +381,8 @@ This program reads two lines that the user enters and
 outputs them in reverse oreder: first the second, and then the first.
 
 But we wanted a program that outputs the sum of two numbers.
-A simple approach won't work here:
-::
+A simple approach won't work here::
+
     a = input()
     b = input()
     print(a + b)
@@ -391,8 +391,8 @@ This code will do absolutely not what you might expect: Python believes yet
 that in ``a`` and ``b`` any strings can be stored. It doesn't understand you
 meant numbers.
 
-To explain that you meant numbers, you need to write it like this:
-::
+To explain that you meant numbers, you need to write it like this::
+
     a = int(input())
     b = int(input())
     print(a + b)
@@ -415,17 +415,18 @@ you asked it to convert the string "\``2 3``\" into a number (single number!) an
 write it to the variable ``a``, but this is, of course, not 
 a correct recording of a single number.
 
-To enter numbers separated by space, you need to use a different construction:
-::
+To enter numbers separated by space, you need to use a different construction::
+
     a, b = map(int, input().split())
 
 For now this is a kind of magic that you'll have to learn by heart. Later
-you'll understand what it means here. Note that there are no brackets after ``int``
-, but there are after ``input`` and ``split``.
+you'll understand what it means here. Note that there are no brackets after ``int``, 
+but there are after ``input`` and ``split``.
 
 Using this method, you can enter as many numbers as you want; for example, to input four
 numbers in one line, you need to write
 ::
+
     a, b, c, d = map(int, input().split())
 
 You don't have to call variables ``a`` and ``b``. To give a name to a variable
@@ -450,9 +451,9 @@ So far, we only know how to write to variables what the user entered from
 keyboard. In fact, it is much more common to write to our variables
 values that the program calculates itself. There is
 a special instruction for this, which is called *assignment*
-(and in fact we've already seen her):
-::
-a = 10
+(and in fact we've already seen here)::
+
+    a = 10
 
 It means "to the variable ``a`` write 10".
 
@@ -461,9 +462,10 @@ On the right of the equality sign you can write any expressions
 use other variables which some values are already assigned to. 
 For example, the program
 ::
+
 a = 20
-b = a + 10
-print(b)
+    b = a + 10
+    print(b)
 
 will output 30, because first 20 is written to ``a``, then
 the computer looks at what is written to ``a``, adds 10 and
@@ -471,8 +473,8 @@ writes the result to ``b``. Then it looks at what is written
 to ``b`` and displays it on the screen.
 
 If some value was already assigned to the variable, then upon
-a new assignment the old value is being overwritten:
-::
+a new assignment the old value is being overwritten::
+
     a = 20
     a = 30
 
@@ -480,10 +482,10 @@ as a result, ``a`` is 30, and 20 is completely forgotten.
 
 A special interesting option is that on the right you can use 
 the same variable that is on the left — and then its previous 
-value will be used:
-::
-a = 20
-a = a + 10
+value will be used::
+
+    a = 20
+    a = a + 10
 
 This means "Write 20 to ``a``. Then look at what is in ``a``,
 add 10 to it and write the result back to ``a``". As a
@@ -497,9 +499,9 @@ On the left of the equality sign you can type several variables
 separated by commas. Then there should also be several 
 comma-separated values on the right (or special functions 
 like the already mentioned ``map``, but for now 
-we will not discuss them in detail):
-::
-a, b = 10, 20
+we will not discuss them in detail)::
+
+    a, b = 10, 20
 
 It means "to ``a`` to write 10, to ``b`` write 20".
 
@@ -520,6 +522,7 @@ with the rest of the arithmetic operations: ``a /= 5`` means ``a = a / 5``,
 
 Comments in the code
 --------------------
+
 (You may not need this information right now, but it will be useful when reading further sections.)
 
 You can leave *comments* in your programs. That is, if the symbol 
@@ -527,20 +530,19 @@ You can leave *comments* in your programs. That is, if the symbol
 and everything that follows it to the end of the line
 is completely ignored by Python interpreter. Thus, you can leave notes 
 in the program for yourself or for other programmers 
-who will read your program. For example:
-::
+who will read your program. For example::
 
-a = int(input()) # reading one number
+    a = int(input()) # reading one number
 
 Here the inscription ``# reading one number`` is completely ignored by Python, 
 as if these characters do not exist at all,
 and ``a = int(input())`` works as it should.
 
 In particular, the grid can be at the beginning of the line, 
-then this whole line will be ignored:
-::
-# to begin with, we read the number
-a = int(input())
+then this whole line will be ignored::
+
+    # to begin with, we read the number
+    a = int(input())
 
 Python does not care where and how you leave comments,
 you leave them only for yourself or for other people 
@@ -737,7 +739,7 @@ that you can print not only numbers, but also strings::
 
 
 What's next?
------------
+------------
 
 (Certainly, this section is only for students of my course.)
 
