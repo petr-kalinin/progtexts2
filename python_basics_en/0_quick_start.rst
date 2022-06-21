@@ -463,7 +463,7 @@ use other variables which some values are already assigned to.
 For example, the program
 ::
 
-a = 20
+    a = 20
     b = a + 10
     print(b)
 
