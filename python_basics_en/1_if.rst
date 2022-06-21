@@ -6,7 +6,7 @@ Conditional statement (if)
 Basic syntax
 -----------------
 
-In programming, it's a typical case that you need to run a set of instructions only upon a certain condition. Python (and any other programming language, of course) has an appropriate instruction for this purpose. It is conditional statement, or just ``if``.
+In programming, it's a typical case that you need to run a set of instructions only upon a certain condition. Python (and any other programming language, of course) has an appropriate instruction for this purpose. It is called conditional statement, or just **if**.
 
 Example of such an instruction::
 
@@ -21,12 +21,12 @@ So, general structure of the statement is such::
     if condition:
         instructions
 
-You type ``if``, then the condition (its content will be discussed a little later),
+You write ``if``, then the condition (its content will be discussed a little later),
 then colon (which is necessary), then, on the following line(s), the instructions upon the conditon,
-that must be typed with an extra indent (spaces in the beginning).
+that must be written with an extra indent (spaces in the beginning).
 
 Those instructions may consist of any Python statements you know or will learn later:
-entering data via  ``input``, setting variables' values, printing data, other ``if``-statements, whatever you need
+entering data via  ``input``, setting values of some variables, printing data, other ``if``-statements, whatever you need
 (detailed examples will be shown below).
 
 For example, you can insert this construction into your program like this::
@@ -38,11 +38,11 @@ For example, you can insert this construction into your program like this::
 
 Here, number ``a`` is being input from keyboard, then checked if it's equal to 137, and if so, "Guessed!"
 is printed on the screen . After that, regardless of ``a``'s value, "Program terminated" is printed.
-Note that ``print("Guessed!")`` is typed with an indent, therefore it will be executed only if ``a==137``, but
+Note that ``print("Guessed!")`` is written with an indent, therefore it will be executed only if ``a == 137``, but
 ``print("Program terminated")`` has no indent, as it's a part of the main program, not a part of ``if``.
 No matter what is stored in ``a``, after the condition check (and if needed, executing instructions inside) the program will go on and print "Program terminated".
 
-(Of course, type this code by yourself and try to change something. Generally, on all examlpes
+(Of course, write this code by yourself and try to change something. Generally, on all examlpes
 given here and in other sections, write the code and explore it.)
 
 
@@ -80,15 +80,16 @@ are true, i.e. only if ``a == 10`` and ``b == 20`` at the same time.
 
 Python has folloing operators of this type ("logical operators", or "Boolean operators"):
 
-- ``and`` — conjunction. Condition ``... and ...`` is true only if both of the expressions replaced by ``...`` are true.
-- ``or`` — disjunction. Condition ``... or ...`` is true if at least one of the given expressions is true (and also if they're both true)
-- ``not`` — negation. It is applied only to one expression (unlike the previous)  and inverts its meaning: ``not ...`` is true only when expression replaced by ``...`` is false.
+-   ``and`` — conjunction. Condition ``... and ...`` is true only if both of the expressions replaced by ``...`` are true.
+-   ``or`` — disjunction. Condition ``... or ...`` is true if at least one of the given expressions is true (and also if they're both true)
+-   ``not`` — negation. It is applied only to one expression (unlike the previous) 
+    and inverts its meaning: ``not ...`` is true only when expression replaced by ``...`` is false.
 
 Example::
 
     if a == 0 or not (b > 0 and c < 0):
 
-will run if ``a`` is zero or if the expression "``b>0`` and ``c<0`` at the same time" is false. 
+will run if ``a`` is zero or if the expression "``b > 0`` and ``c < 0`` at the same time" is false. 
 
 Not that here, brackets are used to specify the order of operations. If you'd type it without them: ``if a == 0 or not b > 0 and c < 0:``
 it wouldn't be clear what ``not`` refers to and what is the order of ``and`` and ``or``. 
@@ -101,7 +102,7 @@ Here's a more distinct example for brackets. Compare the following::
 
     if (a == 0 and b == 0) or c == 0:
 
-These two expressions are different. E.g., a case when ``a==1``, ``b==1``, ``c==0`` fits the second condition, but not the first one.
+These two expressions are different. E.g., a case when ``a == 1``, ``b == 1``, ``c == 0`` fits the second condition, but not the first one.
 Find out on your own why and also consider other cases when these conditions have different results. 
 
 That's why in any complex Boolean expressions brackets are obligatory to set the order of operations.
@@ -118,11 +119,12 @@ composed only of relations and Boolean operators. I.e., such a notation::
 
     if a or b == 0:
 
-**doesn't** mean "if ``a`` is equal to zero or ``b`` is equal to zero", because on the left of ``or`` there's an ``a`` that is not a relation.
-Structure ``if a:`` doesn't make any sense (imagine that value of ``a`` is ``40``. What does "if 40" mean in this case?
-Not "if 40 is positive" but just "if 40"),
-that's  why ``a or b == 0`` doesn't make sense also. And even if you'd try to use brackets: ``if (a or b) == 0``, this won't work as well
-because it's absolutely unclear what ``40 or 30`` is equal to.
+**doesn't** mean "if ``a`` is equal to zero or ``b`` is equal to zero", because relation ``== 0`` refers only to ``b``, 
+and on the left of ``or`` there's just ``a`` that is not a relation.
+Structure ``if a:`` doesn't make any sense (imagine that value of ``a`` is 40. What does "if 40" mean in this case?
+Not "if 40 is greater than zero" but just "if 40"), that's  why ``a or b == 0`` 
+also doesn't make sense. And even if you'd try to use brackets: ``if (a or b) == 0``, 
+this won't work as well because it's absolutely unclear what ``40 or 30`` is equal to.
 
 .. note::
     Actually, what's stated in the paragraph above isn't exactly true. Notation ``if a:`` in Python means "if ``a`` is not zero",
@@ -132,7 +134,7 @@ because it's absolutely unclear what ``40 or 30`` is equal to.
 
 
 .. note::
-    Notation ``if (a or b) == 0`` also makes sense indeed, but also not that you could expect. Let's explain details of this case.
+    Notation ``if (a or b) == 0`` also makes sense indeed, but also not that you could expect. Let me explain this case in some more detail.
     Python, as any other programming language, is quite formal and not alike human language, despite sometimes it may seem to be.
     In particular, all expressions, arithmetical or Boolean, are calculated in a certain order. For example, it's common that in
     arithmetic operations addition goes after multiplication. E.g. if you have an expression ``10 + 20 * 30``, you shuold first
@@ -142,9 +144,9 @@ because it's absolutely unclear what ``40 or 30`` is equal to.
 
 .. note::
     Of course it's more accurate here to speak of the *logical (or Boolean) data type*. This is exactly what you get as a result of several
-    relations and Boolean operations, and what you can put straight into ``if``. This is a date type that only can store two values, which
+    relations and Boolean operations, and what you can put straight into ``if``. This is a data type that only can store two values, which
     in Python are ``True`` (the condition is true) and ``False`` (otherwise). For example, statement ``10 > 0`` is ``True``, and ``True and False`` is ``False``.
-    And if you'd type::
+    And if you'd write::
     
         (10 > 0) and (8 > 10)
     
@@ -192,8 +194,8 @@ There's a full structure that specifies as well what to do if the condition is *
     else:
         print("Not zero")
 
-The part "what to do if the condition is false" begins with ``else:`` (with colon!) and must have the same indent as the corresponding ``if``.
-On the following lines you can type any instructions you wish, like under ``if``, with an extra indent.
+The part "what to do if the condition is false" begins with ``else:`` (with a colon!) and must have the same indent as the corresponding ``if``.
+On the following lines you can write any instructions you wish, like under ``if``, with an extra indent.
 
 Example::
 
@@ -209,7 +211,7 @@ Example::
             print("Both variables are non-zero")
 
 Clearly, ``else`` doesn't accept any other conditions. Python will execute code under it anyway upon the condition of corresponding ``if`` is false.
-Sometimes you need to check another condition when the first one fails. Of course, you can type it like this::
+Sometimes you need to check another condition when the first one fails. Of course, you can write it like this::
 
     if a < 0:
         print("Negative")
