@@ -369,7 +369,7 @@ it is exactly ``[[0] * m] * n``, not ``[[0] * n] * m``).
 Sadly, it won't work in the way you might think. Again, the point is 
 that in Python arrays are not wholly copied by default. So the result
 here is an external array of length ``n`` where *each* element
-corresponds to **the same* array of length ``m``.
+corresponds to *the same* array of length ``m``.
 As a result, if you change ``a[1][2]`` for example,
 then ``a[0][2]`` will also change, and ``a[3][2]``, and etc. 
 — because all internal arrays actually correspond to the same array.
