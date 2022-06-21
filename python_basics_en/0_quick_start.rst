@@ -699,7 +699,7 @@ the answers to variables.
 Clearly, the answer to the problem is: :math:`A\cdot X + B\cdot Y + C\cdot Z`.
 All that's left is only to process the input and output accurately. 
 Here two lines of three numbers are given,
-so we need to input the data twice through `map(int(...`::
+so we need to input the data twice through ``map(int(...``::
 
     a, b, c = map(int, input().split())
     x, y, z = map(int, input().split())
