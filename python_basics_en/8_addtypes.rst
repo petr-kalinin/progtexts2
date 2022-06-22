@@ -4,9 +4,9 @@ Additional data types and miscellaneous remarks
 ===============================================
 
 Here I will give various additional comments on Python. Most of this information
-is rather unnecessary for the simplest tasks, but more or less it
-will be useful in the future. Basically, I'm going to discuss various 
-data types that you haven't worked with very much before.
+is rather unnecessary for the basic tasks, but more or less it
+will be useful in the future. Mainly, I'm going to discuss various 
+data types that you haven't worked with very much yet.
 
 int
 ----
@@ -22,39 +22,39 @@ If you need to work with even bigger numbers, then most likely you'll have to wo
 write the "columnar addition" (and not directly ask the processor to add two numbers), etc.
 This is what is called "long arithmetic"; right now you don't need to get into it.
 
-Python hides all these difficulties from you. Python int can store arbitrarily large numbers
-(until you run out of RAM). Python sends small numbers directly to the processor, and with very large ones 
+Python hides all these difficulties from you. In Python, ``int`` type can store arbitrarily large numbers
+(until you run out of RAM). Small numbers are sent directly to the processor, and with very large ones 
 Python automatically switches to long arithmetic, and at first glance you will not notice anything at all.
 
 But there is a problem: adding two small numbers is a single processor instruction,
-and if you need to use long arithmetic, then you need to perform a lot more actions.
-Therefore, while your numbers are not very large (roughly speaking, no more than :math:`2^{64}`,
+and if you need to use long arithmetic, then you have to perform a lot more actions.
+Therefore, while your numbers aren't very large (roughly speaking, no more than :math:`2^{64}`,
 although since there are also negative numbers, it is more likely to be approximately :math:`\pm2^{63}`,
 and in 32-bit versions of Python it can be up to :math:`2^{32}` or approximately :math:`\pm2^{31}`), 
-then all operations will be relatively fast. But as soon as your numbers become longer,
+all operations will be relatively fast. But as soon as your numbers become longer,
 their processing in Python will get noticeably slower.
 
-In regular tasks you'll hardly meet long numbers, but anything may happen. 
+In regular tasks you'll hardly meet long numbers, but anything can happen. 
 For example, in dynamic programming, in tasks for counting the number of objects
 you can easily get very large numbers. Pay attention to this fact.
 
 (The situation is even worse in other languages like C++ or Pascal. There will be no automatic switch 
 to long arithmetic, and if the result of some operation goes beyond the limits supported
-by the corresponding data type, then an overflow will actually occur, and the result
+by the corresponding data type, an overflow will actually occur, and the result
 of the operation will most likely be completely different from what you expected.)
 
 bool
 ----
 
 Boolean (or logical) data type, named ``bool``, is exactly the type used in various conditions:
-in ``if``, ``while`` and so on. For example, you can write ``if a > 0``, but may instead write this way::
+in ``if``, ``while`` and so on. For example, you can write ``if a > 0``, but can instead write this way::
 
     x = a > 0
     if x:
         ...
 
-Here you compare ``a`` with zero, but do not immediately use the comparison result in ``if``, but save this result
-to the variable ``x``. After that, in ``if`` you retrieve it from ``x`` and, depending on the value of ``x``,
+Here you compare ``a`` with zero, but don't immediately use the comparison result in ``if``, but save this result
+to the variable ``x``. After that, in ``if`` you retrieve it from ``x`` and, depending on the value,
 either execute the body of ``if`` or not. This variable ``x`` will have the ``bool`` data type.
 
 Certainly, such a comparison can only have one of the two results: either true (``a`` is greater than zero) 
@@ -66,7 +66,7 @@ they are denoted as ``True`` and ``False`` (capitals are important here). They c
 but more often you'll use them in some kind of comparisons or other checks, as in the example above.
 
 Of course, you can use ``and``, ``or`` and ``not`` here; in fact, ``and``, ``or`` and ``not`` are just operators
-over the Boolean data type — Boolean (or logical) operators (similar to how there are arithmetic operators `+`, `-` and etc.,
+over the Boolean data type — Boolean (or logical) operators (similar to how there are arithmetic operators ``+``, ``-`` and etc.,
 and they work with a numeric data types). Accordingly, you can write
 ::
 
@@ -77,7 +77,7 @@ and they work with a numeric data types). Accordingly, you can write
 
 and so on.
 
-Probably you have already used so-called "flag variables" somewhere, in which you marked whether some condition is met. 
+Probably you have already used so-called "flag variables" somewhere, that you used to mark whether some condition is met. 
 For example, if you need to check if a given array contains zero, you could write something like this::
 
     flag = 0
@@ -89,7 +89,7 @@ For example, if you need to check if a given array contains zero, you could writ
     else:
         print("no")
 
-Here it is more useful and common to use Boolean type here::
+But it's more reasonable to use Boolean type here::
 
     flag = False
     for i in range(n):
@@ -101,7 +101,7 @@ Here it is more useful and common to use Boolean type here::
         print("no")
 
 I will remind and emphasize once again that the Boolean data type is exactly 
-what is *directly* obtained with different checks (comparisons, etc.),
+what is *directly* obtained from different checks (comparisons, etc.),
 and what can be *directly* used in ``if``. For example, in the code above,
 you do not need to write ``if flag == True:``. Just ``if flag:`` is enough,
 as the variable ``flag`` has a Boolean type, so it can (and should) be used in ``if`` directly.
@@ -131,7 +131,7 @@ that checks if the number is even. You may want to write it like this::
         else:
             return False
 
-But don't do it like that! This is way easier::
+But don't write it like that! Do it easier::
 
     def is_even(x):
         z = x % 2
@@ -144,7 +144,7 @@ either ``True`` or ``False``, as you need, so there is no reason to use an extra
 
 .. note::
 
-    In fact, in ``if`` you can use not only just Boolean expressions.
+    In fact, in ``if`` you can use not only Boolean expressions.
     For example, even if your variable ``a`` stores an integer number, you can write ``if a:``.
     In Python, this means "if ``a`` is not zero". But I strongly advise you not to do this,
     because checking integers is actually quite not a natural operation. Indeed, let ``a`` be 42. 
@@ -161,7 +161,7 @@ either ``True`` or ``False``, as you need, so there is no reason to use an extra
     is when these variables also have a very clear Boolean meaning. I.e., if 
     comparing them to zero answers not just the question "is the variable equal to zero?",
     but has some special, comprehensible meaning. For example, if a variable ``a`` stores
-    the number of some objects, then the check ``if a`` can be seen as "if these objects exist at all"
+    the number of some objects, then the check ``if a`` can be considered as "if these objects exist at all"
     (indeed, if ``a == 0``, then there are no objects, otherwise they exist), so such a check makes sense.
 
     An example of such a case is the problem about zeros in an array, which was discussed above. You can write like this::
@@ -198,7 +198,7 @@ either ``True`` or ``False``, as you need, so there is no reason to use an extra
 tuple
 -----
 
-Tuple type is almost the same as array, but it cannot be changed in any way. You create a set of values once,
+Tuple data type is almost the same as array, but it cannot be changed in any way. You create a set of values once,
 then you can iterate over it, copy, etc., but no modification operations are available. At most you can create a new tuple.
 A tuple is created in the same way as an array, but with round brackets instead of square brackets::
 
@@ -220,26 +220,26 @@ For example, this is how an array can be output to the screen::
     for i in a:
         print(i)
 
-You can work this way with strings (iterate over all characters) and tuples.
+You can also work this way with strings (iterate over all characters) and tuples.
 
 Dictionaries (dict)
 -------------------
 
 Arrays, where elements are indexed by consecutive integers, starting from zero,
-are already familiar to you. There is data structure which is at first glance
+are already familiar to you. There is a data structure which is at first glance
 very similar: associative arrays. In Python they are called "dictionaries" (``dict`` type).
-In the first approximation it's like an array in which elements can be addressed by almost anything.
+Roughly speaking, a dictionary is like an array in which elements can be addressed by almost anything.
 First of all, we are interested in the ability to use arbitrary numbers 
 (not necessarily in a row) and strings as dictionary indices.
 
 Dictionaries are declared in this way::
 
-    d = {}  # an empty dictionary. It has no elements.
+    d = {}  # we created an empty dictionary. It has no elements
     d[3] = 10  # we added one element to d, but its index is 3
     d[17] = 137  # now there are two elements with indices 3 and 17
     d["abc"] = 42  # now three elements with indices 3, 17 and "abc"
     
-    # dictionary elements are accessed to just as array elements:
+    # dictionary elements are accessed just as array elements:
     print(d[3] + d[17])  
     d["abc"] = d["abc"] + 1
 
@@ -252,7 +252,7 @@ Dictionaries are declared in this way::
     # of course, values may contain anything
     d[10] = "qwe"  # a string
     d["abc"] = [1, 2, 3]  # an array
-    d["qwe"] = {}  # even another dictionary, etc
+    d["qwe"] = {}  # even another dictionary, etc.
 
     # you can also create a dictionary with some content:
     pairs = { 
@@ -267,7 +267,7 @@ Dictionaries are declared in this way::
 only numbers or only strings as indices. Python allows you to mix index types,
 but generally you won't need it. Vice versa, it will mostly be inconvenient.)
 
-When processing dictionaries, the commonly used term is "(dictionary) key" instead of "(array) index". 
+When working with dictionaries, the commonly used term is "(dictionary) key" instead of "(array) index". 
 For example, "assigning the value ``10`` to the dictionary ``d`` on the key ``3``" means ``d[3] = 10``.
 
 .. note::
