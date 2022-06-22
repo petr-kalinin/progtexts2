@@ -5,17 +5,16 @@
 Floating-point numbers
 ======================
 
-Real numbers include, roughly speaking, both integers and
-fractions. Floating-point numbers are kind of 
-"approximation for real numbers" used in computers.
-Of course, they often appear in tasks, 
-but operating with them arises serious problems which
-typically are not described in a common programming book.
+Besides integers, sometimes you need to work with real numbers. Roughly speaking, 
+real numbers include both integers and fractions. And *floating-point numbers* 
+are kind of approximation for real numbers which is used in computers.
+Of course, they often appear in tasks, but operating with them arises 
+serious problems which are often left unreviewed in common programming books.
 
 In fact, this topic is unexpectedly complicated. Try to understand
 everything that is written in this section, but if you don't understand 
-something at first, it's okay. The main thing is two rules for working 
-with floating-point numbers, which will be given below.
+something at first, it's okay. The main thing you should know is 
+two rules for working with floating-point numbers, which will be given below.
 
 Floating-point notation
 -----------------------
@@ -66,7 +65,7 @@ Negative numbers, of course, are written with minus before the number itself:
    Sometimes, especially in printed books (and before the advent of computers — quite often),
    instead of using ``e``, an equivalent notation is used which includes multiplication
    by 10 raised to a certain power. For example, instead of 0.1234e2 it is written as :math:`0.1234\cdot 10^2`,
-   instead of 123.4e1 it is :math:`1.234\cdot 10^{-1}` and so on. It's easy to see that
+   instead of 123.4e-1 it is :math:`1.234\cdot 10^{-1}` and so on. It's easy to see that
    these notations are completely equivalent, and that multiplication by ten raised to a power
    is completely equivalent to shifting the point. In fact, as far as I understand, the notation with ``e``
    appeared just when computers appeared, because it's quite complicated, and sometimes impossible,
@@ -82,8 +81,8 @@ Or, for example, a hydrogen atom weighs about 1.66e-24 grams, i.e. 0.00000000000
 (unless I missed some zeroes or typed some extra :) ). Clearly, the first one is much more convenient.
 
 These two parts of which a floating-point number consist, are referred to as follows:
-the pare prior to ``e`` is **mantissa** (or "significand"),
-and the one after is **exponent** (or "scale"). For example, in 1234e1
+the part prior to ``e`` is **mantissa** (or "significand"),
+and the one after is **exponent** (or "scale"). For example, in 1.234e1
 the mantissa is equal to 1.234, and the exponent is 1.
 
 How real numbers are stored in the computer
@@ -138,11 +137,11 @@ the three following floating-point data types:
    with exponent too big for the certain type (for example, 1.23e100 will not fit into ``single``).
    Such an instruction will either raise an error, or result in a special "infinity" value;
    and the numbers with too big negative exponent will simply be considered equal to zero
-   ((if you try to write 1.23e-100 to ``single``, you will get 0). 
+   (if you try to write 1.23e-100 to ``single``, you will get 0). 
 
 These types are supported by the processor (i.e. the processor is able 
-to execute the command "add two numbers of type single" or "subtract two numbers 
-of type extended", etc.). Therefore, these types are present (possibly with other
+to execute the command "add two numbers of ``single`` type" or "subtract two numbers 
+of ``extended`` type", etc.). Therefore, these types are present (possibly with other
 names) in almost all existing programming languages.
 
 Unfortunately, specifically in Python there is no easy way to choose one of these 
@@ -191,7 +190,7 @@ out that there are "holes" between neighboring numbers of a particular type. For
 let's take a ``single`` type variable. It's impossible to assign the number 1.2345678901234 
 to it — only 1.234567 or 1.234568. The result is that between the numbers 
 1.234567 and 1.234568 there is a "hole" having a width of 0.000001, 
-in which there are no numbers that can be stored in a single.
+in which there are no numbers that can be stored in ``single``.
 
 While the numbers themselves are not very large, the "holes" aren't wide.
 But when the numbers get bigger, the "holes" get bigger too.
@@ -250,7 +249,7 @@ In Python, there are several functions that will be useful to you
 when working with real numbers. For some of these functions,
 it is necessary to type ``from math import *`` in the beginning 
 of the program (as you already did for the square root).
-Also, keep in mind that these functions may lead to rounding issues (see below).
+Also, keep in mind that these functions may lead to roundoff issues (see below).
 
 -  **floor**  — rounds the number *down*, i.e. returns the nearest
    integer that is *less than or equal to* a given real.
@@ -313,11 +312,11 @@ for example, we divide 1 by 3, we get not 0.333333... (infinitely many
 digits), but something like 0.3333333 (only the first few digits).
 If, after that, you multiply the result by 3, you get not exactly 1, but
 0.99999999. (A similar effect exists on simple calculators;
-it also exists on advanced calculators, but is more complicated to reveal.)
+it also exists on advanced calculators, but is harder to reveal.)
 
 (You can give it a try and check whether it is true that ``(1/3)*3`` is equal to 1,
 and find that the condition ``if (1 / 3) * 3 == 1`` is true. Yes, we were lucky here 
-— again, because of the binary system, rounding worked in the right direction.
+— again, because of the binary system, roundoff worked in the right direction.
 But with other numbers this may not work. For example, check ``if (1 / 49) * 49 == 1`` fails.)
 
 Actually, things are even worse: the computer works in binary system,
@@ -367,12 +366,12 @@ i.e. ``eps`` must be chosen with care — see below about this.)
 
 Similarly, if we need to check ``if x >= y``, then we should write
 ``if x >= y - eps`` or ``if x > y - eps``. (Note that it doesn't
-matter whether to write strict or non—strict inequality, as the probability that
-it will be exactly ``x == y - eps`` is very small, again, due to the errors. Highly likely
-it will be either more or less. Moreover, if it turned out that exactly ``x == y - eps``,
-it means that we chose an inappropriate ``eps``, because we failed to separate the situation 
-"the numbers ``x`` and ``y`` are equal" and the situation "the numbers are not equal".
-See more on this below in the section about the choice of `eps`.)
+matter whether to write strict or non-strict inequality, as the probability that
+it will be exactly ``x == y - eps`` is very small, again, due to the errors.
+Highly likely it will be either more or less. Moreover, if it turned out that
+exactly ``x == y - eps``, it means that we chose an inappropriate ``eps``, because 
+we failed to distinguish the situation "the numbers ``x`` and ``y`` are equal" and the situation
+"the numbers are not equal". See more on this below in the section about the choice of ``eps``.)
 
 The condition ``if x > y`` has to be modified as well,
 because it is important to us (see below for more details)
@@ -394,7 +393,7 @@ So, that's why we get
 Choosing ``eps``
 ~~~~~~~~~~~~~~~~
 
-Choosing ``eps`` is quite a non—trivial problem, and it even might not
+Choosing ``eps`` is quite a non-trivial problem, and it even might not
 have a correct solution at all. We need to choose an ``eps`` that meets
 the two following criteria: if two numbers should be equal (but differ
 due to errors), then their difference must be much less than ``eps``,
@@ -412,7 +411,7 @@ So ``eps`` should be chosen somewhere in the middle.
 that exactly ``x == y - eps``.) (In advanced tasks,
 more complex techniques may be needed, but we won't discuss them now.)
 
-In some simplest tasks, such an ``eps`` can be calculated precisely.
+In some simplest tasks such an ``eps`` can be calculated precisely.
 For example, let the problem be like: "Three numbers :math:`a`, :math:`b` and :math:`c`
 are given, each is no more than 1000, and each has no more than 3 digits after
 the decimal point. Check if it is true that :math:`a + b = c`." From the discussed above
@@ -445,14 +444,14 @@ and on the other hand, if in fact :math:`a + b \neq c`, then
 So, in this example, we are able to just calculate the appropriate ``eps``.
 
 (And in general, of course, there are many options —
-any number that is significantly less than :math:`1e-3`
-and significantly more than :math:`1e-12` would be suitable.
+any number that is significantly less than 1e-3
+and significantly more than 1e-12 would be suitable.
 This is the "good" situation, where the options "equal" and "not equal"
-are strongly separated. And if they weren't so, then the whole ``eps`` trick
+differ strongly. And if they weren't so, then the whole ``eps`` trick
 wouldn't work. This is what I mentioned a little above.).
 
 But there are problems where it is not so easy to calculate the appropriate ``eps``.
-In fact, such are the most of the problems — as soon as your calculations
+In fact, these are the most of the problems — as soon as your calculations
 become more sophisticated than just adding two numbers, it becomes difficult
 to keep track of the errors. You can, of course, use some complex techniques,
 but it is a common practice to just take ``eps`` somewhere in range ``1e-6``..\ ``1e-10``.
@@ -474,7 +473,7 @@ And therefore we get
 
    **Rule one of operating with floating-point numbers: don't use floating-point numbers**.
    That is, if it's possible and not very difficult to solve the problem without using
-   flotaing-point numbers, it's better to solve it in that way and not to care about all those errors and ``eps``. 
+   flotaing-point numbers, it's better to solve it that way and not care about all those errors and ``eps``. 
 
 A natural example: suppose you have four *integer* (int) positive numbers
 in your program: :math:`a`, :math:`b`, :math:`c` and :math:`d`.
@@ -488,7 +487,7 @@ And even in this case it may happen, I didn't check.)
 That is, it may, for example, be actually a true equality :math:`a/b = c/d`,
 but due to roundoff errors in the program it will result in :math:`a/b > c/d`,
 s ``if`` will be executed. You can write it with ``eps`` and think how to choose it...
-but the solution can be way more simple. You can just understand that,
+but there's a solution which is way easier. You can just understand that,
 for positive numbers (as given), this condition is equivalent
 to the condition ``if a * d > c * b``. Here, all calculations are with integers,
 so this condition always works properly and does not require any ``eps``
@@ -501,10 +500,10 @@ If yes, then try to do so — and you won't run into any issues with precision a
 In particular, in the future you will notice that in many problems that
 seem to imply real input data (for example, geometry problems),
 the input data is nevertheless usually integer.
-This is done exactly so that you can write the solution completely
-in integers, and not have issues with the roundoff error.
+This is done exactly so that you can write the solution entirely
+in integers, and escape all the roundoff error issues.
 (There's no guarantee that such a solution exists,
-let alone it is simple, but nevertheless.) Therefore,
+let alone that it's simple, but nevertheless.) Therefore,
 if you can think out and write such a solution, it is better to write it.
 
 Additional topic. "Rough" problems: when you don't need ``eps``
@@ -610,14 +609,14 @@ Here are a few sample problems similar to ones you may come across on contests a
     |
 
 It is easy to understand that the distance between Masha's home and the strike location 
-is:math:`V\cdot T`. So it's needed to check whether it is equal to :math:`L`.
+is :math:`V\cdot T`. So it's needed to check whether it is equal to :math:`L`.
 The natural idea is to write ``if v * t == l``, but since all numbers are real,
 it will not work just like this. Due to errors, the multiplication result may not
 be equal to `l`, even if in fact it should be equal. (Not to mention the fact that
 in real life the values of :math:`V`, :math:`L` and :math:`T` are not precise,
 and therefore :math:`V\cdot T` may not be equal to :math:`L` just due to measurement errors.)
 Therefore, it is necessary to check that ``v*t`` is *approximately* equal to ``l``,
-i.e. that the difference ``abs(l - v *t)`` isnt' too big. Let's choose some ``eps``
+i.e. that the difference ``abs(l - v *t)`` isn't too big. Let's choose some ``eps``
 and compare the calculated result with it.
 
 So, the code will look like this::
@@ -629,7 +628,7 @@ So, the code will look like this::
     else:
         print("no")
 
-Here, the choice of ``eps`` here is rather arbitrary. See more details
+The chosen ``eps`` here is rather arbitrary. See more details
 on choosing ``eps`` above in the main part of the topic.
 
 .. task::
@@ -658,7 +657,7 @@ Vasya's speed is equal to :math:`L/T`. If it is strictly greater than :math:`V`,
 then Vasya violated the limit, otherwise he didn't. But we must remember
 that if :math:`L/T` is actually precisely equal to :math:`V`, then due to errors
 it may turn out that :math:`L/T` is slightly greater than :math:`V`.
-Therefore, instruction ``if l / t > v`` is faulty, as it can give a result ``yes``
+Therefore, instruction ``if l / t > v`` is faulty, as it can give the result ``yes``
 if Vasya was driving at the speed precisely equal to ``v``.
 We need to add a small ``eps`` to take this into account::
 
