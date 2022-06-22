@@ -665,7 +665,7 @@ in the array :math:`b` is not :math:`a[i]` but :math:`a[i] - 1`.
 
 So, we save passenger's number (i.e. :math:`i`) exactly to this element of
 array :math:`b`, i.e. to :math:`b[a[i]-1]`.
-But here we once again face the fact that real passengers\' numbers start from 1
+But here we once again face the fact that real passengers' numbers start from 1
 and index :math:`i` starts with zero, so we should save :math:`i+1`, not :math:`i`. 
 
 It remains only to output the array :math:`b`. The entire code::
@@ -763,7 +763,7 @@ of athletes could have been set first, and then the number of judges,
 and then the scores *in the same format*. Then we should be careful 
 not to confuse :math:`N` and :math:`K`.)
 
-Then, let's create an array for athletes\' total scores::
+Then, let's create an array for athletes' total scores::
 
     b = [0] * k
 
