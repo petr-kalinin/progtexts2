@@ -82,7 +82,7 @@ Characters enumerated from #0 to #31 are the so-called *control codes*
 which aren't really interesting to us yet (as well as the character #127),
 that'swhy they aren't shown in the table. Characters with codes greater 
 than #128 depend on the encoding, we will not discuss this now.
-.. (See more in the :ref:`encodings section<encodings>`, but you won't need it yet.)
+(See more in the :ref:`encodings section<encodings>`, but you won't need it yet.)
 
 .. |space| raw:: html
 
@@ -107,7 +107,7 @@ and get the symbol by specifying the code using the ``chr`` operation. For examp
     ch = input()         # read a character...
     print(ord(ch))       # and print its code
 
-    i = ord('$')         # assign the code of dollar sign to i
+    i = ord('$')         # assign the code of the dollar sign to i
     print(i)
 
     i = int(input())     # read the code...
@@ -156,7 +156,7 @@ If you need to use an array with elements
 representing something related to characters,
 then you need should work with codes::
 
-    a = [0] * 256  # there are 256 characters у нас всего 256 символов
+    a = [0] * 256  # there are 256 characters in total
     a[ord('d')] = 10  # save value 10 to the element associated with character 'd'
     ...
     for x in range(ord('a'), ord('z')+1):
@@ -181,7 +181,7 @@ you just should assign a string to that variable::
     s = "Test"
 
 In Python, a string actually *is an array*, and each element
-of this array is a characters. But it's not a simple array, but
+of this array is a character. But it's not a common array, but
 an array with extra features.
 
 The same as with arrays, you can get the string length via ``len(s)``::
@@ -197,7 +197,7 @@ You don't need any extra conversion. Just type ``s = input()``::
     print(s)
 
 Next, you can "add" strings to each other. This is actually 
-is called *concatenation* which means
+called *concatenation* and means
 appending the second string to the end of the first one::
 
     s1 = input()
@@ -349,7 +349,7 @@ Let's input a character::
 Next, we need to check whether this character is a small Latin letter.
 Here (and in other similar examples) we may take advantage of the fact that 
 the same-type characters in the ASCII table go in a row. Therefore, 
-it is enough to check `'a' <= ch and ch <='z"`. The whole code::
+it is enough to check if ``'a' <= ch and ch <='z"``. The whole code::
 
     ch = input()
     if 'a' <= ch and ch <='z':
