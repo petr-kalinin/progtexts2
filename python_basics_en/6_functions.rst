@@ -7,7 +7,7 @@ General idea
 ------------
 
 You have already met standard functions: ``abs``, ``sqrt``,
-even ``print`` and `input` are functions.
+even ``print`` and ``input`` are functions.
 In fact, a function is a separate piece of code
 that you can call from any point in your program.
 
@@ -22,7 +22,7 @@ and save it to the variable y. You can do it like this::
    else:
       y = x
 
-But if you need to calculate moduli of different values calculated
+But if you need to calculate moduli of different values
 and do it many times, then this is quite inconvenient.
 The standard ``abs`` function is much more useful, as you can write simply
 ::
@@ -39,7 +39,8 @@ It's quite clear that writing all this through ``if``\ s would be more tricky.
 
 ``abs`` is a *standard function*, i.e. Python automatically
 recognizes it. In other words, it is built into the language.
-But you can write your own functions, and in this topic we discuss this.
+But you can create your own functions, 
+and this is exactly what we'll discuss in this section.
 
 How to define functions
 -----------------------
@@ -79,10 +80,10 @@ further in the main program we can write, for example
 
    y = sign(2)
 
-this means that Python should call the ``sign`` function, 
+and this means that Python should call the ``sign`` function, 
 passing a number 2 to it as an argument, (similar to the notation 
 ``y = abs(x)`` which means that you need to apply 
-the ``abs`` function to the number `x`). At this line,
+the ``abs`` function to the number ``x``). At this line,
 the following actually happens: the function code is executed 
 (starting from the line ``if a < 0``), and value 2 is assigned 
 to the inner variable ``a``, because it was listed as an argument
@@ -103,7 +104,7 @@ So, in our case it is 1.
 Therefore, on this line the function execution will terminate,
 the program execution will return back to the line ``y = sign(2)``,
 while the value of the function will be considered 1. 
-So the number 1 will be assigned to the variable `y`.
+So 1 will be assigned to the variable ``y``.
 
 Similarly, the ``abs`` function, which was mentioned above,
 if it wasn't a standard function, could be implemented like this::
@@ -121,7 +122,7 @@ Arguments of the function
 What is written in brackets, both when defining a function 
 and when calling it, is called *arguments* (may also be referred to
 as *parameters*, these are synonyms). That is, by writing ``def sign(a):`` 
-we declared a ``sign`` function that takes a single argument ``a``.
+we defined a ``sign`` function that takes a single argument ``a``.
 When, after that, we write ``y = sign(2)``, we call this function, passing to it 
 a number 2 as the argument. (In fact, of course, these are two different meanings 
 of the same word. There are even special terms for this: formal
@@ -130,7 +131,7 @@ especially since in real life both are simply called arguments.)
 
 Let's discuss this in more detail. Arguments of the function in fact 
 are special variables which will be "visible" only inside this function,
-and which must be set externally when calling this function. By writing ``def sign(a):``,
+and which must be set externally when calling this function. By writing ``def sign(a):``
 we stated that the variable ``a`` will appear inside the function,
 and meanwhile that its initial value will be set from outside.
 The important thing is that this is a special separate variable
@@ -144,7 +145,7 @@ For example, you can write ``def foo(bar, buz, bee):``
 — this function has three arguments.
 
 Accordingly, when calling the function, you must specify values of all its arguments. 
-As you already know very well, this is done by listing the values of the arguments 
+As you already know very well, this is done by listing them 
 in brackets after the function name. If there are two or more arguments,
 they are separated by commas. When calling a function, you can use any expressions as arguments,
 for example, you can call ``sign(2 + 3 * x)`` (so inside the function it will be 
@@ -154,8 +155,8 @@ some other functions. Or even the same one, for example, ``sign(2 + 3 * abs(3 - 
 
 Trying to specify too many or too few arguments when calling the function, of course, will cause an error.
 
-The function also may have no arguments. Then both when declaring and 
-when calling such a function, you just need to type empty brackets::
+The function also may have no arguments. Then both when you define and 
+call such a function, you just need to type empty brackets::
 
    def abc():
        ...
@@ -164,10 +165,10 @@ when calling such a function, you just need to type empty brackets::
    x = abc()
 
 Arguments do not have to be numbers; they can take any values that
-common variables can take (arrays, strings, etc.). Certainly at the same time 
+common variables can take (arrays, strings, etc.). Certainly 
 you need the interpretation of the argument inside the function 
-and assignment of this argument when calling it to be the same:
-if the function expects an array to be passed to it as an argument,
+and at the moment of the call to be the same:
+if the function expects an array to be passed to it,
 and you pass a number, then hardly anything good will happen.
 The function will try to execute the code, but highly likely it will 
 just stumble upon an error somewhere. (This, of course, should be applied
@@ -176,7 +177,7 @@ Every argument, like every variable in the program, must have some meaning,
 some purpose. And if you pass a value that doesn't correspond to this meaning,
 nothing good will likely come out...)
 
-In the simplest cases, the arguments of the function are "disconnected" from external variables: 
+Basically, the arguments of the function are "disconnected" from external variables: 
 if you write ``sign(x)``, then the argument ``a`` inside the ``sign`` function will not be connected 
 in any way with the variable ``x`` in the main program (only the value ``x`` is copied to ``a``).
 If the value of ``a`` is changed in the function, the value of `x` will not change.
@@ -193,12 +194,12 @@ the same tricky effects as upon copying of arrays. If you write::
 
 then both the variable ``x`` of the main program and the argument ``a`` 
 of the function will refer to the same array, and changes in ``a`` will be visible in ``x``. 
-(And this is completely analogous to the usual copying of arrays: ``a = x``.)
+(And this is completely analogous to copying arrays: ``a = x``.)
 
 .. note::
    In fact, what is described above is just the simplest way to set arguments. 
-   Python supports more tricky options (for example, in this way you can't create functions like ``print``, 
-   whose number of arguments is unknown in advance, and which, moreover, are able to take *named* arguments 
+   Python supports more tricky options (for example, this way you can't create functions like ``print``, 
+   where number of arguments is unknown in advance, and which, moreover, are able to take *named* arguments 
    like ``sep=' '``). But we won't discuss these advanced options now.
 
 Local variables
@@ -225,7 +226,7 @@ if you don't have a same-name local variable.
    In general, be ready for various tricks here.
 
 As already mentioned above, arguments are essentially the same local variables,
-just their initial value is set from the outside. Then they behave completely 
+just their initial value is set from the outside. After that, they behave completely 
 like local variables; in particular, they can be assigned new values if necessary.
 
 Example::
@@ -270,32 +271,30 @@ Return value
 ------------
 
 As we have already discussed, the return value is what is set 
-after the ``return`` instruction, and what will then be used as the "value"
-of the function at the place where it's been called(i.e., what will, for example, 
+after the ``return`` instruction, and what will then be used as the value
+of the function at the place where it's been called (i.e., what will, for example, 
 be assigned to the variable ``y`` if we write ``y = sign(x)``).
 
 Of course, you can write any expression in the ``return`` statement, 
 it does not have to be a number. Similarly, you can use the result 
-of the function execution  as we like, not just save it to a variable. 
+of the function execution as we like, not just save it to a variable. 
 For example, by writing ``y = 20 + sign(x)`` 
 and even ``print(a[sign(x)])`` if you have an array named ``a``.
 
 In particular, we can just refuse processing the return value in any way, 
-simply by writing a standalone instruction (on a separate line), like this
-
-::
+simply by writing a standalone instruction (on a separate line), like this::
 
    do_something(x)
 
 In this case, the function code will be executed, but the result specified in ``return`` 
 will be just thrown away. This can be useful if you need a function not for simple calculations 
-(like ``abs`` or our ``sign``), but for performing some "external" actions. 
-A typical example is the ``print`` function. There is no point in writing ``x = print(y)``,
-at the same time ``print(y)`` makes perfect sense; you are calling ``print`` not to get the return value, 
+(like ``abs`` or our ``sign``), but for performing some "external" actions. A typical example 
+is the ``print`` function. There is no point in writing ``x = print(y)``, at the same time 
+just ``print(y)`` makes perfect sense; you are calling ``print`` not to obtain some value, 
 but to output something on the screen. You may as well write such functions by yourself.
 
 In particular, if you just need to terminate the function without returning any value,
-and you know that no value is expected at the moment of the call, then you can 
+and you know that no value is expected at the place where it's called, then you can 
 simply write ``return`` without arguments. The same thing will happen if the function code 
 executes to the end without a single ``return`` statement on the way, for example, like this::
 
@@ -345,8 +344,8 @@ Here, there's no ``return``, so the function will execute until the end and retu
    (except for the very end of the function, where it can be omitted).
    
    Nevertheless, it may happen that in a function that usually returns something,
-   you sometimes need to return ``None`` (for example, this is a typical case
-   in the search functions: they return either the found object or ``None``).
+   you sometimes need to return ``None`` (for example, this is typical
+   for search functions: they return either the found object or ``None``).
    But then type explicitly ``return None`` to make it clear that you are doing this intentionally.
 
 What are functions designed for?
@@ -362,33 +361,33 @@ why you need functions and they are the following.
 The first and perhaps the most important reason for you now is to avoid code duplication. 
 Actually, we have already seen this at the very beginning of this section:
 the ``abs`` function allows us not to write a cumbersome ``if`` every time we need 
-the absolute value of a number. It's general rule in progrrmming that you should 
+the absolute value of a number. It's general rule in programming that you should 
 avoid code duplication; if you see that the same calculations are repeated 
-in several places of the program — put them into a function.
+in several places of the program — put them in a function.
 
 The second is the ability to highlight semantic blocks of the program. 
-The function should ideally be some complete piece of code that performs some understandable task. 
+The function should ideally be some complete piece of code that performs some reasonable task. 
 So when you call this function, it is immediately clear what is happening upon its execution.
 Generally, you can see it even by the example of the ``abs`` function: 
 if you write ``abs(5 - x)``, it is immediately clear that you mean :math:`|5 - x|`.
 And if you were using ``if`` instead, then it would not be very obvious, you'd have to 
 spend a few seconds thinking and understanding that this ``if`` simply means the modulus.
 
-This is even more important in large and complex programs, where the desired sequence of operations 
+This is even more important in big and complex programs, where the desired sequence of operations 
 consists of several big steps. Let's imagine, for example, you are developing a smart home system, 
 and you need to download the weather forecast from the Internet, process the 6-hour precipitation forecast
 and, depending on it, open or close a window in the room. Even if these steps are not repeated anywhere else, 
 it's often useful to put them in separate functions so that it can be immediately seen:
 here we download data, here we decide whether to open or close, 
 and here we actually send instructions to the window control unit. If each step is not very trivial, 
-associating steps in a function dramatically increases the clarity and readability of programs. 
+turning these steps into functions dramatically increases the clarity and readability of programs. 
 (Of course, you also need to choose an adequate name for each function.) 
 Moreover, it will be much easier for you to change the program later; if you want to change the condition 
 by which the window is opened or closed, you won't need to touch some of the functions at all.
 At the same time, another convenience is that you can use local variables, and they will not interfere with each other.
 
 The third reason for using functions, or actually rather a combination of the first and second, 
-but worthy of special mention, is the creation of *parameterizable* code. Let's explain what this means.
+but worthy of a special mention, is the ability to create *parameterizable* code. Let's explain what this means.
 Suppose you have some operation, some piece of code that is executed several times, but each time 
 slightly differently. Often you can also easily transform it to a function,
 and transmit this difference simply via arguments. Similarly, if you have some semantic block,
@@ -400,19 +399,19 @@ The fourth reason is *recursion*. In general, it is clear that you can call othe
 (for example, you can write a function ``foo``, which will call ``abs`` inside itself, if it needs to — why not?), 
 but the function can also call *itself* from inside. This is called recursion.
 (Of course, it's necessary to set some limit of such calls to avoid infinite recursion).
-I will not describe it here in detail, but if you've already understood
+I won't describe it here in detail, but if you've already understood
 everything discussed above, you can think about this paragraph separately.
 
 And the fifth reason, which is actually a variation of the second one (about semantic blocks), 
-but deserves a special mention is *encapsulation* of the code.
+but deserves a special mention, is *encapsulation* of the code.
 Functions allow you to hide all their complexity, non-triviality, 
 allowing you to escape thinking in the main program about how the function is organized inside,
-and simply call this function. Striking examples of this principle are the ``print`` and ``input`` 
-functions. Right now you might have no idea what do these functions do inside themselves,
+and simply call it. Striking examples of this principle are ``print`` and ``input``. 
+Right now you may have no idea what do these functions do inside themselves,
 how does it happen that ``print`` outputs text to the screen and ``input`` reads text from the keyboard.
 But it doesn't matter to you; you just write ``input`` and don't think about what's going on inside.
 You can also look at it from the other side: if you have some kind of complex system
 (for example, the same automatic window opener-and-closer), you create a function that opens the window 
-by giving the necessary signals to the control unit, and only this function needs to know
+by giving necessary signals to the control unit, and only this function needs to know
 how to communicate with this unit. And in the rest of the program you no longer think of
 how exactly the window opens, but simply call this function.
