@@ -14,7 +14,7 @@ General idea
 ------------
 
 An array is a kind of variable (more strictly, a data type) 
-in which a number of values can be stored. 
+in which many values can be stored. 
 (In Python it's also called "list", in this particular case
 it's the same, but in other programming lanugages
 "list" and "array" mean radically diffrernt things)
@@ -31,7 +31,7 @@ and the numbers under the cells are the "numbers of these elements"
 (they're also called *indices* of the elements).
 For example, an element with index 2 has the value -3.
 Note that there are 6 elements in the array, but the last one has 
-index 5, because the numbering starts from zero. This is important!
+index 5, because the enumeration starts from zero. This is important!
 
 So, one variable can store the entire array.
 Such an array can be created, for example, by listing all the values in
@@ -41,14 +41,14 @@ square brackets::
 
 Now this array is wholly stored in ``a``.  
 
-Array elements can also be accessed through square brackets:
-``a[2]`` is element number 2, i.e. in our case it is ``-3``.
+Array elements can also be accessed via square brackets:
+``a[2]`` is the element number 2, i.e. in our case it is ``-3``.
 Similarly, ``a[5]`` is ``0``. You can put any arithmetic expressions
 and even other variables into square brackets: ``a[2*2-1]`` is ``12``, 
 ``a[i]`` means "take the element with the index equal to the value of 
 the variable ``i``", similarly ``a[2*i+1]`` means "take the element 
 with the index equal to ``2*i+1``", and even ``a[a[4]]`` means 
-"take the element whose index is equal to the value of the fourth
+"take the element with index equal to the value of the fourth
 element of our array" (in our example, ``a[4]`` is ``2`` so
 ``a[a[4]]`` is `a[2]", i.e. ``-3``)
 
@@ -61,7 +61,7 @@ rule applies here. Negative numbers define enumerating the array from the end:
 and etc. In our example, ``a[-6]`` is 7. Too big negative number 
 will also cause an error (in our example, ``a[-7]`` is already faulty).
 
-You can work with array elements as with usual variables.
+You can work with array elements as with common variables.
 You can assign values to them: ``a[3] = 10``, input from keyboard:
 ``a[3] = int(input())``, output to the screen: ``print(a[3])``,
 use in expressions: ``a[3+i*a[2]] = 3+abs(a[1]-a[0]*2+i)``
@@ -96,7 +96,7 @@ or increase every element of the array by one:
     for i in range(n):
         a[i] += 1
 
-And so on Of course, you can perform several operations in the loop 
+And so on. Of course, you can perform several operations in the loop 
 if you need. Note that there's no magic, this just fully corresponds 
 to what you already know about the ``for`` loop.
 
@@ -116,12 +116,12 @@ Array operations
 
 Here's a set of useful operations which can be applied to arrays:
 
--   ``a[i]`` (repeating it just to make it easier to find) — 
+-   ``a[i]`` (repeating just to make it easier to find) — 
     returns the element of the array with the index (number) ``i``.
--   ``len(a)`` (repeating it just to make it easier to find) — 
+-   ``len(a)`` (repeating just to make it easier to find) — 
     returns the length of the array.
 -   ``a.append(x)`` — appends a new element with the value ``x``
-    to the array. As a result, the length of the array increases by 1.
+    to the array. The length of the array increases by 1.
     Of course, any arithmetic expression can be used instead of x.
 -   ``a.pop()`` — symmetric to the previous one, removes the last 
     element from the array. The length of the array decreases by 1.
@@ -140,15 +140,15 @@ Here's a set of useful operations which can be applied to arrays:
     because this is very important. Assigning arrays (and generally any 
     complex objects) in Python **does not copy the array**, but simply 
     makes both variables refer to the same array, and via changing 
-    any of them you in fact change one array. But actually at the same time 
-    there are many nuances, just be ready for the unexpected things.
+    any of them you in fact change one array. But actually nevertheless
+    there are many nuances, just be ready for the unexpected tricks.
 -   ``b = a[1:4]`` ("slice") — makes a new array consisting of elements
     the old array beginning from the first (remember numbering from zero!)
     and ending with the third (i.e. up to the fourth but not inclusive,
     similar to how ``range`` works); this array is saved to ``b``.
     For the example above, it will result ``[5, -3, 12]``. Of course, 
     istead of 1 and 4 can be any arithmetic expression. Moreover, these
-    indexes can be omitted. If so, the beginning and the end of
+    indices can be omitted. If so, the beginning and the end of
     the original array will be implied respectively. For example, 
     ``a[:3]`` means the first three elements of the array
     (zero, first and second),
@@ -262,7 +262,7 @@ exaclty the arrays ``a``, ``b`` and ``c``.
 
 What does it mean? For example, ``z[1]`` is element #1 of the array
 ``z``, i.e. it's ``b``. But ``b`` is also an array, so 
-``z[1][2]`` is the same as `b[2]`, i.e. ``-3`` (do not forget
+``z[1][2]`` is the same as ``b[2]``, i.e. ``-3`` (do not forget
 that the enumeration of array elements starts from zero).
 Similarly, ``z[0][2] == 30``, etc.
 
@@ -300,7 +300,7 @@ columns and just think of the first and second index.
 Also note that in our example ``z[2]`` (the array which is the
 second element of array ``z``) is shorter than other arrays
 (that's why there's no number in the lower right corner of both tables).
-It's a general rule: Python doesn't require the inner arrays to be
+It's a general rule in Python: it doesn't require the inner arrays to be
 of the same length. You can easily create subarrays of different size, like this::
 
     x = [[1, 2, 3, 4], [5, 6], [7, 8, 9], [], [10]]
@@ -317,11 +317,11 @@ of the array ``z`` is an array itself, and two following elements are just
 numbers. But it's needed very rarely.)
 
 
-Operations for 2D arrays
-------------------------
+Operations on 2D arrays
+-----------------------
 
 Actually, there are no new operations specific for two-dimensional arrays.
-You always work either with an external array, or with an internal array, 
+You always work either with an external array or with an internal array, 
 and you can use all the operations that you know for one-dimensional arrays.
 For example, ``len(z)`` is the length of the "outer" array (according to 
 the example above, it will return 3 because ``z`` contains three elements,
@@ -335,9 +335,9 @@ All other operations work in a similar way. ``z.append([1,2])``
 appends another internal array to the end of external array,
 and ``z[2].append(3)`` appends the number 3 to the "inner" array
 that is ``z[2]``. Then, ``z.pop()`` removes the last
-internal from the external array, and ``z[2].pop()`` removes the last
+internal array from the external one, and ``z[2].pop()`` removes the last
 element from the "inner" array on position 2. The same are slices 
-(``z[1:2]``, ``z[1][0:1]``) and all other operations that I listed above.
+(``z[1:2]``, ``z[1][0:1]``) and all other operations listed above.
 
 
 Iterating over a 2D array
@@ -358,7 +358,7 @@ Creating a 2D array
 -------------------
 
 Unexpectedly, the creation of a two-dimensional array of a certain size 
-filled, for example, with zeros, is a non—trivial operation.
+filled, for example, with zeros, is a non-trivial operation.
 As described above, a one-dimensional array 
 of length ``n`` can be created via ``[0] * n``.
 So you may expect that writing ``a = [[0] * m] * n``
@@ -414,19 +414,19 @@ one-dimensional arrays, which were described above::
 
 Here every single time we input a line and get the next 
 corresponding "internal" array:``list(map(int, input().split()))``,
-and then write it to the end of an external array (``append``).
+and then ascibe it to the end of an external array (``append``).
 
 Note that here we've already clearly decided that the first index
 of our array corresponds to the *rows* of the input file,
-and the second index corresponds to the columns,
+and the second index corresponds to the *columns*,
 i.e., in fact, we have already selected the left one
 from  the two tables above. But this is not due to
 how Python works with two-dimensional arrays,
 but due to how the data is set in the input file.
 
 The output of a two-dimensional array,
-if you need to output it in a shape of such a table,
-is also done by a combination of options of outputting
+if you need to print it in a shape of such a table,
+is also done by a combination of options used for outputting
 a one-dimensional array. For example, like this::
 
     for i in range(len(a)):
@@ -451,7 +451,7 @@ Here ``a[0]`` is a two-dimensional array ``[[1, 2], [3, 4]]``. And ``a[1]`` —
 is a two-dimensional array ``[[5, 6], [7, 8]]``. For example, ``a[1][0][1] == 6``.
 
 You won't need multidimensional arrays in simple tasks, but in fact 
-they're useful and do not represent something really complex. Processing them 
+they're useful and don't represent something really sophisticated. Processing them 
 is wholly similar to what we discussed for two-dimensional arrays.
 
 .. |image0| image:: data:image/png;base64,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
@@ -651,7 +651,7 @@ a new array of size :math:`N` for the answer and fill it with zeros
 
 Then, let's interate over the array representing tickets and
 put each passenger onto the corresponding seat. I.e. 
-just save the passenger's number to ``b`` on the right place::
+just save the passenger's number to the array :math:`b` on the right place::
 
     for i in range(len(a)):
         b[a[i] - 1] = i + 1
@@ -659,12 +659,13 @@ just save the passenger's number to ``b`` on the right place::
 What is this code doing? :math:`a[i]` is the number of seat that 
 passenger number :math:`i` will sit on. So it's the index of the array :math:`b`
 ("index of the seat") that we should use to save this passenger's number. 
-But there's an issue: according to the task, seats are numbered from 1,
+But there's an issue: according to the task, seats are enumerated from 1,
 while in arrays indices start from 0. So actually the right index
 in the array :math:`b` is not :math:`a[i]` but :math:`a[i] - 1`.
 
-So, we save passenger's number (i.e. :math:`i`) to :math:`b[a[i]-1]`.
-But here we once again face the fact that real passengers' numbers start from 1
+So, we save passenger's number (i.e. :math:`i`) exactly to this element of
+array :math:`b`, i.e. to :math:`b[a[i]-1]`.
+But here we once again face the fact that real passengers\' numbers start from 1
 and index :math:`i` starts with zero, so we should save :math:`i+1`, not :math:`i`. 
 
 It remains only to output the array :math:`b`. The entire code::
@@ -716,7 +717,7 @@ But you have a free area outside — the additional variables. You can't relocat
 there at once (because it would mean using a new array), but you can move 1-2 cars there.
 
 If it's hard to imagine, find a few (4-5) toy cars at home, and experiment with them.
-If there are no toy cars, take other items similar to each other: pens, pencils, etc.
+If there are no toy cars, take other uniform items: pens, pencils, etc.
 
 .. task::
     Figure skating competition is judged by :math:`N` judges.
@@ -759,10 +760,10 @@ the number of following rows in the input data, and the second is
 the number of columns. This is how two-dimensional arrays are most often set.
 But it also could happen in a different way, for example, the number 
 of athletes could have been set first, and then the number of judges, 
-and then the scores *in the same format*. Then we should to be careful 
+and then the scores *in the same format*. Then we should be careful 
 not to confuse :math:`N` and :math:`K`.)
 
-Then, let's create an array for athletes' total scores::
+Then, let's create an array for athletes\' total scores::
 
     b = [0] * k
 
