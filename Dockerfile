@@ -8,8 +8,9 @@ RUN mkdir -p /app
 WORKDIR /app
 
 RUN git clone https://github.com/petr-kalinin/sphinx_rtd_theme ./theme
-
 WORKDIR /app/theme
+
+RUN git checkout english
 
 RUN npm install
 RUN npm run build
@@ -24,13 +25,22 @@ WORKDIR /app/docs
 RUN pip3 install -U sphinx
 
 COPY --from=0 /app/theme /app/theme
-COPY . .
-RUN make html
-RUN make html
+RUN git clone https://github.com/petr-kalinin/progtexts2 .
 
+RUN git checkout master
+RUN make html
+RUN make html
+RUN cp -r _build _build_ru
+
+RUN git checkout english
+RUN rm -r _build
+RUN make html
+RUN make html
+RUN cp -r _build _build_en
 
 
 FROM nginx
 
-COPY --from=1 /app/docs/_build/html /usr/share/nginx/html
-
+COPY --from=1 /app/docs/_build_ru/html /usr/share/nginx/html/ru
+COPY --from=1 /app/docs/_build_en/html /usr/share/nginx/html/en
+COPY index-lang-redirect.html /usr/share/nginx/html/index.html

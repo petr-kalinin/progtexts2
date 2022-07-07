@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - 'master'
+      - 'english'
 
 jobs:
   docker:
