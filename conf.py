@@ -19,9 +19,9 @@ sys.path.insert(0, os.path.abspath('../theme'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'Заметки'
-copyright = 'Петр Калинин, 2008-н.в.'
-author = 'Петр Калинин'
+project = 'Notes'
+copyright = 'Petr Kalinin, 2008-now'
+author = 'Petr Kalinin'
 display_github = True
 
 
@@ -69,7 +69,7 @@ html_context = {
   "conf_py_path": "/",
   "source_suffix": ".rst",
   "license": "GNU GPL",
-  "custom_footer": '<a href="https://algoprog.org">algoprog.org</a> — мой курс по алгоритмическому программированию</a>',
+  "custom_footer": '<a href="https://algoprog.org">algoprog.org</a> — my course in algorithmic programming</a>',
   "left_footer": '<div class="wy-side-nav-search"><a href="https://algoprog.org">algoprog.org</a></div>',
   "metrica": '''
 <!-- Yandex.Metrika counter -->
