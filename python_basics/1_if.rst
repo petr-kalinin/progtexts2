@@ -1,108 +1,100 @@
 .. highlight:: python
 
-Условный оператор (if)
+Conditional statement (if)
 =======================================
 
-Базовый синтаксис
+Basic syntax
 -----------------
 
-В программах часто бывает нужно сделать так, чтобы те или иные действия
-выполнялись лишь при выполнении определенного условия. Для этого в питоне
-(ну и в других языках программирования, конечно) есть специальная команда
-— условный оператор, if.
+In programming, it's a typical case that you need to run a set of instructions only upon a certain condition. Python (and any other programming language, of course) has an appropriate instruction for this purpose. It is called conditional statement, or just **if**.
 
-Пример такой команды::
+Example of such an instruction::
 
     if a == 137:
-        print("Угадал")
+        print("Guessed!")
 
-Здесь подразумевается, что есть переменная ``a``, и команда тогда работает так:
-если переменная ``a`` равна 137, то вывести на экран слово «Угадал».
+Here, it's implicit that a variable ``a`` exists, and the instruction works as follows:
+if ``a`` is equal to 137, then the program will print "Guessed!" on the screen.
 
-Соответственно, общий вид команды следующий::
+So, general structure of the statement is such::
 
-    if условие:
-        действия
+    if condition:
+        instructions
 
-Вы пишете ``if``, потом условие (чуть ниже поговорим, что именно можно тут писать),
-потом двоеточие (обязательно), и со следующей строки, причем с дополнительным отступом
-(пробелами в начале строки), указываются действия.
+You write ``if``, then the condition (its content will be discussed a little later),
+then colon (which is necessary), then, on the following line(s), the instructions upon the conditon,
+that must be written with an extra indent (spaces in the beginning).
 
-В качестве действий можно указывать любые команды питона, которые вы знаете или еще узнаете:
-ввод данных через ``input``, присваивания, вывод данных, другие ``if``'ы и что угодно еще.
-(Подробные примеры будут ниже.)
+Those instructions may consist of any Python statements you know or will learn later:
+entering data via  ``input``, setting values of some variables, printing data, other ``if``-statements, whatever you need
+(detailed examples will be shown below).
 
-Такую конструкцию вы просто пишете внутри основной программы, например::
+For example, you can insert this construction into your program like this::
 
     a = int(input())
     if a == 137:
-        print("Угадал!")
-    print("Программа завершена")
+        print("Guessed!")
+    print("Program terminated")
 
-Тут с клавиатуры вводится число ``a``, проверяется, равно ли оно 137, 
-если равно, то выводится «Угадал», и независимо от значения ``a`` выводится
-«Программа завершена». Обратите внимание, что ``print("Угадал!")``
-написано с отступом от левого края, поэтому эта команда будет выполняться,
-только если ``a==137``, а вот ``print("Программа завершена")`` написано без отступа,
-поэтому это продолжение основной программы, а не часть ``if``'а. Независимо от значения ``a``
-после проверки (и, если надо, выполнения) ``if``'а программа продолжит выполняться дальше,
-и выведет «Программа завершена».
+Here, number ``a`` is being input from keyboard, then checked if it's equal to 137, and if so, "Guessed!"
+is printed on the screen . After that, regardless of ``a``'s value, "Program terminated" is printed.
+Note that ``print("Guessed!")`` is written with an indent, therefore it will be executed only if ``a == 137``, but
+``print("Program terminated")`` has no indent, as it's a part of the main program, not a part of ``if``.
+No matter what is stored in ``a``, after the condition check (and if needed, executing instructions inside) the program will go on and print "Program terminated".
 
-(Конечно, напишите этот код и поэкспериментируйте с ним. Вообще, по всем примерам,
-которые я привожу тут и буду приводить в других темах, пишите код и экспериментируйте.)
+(Of course, write this code by yourself and try to change something. Generally, on all examlpes
+given here and in other sections, write the code and explore it.)
 
-Условия
--------
 
-Сначала подробнее поговорим про то, что можно писать в условии.
+Conditions
+----------
 
-Во-первых, можно писать «простейшие» условия. Вы можете взять любые два выражения
-и так или иначе их сравнить. Для сравнения есть следующие операторы:
+Let's take a closer look at the content of the condition.
 
-- ``==`` проверяет на равенство: запись ``if a == 137:`` обозначает «если переменная ``a``
-  равна 137». Обратите внимание, что тут два знака «равно», потому что одиночный знак «равно»
-  имеет совсем другой смысл — это присваивание, и его нельзя (и не имеет смысла) использовать в ``if``.
-- ``>`` — больше: ``if a > 137:`` обозначает «если переменная ``a`` больше 137».
-- ``<`` — меньше.
-- ``>=`` — больше или равно. Обратите внимание, что пишется так же, как читается: «больше или равно»,
-  соответственно, ``>=``, а вовсе не ``=>``.
-- ``<=`` — меньше или равно. Аналогично, пишется именно ``<=``, а не ``=<``.
-- ``!=`` — не равно.
+First, these can be simplest relational operations. You can take two arbitrary expressions compare them.
+THe following operators are used for this:
 
-По обе стороны от сравнения можно писать любые выражения. Можно просто переменные или числа,
-а можно и любые сложные выражения, например, можно написать ::
+- ``==`` used for equality check. Expression ``if a == 137`` means "if variable ``a`` is equal to 137". Note that here we have two equality symblos because single equality symbol is used for assignment, which cannot be used in ``if`` (and that would be quite senseless).
+- ``>`` — greater than: ``if a > 137:`` means "if value of variable ``a`` is greater than 137".
+- ``<`` — less than.
+- ``>=`` — greater than or equal to. Note that it's typed in a similar way to how we spell it: "greater than or equal to", so it's ``>=``, not ``=>``.
+- ``<=`` — less than or equal to. As the previous one, typed exactly like ``<=``, not ``=<``.
+- ``!=`` — not equal.
+
+On the left and on the right of the operator you can put any expressions.
+These can be just numbers or variables, but can also be complex, such as following::
 
     if sqrt(a*b+10) >= abs(2*(3-c)) + 5:
 
-Логические операторы
---------------------
+Logical (Boolean) operators
+---------------------------
 
-Во-вторых, в ``if`` можно комбинировать несколько условий. Например, если вам надо проверить,
-что ``a == 10`` **и** ``b == 20``. Это пишется так::
+Second, you can combine several conditions in your ``if``.
+E.g., if you need to check that ``a == 10`` **and** ``b == 20``, here you go::
 
     if a == 10 and b == 20:
 
-Такое условие будет выполняться, только если выполняются **оба** перечисленных простых условия, 
-т.е. только если и ``a == 10``, и ``b == 20``.
+The code under the condition will be executed only if **both** of given simple conditions
+are true, i.e. only if ``a == 10`` and ``b == 20`` at the same time.
 
-Есть следующие такие операторы («логические операторы»):
 
-- ``and`` — И. Проверка ``... and ...`` срабатывает, только если оба условия, замененные на ``...``, верны.
-- ``or`` — ИЛИ. Проверка ``... or ...`` срабатывает, если верно хотя бы одно из двух указанных условий (или оба одновременно).
-- ``not`` — НЕ. Оно применяется к одному условию (а не к двум, как выше) и инвертирует его значение: ``not ...`` срабатывает, только если
-  условие, замененное на ``...``, *неверно*.
+Python has folloing operators of this type ("logical operators", or "Boolean operators"):
 
-Например::
+-   ``and`` — conjunction. Condition ``... and ...`` is true only if both of the expressions replaced by ``...`` are true.
+-   ``or`` — disjunction. Condition ``... or ...`` is true if at least one of the given expressions is true (and also if they're both true)
+-   ``not`` — negation. It is applied only to one expression (unlike the previous) 
+    and inverts its meaning: ``not ...`` is true only when expression replaced by ``...`` is false.
+
+Example::
 
     if a == 0 or not (b > 0 and c < 0):
 
-сработает, если ``a`` равно нулю, или если не выполняется условие «одновременно ``b>0`` и ``c<0``». 
+will run if ``a`` is zero or if the expression "``b > 0`` and ``c < 0`` at the same time" is false. 
 
-Обратите внимание на скобки для указания порядка действий;
-если бы вы написали без скобок ``if a == 0 or not b > 0 and c < 0:``, то было бы непонятно,
-к чему относится ``not`` и в каком порядке надо делать действия.
+Not that here, brackets are used to specify the order of operations. If you'd type it without them: ``if a == 0 or not b > 0 and c < 0:``
+it wouldn't be clear what ``not`` refers to and what is the order of ``and`` and ``or``. 
 
-Более конкретный пример про скобки: сравните следующие два выражения::
+Here's a more distinct example for brackets. Compare the following::
 
     if a == 0 and (b == 0 or c == 0):
 
@@ -110,184 +102,181 @@
 
     if (a == 0 and b == 0) or c == 0:
 
-Эти выражения имеют разный смысл; например, ситуация ``a==1``, ``b==1``, ``c==0`` подходит под второе выражение,
-но не под первое. Поймите, почему, и заодно подумайте, какие есть еще случаи,
-в которых значения этих выражений отличатся. 
+These two expressions are different. E.g., a case when ``a == 1``, ``b == 1``, ``c == 0`` fits the second condition, but not the first one.
+Find out on your own why and also consider other cases when these conditions have different results. 
 
-Поэтому в любых сложных логических выражениях надо обязательно ставить скобки для указания порядка действий.
-Запись просто ``if a == 0 and b == 0 or c == 0`` обозначает непонятно что. Конечно, компьютер выберет некоторый порядок действий,
-но лучше всегда указать его явно.
+That's why in any complex Boolean expressions brackets are obligatory to set the order of operations.
+Notation ``if a == 0 and b == 0 or c == 0`` is unclear. Of course, the computer will somehow choose a certain order,
+but it's better to always set it explicitly.
 
-Еще замечу, что выше все примеры для простоты были с разными переменными и с простыми сравнениями. Конечно,
-с логическими операторами можно использовать любые другие выражения, например ::
+Let's note that all samples above contained different variables and plain conditions specially to be simple.
+Of course, you can apply Boolean operators to Boolean expressions of any kind, such as:: 
 
     if a + 24 < b * 3 or (sqrt(a + 2) > b + a and a > 3):
 
-И наконец, логические операторы работают только с логическими выражениями — со сравнениями, либо 
-с выражениями, которые уже составлены из сравнений и логических операторов. То есть следующая запись::
+And finally, Boolean operators only work with Boolean expressions — relational operations or complex conditions that are
+composed only of relations and Boolean operators. I.e., such a notation::
 
     if a or b == 0:
 
-вовсе **не** обозначает «если ``a`` или ``b`` равны нулю», потому что сравнение ``==0`` тут относится только к ``b``,
-а левая часть оператора ``or``, в которой написано просто ``a``, не является сравнением.
-Запись ``if a:`` не имеет смысла (представьте себе, что ``a==40``; что тогда обозначает запись «если 40»? Не «если 40 больше нуля», 
-а просто «если 40»), потому и запись ``a or b == 0`` не имеет смысла. И даже если вы поставите скобки: ``if (a or b) == 0``,
-это тоже не будет работать, потому что совершенно непонятно, чему равно, например, ``40 or 30``.
+**doesn't** mean "if ``a`` is equal to zero or ``b`` is equal to zero", because relation ``== 0`` refers only to ``b``, 
+and on the left of ``or`` there's just ``a`` that is not a relation.
+Structure ``if a:`` doesn't make any sense (imagine that value of ``a`` is 40. What does "if 40" mean in this case?
+Not "if 40 is greater than zero" but just "if 40"), that's  why ``a or b == 0`` 
+also doesn't make sense. And even if you'd try to use brackets: ``if (a or b) == 0``, 
+this won't work as well because it's absolutely unclear what ``40 or 30`` is equal to.
 
 .. note::
-  
-    На самом деле сказанное в предыдущем абзаце, конечно же, не совсем верно. Запись ``if a:`` в питоне обозначает «если ``a`` не равно нулю», соответственно запись
-    ``if a or b == 0`` обозначает «если ``a`` **не** равно нулю, или ``b`` равно нулю». Но это вовсе не то, чего вы могли ожидать,
-    и вообще, таким наявным сравнением с нулем лучше не пользоваться, за исключением особых случаев. Если вы хотите сравнить переменную
-    с нулем, так явно и пишите: ``if a == 0`` и т.п.
+    Actually, what's stated in the paragraph above isn't exactly true. Notation ``if a:`` in Python means "if ``a`` is not zero",
+    so ``if a or b == 0`` means "if ``a`` is **not** zero or ``b`` is zero". But this is quite not that you could expect,
+    so generally, it's better not to use this implicit zero-check at all except some special cases. If you want to check
+    if a veriable is zero, do it explicitly: ``if a == 0`` and so on.
+
 
 .. note::
-
-    Запись ``if (a or b) == 0`` тоже на самом деле имеет некоторый смысл, но тоже не тот, который вы можете подумать.
-    Но поясню эту ситуацию чуть подробнее. Питон, как и любой язык программирования — он достаточно формален и не понимает чистого человеческого языка,
-    пусть даже иногда кажется, что понимает. В частности, любые выражения, что арифметические, что вот такие логические,
-    питон вычисляет по порядку. Вас в школе учили вычислять значение арифметических выражений с учетом порядка действий: например,
-    если есть выражение ``10 + 20 * 30``, то надо сначала умножить ``20 * 30``, получить 600, и потом вычислить ``10 + 600``.
-    Аналогично выражение ``(a or b) == 0`` вычисляется так: надо сначала вычислить ``a or b``, и только полученный результат уже сравнивать с нулем.
-    А вовсе не сравнить с нулем отдельно ``a`` и отдельно ``b``, как вы могли бы подумать.
+    Notation ``if (a or b) == 0`` also makes sense indeed, but also not that you could expect. Let me explain this case in some more detail.
+    Python, as any other programming language, is quite formal and not alike human language, despite sometimes it may seem to be.
+    In particular, all expressions, arithmetical or Boolean, are calculated in a certain order. For example, it's common that in
+    arithmetic operations addition goes after multiplication. E.g. if you have an expression ``10 + 20 * 30``, you shuold first
+    multiply ``20 * 30`` getting 600, and then summarise ``10 + 600``. Likewise, here ``(a or b) == 0`` is done this way:
+    first calculate ``a or b`` and then check if the result is equal to zero. It's not a separate check of a being zero and b being zero
+    as it may be expected for a natural language. 
 
 .. note::
-
-    И конечно тут правильнее говорить про *логический тип данных* — это собственно то, что получается в результате сравнений
-    и логических операций, и то, что можно использовать в ``if``. Это тип данных, который может хранить
-    только два значения, которые в питоне называются ``True`` (истина, условие верно) и ``False`` (ложь, условие неверно), 
-    например, у выражения ``10 > 0`` результат будет ``True``,
-    а у выражения ``True and False`` результат будет ``False``. И, например, если у вас написано::
-
+    Of course it's more accurate here to speak of the *logical (or Boolean) data type*. This is exactly what you get as a result of several
+    relations and Boolean operations, and what you can put straight into ``if``. This is a data type that only can store two values, which
+    in Python are ``True`` (the condition is true) and ``False`` (otherwise). For example, statement ``10 > 0`` is ``True``, and ``True and False`` is ``False``.
+    And if you'd write::
+    
         (10 > 0) and (8 > 10)
+    
+    Python interpreter does this: first, calculates ``10 > 0`` which is ``True``, then ``8 > 10`` which is ``False``, then combines
+    ``True and False`` and gets ``False``, so this statement is false.
+    
+    But for basic comprehension of ``if``-statement it's not necessary.
 
-    то питон поступает так: он сначала вычисляет значение ``10 > 0``, получает ``True``, потом вычисляет ``8 > 10``,
-    получает ``False``, потом вычисляет ``True and False``, получает ``False``, т.е. условие не верно.
+Body of the conditional statement
+---------------------------------
 
-    Но для базового понимания того, как работает ``if``, это пока не нужно.
+"Body" of any complex statement (yet now you only know about ``if``)
+consists of other statements which are executed inside it. You can put there
+any set of statements you wish. The only requierment is to write them with an indent
+so that Python interpreter would understand them as a part of ``if``-statement,
+not a resumption of the main program body.
 
-Тело условного оператора
-------------------------
-
-«Тело» любой составной команды (правда, вы пока знаете только про ``if``) — это другие команды, которые выполняются внутри нее. 
-Там можно писать вообще любые другие команды. Главное — писать с отступом, чтобы питон понял, что это часть ``if``'а, а не продолжение
-основной программы.
-
-Пример::
+Example::
 
     ...
     if a == 0:
-        print("Ноль")
+        print("Zero")
         b = int(input())
         if b == 0:
-            print("И это тоже ноль!")
+            print("That's also zero!")
         print("-----")
 
-Обратите внимание, что внутри ``if`` можно писать еще один ``if``, и его тело будет с дополнительным отступом. 
-Т.е. тут ``print("И это тоже ноль!")`` выполнится, только если ``b`` тоже оказалось равно нулю, а вот 
-``print("-----")`` выполнится независимо от ``b`` (но, конечно, надо, чтобы ``a`` было нулем).
+Please note that you cat put an ``if``-statement inside another ``if``-statement,
+and its body will accordingly need an additional indent. In this example,
+``print("That's also zero!")`` will be executed only if ``b`` is also equal to zero
+but ``print("-----")`` will run regardless of ``b`` value (but of course it needs ``a`` to be zero).
 
-Еще раз повторю то, что я писал в предыдущем разделе: питон, как и любой другой язык программирования ­— это 
-конструктор. Все программирование состоит в том, что вы собираете большую программу
-из маленьких команд — кирпичиков. Соответственно, внутри ``if``'а можно использовать любые другие такие кирпичики.
+Once again, as stated in the previous section: Python, as any other programming language,
+is a constructor. Actually, programming is the assembly of a big program from small "bricks"
+which are statements. So you can use any of these bricks inside the ``if``-statement.
 
 else и elif
 -----------
 
-То, что мы писали выше — это, как говорят, краткая форма ``if``. Она указывает только что делать, если условие *выполнилось*.
-Есть полная форма ``if``, она указывает, что делать, если условие выполнилось, а что делать, если оно *не выполнилось*::
+All considered above can be called "short form" of ``if``. It only specifies the program's action if the condition is *true*
+There's a full structure that specifies as well what to do if the condition is *false*::
 
     if a == 0:
-        print("Ноль")
+        print("Zero")
     else:
-        print("Не ноль")
+        print("Not zero")
 
-Часть «что делать, если условие не выполнилось», начинается с команды ``else:`` (с двоеточием!), причем она должна быть на том же уровне отступа,
-что и сам ``if``. Под ``else``, как и под ``if``, можно писать любые команды,
-тоже с дополнительным отступом.
+The part "what to do if the condition is false" begins with ``else:`` (with a colon!) and must have the same indent as the corresponding ``if``.
+On the following lines you can write any instructions you wish, like under ``if``, with an extra indent.
 
-Пример::
+Example::
 
     if a == 0:
         if b == 0:
-            print("Два нуля")
+            print("Two zeros")
         else:
-            print("Только b не ноль")
+            print("Only b is not zero")
     else:
         if b == 0:
-            print("Только a не ноль")
+            print("Only a is not zero")
         else:
-            print("Обе переменные не нули")
+            print("Both variables are non-zero")
 
-Естественно, в ``else`` нельзя писать никаких еще условий — питон будет выполнять там код всегда, если условие соответствующего ``if``
-не выполнилось. Иногда бывает нужно, если условие ``if`` не выполнилось, то проверить какое-нибудь еще условие.
-Это, конечно, можно писать так::
+Clearly, ``else`` doesn't accept any other conditions. Python will execute code under it anyway upon the condition of corresponding ``if`` is false.
+Sometimes you need to check another condition when the first one fails. Of course, you can write it like this::
 
     if a < 0:
-        print("Отрицательное")
+        print("Negative")
     else:
         if a == 0:
-            print("Ноль")
+            print("Zero")
         else:
-            print("Положительное")
+            print("Positive")
 
-Но это длинновато и сложно, плюс если таких вариантов много, то получится очень большой отступ. Поэтому есть еще специальная команда
-``elif``, обозначающая ``else if``. Можно писать так::
+But it's a bit long and nested, and if there are many options, the indent will become naturally wide. To avoid this, there's a special structure
+``elif`` which actually means ``else if``. It's used like this::
 
     if a < 0:
-        print("Отрицательное")
+        print("Negative")
     elif a == 0:
-        print("Ноль")
+        print("Zero")
     else:
-        print("Положительное")
+        print("Positive")
 
-Это полный эквивалент предыдущего кода, только чуть покороче и — главное — без лишних отступов ступенькой.
-Еще раз: ``elif`` — это просто сокращение от ``else if``, позволяющее чуть красивее писать код, ничего больше.
+This piece of code is absolutely equivalent to the previous one but it's shorter and, more important, has no unnecessary staired indents.
+Once again, ``elif`` is no more than an abbreviation for ``else if`` that makes your code easier to read.
 
-Еще пример::
+One more sample::
 
-    if d = "Notrh":
-        print("Идем на север")
+    if d = "North":
+        print("Facing north")
     elif d == "South":
-        print("Идем на юг")
+        print("Facing south")
     elif d == "West":
-        print("Идем на запад")
+        print("Facing west")
     elif d == "East":
-        print("Идем на восток")
+        print("Facing east")
     else:
         print("??!!")
 
-То же самое можно было бы написать и через ``else``/``if``, но были бы очень некрасивые отступы.
+The same could be implemented via regular ``else``/``if`` but the indents would be quite ugly.
 
-Примеры решения задач
----------------------
+Sample problems and solutions
+-----------------------------
 
-Приведу несколько примеров задач, аналогичных тем, которые встречаются на олимпиадах
-и в моем курсе.
+Here are a few sample problems similar to ones you may come across on contests and in my course.
 
 .. task::
 
-    Кондиционер включается, если в комнате температура больше 20 градусов; если же температура 20 градусов или ниже,
-    кондиционер выключается [1]_. Напишите программу, которая определит, что будет делать кондиционер.
+    Air conditioning system turns on if the temperature in the room is above 20 degrees. If the temperature is equal or below 20 degrees,
+    the system turns off [1]_. Write a program that defines the status of the AC system.
+    
+    **Input**: An only integer number — the current room temperature.
 
-    **Входные данные**: Вводится одно целое число — текущая температура в комнате.
+    **Output**: Print ``on`` if the AC will turn on and ``off`` if it'll turn off.
 
-    **Входные данные**: Выведите строку ``on``, если кондиционер включится, и ``off``, если выключится.
+    **Example**:
 
-    **Пример**:
-
-    Входные данные::
+    Input::
 
         22
 
-    Выходные данные::
+    Output::
 
         on
     |
     |
     |
 
-Надо считать одно число, дальше написать сравнение с 20 и, в зависимости от результата, вывести одну из двух строк::
+Here you need to read one number, compare it with 20 and, depending on the result, write one of the two lines::
 
     n = int(input())
     if n > 20:
@@ -297,32 +286,31 @@ else и elif
 
 .. task::
 
-    Новая модель кондиционера учитывает еще и влажность в помещении. Поскольку при охлаждении влажность повышается,
-    то кондиционер ни в коем случае не включается, если влажность в помещении превышает 80%.
+    A new model of air conditioning system takes into account the level of humidity in the room. Because of the humidity rise upon cooling, the system
+    will not turn on if the relative humidity is above 80%.
 
-    Кроме того, на этом кондиционере требуемую температуру можно настраивать с пульта. Таким образом, если пользователь выставил
-    с пульта температуру :math:`T` градусов, то кондиционер включается, если температура в комнате строго больше :math:`T`, а влажность 80% или ниже.
-    Если же хотя бы одно из условий не выполняется, то кондиционер выключается.
+    Moreover, in this system the required temperature can be set remotely. So if the user set :math:`T` degrees on remote control, the air conditioner
+    turns on when the temperature in the room is above :math:`T` and the humidity is not higher than 80%.
+    If any of these conditions isn't met, the air conditioner turns off.
+    
+    **Input**: The only line contains three numbers: temperature set by user (:math:`T`), current temperature in the room and humidity. Temperatures are given in degrees and the humidity in percentage.
 
-    **Входные данные**: На одной строке вводятся три числа — выставленная пользователем температура (:math:`T`), 
-    текущая температура в комнате и текущая влажность в комнате. Температуры указаны в градусах, влажность — в процентах.
+    **Output**:  Print ``on`` if the AC will turn on and ``off`` if it'll turn off.
 
-    **Входные данные**: Выведите строку ``on``, если кондиционер включится, и ``off``, если выключится.
+    **Example**:
 
-    **Пример**:
-
-    Входные данные::
+    Input::
 
         20 22 60
 
-    Выходные данные::
+    Output::
 
         on
     |
     |
     |
 
-Тут надо написать чуть более сложное условие: если температура превышает заданную, а влажность не превышает, то кондиционер включается, иначе нет::
+Now the condition is a bit more sophisiticated: if the temperature is above given and the humidity is not, the system turns on, otherwise it's off::
 
     t0, t1, h = map(int input().split())
     if t1 > t0 and h <= 80:
@@ -330,54 +318,57 @@ else и elif
     else:
         print("off")
 
-Обратите внимание, что надо очень аккуратно писать строгие или нестрогие условия («больше» или «больше или равно»; аналогично «меньше» 
-или «меньше или равно»).
-В условии сказано, что кондиционер включается, только если температура **строго выше** заданной (т.е. «больше», а не «больше или равна»),
-а влажность **не превышает** 80% (т.е. «меньше или равна», а не «меньше»).
+Note that here you need to take into account carefully where the condition is 
+strict ("greater than" or "greater than or equal to", same with "less than").
+In the problem description it's stated that AC turns on if the temperature 
+is **strictly above** given (exactly "greater than", 
+not "greater than or equal to")  and the humidity is **not higher** than 80% 
+(so it's "less than or equal to", not just "less than").
 
 .. task::
 
-    У Маши в комнате висит простой кондиционер. Он включается, если в комнате температура больше 20 градусов; если же температура 20 градусов или ниже,
-    кондиционер выключается. Маша хочет охладить комнату, но она умная и понимает, что если температура воздуха на улице ниже, чем в комнате, 
-    то надо не включать кондиционер, а открыть окно. Напишите программу, которая определит, что будет делать Маша.
+    In Masha's room there's a simple air conditioner. It turns on if the temperature in the room is above 20 degrees. If it's equal or below 20 degrees,
+    it turns off. Masha wants to cool the room, but she's smart and realizes that if the outside temperature is lower than inside,
+    she just needs to open the window. Write a program that defines what Masha should do.
 
-    **Входные данные**: На первой строке вводится одно число — температура в комнате. На второй строке одно число — температура на улице.
+    **Input**: The first line consists of an only number — the temperature in the room.
+    The second line also consists of an only number — the temperature outside.
 
-    **Входные данные**: Выведите строку ``ac on``, если Маше надо включить кондиционер и он включится, ``ac off``, если Маша
-    попробует включить кондиционер, но он не включится, и ``open window``, если Маше достаточно просто открыть окно.
+    **Output**: Print ``ac on`` if Masha should turn on the AC and it will turn, ``ac off`` if Masha should try to turn on the AC *but it won't*
+    and ``open window`` if she may just open the window.
 
-    **Пример**:
+    **Example**:
 
-    Входные данные::
+    Input::
 
         22
         10
 
-    Выходные данные:
+    Output:
 
     .. code-block:: text
 
         open window
 
-    Входные данные::
+    Input::
 
         18
         20
 
-    Выходные данные::
+    Output::
 
         ac off
     |
     |
     |
 
-Сначала, конечно, надо считать два числа::
+Of course, first you need to input two numbers::
 
     t_in = int(input())
     t_out = int(input())
 
-Тут (как и во многих других задачах) есть несколько способов решения. Можно, например, сначала написать условие, когда стоит включать кондиционер:
-``if t_in <= t_out``, и дальше внутри этого ``if``'а разобрать ситуацию с кондиционером. Полный код получится такой::
+After that (as in many other problems) there are several solutions. For example, you may begin with a condition which defines if the AC should be turn on:
+``if t_in <= t_out`` and inside that find out if it'll really turn or not. Full source code might look like this::
 
     t_in = int(input())
     t_out = int(input())
@@ -389,7 +380,8 @@ else и elif
     else:
         print("open window")
 
-Но можно и сделать так, чтобы вложенные ``if``'ы не были нужны, сначала проверив, не стоит ли открыть окно::
+But it's possible to get rid of nested ``if``-statements via the opposite check: isn't Masha better open the window?
+::
 
     t_in = int(input())
     t_out = int(input())
@@ -402,35 +394,35 @@ else и elif
 
 .. task::
 
-    На уроке физкультуры тренер говорит «на первый-второй рассчитайтесь». Вася стоит :math:`N`-ым по счету. Что он скажет, «первый» или «второй»?
+    On a PE lesson the teacher says "count off one to two". 
+    Vasya is :math:`N`\th in a row. What should he say, "one" or "two"?
 
-    **Входные данные**: На первой строке вводится одно число :math:`N`.
+    **Input**: The first line contains one number :math:`N`.
 
-    **Входные данные**: Выведите строку ``first``, если Вася скажет «первый», и ``second``, если «второй».
+    **Output**: Print ``one`` or ``two`` according to how Vasya should answer.
 
-    **Пример**:
+    **Example**:
 
-    Входные данные::
+    Input::
 
         3
 
-    Выходные данные:
+    Output:
 
     .. code-block:: text
 
-        first
+        one
     |
     |
     |
 
-Очевидно, ответ зависит от того, четное число :math:`N` или нет. Четность числа можно проверить, взяв остаток от деления на 2::
+Obviously, the answer depends on :math:`N` being odd or even. This can be checked by taking it's remainder when divided by 2 (modulo operator)::
 
     n = int(input())
     if n % 2 == 1:
-        print("first")
+        print("one")
     else:
-        print("second")
+        print("two")
 
 
-.. [1] Конечно, настоящие кондиционеры работают не совсем так, у них пороги включения и выключения разные (так называемый гистерезис).
-
+.. [1] Of course, real air conditioners work differently. They have separated thresholds for turning on and off (it's called hysteresis).

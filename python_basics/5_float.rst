@@ -2,551 +2,550 @@
 
 .. _pythonBasicsFloat:
 
-Вещественные числа
-==================
+Floating-point numbers
+======================
 
-Вещественные, или действительные, числа — это, грубо говоря, и целые и
-дробные. Они, конечно, нередко возникают в задачах, но при работе с ними
-возникают серьезные проблемы, которые не в каждой книге по
-программированию будут описаны.
+Besides integers, sometimes you need to work with real numbers. Roughly speaking, 
+real numbers include both integers and fractions. And *floating-point numbers* 
+are kind of approximation for real numbers which is used in computers.
+Of course, they often appear in tasks, but operating with them arises 
+serious problems which are often left unreviewed in common programming books.
 
-На самом деле эта тема неожиданно сложная. Постарайтесь понять всё,
-что написано в этом разделе, но если что-то не поймете по началу,
-это не страшно. Главное — два правила работы с вещественными числами,
-которые я напишу ниже.
+In fact, this topic is unexpectedly complicated. Try to understand
+everything that is written in this section, but if you don't understand 
+something at first, it's okay. The main thing you should know is 
+two rules for working with floating-point numbers, which will be given below.
 
-Запись чисел с плавающей точкой
--------------------------------
+Floating-point notation
+-----------------------
 
-Вы точно знаете, что вещественные числа можно записывать в виде «12.34»
-— это «двенадцать целых тридцать четыре сотых». 
-
-.. note ::
-
-   Иногда вместо точки используется
-   запятая, но даже в обычной жизни сейчас, кажется, чаще используют точку,
-   а уж в программировании и подавно почти всегда используется точка.
-   Вообще, в контексте записи вещественных чисел слова «точка» и «запятая» являются синонимами, 
-   например, можно сказать, что в числе 12.34 две цифры после запятой, хотя
-   на самом деле я там написал точку. Или, например, фразы «с плавающей точкой»
-   и «с плавающей запятой» обозначают одно и то же.
-
-Но есть также и другой формат записи — так называемая запись чисел «с плавающей точкой».
-(По идее это должны проходить в школе классе эдак в 8, поэтому
-я описываю тут это в первую очередь для младшеклассников, а также для тех,
-кто успел забыть; ну и чтобы четко обозначить термины «мантисса» и «экспонента».)
-
-При записи чисел с плавающей точкой запись имеет следующий вид: 1.234e1. 
-Она состоит из двух частей, разделенных английской буквой ``e`` (может использоваться
-как маленькая, так и заглавная буква, хотя сейчас вроде чаще используют маленькую).
-Такая запись обозначает: «возьми число 1.234 и сдвинь в нем точку на 1 позицию направо» —
-соответственно, получается то же 12.34. Аналогично, возможна запись 0.1234e2 — взять число 0.1234 
-и сдвинуть точку на две позиции направо, это будет
-то же 12.34. Число после ``e`` может быть быть нулем, это значит, что точку сдвигать не надо:
-12.34e0 — это то же самое, что 12.34. Число может быть отрицательным, что значит,
-что точку надо сдвигать влево, а не вправо: 123.4e-1 или 1234e-2 — это все тоже 12.34.
-(Обратите внимание, что в записи 1234e-2 вообще отсутствует точка —
-она тогда, конечно, неявно подразумевается на конце записи числа 1234, точно так же,
-как 1234 и 1234.0 — это одно и то же.)
-
-То есть еще раз: 0.1234e2, 1.234e1, 12.34e0, 12.34, 123.4e-1, 1234e-2, и даже 123400e-4 
-и 0.001234e4 — это все записи одного и того же числа 12.34. Записи разные, число одно и то же.
-
-Видно, что одно и то же число можно записать разными способами.
-Чаще пишут так, чтобы либо перед точкой была ровно одна
-ненулевая цифра (1.234e1), или чтобы перед точкой был ноль, зато сразу после точки шла ненулевая цифра
-(0.1234e2), но в целом любая из приведенных в предыдущем абзаце записей является правильной,
-и есть много правильных записей, которые не приведены выше.
-
-Еще примеры: 1.3703599907444e2 и 13703599907444e-11 — это 137.03599907444.
-
-Отрицательные числа записываются, естественно, с минусом перед самим числом: -1.234e1, или -1234e-2
-— это то же самое, что и -12.34.
+You certainly know that real numbers can be written such as "12.34".
+This means "twelve and thirty-four hundredths".
 
 .. note ::
+   Sometimes a comma is used instead of a point (it depends on the country).
+   But in programming the point is the most common decimal separator.
+   Generally, in the context of denoting floating-point numbers,
+   words "point" and "comma" are synonyms.
 
-   Иногда, особенно в печатной литературе (а до появления компьютеров — особенно часто)
-   вместо записи через ``e`` используют эквивалентную запись через умножение на 10 в нужной степени,
-   например, вместо 0.1234e2 пишут :math:`0.1234\cdot 10^2`, вместо 123.4e-1 пишут :math:`1.234\cdot 10^{-1}`
-   и т.п. Несложно видеть, что это полностью эквивалентные записи, и что умножение на десять в нужной степени
-   полностью эквивалентно сдвигу точки. На самом деле, насколько я понимаю, запись через ``e`` появилась
-   как раз когда появились компьютеры, потому что запись через степень десятки довольно сложно, а иногда и невозможно, 
-   набирать на клавиатуре. Но сейчас, благодаря повсеместному распространению компьютеров, запись через ``e``
-   уже нередко встречается и в печатной литературе.
+But there is also another notation for real numbers — it's called "floating point format".
+(In theory, this should be explained at school somewhere in the 8th grade, so
+I describe it here primarily for secondary school students and as well for those
+who have managed to forget; and also to clearly define the terms "mantissa" and "exponent".)
 
+Notation of floating-point numbers looks is as follows: 1.234e1.
+It consists of two parts separated by the English letter ``e`` (may be
+either small or capital letter, although now it seems that small one is more common).
+This means: "take the number 1.234 and move the decimal point in it by 1 position to the right" —
+so, you'll get 12.34. As well it may be written as 0.1234e2 — here we need to take 0.1234 
+and move the point by two digits to the right, and get the same 12.34.
+The number after ``e`` may be zero — this obviously means you don't need to move the point:
+12.34e0 is the same as 12.34. The number may also be negative — this means that the point
+should be moved to the left instead: 123.4e-1 or 1234e-2 is still the same as 12.34.
+(Note here that the notation 1234e-2 has no point at all — it's implied
+to be at the end of number 1234, as we know that 1234 and 1234.0 are the same.)
 
-Запись чисел с плавающей точкой особенно удобна, когда вам надо хранить очень большие
-или очень маленькие числа. Например, расстояние от Земли до Солнца примерно 147 миллионов километров,
-т.е. 147000000000 метров. Так записывать очень неудобно, потому что надо тщательно считать нолики.
-Намного удобнее написать 147e9 — сразу понятно, что будет девять ноликов, и сразу понятно, что это 147 миллиардов.
-Или, например, атом водорода весит примерно 1.66e-24 грамм, т.е. 0.00000000000000000000000166 грамм
-(если я не ошибся в количестве ноликов :) ). Ясно, что первая запись намного удобнее.
+Once again: 0.1234e2, 1.234e1, 12.34e0, 12.34, 123.4e-1, 1234e-2 and even 123400e-4 
+and 0.001234e4 are just ways to write down one number 12.34.
+The notations look diffrerent, the number is the same.
 
-Эти две части, составляющие запись числа с плавающей точкой, называются «мантисса» — это часть до ``e``, 
-— и «экспонента» — это число после ``e``. Например, в записи 1.234e1 мантисса равна 1.234, а экспонента равна 1.
+So, the same number can be written in different ways. Which one to choose?
+The most common is either the one where there's only one non-zero digit before
+the point (1.234e1) or the one where before the point there's zero, but
+the next digit after the point is not zero (0.1234e2). But in general,
+any of the examples used above is correct, and there are also plenty of 
+correct notations which weren't specified above.
 
-Как компьютер хранит вещественные числа
----------------------------------------
+Some more examples: 1.3703599907444e2 and 13703599907444e-11 are exactly equal to 137.03599907444.
 
-Вещественные числа, с которыми может иметь дело компьютер, могут быть
-как очень большими, так и очень маленькими. С другой стороны,
-вещественные числа в принципе невозможно хранить *абсолютно точно*, т.к.
-в них могут быть очень много знаков (даже бесконечно много) после
-точки.
-
-Поэтому компьютер хранит числа в записи с плавающей точкой, при этом он хранит мантиссу
-и экспоненту по отдельности (но рядом в памяти, конечно, и в конечном счете, конечно, 
-для вас как для программиста это будет одна переменная, хранящая вещественное число,
-а не две отдельных переменных, хранящих мантиссу и экспоненту).
-Более того, поскольку вообще говоря в вещественных числах в мантиссе может быть
-бесконечно много цифр, компьютер хранит лишь несколько первых цифр мантиссы.
+Negative numbers, of course, are written with minus before the number itself:
+-1.234e1 or -1234e-2 is the same as -12.34.
 
 .. note ::
+   Sometimes, especially in printed books (and before the advent of computers — quite often),
+   instead of using ``e``, an equivalent notation is used which includes multiplication
+   by 10 raised to a certain power. For example, instead of 0.1234e2 it is written as :math:`0.1234\cdot 10^2`,
+   instead of 123.4e-1 it is :math:`1.234\cdot 10^{-1}` and so on. It's easy to see that
+   these notations are completely equivalent, and that multiplication by ten raised to a power
+   is completely equivalent to shifting the point. In fact, as far as I understand, the notation with ``e``
+   appeared just when computers appeared, because it's quite complicated, and sometimes impossible,
+   to type power (superscript) on the keyboard. But now, thanks to ubiquity of the computers,
+   the notation with ``e`` is already often used even in printed literature.
+   
+Floating-point notation is quite convenient when you need to operate with extremely huge or
+extremely small numbers. For example, the distance between the Earth and the Sun is about 
+147 million kilometers, i.e. 147000000000 meters. It is very inconvenient to write this way,
+because you have to carefully count the zeros. It is much easier to write 147e9 — 
+it immediately becomes clear that there will be nine zeros, and that this is 147 billion.
+Or, for example, a hydrogen atom weighs about 1.66e-24 grams, i.e. 0.00000000000000000000000166 grams
+(unless I missed some zeroes or typed some extra :) ). Clearly, the first one is much more convenient.
 
-   Вообще, на самом деле компьютер хранит числа в двоичной системе счисления
-   (т.е. на самом деле компьютер хранит не *десятичную* экспоненту, как это было описано выше,
-   а *двоичную*), но это вам будет пока не особенно важно, потому что весь ввод-вывод
-   вещественных чисел использует все-таки десятичную экспоненту.
+These two parts of which a floating-point number consist, are referred to as follows:
+the part prior to ``e`` is **mantissa** (or "significand"),
+and the one after is **exponent** (or "scale"). For example, in 1.234e1
+the mantissa is equal to 1.234, and the exponent is 1.
+
+How real numbers are stored in the computer
+-------------------------------------------
+
+On the one hand, real numbers that the computer operates with
+can be either very large or very small. On the other hand,
+it's generally impossible to store the *exact value* of a real number, 
+because it can have many digits (even infinitely many) after the point.
+
+Therefore, the computer stores numbers using floating-point notation,
+and it stores the mantissa and the exponent separately (but side by side in memory,
+and for you as a programmer it will be one variable representing a real number,
+not two separate variables representing the mantissa and the exponent).
+Moreover, since there can be infinitely many digits in the mantissa of a real number, 
+the computer only stores few digits from its beginning.
+
+.. note ::
+   In fact, the computer stores numbers in binary numeral system
+   (i.e. the exponent in fact is not the power of *ten*, as it was
+   described above, but the power of *two*) but this won't be really
+   significant to you yet, as all input and output operations 
+   still use decimal system and therefore decimal exponent.
 
 .. _pythonBasicsFloatTypes:
 
-Типы данных
------------
+Data types
+----------
 
-Все современные компьютеры умеют работать со следующими тремя типами
-данных:
+All modern computers are able to operate with 
+the three following floating-point data types:
 
--  **single** — хранит 7-8 цифр мантиссы, экспоненту до примерно ±40,
-   занимает в памяти 4 байта, работает сравнительно быстро;
--  **double** — хранит 15-16 цифр мантиссы, экспонента до примерно ±300, занимает 8 байт,
-   работает несколько медленнее;
--  **extended** — хранит 19-20 цифр мантиссы, экспонента
-   до примерно ±5000, занимает в памяти 10 байт, работает намного медленнее;
+-  **single** — stores 7-8 digits of mantissa, limits the exponent approximately by ±40,
+   takes 4 bytes of memory, works rather fast;
+-  **double** — stores 15-16 digits of mantissa, limits the exponent approximately by ±300,
+   takes 8 bytes of memory, works a bit slower;
+-  **extended** — stores 19-20 digits of mantissa, limits the exponent approximately by ±5000, 
+   takes 10 bytes of memory, works way slower;
 
 .. note :: 
+   Let me clarify the meaning of "X digits of mantissa" and "limits the exponent by Y".
+   
+   As I mentioned above, only few first digits of the mantissa are stored.
+   So, these are 7-8 digits in ``single`` data type, 15-16 in ``double`` and
+   19-20 in ``extended``. So if you try to assign 1.234567890123456789e20 to
+   a varibale which is ``single``, you'll get something like 1.234567e20, 
+   and all the extra digits will be dropped. (In fact it's a bit more tricky
+   as all the numbers in the computer are binary. That's why I write that there are
+   "7-8 digits" — it depends on the binary representation.)
 
-   Уточню, что значит «столько-то цифр мантиссы» и «такая-то экспонента». 
-   Как я писал выше, в мантиссе хранится только несколько первых цифр.
-   Собственно, в single хранится только 7-8 цифр, в double 15-16, в expended 19-20.
-   То есть например, если вы попытаетесь в single записать число 1.234567890123456789e20,
-   то на самом деле запишется примерно 1.234567e20, остальные цифры будут отброшены.
-   (На самом деле все немного сложнее из-за того, что числа хранятся в двоичной системе счисления,
-   собственно поэтому я и пишу 7-8 цифр, потому что на самом деле как повезет 
-   в плане двоичной системы счисления.)
+   And the limit of the exponent means that you'll simply fail trying to save a number 
+   with exponent too big for the certain type (for example, 1.23e100 will not fit into ``single``).
+   Such an instruction will either raise an error, or result in a special "infinity" value;
+   and the numbers with too big negative exponent will simply be considered equal to zero
+   (if you try to write 1.23e-100 to ``single``, you will get 0). 
 
-   Ограничение же на экспоненту обозначает, что числа со слишком большой экспонентой
-   вы просто не сможете записать в нужный тип (например, 1.23e100 не влезет в single),
-   будет или ошибка, или получится специальное значение «бесконечность»; а числа 
-   со слишком большой отрицательной экспонентой просто будут считаться равными нулю
-   (если вы попробуете записать 1.23e-100 в single, то получится 0).
+These types are supported by the processor (i.e. the processor is able 
+to execute the command "add two numbers of ``single`` type" or "subtract two numbers 
+of ``extended`` type", etc.). Therefore, these types are present (possibly with other
+names) in almost all existing programming languages.
 
-Эти типы поддерживаются процессором (т.е. процессор умеет выполнять
-команду «сложить два числа типа single» или «вычесть два числа типа
-extended» и т.п.). Поэтому эти типы присутствуют (возможно, с другими
-названиями) почти во всех существующих языках программирования.
-
-К сожалению, конкретно в питоне нет простой возможности выбрать один из этих трех 
-типов, можно работать только с double, причем в питоне вместо слова double используется
-название float (что вообще странно, потому что в других языках float — это single, а вовсе не double).
-Таким образом, 
+Unfortunately, specifically in Python there is no easy way to choose one of these 
+three types. You can only work with ``double``, and in Python, the name ``float`` 
+is used instead of ``double`` (which is generally odd 
+because in other languages ``float`` is equivalent to ``single``, not ``double`` at all).
+Therefore,
 
 .. important::
+   It Python, standard floating-point type is called ``float``,
+   stores 15-16 digits of mantissa and limits the exponent approximately by ±300.
 
-   Стандартные вещественные числа в питоне называются float, 
-   хранят 15-16 цифр в мантиссе и экспоненту до примерно ±300.
+Significant digits
+------------------
 
+As discussed above, the same number can be written in floating-point format in different ways.
+12.34 can be written as 0.0000000001234e11 or 1234000000000e-11, etc.
+Of course, the computer stores the number in some certain form. Moreover,
+if you try to, for example, assign 0.0000000001234e11 to a variable which is ``single``,
+then you may say that only zeros will be saved
+(because the mantissa of ``single`` type stores only 7-8 digits).
 
-Про «значащие цифры»
---------------------
+In fact, things are a bit more complicated. Basically, we can assume the following:
+the computer  stores numbers in such a way that there is exactly one non-zero digit
+before the point (as described above). I.e. 12.34 will be actually stored
+in the memory as 1.234e-1 and not the other way, and, for example, the distance
+between the Earth and the Sun in meters is stored as 1.47e11.
+(And in fact it is even more tricky because of the binary numeral system).
 
-Как мы видели, одно и то же число можно записать с плавающей точкой по-разному.
-Чисто 12.34 можно записать как 0.0000000001234e11, и как 1234000000000e-11, и т.п.
-Конечно, компьютер будет хранить число каким-то конкретным образом. Более того,
-если, например, попробовать записать 0.0000000001234e11 например в single,
-то вы можете сказать, что будут записаны только нули (потому что мантисса хранит только 7-8 цифр).
+That's why the computer will never store leading zeros in the mantissa.
+In this sense, it's more accurate to speak of "significant digits" —
+these are the digits in the notation of a number which start with the first non-zero digit.
+For example, in 12.3405, the significant digits are 1, 2, 3, 4, 0, 5 (all),
+and in 0.00000000000000000000000000166 the significant digits are 1, 6 and 6
+(and the computer will store this number as 1.66e-27).
 
-На самом деле компьютер хранит числа чуть сложнее. В первом приближении можно считать,
-что компьютер хранит числа так, чтобы до точки была ровно одна ненулевая цифра
-(про это я писал выше), т.е. число 12.34 компьютер будет хранить как 1.234e-1 и никак иначе,
-а например расстояние от Земли до Солнца в метрах — как 1.47e11 и не иначе.
-(А на самом деле еще сложнее из-за двоичной системы счисления).
+So we can say that ``single`` type stores 7-8 significant digits, ``double`` — 15-16, ``extended`` — 19-20.
 
-Поэтому компьютер никогда не будет хранить в мантиссе ведущих нулей. В этом смысле говорят
-о «значащих цифрах» — это цифры в записи числа, начиная с первой ненулевой цифры.
-Например, в числе 12.3405 значащие цифры — это 1, 2, 3, 4, 0, 5, а в числе 0.00000000000000000000000000166
-значащие цифры — это 1, 6 и 6 (и компьютер будет хранить это число как 1.66e-27).
+"Holes" between the numbers
+---------------------------
 
-Поэтому говорят, что тип single хранит 7-8 значащих цифр, double — 15-16 значащих цифр, extended — 19-20.
+(The concept of "holes" isn't really necessary on the basic level, but may be useful in the future.)
 
-Про дырки между числами
------------------------
+Due to the fact that the computer stores only a ceratin number of significant digits, it turns
+out that there are "holes" between neighboring numbers of a particular type. For example, 
+let's take a ``single`` type variable. It's impossible to assign the number 1.2345678901234 
+to it — only 1.234567 or 1.234568. The result is that between the numbers 
+1.234567 and 1.234568 there is a "hole" having a width of 0.000001, 
+in which there are no numbers that can be stored in ``single``.
 
-(Понимание про «дырки» для начальных задач  не особо нужно, но в дальнейшем бывает полезно.)
+While the numbers themselves are not very large, the "holes" aren't wide.
+But when the numbers get bigger, the "holes" get bigger too.
+For example, the number 123456789 is also impossible to assign to ``single``.
+You can only assign 123456700 or 123456800 — the "hole" is already of width 100!
 
-Из-за того, что компьютер хранит строго определенное количество значащих цифр, получается,
-что между соседними числами конкретного типа есть «дыры». Например, пусть мы возьмем тип single.
-В него невозможно записать число 1.2345678901234 — можно записать только 1.234567 или 1.234568.
-Получается, что между числами 1.234567 или 1.234568 есть целая «дыра» длиной 0.000001, в которой
-нет ни одного числа, которое может храниться в single.
+(In fact, the specific numbers that can be stored are a little different,
+once again because of the binary numeral system. Accordingly, the sizes of "holes" 
+are also different, they are powers of two instead of ten,
+but qualitatively everything described above is true.)
 
-Когда сами числа не очень большие, то и «дыры» не очень длинные. Но когда числа становятся большими,
-то и «дыры» тоже становятся больше. Например, число 123456789 тоже невозможно записать в single,
-можно записать только 123456700 или 123456800 — «дыра» получается уже длины 100!
-
-(На самом деле конкретные числа, которые возможно записать — они немного другие, 
-опять же из-за двоичной системы счисления, и соответственно размеры «дырок» тоже другие,
-они будут степенями двойки, а не десятки,
-но качественно все описанное выше верно.)
-
-Базовые операции
+Basic operations
 ----------------
 
-С вещественными числами доступны все привычные уже вам операции: +-\*/, abs,
-sqrt, ввод-вывод через
-float(input()), map(float, ...) и print. Также
-работает деление с остатком (// и %).
+With floating-point numbers you can perform all the operations 
+which we've already discussed: +-\*/, abs, sqrt, input/output via
+float(input()), map(float, ...) and print. Division with remainder (// and %) also works.
 
-При этом в ваших программах, а также при вводе вы можете задавать числа
-как в записи с фиксированной точкой, так и с плавающей, т.е. вы можете
-писать, например, ``a = 1.23 + 2.34e-1;``, и при считывании чисел можете
-вводить значения тоже как в формате ``1.23``, так и в формате ``2.34e-1``.
+Meanwhile, in your programs, as well as in the input data, you can set numbers
+both in fixed-point and floating-point notations. I.e. you can type,
+for example, ``a = 1.23 + 2.34e-1``, and when inputting numbers, you can
+also enter values in both formats: ``1.23`` and ``2.34e-1``.
 
-Про вывод подробнее
--------------------
-
-Часто в наших задачах вы можете встретить фразу «выведите ответ с
-точностью до 5 знаков после запятой», или «с пятью верными знаками» и
-т.п. Такие фразы почти всегда обозначают, что ваш ответ должен содержать
-5 верных цифр после запятой, но они не запрещают вам выводить больше
-цифр. Вы можете вывести хоть 20 цифр — если первые пять из них верные,
-то ответ будет зачтен. И наоборот, вы можете вывести меньше цифр — если
-невыведенные цифры — нули, то ответ тоже будет зачтен. Вообще, строго
-говоря, такая фраза в условии просто обозначает, что ваш ответ должен
-отличаться от верного не более чем на 1e-5.
-
-Пример: если правильный ответ на задачу — 0.123456789, то вы можете
-вывести 0.12345, или 0.123459876, или даже 1.2345e-1 (т.к. это то же
-самое, что и 0.12345). А если правильный ответ — 0.10000023, то вы
-можете вывести 0.10000, 0.10000987 или даже просто 0.1 или 1e-001 (т.к.
-это то же самое, что и 0.10000).
-
-В частности, это обозначает, что вы можете пользоваться стандартной
-функцией вывода (print) без каких-либо особых ухищрений; не
-надо округлять число, не надо форматировать вывод и т.д.
-
-Вот если в задаче строго сказано «вывести ровно с 5 знаками после
-запятой», то это другое дело. Но на приличных олимпиадах такое бывает
-очень редко.
-
-Полезные функции
+Output in detail
 ----------------
 
-В питоне есть несколько функций, которые вам будут
-полезны при работе с вещественными числами. Для ряда из этих функций
-надо в самом начале программы написать
-``from math import *`` (как вы уже писали для квадратного корня).
-Кроме того, имейте в виду, что с этими функциями
-также могут возникать проблемы погрешностей (см. ниже).
+In the problems you may often find the sentence "print the answer with
+an accuracy of 5 digits after the point", or "with five correct characters", etc.
+They almost always mean that your answer should contain 5 correct digits 
+after the decimal point, but they do not forbid you to output more digits. 
+You can output even 20 digits — if the first five of them are correct,
+then the answer will be accepted. And vice versa, you can output fewer digits — if
+the missing digits are zeros, then the answer will also be accepted.
+In general, strictly speaking, such a phrase in the task simply means
+that your answer should differ from the correct one by no more than 1e-5.
 
--  **floor** ("пол") — округляет число *вниз*, т.е. определяет ближайшее
-   целое число, которое *меньше или равно* данного вещественного.
-   Например, ``floor(2.4) == 2``, ``floor(2) == 2``, ``floor(-2.4) == -3``, и
-   ``floor(2.8) == 2``.
--  **ceil** ("потолок") — округляет число *вверх*, т.е. определяет
-   ближайшее целое число, которое *больше или равно* данного
-   вещественного. Например, ``ceil(2.4) == 3``, ``ceil(2) == 2``,
-   ``ceil(-2.4) == -2``, и ``ceil(2.8) == 3``.
--  **trunc** — округляет число *в сторону нуля*. Например,
-   ``trunc(2.4) == 2``, ``trunc(2) == 2``, ``trunc(-2.4)== -2``, и
-   ``trunc(2.8) == 2``.
--  **round** — округляет число *к ближайшему целому числу* («по школьным
-   правилам», за исключением ситуации, когда дробная часть числа строго
-   равна 0.5 — тогда в зависимости от числа может быть округление то в
-   одну, то в другую сторону). Например, ``round(2.4) == 2``,
-   ``round(2) == 2``, ``round(-2.4) == -2``, и ``round(2.8) == 3``.
-- Еще повторю, что работают операции деления с остатком (``//`` и ``%``),
-  в частности, ``x % 1`` дает дробную часть числа ``x``.
+For example, if the correct answer to the problem is 0.123456789,
+you can output 0.12345, or 0.123459876, or even 1.2345e—1
+(because this is the same as 0.12345).
+And if the correct answer is 0.10000023, then you
+can output 0.10000, 0.10000987 or even just 0.1 or 1e—001
+(because these two are the same as 0.10000).
 
-Пример программы, использующей эти функции::
+In particular, this means that you can use the standard
+output function (``print``) without any special tricks;
+there's no need to round the number, no need to format the output, etc.
+
+But if it's strictly stated "output should contain exactly 5 digits 
+after the decimal point", then this is another case.
+But on regular contests this happens very rarely.
+
+Useful functions
+----------------
+
+In Python, there are several functions that will be useful to you 
+when working with real numbers. For some of these functions,
+it is necessary to type ``from math import *`` in the beginning 
+of the program (as you already did for the square root).
+Also, keep in mind that these functions may lead to roundoff issues (see below).
+
+-  **floor**  — rounds the number *down*, i.e. returns the nearest
+   integer that is *less than or equal to* a given real.
+   Examples: ``floor(2.4) == 2``, ``floor(2) == 2``,
+   ``floor(-2.4) == -3``, ``floor(2.8) == 2``.
+-  **ceil** — rounds the number *up*, i.e. returns
+   the nearest integer that is *greater than or equal to* a given real.
+   Examples: ``ceil(2.4) == 3``, ``ceil(2) == 2``,
+   ``ceil(-2.4) == -2``, ``ceil(2.8) == 3``.
+-  **trunc** — rounds the number *towards zero*.
+   Examples: ``trunc(2.4) == 2``, ``trunc(2) == 2``,
+   ``trunc(-2.4) == -2``, ``trunc(2.8) == 2``.
+-  **round** — rounds the number *to the nearest integer*
+   ("according to school rules", except when the fractional part of the number
+   is exactly equal to 0.5 — then, depending on the number, it may be rounded
+   in one direction or the other). Examples: ``round(2.4) == 2``,
+   ``round(2) == 2``, ``round(-2.4) == -2``, ``round(2.8) == 3``.
+-  I'll say once again that operations of division with remainder (``//`` and ``%``)
+   work, and in particular, ``x % 1`` gives the fractional part of the number ``x``.
+
+Example of a program using these functions::
 
     from math import *               
 
-    print(floor(-2.4))  # выводит -3 
-    print(ceil(2.4))  # выводит 3    
-    print(trunc(2.8) + (2.4 + 0.4) % 1)  # выводит 2.8                         
-    print(round(3.9))  # выводит 4   
+    print(floor(-2.4))  # outputs -3 
+    print(ceil(2.4))  # outputs 3    
+    print(trunc(2.8) + (2.4 + 0.4) % 1)  # outputs 2.8                         
+    print(round(3.9))  # outputs 4   
 
-Погрешности
------------
+Errors
+------
 
-Два правила работы с вещественными числами
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Two rules of using floating-pont numbers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Сначала напишу два главных правила работы с вещественными числами:
-
-.. important::
-
-   **Правило первое: не работайте с вещественными числами**. А именно, если
-   возможно какую-то задачу решить без применения вещественных чисел, и это
-   не очень сложно, то лучше ее решать без вещественных чисел.
+First, I will define two main rules of using floating-point numbers:
 
 .. important::
 
-   **Правило второе: если уж работаете, то используйте** ``eps``. При
-   любых [#f]_ сравнениях вещественных чисел надо использовать
-   ``eps``.
+   **Rule one: don't use floating-point numbers**. That is, if it's
+   possible and not very difficult to solve the problem without using
+   flotaing-point numbers, it's better to solve it in that way.
 
-.. [#f] за исключением случаев, когда вам не важно, что произойдет в случае точного равенства, см. ниже
+.. important::
 
+   **Rule two: if you are using them, then use** ``eps``.
+   For any [#f]_ comparisons of floating-point numbers,
+   you should use ``eps``.
 
-Ниже я разъясняю оба этих правила.
+.. [#f] except when you don't care what happens in case of exact equality (see below).
 
-Необходимость использования ``eps``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Both of these rules are explained below.
 
-Как уже говорилось выше, компьютер не может хранить *все* цифры числа,
-он хранит только несколько первых значащих цифр. Поэтому, если,
-например, разделить 1 на 3, то получится не 0.33333... (бесконечно много
-цифр), а, например, 0.33333333 (только несколько первых цифр). Если
-потом умножить результат обратно на 3, то получится не ровно 1, а
-0.99999999. (Аналогичный эффект есть на простых калькуляторах; на
-продвинутых калькуляторах он тоже есть, но проявляется сложнее.)
+The necessity of ``eps``
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-(Вы можете попробовать потестировать, правда ли, что ``(1/3)*3`` равно 1,
-и обнаружить, что проверка ``if (1 / 3) * 3 == 1`` выполняется.
-Да, тут повезло — опять-таки из-за двоичной системы получилось округление в правильную сторону. 
-Но с другими числами это может не пройти,
-например, проверка ``if (1 / 49) * 49 == 1`` не срабатывает.)
+As mentioned above, a computer can't store *all* digits of a number,
+it stores only the few beginning significant digits. Therefore, if,
+for example, we divide 1 by 3, we get not 0.333333... (infinitely many
+digits), but something like 0.3333333 (only the first few digits).
+If, after that, you multiply the result by 3, you get not exactly 1, but
+0.99999999. (A similar effect exists on simple calculators;
+it also exists on advanced calculators, but is harder to reveal.)
 
-На самом деле все еще хуже: компьютер работает в двоичной системе
-счисления, поэтому даже числа, в которых в десятичной системе счисления
-имеют конечное число цифр, в компьютере могут представляться неточно. Поэтому,
-например, сравнение ``if 0.3 + 0.6 == 0.9`` тоже не сработает: если сложить
-0.3 и 0.6, то получится не ровно 0.9, а слегка отличающее число
-(0.899999 или 0.900001 и т.п.)
+(You can give it a try and check whether it is true that ``(1/3)*3`` is equal to 1,
+and find that the condition ``if (1 / 3) * 3 == 1`` is true. Yes, we were lucky here 
+— again, because of the binary system, roundoff worked in the right direction.
+But with other numbers this may not work. For example, check ``if (1 / 49) * 49 == 1`` fails.)
 
-Действительно, напишите и запустите следующую программу::
+Actually, things are even worse: the computer works in binary system,
+so even numbers which have a finite number of digits in decimal system 
+can be represented imprecisely in the computer. Therefore,
+for example, the check ``if 0.3 + 0.6 == 0.9`` will not work either:
+if you add up 0.3 and 0.6, you will get not exactly 0.9,
+but a slightly different number (0.899999 or 0.900001, etc.)
+
+Indeed, write and run the following program::
 
    if 0.3 + 0.6 == 0.9:
       print("Ok")
    else:
       print("Fail")
 
-и вы увидите, что она выводит Fail.
+and you'll see that it outputs *Fail*.
 
-(Более того, ``print(0.3+0.6)`` выводит у
-меня 0.8999999999999999.)
+(Moreover, on my machine ``print(0.3+0.6)`` outputs 0.8999999999999999.)
 
-Итак, погрешности, возникающие при любых вычислениях, — это основная
-проблема работы с вещественными числами. Поэтому **если вам надо сравнить
-два вещественных числа, то надо учитывать, что, даже если на самом деле
-они должны быть равны, в программе они могут оказаться не равны**.
+So, the errors that occur in any calculations are the main
+problem of floating-point numbers. Therefore, **if you need to compare
+two floating-point numbers, then take into account the fact that,
+even if they should be actually equal, they may not be equal in the program**.
 
-Стандартный подход для борьбы с этим — выбрать маленькое число ``eps``
-(от названия греческой буквы ε — «эпсилон», «epsilon»), и два числа
-считать равными, если они отличаются не более чем на ``eps``.
+The standard approach to deal with this issue is to choose a small number ``eps``
+(refers to the Greek letter ε — "epsilon"),
+and consider two numbers equal if they differ by no more than ``eps``.
 
-Про то, как выбирать это ``eps``, обсудим ниже, пока будем считать, что
-мы взяли ``eps=1e-6``. Тогда в начале программы пишем
-
+Below we'll discuss how to choose this ``eps``. Let's assume for a while that
+we took ``eps=1e-6``. Then at the beginning of the program we type
 ::
 
    eps = 1e-6                       
 
-— и далее в коде когда нам надо сравнить два числа, мы вместо ``if x=y``
-пишем ``if abs(x - y) < eps``, т.е. проверяем, правда ли, что
-:math:`|x-y| < \varepsilon`.
+— and further in the code, when we need to compare two numbers,
+instead of ``if x=y`` we should write ``if abs(x - y) < eps``,
+i.e. we check whether it is true that :math:`|x-y| < \varepsilon`.
 
-То есть мы предполагаем, что если два числа на самом деле должны быть
-равны, но отличаются из-за погрешности, то они отличаться будут менее
-чем на ``eps``; а если они на самом деле должны различаться, то
-различаться они будут более чем на ``eps``. Таким образом, ``eps``
-разделяет ситуации «два числа равны» и «два числа не равны».
-(Естественно, это будет работать не при любом ``eps``, т.е. ``eps`` надо
-аккуратно выбирать — про это см. ниже.)
+So, we assume that if two numbers should actually be
+equal, but may differ due to an error, then they will differ by
+no more than ``eps``; and if they should really be different,
+then they will differ by more than ``eps``. Thus, ``eps``
+separates the situations "two numbers are equal" and "two numbers are not equal".
+(Of course, this will not work with arbitrary ``eps``,
+i.e. ``eps`` must be chosen with care — see below about this.)
 
-Аналогично, если нам надо проверить ``if x >= y``, то надо писать
-``if x >= y - eps`` или ``if x > y - eps``. (Обратите внимание, что тут не
-важно, писать строгое или нестрогое равенство — вероятность того, что
-окажется точно ``x == y - eps`` очень мала из-за тех же погрешностей: скорее
-всего окажется или больше, или меньше. Более того, если оказалось, что
-точно ``x == y - eps``, это обозначает, что мы неправильно выбрали ``eps``,
-т.к мы не смогли отделить ситуацию «числа ``x`` и ``y`` равны» и ситуацию
-«числа не равны». См. еще ниже в разделе про выбор ``eps``.)
+Similarly, if we need to check ``if x >= y``, then we should write
+``if x >= y - eps`` or ``if x > y - eps``. (Note that it doesn't
+matter whether to write strict or non-strict inequality, as the probability that
+it will be exactly ``x == y - eps`` is very small, again, due to the errors.
+Highly likely it will be either more or less. Moreover, if it turned out that
+exactly ``x == y - eps``, it means that we chose an inappropriate ``eps``, because 
+we failed to distinguish the situation "the numbers ``x`` and ``y`` are equal" and the situation
+"the numbers are not equal". See more on this below in the section about the choice of ``eps``.)
 
-Если нам надо написать условие ``if x > y``, то его тоже надо переписать,
-ведь нам важно (подробнее см. ниже), чтобы при ``x == y`` условие не
-выполнилось! Поэтому переписать его надо так: ``if x > y + eps``.
-Аналогичные соображения действуют для любых других сравнений
-вещественных чисел.
+The condition ``if x > y`` has to be modified as well,
+because it is important to us (see below for more details)
+that the condition is false upon ``x == y``!
+Therefore, it should be rewritten like this: ``if x > y + eps``.
+And any other comparisons of real numbers 
+should be considered and modified in a similar way.
 
-Итак, именно поэтому получаем
-
-.. important::
-
-   **Правило второе: если уж работаете, то используйте** ``eps``. При
-   любых [#f]_ сравнениях вещественных чисел надо использовать
-   ``eps``.
-
-(Первое правило будет дальше :) )
-
-Выбор ``eps``
-~~~~~~~~~~~~~
-
-Выбор ``eps`` — это весьма нетривиальная задача, и далеко не всегда она
-вообще имеет правильное решение. Нам надо выбрать такое ``eps``, чтобы,
-если два числа должны быть равны (но отличаются из-за погрешностей), то
-их разность точно была меньше ``eps``, а если они не равны, то точно
-была больше ``eps``. Ясно, что в общем случае эта задача не имеет
-решения: может быть так, что в одной программе будут два числа, которые
-должны быть равны, но отличаются, например, на 0.1 из-за погрешности, и
-два числа, которые действительно различны, но отличаются только на 0.01.
-
-Но обычно считают, что в «разумных» задачах все-таки такое ``eps``
-существует, т.е. числа, которые должны быть равны, отличаются не очень
-сильно, а те, которые должны отличаться, отличаются намного сильнее. И
-``eps`` выбирают где-нибудь посередине. (В частности, поэтому, как
-говорилось выше, не бывает так, что ``x == y - eps`` точно.) (В более сложных
-задачах может понадобиться применять более сложные техники, но мы их
-сейчас не будем обсуждать.)
-
-В некоторых, самых простых, задачах такое ``eps`` можно вычислить строго. Например,
-пусть задача: даны три числа :math:`a`, :math:`b` и :math:`c`, каждое не больше 1000, и
-каждое имеет не более 3 цифр после десятичной запятой. Надо проверить,
-правда ли, что :math:`a+b=c`. Из изложенного выше понятно, что тупое решение
-``if a + b == c`` не сработает: может оказаться, что должно быть :math:`a + b = c`, но
-из-за погрешностей получится, что :math:`a+b \neq c`. Поэтому надо проверять
-``if abs(a + b - c) < eps``, но какое брать ``eps``?
-
-Подумаем: пусть действительно :math:`a+b=c`. Какой может быть разница :math:`a+b-c`
-с учетом погрешностей? Мы знаем, что :math:`a`, :math:`b` и :math:`c` не превосходят 1000.
-Мы используем тип данных ``float`` (который на самом деле ``double``), в
-котором хранятся 15-16 верных цифр, значит, погрешности будут примерно в
-15-16-й значащей цифре. Для максимальных возможных значений чисел (т.е.
-для 1000) погрешности будут порядка ``1e-12`` или меньше, т.е. можно
-рассчитывать, что если :math:`a+b=c`, то в программе :math:`|a+b-c|` будет порядка
-``1e-12`` или меньше.
-
-С другой стороны, пусть :math:`a+b \neq c`. Какой тогда может быть разница
-:math:`|a+b-c|`? По условию, все числа имеют не более трех цифр после
-запятой, поэтом понятно, что эта разница будет равна 0.001 или больше.
-
-Итого мы видим, что если числа должны быть равны, то они отличаются не более чем на ``1e-12``,
-а если не равны, то как минимум на ``1e-3``. Поэтому можно, например, взять ``eps=1e-5``. 
-С одной стороны, если на
-самом деле :math:`a+b=c`, то в программе :math:`|a+b-c|` точно получится намного
-меньше ``eps``, а с другой стороны, если на самом деле :math:`a+b\neq c`, то
-:math:`|a+b-c|` будет точно намного больше ``eps``. Итак, в этом примере мы
-смогли точно вычислить подходящее ``eps``.
-
-(И вообще, конечно,
-вариантов много — подошло бы любое число, которое существенно меньше
-1e-3 и существенно больше 1e-12. Вот это и есть «хорошая» ситуация,
-когда варианты «равны» и «не равны» разделены очень сильно.
-А если бы они не были бы так разделены, то весь фокус с ``eps`` не прошел бы.
-Это то, про что я писал немного выше.).
-
-Но бывают задачи, где так просто вычислить подходящее ``eps`` не
-получается. На самом деле таких задач большинство — как только
-вычисления у вас становятся сложнее чем сложить два числа, за
-погрешностями уже становится сложно уследить. Можно, конечно, применять
-какие-нибудь сложные техники, но обычно принято просто брать
-какое-нибудь ``eps`` порядка ``1e-6``..\ ``1e-10``.
-
-Но в итоге вы не можете быть уверены, что вы выбрали правильное ``eps``.
-Если ваша программа не работает — это может быть потому, что у вас
-ошибка в программе, а может быть просто потому, что вы выбрали неверный
-``eps``. Бывает так, что достаточно поменять ``eps`` — и программа
-пройдет все тесты. Конечно, это не очень хорошо, но ничего не поделаешь.
-
-В частности, поэтому на олимпиадах очень не любят давать задачи, которые
-реально требуют вычислений с вещественными числами — никто, даже само
-жюри, не может быть уверено в том, что у них ``eps`` выбрано верно. Но
-иногда такие задачи все-таки дают, т.к. никуда не денешься.
-
-И поэтому получаем
+So, that's why we get
 
 .. important::
 
-   **Первое правило работы с вещественными числами: не работайте с
-   вещественными числами**. А именно, если возможно какую-то задачу решить
-   без применения вещественных чисел, и это не очень сложно, то лучше ее
-   решать без вещественных чисел, чтобы не думать про все эти погрешности и ``eps``.
+   **Rule two: if you are using them, then use** ``eps``.
+   For any [#f]_ comparisons of floating-point numbers,
+   you should use ``eps``.
 
-Пример: пусть у вас в программе есть четыре *целых* (int)
-положительных числа :math:`a`, :math:`b`, :math:`c` и :math:`d`, и вам надо сравнить две дроби:
-:math:`a/b` и :math:`c/d`. Вы могли бы написать ``if a / b > c / d``, но это плохо: в
-результате деления получаются вещественные числа, и вы сравниваете два
-вещественных числа со всеми вытекающими последствиями. (Конкретно в этом
-случае, возможно, ничего плохого не случится, но в чуть более сложных
-случаях уже может случиться, да и в этом случае возможно и случится, я
-не проверял.) А именно, может оказаться, например, что :math:`a / b = c / d` на
-самом деле, но из-за погрешностей в программе получится :math:`a/b>c/d` и
-``if`` выполнится. Вы можете написать ``eps``, думать, каким его
-выбрать... но можно проще. Можно просто понять, что при положительных
-(по условию) числах это сравнение эквивалентно условию ``if a * d > c * b``.
-Здесь все вычисления идут только в целых числах, поэтому это условие
-работает всегда, и не требует
-никаких ``eps`` (да еще и работает быстрее, чем предыдущий вариант). Его
-написать не сложнее, чем вариант с делением, поэтому всегда следует так
-и писать. Всегда, когда в решении вы переходите от целых к вещественным
-числам, задумайтесь на секунду: а нельзя ли обойтись без вещественных
-чисел? Если да, то постарайтесь так и поступить — и никаких проблем с
-точностью у вас не возникнет.
+(The Rule one will be discussed a bit later :) )
 
-В частности, в будущем вы заметите, что во многих задачах, которые,
-казалось бы, подразумевают вещественные входные данные (например, задачи
-на геометрию), входные данные тем не менее обычно целочисленны. Это
-сделано именно для того, чтобы можно было написать решение полностью в
-целых числах, и не иметь проблем с погрешностью. (Не всегда такое
-решение возможно, и уж тем более не всегда оно простое, но тем не
-менее.) Поэтому если вы можете написать такое решение, лучше написать
-именно его.
+Choosing ``eps``
+~~~~~~~~~~~~~~~~
 
-Дополнительный материал. «Грубые» задачи: когда ``eps`` не нужно
-----------------------------------------------------------------
+Choosing ``eps`` is quite a non-trivial problem, and it even might not
+have a correct solution at all. We need to choose an ``eps`` that meets
+the two following criteria: if two numbers should be equal (but differ
+due to errors), then their difference must be much less than ``eps``,
+and if they are not equal, then it must be much more than ``eps``.
+It's clear that in general this problem has no solution:
+just in one same program there may be two numbers that
+should be equal, but differ, for example, by 0.1 due to error, and
+two numbers that are really different, but differ only by 0.01.
 
-Рассмотрим следующие код (``x``, ``y``, ``max`` -- вещественные числа):
+But it is usually considered that in "adequate" tasks such an ``eps``
+exists, i.e. the numbers that should be equal do not differ very
+much, and those that should differ are fairly more different.
+So ``eps`` should be chosen somewhere in the middle.
+(In particular, as mentioned above, that's why it doesn't happen 
+that exactly ``x == y - eps``.) (In advanced tasks,
+more complex techniques may be needed, but we won't discuss them now.)
 
-::                                   
+In some simplest tasks such an ``eps`` can be calculated precisely.
+For example, let the problem be like: "Three numbers :math:`a`, :math:`b` and :math:`c`
+are given, each is no more than 1000, and each has no more than 3 digits after
+the decimal point. Check if it is true that :math:`a + b = c`." From the discussed above
+it's clear that the stupid solution via ``if a + b == c`` won't work:
+you'll definitely come across a situation where it should be :math:`a + b = c`,
+but due to errors you get :math:`a + b \neq c`. Therefore, it is necessary to perform 
+the check in this way: ``if abs(a + b - c) < eps``. But what should ``eps`` be like?
+
+On the one hand, let's suppose it's :math:`a + b = c` indeed. What could the difference :math:`a+b-c`
+be due to the errors? We know that :math:`a`, :math:`b` and :math:`c` does not exceed 1000.
+We use the ``float`` data type (which is actually ``double``),
+which stores 15-16 digits, so the errors will be approximately in
+the 15th-16th significant digit. For the maximum possible values of our numbers
+(i.e. for 1000), the errors will be around ``1e-12`` or less,
+i.e. it can be fairly considered that if :math:`a + b = c`,
+then in the program :math:`|a + b - c|` will be around ``1e-12`` or less.
+
+On the other hand, let it be non-equal: :math:`a+b \neq c`. What then could the difference
+:math:`|a+b-c|` be? As given in the task, all numbers have no more than three digits
+after the decimal point, so it's clear that this difference will be equal to 0.001 or more.
+
+As a result, we see that if the numbers should be equal,
+then they differ by no more than ``1e-12``, and
+if they should be different, then differ by at least ``1e-3``.
+Therefore, we can take, for example ``eps = 1e-5``.
+So on the one hand, if in fact :math:`a + b = c`, then in the program
+:math:`|a + b - c|` will definitely be much less than ``eps``,
+and on the other hand, if in fact :math:`a + b \neq c`, then
+:math:`|a + b - c|` will be definitely much more than ``eps``.
+So, in this example, we are able to just calculate the appropriate ``eps``.
+
+(And in general, of course, there are many options —
+any number that is significantly less than 1e-3
+and significantly more than 1e-12 would be suitable.
+This is the "good" situation, where the options "equal" and "not equal"
+differ strongly. And if they weren't so, then the whole ``eps`` trick
+wouldn't work. This is what I mentioned a little above.).
+
+But there are problems where it is not so easy to calculate the appropriate ``eps``.
+In fact, these are the most of the problems — as soon as your calculations
+become more sophisticated than just adding two numbers, it becomes difficult
+to keep track of the errors. You can, of course, use some complex techniques,
+but it is a common practice to just take ``eps`` somewhere in range ``1e-6``..\ ``1e-10``.
+
+But in the end you can't be sure that you have chosen the right ``eps``.
+If your program doesn't work, it may be because you have an error in the program,
+or simply because you've chosen an inappropriate ``eps``. It happens
+that it is enough to change the ``eps`` and the program will pass all the tests.
+Of course, this is not really good, but there's nothing to do.
+
+In particular, this is why on the contests tasks that indeed require calculations
+with real numbers are quite unpopular and appear rarely — no one,
+even the jury itself, can be sure that their ``eps`` is chosen correctly.
+But sometimes you may still come across such tasks.
+
+And therefore we get
+
+.. important::
+
+   **Rule one of operating with floating-point numbers: don't use floating-point numbers**.
+   That is, if it's possible and not very difficult to solve the problem without using
+   flotaing-point numbers, it's better to solve it that way and not care about all those errors and ``eps``. 
+
+A natural example: suppose you have four *integer* (int) positive numbers
+in your program: :math:`a`, :math:`b`, :math:`c` and :math:`d`.
+And you need to compare two fractions: :math:`a/b` and :math:`c/d`.
+You could write ``if a/b > c/d``, but this is not good:
+as a result of division, real numbers are obtained, and you compare two
+real numbers and bear with all the consequences.
+(In this specific case, perhaps nothing bad will happen,
+but in slightly more complex cases it already may happen.
+And even in this case it may happen, I didn't check.)
+That is, it may, for example, be actually a true equality :math:`a/b = c/d`,
+but due to roundoff errors in the program it will result in :math:`a/b > c/d`,
+s ``if`` will be executed. You can write it with ``eps`` and think how to choose it...
+but there's a solution which is way easier. You can just understand that,
+for positive numbers (as given), this condition is equivalent
+to the condition ``if a * d > c * b``. Here, all calculations are with integers,
+so this condition always works properly and does not require any ``eps``
+(and even works faster than the previous version). It's just as easy to write
+as the one with division, so you should always write this way.
+Whenever you have an intention to move from integers to real (in fact, floating-point)
+numbers in a solution, think for a second: is it possible to do without real numbers?
+If yes, then try to do so — and you won't run into any issues with precision and roundoff.
+
+In particular, in the future you will notice that in many problems that
+seem to imply real input data (for example, geometry problems),
+the input data is nevertheless usually integer.
+This is done exactly so that you can write the solution entirely
+in integers, and escape all the roundoff error issues.
+(There's no guarantee that such a solution exists,
+let alone that it's simple, but nevertheless.) Therefore,
+if you can think out and write such a solution, it is better to write it.
+
+Additional topic. "Rough" problems: when you don't need ``eps``
+---------------------------------------------------------------
+
+Let's look at this code (where ``x``, ``y`` and ``max`` are floating-point numbers)::
                                      
    if x > y:                        
       max = x                      
    else:                            
       max = y                      
 
-Здесь мы сравниваем два вещественных числа, чтобы найти максимум из них.
-Казалось бы, в соответствии со сказанным выше, в сравнении нужен
-``eps``... но нет! Ведь если два числа на самом деле равны, то нам *все
-равно*, в какую из веток ``if`` мы попадем — обе ветки будут верными!
-Поэтому ``eps`` тут не нужен.
+Here we compare two real numbers to find the maximum.
+It may seem, according to discussed above, that you need
+``eps`` in the condition... but actually you don't!
+Because if two numbers are equal indeed, then we
+*don't care* which of the ``if`` branches we get into —
+in both branches the result will be correct!
+Therefore, ``eps`` is not needed here.
 
-Так иногда бывает — когда вам все равно, в какую ветку if'а вы попадете,
-если два сравниваемых числа на самом деле равны между собой. В таком
-случае ``eps`` использовать не надо. Но каждый раз тщательно думайте: а
-правда ли все равно? Всегда лучше перестраховаться и написать ``eps``
-(выше с ``eps`` тоже все работало бы), за исключением совсем уж простых
-случаев типа приведенного выше вычисления максимума.
+This happens sometimes that you don't care which branch of ``if`` you get into
+when two comared numbers are actually equal to each other. In this
+case, you souldn't use ``eps``. But think carefully each time:
+does it really matter? It is always better to be safe and write ``eps``
+(above, everything would also work with ``eps``), except for very simple
+cases like the calculation of the maximum above.
 
-Еще пример: считаем сумму положительных элементов массива
+Another example: calculating the sum of all positive elements of the array::
 
-::                                   
-                                     
-   # x -- массив вещественых чисел  
-   s = 0                            
-   for i in range(len(x)):          
-      if x[i] > 0:                 
-         s += x[i]                
-                                     
-                                     
-Здесь, опять-таки, если должно быть :math:`x_i=0`, то не важно, добавим мы
-его в сумму или нет: сумма от добавления нуля не изменится. Поэтому
-``eps`` писать не надо (но ничего страшного не будет, если и написать).
+   # x is an array of floats
+   s = 0
+   for i in range(len(x)):
+      if x[i] > 0:
+         s += x[i]
 
-Еще пример, где уже ``eps`` необходим: определим, *какое* из двух чисел
-больше:
 
-::
+Here, again, if :math:`x_i == 0`, then it doesn't matter whether we add
+it to the sum or not: the sum won't cahnge from adding zero. Therefore
+you don't need to write ``eps`` (but it won't be a big deal if you do).
+
+Another example where ``eps`` is already necessary:
+let's determine *which* of the two numbers is greater::
 
    ...                              
    if x > y + eps:                  
@@ -556,105 +555,111 @@ float(input()), map(float, ...) и print. Также
    else:                            
       ans:=0                      
 
-Вообще, тут полезно следующее понятие. Назовем задачу (или фрагмент
-кода) *грубым*, если ответ на задачу (или результат работы этого
-фрагмента) меняется не очень сильно (не скачком) при небольшом изменении
-входных данных, и *негрубым* в противоположном случае. (Понятие грубости
-пришло из физики.)
+In general, the following concept is useful here. Let's call a problem
+(or a code fragment) *rough* if the answer to that problem
+(or the result of execution of this fragment) does not change significantly
+(abruplty) upon a small change in the input data, and *not rough* in the opposite case.
+(The concept of roughness initially came from physics.)
 
-Тогда в задаче (фрагменте кода) ``eps`` нужен, если задача является
-негрубой: тогда существуют такие входные данные, которые вам важно
-отличить от очень близких им. Например, если надо определить, какое из
-двух чисел больше, то при входных данных «0.3 0.3» надо ответить «они
-равны», но при очень небольшом изменении входных данных, например, на
-«0.300001 0.3» ответ резко меняется: надо отвечать «первое больше».
+Then, ``eps`` is needed in the task (code fragment) if this task *is not rough*.
+Then there is such input data that you have to distinguish from very similar to it. 
+For example, if you need to determine which of the two numbers is greater,
+then on the input data "0.3 0.3" the answer is "they are equal".
+But let's make a very small change in the input data, for example, "0.300001 0.3",
+and the result changes dramatically: now the answer is "the first is greater".
 
-Если же задача (или фрагмент кода) является грубым, то, скорее всего, в
-нем можно обойтись без ``eps``: если вы чуть-чуть ошибетесь при
-вычислениях, ответ тоже изменится не очень сильно. Например, если вы
-вычисляете максимум из двух чисел, то на входных данных «0.3 0.3» ответ
-0.3, а на входных данных «0.300001 0.3» ответ 0.300001, т.е. изменился
-не очень сильно.
+If the task (or code fragment) *is rough*, then highly likely you can do
+without ``eps``: if you obtain a little error in the calculations,
+the answer will not change very much. For example, if you need to calculate 
+a maximum of two numbers, then on the input data "0.3 0.3" the answer is 0.3, 
+and on the input data "0.300001 0.3" the answer is 0.300001,
+i.e. the answer has not changed very much.
 
-Но, конечно, все приведенное выше рассуждение про грубые задачи — очень
-примерно, и в каждой задаче надо отдельно думать.
+But, of course, all this discussion on rough tasks is quite abstract,
+and you should think separately of applying it to each specific task.
 
-Примеры решения задач
----------------------
+Sample problems and solutions
+-----------------------------
 
-Приведу несколько примеров задач, аналогичных тем, которые встречаются на олимпиадах
-и в моем курсе.
+Here are a few sample problems similar to ones you may come across on contests and in my course.
 
 .. task::
 
-    Маша наблюдает из дома за грозой. Она увидела молнию, а через :math:`T` секунд услышала гром от молнии.
-    Она знает, что в той стороне, где была молния, есть одинокое дерево, и боится, не попала ли молния в это дерево.
-    Расстояние от Машиного дома до дерева равно :math:`L` метров, скорость звука равна :math:`V` метров в секунду, скорость света считаем бесконечной.
-    Определите, могла ли молния попасть в дерево.
+   Masha is staying at home and watching the thunderstorm outside. She saw lightning strike,
+   and :math:`T` seconds later she heard thunder from that strike. She knows that there is a single tree
+   on the side where the lightning hit, and she is afraid that lightning had hit this tree.
+   The distance from Masha's home to the tree is :math:`L` meters, the speed of sound is :math:`V` meters per second,
+   the speed of light is considered infinite. Determine if lightning could hit the tree.
 
-    **Входные данные**: На одной строке вводятся три вещественных числа — :math:`T`, :math:`L` и :math:`V`.
+    **Input**: Three real numbers in one line: :math:`T`, :math:`L` and :math:`V`.
 
-    **Входные данные**: Выведите ``yes``, если молния могла попасть в дерево, и ``no`` в противном случае.
+    **Output**: Print ``yes``, if the lightning could hit the tree, and ``no`` otherwise.
 
-    **Пример**:
+    **Example**:
 
-    Входные данные::
+    Input::
 
         2.5 750 300
 
-    Выходные данные::
+    Output::
 
         yes
     |
     |
     |
 
-Несложно понять, что расстояние от Машиного дома до молнии равно :math:`V\cdot T`. Осталось проверить, равно ли это :math:`L`.
-Можно было бы написать ``if v * t == l``, но, поскольку все числа вещественные, так просто не заработает
-— из-за погрешностей результат умножания может оказаться не равен ``l``, даже если на самом деле он должен быть равен.
-(Не говоря уж о том, что в реальной жизни значения :math:`V`, :math:`L` и :math:`T` известны не совсем точно,
-и поэтому :math:`V\cdot T` может оказаться не равно :math:`L` банально из-за погрешностей измерения.)
-Поэтому надо проверять, что ``v*t`` *примерно* равно ``l``, т.е. что разница ``abs(l - v * t)`` не слишком велика.
-Выберем какое-нибудь ``eps`` и будем сравнивать с ним.
+It is easy to understand that the distance between Masha's home and the strike location 
+is :math:`V\cdot T`. So it's needed to check whether it is equal to :math:`L`.
+The natural idea is to write ``if v * t == l``, but since all numbers are real,
+it will not work just like this. Due to errors, the multiplication result may not
+be equal to `l`, even if in fact it should be equal. (Not to mention the fact that
+in real life the values of :math:`V`, :math:`L` and :math:`T` are not precise,
+and therefore :math:`V\cdot T` may not be equal to :math:`L` just due to measurement errors.)
+Therefore, it is necessary to check that ``v*t`` is *approximately* equal to ``l``,
+i.e. that the difference ``abs(l - v *t)`` isn't too big. Let's choose some ``eps``
+and compare the calculated result with it.
 
-Итоговый код получается такой::
+So, the code will look like this::
 
-   t, v, l = map(float, input().split())
-   eps = 1e-6
-   if abs(l - v * t) < eps:
-      print("yes")
-   else:
-      print("no")
+    t, v, l = map(float, input().split())
+    eps = 1e-6
+    if abs(l - v * t) < eps:
+        print("yes")
+    else:
+        print("no")
 
-Выбор ``eps`` тут в существенной мере произвольный, подробнее про выбор ``eps`` описано выше в основной части теории.
+The chosen ``eps`` here is rather arbitrary. See more details
+on choosing ``eps`` above in the main part of the topic.
 
 .. task::
+    Vasya drove :math:`L` kilometers in :math:`T` hours. On the road he was driving on,
+    speed limit is :math:`V` kilometers per hour: you can drive at any speed not exceeding :math:`V`.
+    Determine if Vasya violated the limit.
 
-    Вася проехал :math:`L` километров за :math:`T` часов. На той дороге, по которой он ехал,
-    ограничение скорости :math:`V` километров в час: можно ехать с любой скоростью, не превышающей :math:`V`.
-    Определите, нарушил ли Вася правила.
+    **Input**: Three real numbers in one line: :math:`T`, :math:`L` and :math:`V`.
 
-    **Входные данные**: На одной строке вводятся три вещественных числа — :math:`T`, :math:`L` и :math:`V`.
+    **Outout**: Print ``yes`` if Vasya violated the speed limit, and ``no`` otherwise.
 
-    **Входные данные**: Выведите ``yes``, если Вася нарушил правила, и ``no`` в противном случае.
+    **Example**:
 
-    **Пример**:
-
-    Входные данные::
+    Input::
 
         2.5 750 300
 
-    Выходные данные::
+    Output::
 
         no
     |
     |
     |
 
-Скорость Васи равна :math:`L/T`. Если она строго больше чем :math:`V`, то Вася нарушил правила, иначе нет.
-Но надо помнить, что если :math:`L/T` на самом деле точно равно :math:`V` (как в примере), то из-за погрешностей
-может получиться :math:`L/T` чуть больше :math:`V`. Поэтому написать ``if l / t > v`` нельзя, это может выдать ``yes``,
-если Вася ехал со скоростью ровно ``v``. Надо добавить небольшой запас ``eps``::
+Vasya's speed is equal to :math:`L/T`. If it is strictly greater than :math:`V`,
+then Vasya violated the limit, otherwise he didn't. But we must remember
+that if :math:`L/T` is actually precisely equal to :math:`V`, then due to errors
+it may turn out that :math:`L/T` is slightly greater than :math:`V`.
+Therefore, instruction ``if l / t > v`` is faulty, as it can give the result ``yes``
+if Vasya was driving at the speed precisely equal to ``v``.
+We need to add a small ``eps`` to take this into account::
 
    t, v, l = map(float, input().split())
    eps = 1e-6
@@ -663,8 +668,11 @@ float(input()), map(float, ...) и print. Также
    else:
       print("no")
 
-Обратите внимание, что по смыслу нам было нужно *строгое* сравнение :math:`L/T>V`, и для учета погрешностей пришлось его переписать как
-``l / t > v + eps``.
-Если бы нам нужно было бы *нестрогое* сравнение :math:`L/T\geqslant V`, то для учета погрешностей пришлось бы добавить запас с другой стороны, 
-и написать ``l / t > v - eps``. При этом в обоих случаях можно было бы писать и ``>=`` (например, ``l / t >= v - eps``), как раз 
-это не имеет никакого значения. Значение имеет знак перед ``eps``, т.е. делаем мы запас в одну или в другую сторону.
+Note that here we used a *strict*  inequality :math:`L/T>V`, and
+to account for errors we had to rewrite it as ``l / t > v + eps``.
+If we'd need a *non-strict* inequality :math:`L/T \geqslant V`,
+then to account for the errors we would have to add a margin on the other side
+and write ``l/t > v - eps``. At the same time, in both cases
+it's possible to write ``>=`` (for example, ``l / t >= v - eps``),
+as this doesn't matter (as discussed above). Instead, the sign
+before ``eps`` matters, i.e. we make a margin on one side or the other.

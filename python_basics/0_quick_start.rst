@@ -1,756 +1,728 @@
 .. highlight:: python
 
-Начало работы в Python 3 и Wing IDE 101
-=======================================
+Getting started in Python 3 and Wing IDE 101
+============================================
 
-О версиях Python
-----------------
+About Python versions
+---------------------
 
-Сейчас существуют две основных ветки (версии) развития языка Python
-(питон): Python 2 и Python 3. Версия 2 официально считается устаревшей 
-(поддержка версии 2 заканчивается в 2020 году), версия 3
-— более новой и современной. Мы будем изучать именно версию 3. Версия 2
-существенно отличается от версии 3, мы не будем обсуждать эти отличия.
+Currently there are two main branches (versions) of Python language: Python 2 and Python 3.
+Version 2 is officially considered deprecated (its support ends in 2020), version 3 is
+newer and more modern. We will study exactly the version 3. Version 2 is significantly
+different from version 3, and we will not discuss these differences here.
 
-В пределах как версии 2, так и версии 3 есть «подверсии», например,
-последняя версия из третьей ветки сейчас (2020 г.) — версия 3.8.2 (не считая тех
-версий, которые находятся еще в разработке). В принципе, для наших занятий можно
-использовать более-менее любую версию питона из третьей ветки, лучше как
-минимум 3.3, но если нет особенных причин, то устанавливайте последнюю
-доступную вам версию.
+There are "sub-versions" within both version 2 and version 3. For example, the latest
+version in the third branch now (2020) is 3.8.2 (besides those ones that are still
+in development). Basically, for our lessons you can use any version of Python
+from the third branch, preferably at least 3.3, but if there are no special reasons,
+install the latest available version.
 
-Установка Python
-----------------
+Installing Python
+-----------------
 
-Python — это свободное кросс-платформенное программное обеспечение,
-поэтому его можно легко скачать с официального сайта, можно свободно
-распространять, и можно установить на все современные операционные
-системы.
+Python is a free cross-platform software, so it can be easily downloaded from
+the official website, can be freely distributed, and can be installed on all
+modern operating systems.
 
-Чтобы установить Python под Windows, скачайте программу установки со
-странички курса или с официального сайта (http://python.org, через
-пункт Downloads; убедитесь, что вы скачиваете питон третьей версии для
-Windows). Установите Python с помощью этой программы, ничего сложного в
-установщике нет. Полезно установить питон куда-нибудь в корень диска,
-типа в ``C:\Python3``, а не в тот путь, который предлагается
-установщиком по умолчанию. Для этого при установке надо выбрать пункт
-типа Customize install и на одном из следующих экранов указать
-конкретный путь.
+To install Python for Windows, download the installer from the course page or
+from the official website (http://python.org, choose Downloads section;
+make sure you are downloading exactly Python 3 for Windows). Install Python
+using this program, there is nothing complicated in the installer. It's useful
+to install Python somewhere in the root of the disk, such as ``C:\Python3``,
+not in the folder suggested by default. To do this, select something like
+"Customize install" and specify the necessary path on one of the following steps.
 
-Если вы работаете в другой операционной системе, то разберитесь, как
-установить питон, самостоятельно. В Linux, например, питон есть в
-репозиториях всех ведущих дистрибутивов, пакет обычно называется
-``python3`` (а просто ``python`` — это питон второй версии).
+If you are working on another operating system, figure out how to install Python yourself. 
+In Linux, for example, Python is included in the repositories of all leading distributions,
+the package is usually called ``python3`` (and just ``python`` is the python
+of the second version).
 
-Установка Wing IDE
-------------------
+Installing Wing IDE
+-------------------
 
-Сам по себе питон — это только интерпретатор кода. Он запускает ваши программы,
-но не содержит удобного редактора. Поэтому для написания программ
-я советую вам использовать среду разработки (по сути, продвинутый редактор)
-Wing IDE.
+Python itself is only a code interpreter. It runs your programs, but doesn't contain a
+convenient editor. Therefore, to write programs I advise you to use a integrated
+development environment (in fact, an advanced editor) Wing IDE.
 
-Wing IDE — это, к сожалению, не свободное ПО, но у него существует
-официально бесплатная версия для образовательных целей, называется Wing
-IDE 101. Она доступна как для Windows, так и для Linux и macOS.
+Unfortunately, Wing IDE is not a free software, but it has an official free version
+for educational purposes, called Wing IDE 101. It's available for Windows, Linux and macOS.
 
-Все программы для установки можно скачать с официального сайта Wing IDE
-(http://wingware.com/, через пункт Download — Wing IDE 101);
-установщик под Windows также можно скачать со странички курса.
-Обратите внимание, что вам нужна именно версия 101, а не какая-нибудь другая!
-Установите Wing IDE с помощью этого установщика, ничего сложного в нем
-нет. 
+All installation programs can be downloaded from the official Wing IDE website
+(http://wingware.com /, via Download — Wing IDE 101); the installer for Windows
+can also be downloaded from the course page. Please note that you need exactly
+version 101, not any other! Install Wing IDE using this installer, there is nothing
+complicated in it.
 
-Wing IDE — это просто *среда разработки* (IDE) для Python, т.е. удобный
-редактор программ, позволяющий легко запускать программы с помощью
-питона (именно поэтому надо отдельно устанавливать сам Python — Wing IDE
-его не включает в себя). В принципе, вы можете использовать и
-какую-нибудь другую среду разработки, но тогда разбирайтесь с ней сами.
-В частности, сам Python включает простенькую среду разработки Python
-IDLE, ее описание вы можете встретить во многих книжках по Python, но
-она слишком простая и потому не очень удобная. Так же есть популярная среда
-PyCharm, но на мой вкус она слишком сложная.
+Wing IDE is just a *development environment* (IDE) for Python, i.e. a convenient program 
+editor that allows you to easily run programs using Python (that's why you need
+to install Python itself separately — Wing IDE doesn't include it). Basically,
+you can use some other IDE, but then deal with it by yourself. In particular, Python itself
+includes a simple development environment called Python IDLE. You can find its description
+in many Python books, but it's too simple and therefore not very convenient.
+There is also a popular IDE PyCharm, but for my taste, it's too complicated.
 
-Проверка установки
-------------------
+Checking the installation
+-------------------------
 
-Запустите Wing IDE. Появится следующее окошко:
+Launch the Wing IDE. The following window will appear:
 
-.. image:: 0_quick_start/wing_ide_0.png
+.. image:: ../python_basics/0_quick_start/wing_ide_0.png
 
-Во-первых, убедитесь, что в правом нижнем углу, на панели, озаглавленной
-Python Shell, появился текст, похожий на приведенный на рисунке; в
-частности, там должна быть указана версия питона, которую вы
-устанавливали. Убедитесь, что это версия 3 (на рисунке это версия
-3.5.2). Если это не так, то попробуйте через меню Edit — Configure
-Python указать путь к питону вручную (см. рисунок ниже) — в
-пункте Python Executable надо указать что-нибудь типа
-``C:\Python3\python.exe``, если вы установили питон в каталог
-``C:\Python3``, возможно, также в список Python Path надо добавить
-``C:\Python3``. Возможно, вам придется поэкспериментировать, чтобы найти
-правильные настройки. Если у вас на компьютере установлены обе версии
-питона (и 2, и 3), то, возможно, Wing IDE по умолчанию «подцепит» версию
-2, тогда тоже вручную укажите, что вам надо работать с версией 3.
+First, make sure that in the lower right corner, on the panel entitled Python Shell,
+a text similar to the one shown in the figure appeared; in particular, the Python version
+that you installed should be shown there. Make sure it's version 3 (in the picture
+it's version 3.5.2). If this is not, then try using the *Edit — Configure Python* 
+menu option to specify the path to Python manually (see the picture below) — in
+"Python Executable" field, you need to type something like ``C:\Python3\python.exe``
+if you have installed Python in the directory ``C:\Python3``. Perhaps you also should 
+add ``C:\Python3`` to the *Python Path* list. You may have to explore it to find
+the right settings. If you have both versions of Python installed on your computer 
+(both 2 and 3), perhaps the Wing IDE will "pick up" Python 2 by default. 
+In this case, also manually specify that you need to work with version 3.
 
-.. image:: 0_quick_start/wing_ide_config.png
+.. image:: ../python_basics/0_quick_start/wing_ide_config.png
 
-Если у вас не получается, напишите мне [1]_, указав, куда вы установили
-питон, и прислав скриншоты основного окна Wing IDE и диалога Edit —
-Configure Python.
+If you fail, write to me [1]_, pointing where you installed Python and sending screenshots
+of the main Wing IDE window and the *Edit — Configure Python* dialog.
 
-Первая программа
-----------------
+The first program
+-----------------
 
-В основном меню Wing IDE выберите пункт File — New. Появится окно для
-редактирования текста программы. В этом окне наберите следующий текст:
+In the main menu of the Wing IDE, select *File — New*. A window for editing
+the text of the program will appear. In this window, type the following text:
 
 ::
 
-    print("Test", 2*2)
+  print("Test", 2*2)
 
-(Здесь ``"`` — это символ кавычек.)
+(Here ``"`` is a quotation mark.)
 
-Должно получиться так:
+It should turn out like this:
 
-.. image:: 0_quick_start/wing_ide_1.png
+.. image:: ../python_basics/0_quick_start/wing_ide_1.png
 
 
-Убедитесь, что опечаток нет. Сохраните программу: нажмите Ctrl-S или
-выберите пункт меню File — Save As. Wing IDE предложит выбрать имя файла
-для сохранения, для первой программы можно выбрать любое имя.
+Make sure there are no typos. Save the program: press Ctrl-S or select the menu option
+*File — Save as*. Wing IDE will prompt you to choose a file name to save,
+for the first program you can choose any name.
 
 .. note::
 
-    Обратите внимание, что Wing IDE раскрашивает вашу программу.
-    Это делается для того, чтобы ее было удобнее читать; на самом деле
-    для питона цвет не важен, он сделан только для того, чтобы вам было 
-    удобнее читать. Аналогично, в этом тексте код тоже раскрашен,
-    причем раскраска может быть немного другой (это просто обусловлено 
-    системой, которую я использую для написания текста). Но еще раз:
-    цвета только для удобства чтения, никакой больше нагрузки они не несут,
-    в частности, Wing может раскрашивать не так, как вы видите в этом тексте,
-    это не страшно.
+    Note that the Wing IDE colors your program. This is done in order to make it easier to
+    read. In fact, for Python the color is not important, it is made only for convenient
+    reading. Similarly, in this text the code is also colored, moreover, the coloring may be
+    slightly different (this is simply due to the system I use to write the text).
+    But once again: the colors are for readability only, they don't carry any more sense.
+    In particular, Wing IDE may color it differently than you see in this text — it's okay,
+    there's nothing wrong.
 
+After that, run the program by clicking on the button with a green
+triangle arrow on the toolbar above the program text. The result of the program execution
+will appear in the lower right part of the screen, on the "Python Shell" panel.
+Namely, there you can see one of the two possible results shown in two figures below.
 
-После этого запустите программу, нажав на кнопку с зеленым
-треугольничком—стрелочкой на панели инструментов над текстом программы.
-Результат выполнения программы появляется в правой нижней части экрана,
-в панели «Python Shell» А именно, там вы можете увидеть один из двух
-возможных результатов, показанных на двух рисунках ниже. 
+If there is an inscription "Test 4":
 
-Если там появилась надпись «Test 4»:
+.. image:: ../python_basics/0_quick_start/wing_ide_2.png
 
-.. image:: 0_quick_start/wing_ide_2.png
+then everything is fine, the program has been successfully executed.
 
-значит, все хорошо, программа успешно выполнилась. 
+If there is a long text with the words "Traceback" (at the beginning) and
+"Error" (at the end):
 
-Если же там появился длинный текст со словами «Traceback» (в начале) и
-«Error» (в конце):
+.. image:: ../python_basics/0_quick_start/wing_ide_3.png
 
-.. image:: 0_quick_start/wing_ide_3.png
+then there are errors in your program. Read more about the errors below
+(section :ref:`sec:ce`), and in the meantime, if you see an error,
+just carefully check if you made a mistake somewhere when typing the program.
 
-значит, в вашей программе есть ошибки. Подробнее про
-ошибки ниже (раздел :ref:`sec:ce`), а пока, если вы увидели ошибку,
-то просто внимательно проверьте, не ошиблись ли вы где-нибудь в наборе
-программы.
+Make sure that your program works successfully (by carefully checking if you've made
+any mistakes), and see what exactly is written in the "Python Shell" window. There, first,
+you can see the Python header(including the version number), then the line
+``>>> [evaluate tmp.py]`` (instead of ``tmp.py`` there will be the name of the file
+where you saved the program). This line was printed at the moment when Wing IDE
+started running your program. And finally, there is the line ``Test 4``,
+which was printed by the program.
+Below we'll discuss why it printed exactly this.
 
-Добейтесь того, чтобы ваша программа отработала успешно (внимательно
-проверив, не допустили ли вы ошибок), и посмотрите, что же именно
-пишется в этом окошке «Python Shell». Там, во-первых, виден заголовок
-питона (включающий номер версии), дальше строка ``>>> [evaluate tmp.py]``
-(вместо ``tmp.py`` здесь будет имя файла, куда вы сохранили программу).
-Эта строка была выведена в тот момент, когда Wing IDE начал запускать
-вашу программу. И, наконец, есть строка ``Test 4``, которую и
-напечатала наша программа. Почему она напечатала именно это, обсудим
-чуть ниже.
+Restart the program (green arrow) a few more times and look at the results.
+You will see that the Wing IDE every time prints the string ``evaluate...`` 
+before the program starts, then the program prints its own line. The output
+of the program is mixed with the output of the Wing IDE — it's okay.
 
-Позапускайте программу (зеленой стрелочкой) ещё несколько раз и
-посмотрите на результаты. Вы увидите что, Wing IDE каждый раз печатает
-строку ``evaluate...`` перед запуском программы, потом программа
-печатает свою строку. Вывод программы перемешивается с выводом Wing IDE
-— ничего страшного, это нормально.
-
-Можно также запускать программу нажатием на кнопку с картинкой типа
-красного жучка. Это немного другой режим запуска, более удобный для
-поиска ошибок. Попробуйте позапускать и так, и так, посмотрите на
-отличия (основное отличие пока — при запуске через «красного жучка»
-вывод предыдущих программ затирается).
+You can also run the program by clicking on the button with a picture looking
+like a red bug. This is a slightly different execution mode which is 
+more convenient for seeking errors. Try to start both this and that way 
+and look at the differences (the main difference so far is that when you start
+via the "red bug", the output of previous programs is overwritten).
 
 .. _sec:ce:
 
-Ошибки в программе
-------------------
+Errors in the program
+----------------------
 
-В вашей программе могут быть серьёзные ошибки —
-такие, что питон «не понимает», что вы от него хотите (а могут быть и не
-столь серьёзные — программа отработает как бы нормально, но выдаст
-неверный результат). В случае таких серьезных ошибок питон выдаст
-сообщение, похожее на сообщение, показанное на рисунке выше. Оно обычно
-начинается со слова Traceback, а ближе к концу в нем есть слово Error.
+Your program may contain serious errors — so that Python "does not understand" 
+what you want from it (or maybe not so serious — the program works seemingly fine,
+but the result is wrong). In case of such serious errors, Python will show 
+a message similar to the one in the figure above. It usually starts with the word
+"Traceback", and towards the end there's the word "Error".
 
-С ошибками удобнее разбираться, запуская программу в режиме «красного
-жучка». В таком случае Wing IDE подсвечивает строку около ошибки
-красным, а подробную информацию пишет в особом окошке справа.
+It's more convenient to deal with errors by running the program in the "red
+bug" mode. In this case, Wing IDE highlights the line near the error
+in red, and writes detailed information in a special window on the right.
 
-Пока для вас важным будет то, какую строку Wing IDE подсветила красным —
-примерно в том месте и ошибка. Важен также текст («сообщение об
-ошибке»), обычно содержащий слово «Error» (в примере на рисунке
-``Syntax Error ...``), там же рядом указан и номер строки с
-ошибкой (``line 1``). Поначалу сообщения об ошибке сложно понимать,
-но со временем вы выучите наиболее часто встречающиеся и будете сразу
-понимать, что не так.
+For now, it will be important which line was highlighted in red by the IDE — the error is 
+approximately there. The text ("error message") is also important, usually containing 
+the word "Error" (in the example in the figure ``Syntax Error ...``), the number of the
+faulty line (``line 1``) is also there. At first, error messages are difficult
+to understand, but over time you will learn the most common ones and 
+immediately get what is wrong.
 
-А пока посмотрите внимательно на строчку с ошибкой (при запуске через жучка
-питон подсвечивает ее красным, при запуске через стрелочку — только пишет номер строки), 
-и на строчки рядом — и попробуйте
-понять, что там не так. В примере на рисунке я забыл вторую цифру 2 (в
-результате чего питону стало непонятно, на что надо умножать). (В
-примере на рисунке я запускал программу через зеленую стрелочку, а не
-через «красного жучка», поэтому там нет подсвеченной красным строки.)
+In the meantime, look carefully at the line with the error (when running through
+a "bug", python highlights it in red, when running through an "arrow", it only writes
+the line number) and at the surrounding lines — and try to understand what's wrong.
+In the example in the figure, I forgot the second "2" number (as a result, 
+it became unclear to the Python what to multiply the first one by).
+(In the example in the figure, I ran the program through the "green arrow", and not
+through the "red bug", so there is no line highlighted in red.)
 
-Имейте в виду, что питон не телепат и не может точно определить, где вы
-допустили ошибку. Он подсвечивает красным ту строку, где текст программы
-впервые разошёлся с правилами языка. Поэтому бывает, что на самом деле
-ваша ошибка чуть выше, чем подсвеченная строка (а иногда — и намного
-выше). Но тем не менее место, которое выделил питон, обычно бывает
-полезно при поиске ошибки.
+Keep in mind that Python is not a telepath and cannot pinpoint exactly where you
+made a mistake. It highlights the line where the program text first diverged 
+from the language rules. Therefore, it happens that in fact your error is 
+slightly above the highlighted line (and sometimes it is far above).
+But nevertheless, the place highlighted by Python is usually useful
+when you're searching for the error.
 
-Попробуйте в своей программе поделать разные ошибки и посмотрите, как на
-них отреагирует питон.
+Try to make different mistakes in your program and see how Python reacts to them.
 
-Как работает эта программа
---------------------------
-
-Давайте разберём, как эта программа работает. Напомню её текст:
+How this program works
+----------------------
+Let's take a look at how this program works. Let me remind you of its text:
 
 ::
 
-    print("Test", 2*2)
+  print("Test", 2*2)
 
-Вообще, любая программа — это, в первую очередь, последовательность
-команд, которые программист даёт компьютеру, а компьютер будет
-последовательно их выполнять.
+In general, any program is, first of all, a sequence of instructions that the programmer
+gives to the computer, and the computer consistently (one by one) executes them.
 
-В нашей программе одна команда — ``print("Test", 2*2)``. Команда
-``print`` обозначает «вывести на экран» (английское слово «print»
-обозначает «печатать»). В скобках после слова ``print`` указываются, как
-говорят, *аргументы* команды. Они разделяются запятыми, в данном случае
-у команды два аргумента: первый — ``"Test"``, и второй — ``2*2``.
+In our program there's an only instruction: ``print("Test", 2*2)``. The instruction
+``print`` means "display" (show on the screen). In brackets after the word ``print``,
+the *arguments* of the instruction are set. They are separated by commas. Here, 
+the instruction has two arguments: the first is ``"Test"``, and the second is ``2*2``.
 
-Если аргументом команды ``print`` является некоторая строка, заключённая
-в кавычки (символы ``"``), то команда ``print`` выводит эту строку на
-экран как есть (без кавычек). Поэтому первым делом наша команда выводит
-на экран текст ``Test``.
+If the argument of the ``print`` instruction is some string enclosed
+in quotes (``"`` characters), then ``print`` outputs this string on the
+screen as is (without quotes). Therefore, the first thing our instruction displays
+on the screen is the text ``Test``.
 
-Вторым аргументом команды ``print`` в нашем примере является
-арифметическое выражение ``2*2``. Если аргументом команды (любой
-команды, не обязательно именно ``print``, просто других мы пока не
-знаем) является арифметические выражение, то компьютер сначала вычислит
-его, а потом передаст команде. Поэтому в данном случае сначала компьютер
-вычислит :math:`2\cdot 2`, получит 4, а потом передаст результат команде
-``print``, которая выведет его на экран.
+The second argument of the ``print`` instruction in our example is
+the arithmetic expression ``2*2``. If the argument of an instruction (any of them, 
+not necessarily `print`, we just don't know the others yet) is an arithmetic expression,
+the computer will first calculate it, and then will pass it over. Therefore, in this case,
+the computer will first calculate :math:`2\cdot 2`, get :math:`4`, and then pass the result to the 
+instruction ``print``, which will display it on the screen.
 
-Команда ``print`` разделяет выводимые элементы пробелами, поэтому между
-``Test`` и ``4`` выведен пробел.
+``print`` separates the output elements with spaces, so between
+``Test`` and ``4`` there's one space.
 
-В итоге получается, что наша программа выводит ``Test 4``.
+As a result, our program outputs ``Test 4``.
 
-Использование питона как калькулятора
--------------------------------------
+Using Python as a calculator
+----------------------------
 
-Таким образом можно использовать питон как калькулятор. Например, если
-надо посчитать значение выражения :math:`7+3\cdot(8-2)`, то можно
-написать команду ``print(7+3*(8-2))``, после чего запустить программу —
-и на экран будет выведен результат. Обратите внимание, что скобки
-учтутся корректно и порядок действий будет правильный. Две скобки в
-конце команды — это одна является частью выражения, а вторая заканчивает
-список аргументов команды ``print``.
+So, you can use Python as a calculator. For example, if you need to calculate
+the value of the expression :math:`7+3\cdot(8-2)`, you can
+write ``print(7+3*(8-2))`` and run the program — the result will be displayed
+on the screen. Note that the brackets will be taken into account correctly\
+and the order of calculations will be right. There are two brackets at
+the end of the instruction — the first one is a part of the expression,
+and the second ends the list of arguments of ``print`` instruction.
 
-В выражениях можно использовать следующие операторы:
+You can use the following operators in arithmetic expressions:
 
--  ``+`` и ``-`` — сложение и вычитание (в том числе то, что называется
-   *унарный* минус для записи отрицательных чисел: чтобы написать
-   :math:`2\cdot(-4)`, надо написать ``2*(-4)``);
+-   ``+`` and ``-`` — addition and subtraction (including what is called
+    *unary* minus for writing negative numbers: to write
+    :math:`2\cdot(-4)`, you need to type ``2*(-4)``);
 
--  ``*`` — умножение;
+-   ``*`` — multiplication;
 
--  ``/`` — деление («честное», например, :math:`5/2=2.5`);
+-   ``/`` — division ("fair", for example :math:`5/2=2.5`);
 
--  ``//`` (это два символа ``/`` подряд) — неполное частное (см. ниже);
+-   ``//`` (two ``/`` characters in a row) — Euclidean division (see below);
 
-- ``%`` ­— остаток (см. ниже).
+-   ``%`` — remainder (see below).
 
--  Скобки (только круглые) работают для группировки операций, можно
-   использовать вложенные скобки, например, ``2*(3-(4+6))``.
+-   Brackets (round only) are used for grouping operations. You can
+    use nested brackets, for example, ``2*(3-(4+6))``.
 
-Чуть подробнее про деления. Есть три оператора, связанных с делением:
-один оператор для честного деления (``/``), и два оператора для деления с остатком
-(``//`` и ``%``).  Вспомните младшие классы и деление с остатком: 16 разделить
-на 3 будет 5 («неполное частное») и в остатке 1. Вот ``//`` вычисляет
-неполное частное, а ``%`` — остаток. Пишется так: ``16 // 3`` и
-``16 % 3``, как будто ``//`` и ``%`` — это символ операции, а-ля плюс
-или звёздочка. (Пробелы вокруг ``//`` и ``%`` не обязательны, но на
-питоне так принято.) (При работе с отрицательными числами результат
-может показаться вам неожиданным, но это мы обсудим потом.)
+A little more about the division. There are three operators related to division:
+one operator for regular division (``/``), and two operators for Euclidean division
+(division with remainder) (``//`` and ``%``). Remember the primary school and the division
+with remainder: 16 divided by 3 will give the quotient 5 and the remainder 1.
+Here by ``//`` the integer quotient is calculated, and ``%`` gives the remainder. It is written
+like this: ``16 // 3`` and ``16 % 3``, as if ``//`` and ``%`` were the operation symbols,
+like plus or asterisk. (Space around ``//`` and ``%`` are not required, but in Python
+they're traditionally put there.)
+(When operating with negative numbers, the result may seem unexpected to you. 
+We will discuss this later.)
 
-Кроме того, есть так называемые *функции*:
+Furthermore, there are so-called *functions*:
 
--  Запись ``abs(-3)`` обозначает взятие числа по модулю: :math:`|{-}3|`.
-   Обратите внимание: пишется сначала *имя функции* (в данном случае
-   ``abs``), а потом в скобках — от чего взять эту функцию (от чего
-   взять модуль в данном случае). То, что в скобках, аналогично командам
-   называется *аргументом функции*.
+-   The notation ``abs(-3)`` means taking the absolute value of the number: :math:`|{-}3|`.
+    Please note that first *the name of the function* is written (in this case
+    ``abs``), and then in brackets — what to apply this function to (of what number to
+    take the absolute value in this case). What is in brackets is also called the *argument of the function*.
 
--  Аналогично, запись ``sqrt(4)`` обозначает взятие квадратного корня
-   (если не знаете, что это такое, то пока пропустите этот пункт), но,
-   поскольку эта операция бывает нужна несколько реже, то чтобы ее
-   использовать, в начале программы надо написать магическую строку
-   ``from math import *``. Программа получается, например, такая:
+-   Similarly, the notation ``sqrt(4)`` means taking the square root
+    (if you don't know what it is, then skip this point for now), but,
+    since this operation is needed somewhat less often, in order to
+    to use it, at the beginning of the program you need to write a magic string
+    ``from math import *``. The program will look, for example, like this:
 
-   ::
+::
 
-       from math import *
-       print(sqrt(4))
+    from math import *
+    print(sqrt(4))
 
-Все эти операции можно комбинировать. Например, команда
-``print( (20 * 3) + sqrt( 2 + abs(5 - 7) ) )`` выведет на экран значение
-выражения :math:`20\cdot 3 + \sqrt{2+|5-7|}`. Пробелы в команде
-поставлены, чтобы проще было читать; вообще, в питоне пробелы можно
-ставить в любом разумном месте (внутри названий команд и чисел нельзя,
-но около скобок, знаков препинания и прочих символов можно), но
-рекомендуется ставить их как минимум вокруг знаков действий.
+All these operations can be combined. For example, an instruction
+``print( (20 * 3) + sqrt( 2 + abs(5 - 7) ) )`` will output the value
+of the expression :math:`20\cdot 3 + \sqrt{2+|5-7| }`. Plenty of spaces are put
+into the code to make it easier to read; in general, in Python spaces can
+be typed in any reasonable place (you can't put them inside numbers and names 
+of the instructions but near brackets, punctuation marks and other symbols you can) 
+but it is recommended to put them at least around the arithmetic operators.
 
-В одной программе можно вычислять несколько выражений. Например,
-программа
-
+Multiple expressions can be evaluated in one program. For example, the program
 ::
 
     print(2 * 2, 2 + 2)
     print(3 * 3)
 
-вычисляет три выражения. Первая команда ``print`` выводит на экран две
-четвёрки, разделённых пробелом. Вторая команда просто выводит одно число
-9. Оно будет выведено на отдельной строке, т.к. каждая команда ``print``
-выводит одну строку. Обратите еще раз внимание, что аргументы команды
-разделяются запятыми.
+evaluates three expressions. The first ``print`` displays two
+fours separated by a space. The second ``print`` just outputs a single number
+9. It will be output on a separate line, because each ``print`` instruction
+outputs one line. Note again that the instruction arguments are separated by commas.
 
-Можно также, как мы видели раньше, смешивать текст (в кавычках) и выражения:
-
+You can also, as we saw earlier, mix text (in quotes) and arithmetic expressions:
 ::
 
-    print("Дважды два равно", 2 * 2, ".")
+    print("Two by two is", 2 * 2, ".")
 
-Простейший ввод и вывод. Переменные
------------------------------------
+The basic input and output. Variables
+----------------------------------------
 
-Но не очень интересно писать программы, которые всегда выводят одно и то
-же. Хочется, чтобы программа что-нибудь запрашивала у пользователя, и
-работала с учётом того, что пользователь ввёл. Давайте, например,
-напишем программу, которая будет спрашивать у пользователя два числа и
-выводить на экран их сумму.
+It's not really interesting to write programs that always output the
+same thing. We'd rather want the program to request something from the user and
+run taking into account what the user has entered. For example, let's
+write a program that will ask the user for two numbers and
+display their sum on the screen.
 
-Но для этого нам придётся научиться ещё одной важной вещи. Когда
-пользователь вводит два числа, программе надо их как-то запомнить, чтобы
-потом сложить между собой и результат вывести на экран. Для этого у
-компьютера есть память (оперативная память). Программа может
-использовать эту память и положить туда числа, введённые пользователем.
-А потом посмотреть, что там лежит, сложить эти два числа, и вывести на
-экран.
+But for this we need to learn one more important thing. When
+a user enters two numbers, the program needs to remember them somehow, so
+that it can then add them up and display the result on the screen.
+To do this, in the computer there's memory (RAM). The program can use this memory 
+and put the numbers entered by the user there. And then see what lies there,
+add these two numbers, and display the result on the screen.
 
-Во многих языках, чтобы использовать память, надо особо попросить
-компьютер об этом. В питоне другой подход: питон достаточно умен, чтобы
-самому догадаться, что вам нужна память. Давайте напишем следующую
-программу:
-
-::
+In many programming languages, in order to use memory, you need to use a set of
+specific instructions. In Python, the approach is different: Python is smart enough 
+to guess by itself that you need memory. Let's write the following program::
 
     a = input()
-    print("Вы ввели ", a, "!")
+    print("You entered ", a, "!")
 
-Прежде чем мы разберем, что обозначают все эти команды, наберите эту
-программу и попробуйте ее запустить. Сначала запустите «зеленой
-стрелочкой». В окошке Python Shell появится надпись
-``[evaluate ...]``, после чего будет моргать курсор, а наверху
-этого окошка будет надпись «Waiting for keyboard input», что обозначает
-«Ожидаем ввод с клавиатуры». Введите что-нибудь в этом окошке и нажмите
-Enter. Вы тут же увидите, что то, что вы ввели, вывелось еще одной
-строчкой на экран, с дополнительными словами («Вы ввели»), с дополнительными
-пробелами и восклицательным знаком. Именно это и делает программа: она выводит на экран то, что
-вы ей вводите, добавив еще текст.
+Before we discuss what does this code mean, type this the program 
+and try to run it. First, run via the "green arrow". A line ``[evaluate ...]``
+will appear in the Python Shell window. After that the cursor will blink, 
+and at the top of this window there will be an inscription 
+"Waiting for keyboard input". Enter something in this window and press
+Enter. You will immediately see that what you have entered is displayed
+on the screen in another line, with additional words ("You have entered"), additional
+spaces and an exclamation mark. This is exactly what the program does: it displays what
+you enter to it, adding more text.
 
-Если вы запустите программу «красным жучком», то все будет аналогично,
-только текст вам надо будет вводить в пустом окошке «Debug I/O», которое
-появится на месте окошка «Python Shell».
+If you run the program via a "red bug", everything will be the same.
+The only change is that you will need to enter the text in an empty "Debug I/O" window,
+which will appear instead of the "Python Shell" window.
 
-Теперь разберем, как эта программа работает.
+Now let's look at how this program works.
 
-Команда ``input()`` обозначает «подожди, пока пользователь введет
-что-нибудь с клавиатуры, и запомни то, что он ввел». Но просто так
-попросить «запомнить» довольно бессмысленно, нам ведь потом надо будет
-как-то сказать компьютеру, чтобы он вспомнил то, что он запомнил.
-Поэтому мы пишем ``a = input()``. Это обозначает «запомни то, что ввел
-пользователь, в памяти, и дальше это место в памяти мы будем называть
-буквой ``a``\ ». Соответственно, команда ``print(a)`` обозначает
-«посмотри, что лежит в памяти, называемой буквой ``a``, и выведи это на
-экран», а команда ``print("Вы ввели ", a, "!")`` обозначает «выведи сначала
-фразу ``Вы ввели``, потом то, что лежит в ``a``, потом восклицательный знак, 
-и раздели это все пробелами».
+The ``input()`` instruction means "wait until the user enters
+something from the keyboard, and remember what he entered". But just
+asking to "remember" is pretty useless, because after that we will
+have to somehow tell the computer to recall what it remembered.
+So we type ``a = input()``. This means "Remember what the user entered,
+put it in memory, and from now on we will call this place in memory
+the letter ``a``". Accordingly, the instruction ``print(a)`` means
+"look at what's stored in memory in a place that we call the letter ``a`` 
+and display it on the screen". And ``print("You entered ", a, "!")``
+means "print first the phrase ``You entered``, then what lies in ``a``, 
+then an exclamation mark, and divide it all with spaces."
 
-Обратите внимание, что ``a`` написано без кавычек. 
-Если бы мы написали ``print("Вы ввели ", "a", "!")``, то питон бы
-вывел просто букву ``a`` (ну и весь остальной текст), он не понял бы,
-что надо вывести то, что лежит в памяти ``a``.
+Note that ``a`` is written without quotes. If we had typed 
+``print("You entered ", "a", "!")``, Python would just output 
+the letter ``a`` (as well as the rest of the text), it wouldn't understand
+that we need it to output what lies in the memory part named ``a``.
 
-Вот такие «места в памяти» называются *переменные*. Т.е. говорят:
-«переменная ``a``\ ». Говорят: в первой строке мы считали, что ввел
-пользователь с клавиатуры, и записали это в переменную ``a``, а во
-второй строке мы прочитали, что записано в переменной ``a``, и вывели
-это на экран.
+These "places in computer's memory" are called *variables*. We will say:
+"variable ``a``". And also: in the first line, we read what the user 
+entered from the keyboard, and wrote it to the variable ``a``. And in
+the second line we read what was written in the variable ``a``, and put
+it on the screen.
 
-В программе можно заводить несколько переменных. Простейший вариант
-может выглядеть так:
-
-::
+You can create several variables in the program. The simplest sample
+may look like this::
 
     a = input()
     b = input()
     print(b, a)
 
-Эта программа считывает две строки, которые вводит пользователь, и
-выводит их, причем сначала вторую, а потом первую.
+This program reads two lines that the user enters and
+outputs them in reverse oreder: first the second, and then the first.
 
-Но мы хотели написать программу, которая выводит сумму двух чисел.
-Простой подход тут не сработает:
-
-::
+But we wanted a program that outputs the sum of two numbers.
+A simple approach won't work here::
 
     a = input()
     b = input()
     print(a + b)
 
-сделает вовсе не то, что вы могли ожидать: питон пока считает, что в
-``a`` и ``b`` могут лежать какие угодно строки, и не понимает, что вы
-имели в виду числа.
+This code will do absolutely not what you might expect: Python believes yet 
+that in ``a`` and ``b`` any strings can be stored. It doesn't understand you
+meant numbers.
 
-Чтобы объяснить, что вы имеете в виду числа, надо написать так:
-
-::
+To explain that you meant numbers, you need to write it like this::
 
     a = int(input())
     b = int(input())
     print(a + b)
 
-Мы используем новую команду (точнее, функцию) — ``int``. Она обозначает:
-возьми то, что получилось у команды ``input()`` (т.е. ту строку, которую
-вводит пользователь), и преврати это в число. Пока это не надо до конца
-осознавать, просто запомните, что, чтобы считать одно число, надо
-написать ``... = int(input())``, где на место многоточия надо подставить
-имя той переменной, куда надо записать результат.
+We use a new instruction (more exactly, a function) ``int``. It means:
+take the result of the ``input()`` (i.e. the line that
+the user enters), and turn it into an integer number. 
+For now it's not necessary to fully realize this. 
+Just remember that in order to input one number, you need
+to type ``... = int(input())``, where the ellipsis should be replaced
+with the name of the variable the result should be written to.
 
-Запустите эту программу. В окошке ввода наберите какое-нибудь число,
-нажмите Enter, наберите второе число и еще раз нажмите Enter. Вы
-увидете, что программа вывела их сумму.
+Run this program. In the input window, type a number and press Enter.
+Then type the second number and press Enter again. You
+will see that the program printed their sum.
 
-Если вы этой программе попытаетесь ввести два числа на одной строке
-(т.е. введете «2 пробел 3 Enter»), то программа выдаст ошибку. Еще бы:
-вы пропросили строку «\ ``2 3``\ » превратить в число (в одно!) и
-записать в переменную ``a``, но ведь это не есть верная запись одного
-числа.
+If you try to input two numbers in one line (i.e. type "2 Space 3 Enter"), 
+the program will terminate with an error. Indeed:
+you asked it to convert the string "``2 3``" into a number (single number!) and
+write it to the variable ``a``, but this is, of course, not 
+a correct record for a single number.
 
-Чтобы вводить числа через пробел, надо использовать другую конструкцию:
-
-::
+To enter numbers separated by space, you need to use a different construction::
 
     a, b = map(int, input().split())
 
-Это пока магия, ее придется запомнить наизусть. Потом вы поймете, что
-здесь что значит. Обратите внимание, что после слова ``int`` тут нет
-скобок, а вот после ``input`` и ``split`` есть.
+For now this is a kind of magic that you'll have to learn by heart. Later
+you'll understand what it means here. Note that there are no brackets after ``int``, 
+but there are after ``input`` and ``split``.
 
-Так можно вводить сколько угодно чисел; например, чтобы считать четыре
-числа, вводимые в одной строке, надо написать
-
+Using this method, you can enter as many numbers as you want; for example, to input four
+numbers in one line, you need to write
 ::
 
     a, b, c, d = map(int, input().split())
 
-Переменные не обязательно называть ``a`` и ``b``, можно использовать
-более-менее любые строки из английских букв и цифр (есть некоторые исключения,
-но пока это не так важно); например, можно было назвать переменные
-``first`` и ``second``, или ``x1`` и ``x2`` и т.п. Конечно, переменных можно делать столько,
-сколько вам понадобится; вообще, переменные — это основная вещь, с
-которой работают программы.
+You don't have to call variables ``a`` and ``b``. To give a name to a variable
+you can use almost any string of English letters and numbers (there are 
+some exceptions, but it's not so important yet). For example, you could 
+call variables ``first`` and ``second``, or ``x1`` and ``x2``, etc. 
+Of course, you can create as many variables as you need; 
+in general, variables are the main things programs work with.
 
-Ещё несколько замечаний по нашей программе. Во-первых, программа не
-вывела на экран никаких «приглашений» типа «Введите a и b». Питон ничего
-за вас делать не будет; если вы хотите, чтобы программа вывела это на
-экран, то так и сделайте: ``print("Введите a и b")``. Но мы не будем
-выводить такие приглашения в наших программах, мы будем считать, что
-пользователь сам знает, что от него требуется. В задачах, которые вы
-будете решать, будет чётко написано, что надо вывести на экран — и
-ничего лишнего выводиться не должно.
+And a few more remarks on our program. First, this program did not
+display any "prompts" like "Enter a and b". Python is not going
+to do anything for you. If you really want the program to display 
+this message on the screen, then do so: type ``print ("Enter a and b")``. 
+But we will not print such invitations in our programs. We will assume that
+the user himself knows exactly what is required of him. In the problems you
+will be asked to solve, it will be stated clearly what needs to be output
+to the screen — and no extra messages should be displayed.
 
-Присваивания
-------------
-
-Пока мы умеем записывать в переменные только то, что пользователь ввел с
-клавиатуры. На самом деле, намного чаще приходится записывать в
-переменные значения, которые программа сама вычисляет. Для этого есть
-специальная команда, которая называется *присваивание* (и на самом деле
-мы ее уже видели):
-
-::
+Assignment
+----------
+So far, we only know how to write to variables what the user entered from 
+keyboard. In fact, it is much more common to write to our variables
+values that the program calculates itself. There is
+a special instruction for this, which is called *assignment*
+(and in fact we've already seen here)::
 
     a = 10
 
-обозначает «в переменную ``a`` записать 10».
+It means "to the variable ``a`` write 10".
 
-Справа от знака «равно» можно писать любые выражения (например,
-``a = 10 + abs(5 - 9)``). Более того, там же можно использовать другие
-переменные, в которые уже что-то записано. Например, программа
-
+On the right of the equality sign you can write any expressions 
+(for example, ``a = 10 + abs(5 - 9)``). Moreover, you can also
+use other variables which some values are already assigned to. 
+For example, the program
 ::
 
     a = 20
     b = a + 10
     print(b)
 
-выведет на экран 30, потому что сначала в ``a`` записывается 20, потом
-компьютер смотрит, что записано в ``a``, прибавляет 10, и результат
-записывает в ``b``, потом смотрит, что записано в ``b``, и выводит на
-экран.
+will output 30, because first 20 is written to ``a``, then
+the computer looks at what is written to ``a``, adds 10 and
+writes the result to ``b``. Then it looks at what is written 
+to ``b`` and displays it on the screen.
 
-Если в переменной уже было что-то записано, то после присваивания старое
-значение затирается:
-
-::
+If some value was already assigned to the variable, then upon
+a new assignment the old value is being overwritten::
 
     a = 20
     a = 30
 
-в результате в ``a`` лежит 30, а про 20 все забыли.
+as a result, ``a`` is 30, and 20 is completely forgotten.
 
-Особый интересный вариант — справа можно упоминать ту же переменную,
-которая стоит слева — тогда будет использоваться ее предыдущее значение:
-
-::
+A special interesting option is that on the right you can use 
+the same variable that is on the left — and then its previous 
+value will be used::
 
     a = 20
     a = a + 10
 
-обозначает «в ``a`` запиши 20. Потом посмотри, что записано в ``a``,
-прибавь к этому 10 и то, что получится, запиши обратно в ``a``\ ». В
-итоге в ``a`` будет записано 30.
+This means "Write 20 to ``a``. Then look at what is in ``a``,
+add 10 to it and write the result back to ``a``". As a
+result, value of ``a`` will become 30.
 
-Та команда ``a = input()``, которую мы раньше видели, на самом деле тоже
-является присваиванием: она говорит: «прочитай то, что пользователь ввел
-с клавиатуры, и запиши это в ``a``\ ».
+That instruction ``a = input()`` we saw earlier is actually also
+an assignment. It says: "read what the user entered
+from the keyboard, and write it to ``a``".
 
-Слева от знака «равно» можно указывать несколько переменных через
-запятую. Тогда справа тоже должно быть несколько значений через запятую
-(или специальные функции типа уже упоминавшейся ``map``, но их мы
-подробнее пока обсуждать не будем):
-
-::
+On the left of the equality sign you can type several variables 
+separated by commas. Then there should also be several 
+comma-separated values on the right (or special functions 
+like the already mentioned ``map``, but for now 
+we will not discuss them in detail)::
 
     a, b = 10, 20
 
-обозначает «в ``a`` записать 10, а в ``b`` — 20».
+It means "to ``a`` to write 10, to ``b`` write 20".
 
-Запись ``a = 10`` читается «переменной ``a`` присвоить 10», или кратко «``a`` присвоить 10». 
-Не надо говорить «``a`` равно 10», т.к. «равно» — это не глагол, и не понятно,
-какое действие совершается. Более того, если запись ``a = a + 1``
-прочитать с «равно», то получается «``a`` равно ``a`` плюс один», что
-никак не похоже на команду, а скорее на уравнение, которое не имеет
-решений. Поэтому говорите «присвоить», а не «равно».
+The notation ``a = 10`` should be read "assign 10 to the variable ``a``", 
+or more compact "assign 10 to ``a``". Do not say "``a`` is equal to 10" 
+because ``is equal`` is not an imperative, and it is not clear
+what action is being performed. Moreover, if the entry ``a = a + 1``
+is read with "equal", then it turns to "``a`` is equal to ``a`` plus one", 
+which does not look like an instruction at all, but rather an equation that has
+no solutions. Therefore, say "assign", not "equal".
 
-Есть еще ряд полезных команд, которые совмещают арифметическое действие
-и присваивание. Например, запись ``a += 10`` обозначает ``a = a + 10``
-(«увеличить ``a`` на 10»). Аналогично можно поступать с остальными
-арифметическими действиями: ``a /= 5`` обозначает ``a = a / 5``,
-``a %= 5`` обозначает ``a = a % 5``, и т.п.
+There are also some useful instructions that combine 
+arithmetic operation and assignment (they're called 
+augmented assignment operators). For example, ``a += 10`` stands for 
+``a = a + 10`` ("increase ``a`` by 10"). You can do the same 
+with the rest of the arithmetic operations: ``a /= 5`` means ``a = a / 5``,
+``a %= 5`` means ``a = a % 5``, etc.
 
-Комментарии
------------
-(Эта информация вам прямо сейчас не нужна, но будет полезна при чтении дальнейших разделов.)
+Comments in the code
+--------------------
 
-В программе можно оставлять так называемые *комментарии*. А именно, если где-то в программе
-встречается символ «решетка» (``#``), то этот символ и все, что идет за ним до конца строки,
-полностью игнорируется питоном. Таким образом можно в программе оставлять пометки для себя,
-или для других программистов, которые будут читать вашу программу. Например
+(You may not need this information right now, but it will be useful when reading further sections.)
 
-::
+You can leave *comments* in your programs. That is, if the symbol 
+"grid" (``#``) is typed somewhere in the program, then this symbol 
+and everything that follows it to the end of the line
+is completely ignored by Python interpreter. Thus, you can leave notes 
+in the program for yourself or for other programmers 
+who will read your program. For example::
 
-    a = int(input())  # считали число
-    
-Здесь запись ``# считали число`` полностью игнорируется питоном, как будто этих символов нет вообще,
-а запись ``a = int(input())`` работает как и должна.
-    
-В частности, решетка может стоять в начале строки, тогда вся эта строка будет игнорироваться::
+    a = int(input()) # reading one number
 
-    # для начала, считаем число
+Here the inscription ``# reading one number`` is completely ignored by Python, 
+as if these characters do not exist at all,
+and ``a = int(input())`` works as it should.
+
+In particular, the grid can be at the beginning of the line, 
+then this whole line will be ignored::
+
+    # to begin with, we read the number
     a = int(input())
-    
-Питону совершенно не важно, где и как вы оставляете комментарии, вы их оставляете только для себя,
-или для других людей, которые будут читать вашу программу. В простейших программах комментарии не нужны,
-и вам поначалу они не понадобятся, но я буду их использовать в дальнейших разделах этого курса,
-чтобы пояснять фрагменты кода.
 
-Язык программирования как конструктор
+Python does not care where and how you leave comments,
+you leave them only for yourself or for other people 
+who will read your program. In the simplest programs
+comments are usually unnecessary, and you won't need them 
+at first, but I will use them in further sections
+of this course to explain code snippets.
+
+Programming language as a constructor
 -------------------------------------
 
-Выше я рассказал ряд самых основных конструкций языка питон. Теперь ваша
-задача будет из этих конструкций, как из конструктора, собирать
-программы. Относитесь к этому именно как к конструктору: все
-программирование — это сборка больших программ из таких отдельных
-команд.
+Above I have described some of the most basic constructions 
+of Python language. Now your task will be to assemble programs 
+from these constructions, as from a construction toy like Lego.
+Treat it exactly like a construction set: all programming is 
+the assembly of large programs from separate statements and expressions.
 
-Примеры решения задач
----------------------
+Sample problems and solutions
+-----------------------------
 
-Приведу несколько примеров задач, аналогичных тем, которые встречаются на олимпиадах
-и в моем курсе.
+Here are a few sample problems similar to ones you may come across on contests and in my course.
 
 .. task::
-    Вася купил :math:`N` булочек, а Маша — на :math:`K` булочек больше.
-    Сколько всего булочек купили ребята?
 
-    **Входные данные**: На первой строке входных данных вводится одно число :math:`N`, на второй — одно число :math:`K`.
+    Vasya bought :math:`N` muffins and Masha bought :math:`K` muffins more.
+    What is the overall amount of muffins they bought?
 
-    **Входные данные**: Выведите одно число — ответ на задачу.
+    **Input**: On the first line there's a single number :math:`N` and on the second line a single number :math:`K`.
 
-    **Пример**:
+    **Output**: One number — the answer to the question of the problem.
 
-    Входные данные::
+    **Example**:
+
+    Input::
 
         4
         2
 
-    Выходные данные::
+    Output::
 
         10
     |
     |
     |
 
-Ну, во-первых, надо считать данные. Два числа вводятся на двух отдельных строчках, поэтому
-они считываются так::
+Well, first of all, we need to read the data. Two numbers are entered 
+on two separate lines, so they we can read them like this::
 
     n = int(input())
     k = int(input())
 
-Дальше надо понять, по какой формуле вычисляется ответ. В этой задаче несложно догадаться, что ответ равен :math:`2\cdot N + K`.
-Так и выводим::
+Then we need to understand how the answer is calculated. In this problem, 
+it's easy to guess that the answer is just :math:`2\cdot N + K`. So we print it::
 
     print(2 * n + k)
 
-Полная программа получается такая::
+The whole program will look so::
 
     n = int(input())
     k = int(input())
     print(2 * n + k)
 
-Можно было поступить и по-другому: можно было, считав данные, сначала отдельно посчитать, сколько булочек купила Маша::
+It's also possible to do it in another way: after reading the data, 
+first calculate separately how many muffins Masha bought::
 
     m = n + k
 
-после чего вывести ответ как сумму ``n`` и ``m``::
+and after that output the answer as the sum of ``n`` and ``m``::
 
     n = int(input())
     k = int(input())
     m = n + k
     print(n + m)
 
-Еще один альтернативный вариант — сохранить ответ в переменную, и только потом ее выводить, например, так::
+One more alternative way is to save the answer to a variable, 
+and only then output it. For example, like this::
 
     n = int(input())
     k = int(input())
     ans = 2 * n + k
     print(ans)
 
-Все эти варианты правильные, и несложно придумать еще ряд правильных вариантов.
+All of these ways are correct, and it is quite easy 
+to come up with a number of other correct solutions.
 
 .. task::
-    С начала суток прошло :math:`N` минут. Определите, сколько часов и минут будут показывать электронные часы в этот момент.
-    Гарантируется, что :math:`N` меньше 1440, т.е. что прошло меньше полных суток.
 
-    **Входные данные**: Вводится целое число :math:`N`.
+    :math:`N` minutes have passed since the beginning of the day. 
+    Determine how many hours and minutes an electronic clock 
+    will show at this moment. It is guaranteed that :math:`N` is 
+    less than 1440, i.e. that less than a full day has passed.
 
-    **Входные данные**: Выведите ответ на задачу.
+    **Input**: An integer number :math:`N`.
 
-    **Пример**:
+    **Output**: Print the answer to the problem.
 
-    Входные данные::
+    **Example**:
+
+    Input::
 
         150
 
-    Выходные данные::
+    Output::
 
         2 30
     |
     |
     |
 
-Тут, опять-таки, надо придумать, какой математической формулой решается задача.
-Если с ходу не очевидно, то подумайте: как бы вы сами решали задачу для конкретного ввода?
-Вот прошло с начала суток, например, 150 минут — как понять, сколько это часов и сколько минут?
+Here, again, we need to figure out what mathematical formula 
+gives the solution. If it's not obvious right away, then think about it: 
+how would you solve the problem yourself for a certain input?
+For example, 150 minutes have passed since the beginning of the day 
+— how do you know how many hours and how many minutes it is?
 
-Если немного подумать, то становится понятно, что надо :math:`N` разделить с остатком на 60 (количество минут в часе),
-после чего неполное частное будет как раз количеством часов, а остаток — количеством минут.
-Соответственно пишем программу::
+After a little thinking, it becomes clear that we need to divide 
+:math:`N` by 60 (the number of minutes in one hour) with the remainder,
+so the quotient will be just the number of hours 
+and the remainder will be the number of minutes.
+Accordingly, we write it::
 
     n = int(input())
     print(n // 60, n % 60)
 
-Также, как и в прошлой задаче, можно было ответы сохранить в переменные при желании.
+As in the previous task, we could also optionally save 
+the answers to variables.
 
 .. task::
-    Маше надо купить :math:`A` больших бусин, :math:`B` средних и :math:`C` маленьких.
-    Одна большая бусина стоит :math:`X` рублей, средняя — :math:`Y` рублей, маленькая — :math:`Z` рублей.
-    Сколько всего рублей придется потратить Маше?
 
-    **Входные данные**: На первой строке вводятся три числа :math:`A`, :math:`B` и :math:`C`.
-    На второй строке вводятся три числа :math:`X`, :math:`Y` и :math:`Z`.
+    Masha needs to buy :math:`A` large beads, :math:`B` medium
+    and :math:`C` small. One large bead costs :math:`X` rubles, 
+    the medium one is :math:`Y` rubles, the small one is :math:`Z` rubles.
+    How many rubles will Masha spend in total? 
 
-    **Входные данные**: Выведите одно число — сколько рублей придется потратить Маше.
+    **Input**: On the first line there are three numbers: :math:`A`, :math:`B` and :math:`C`.
+    On the second line also three numbers: :math:`X`, :math:`Y` and :math:`Z`.
 
-    **Пример**:
+    **Output**: One number — how many rubles Masha will spend.
 
-    Входные данные::
+    **Example**:
+
+    Input::
 
         3 2 1
         6 5 4
 
-    Выходные данные::
+    Output::
 
         32
     |
     |
     |
 
-Очевидно, что ответ на задачу равен :math:`A\cdot X + B\cdot Y + C\cdot Z`.
-Осталось аккуратно ввести и вывести данные. Тут задаются две строки по три числа,
-поэтому вводить данные надо два раза через ``map(int(...``::
+Clearly, the answer to the problem is: :math:`A\cdot X + B\cdot Y + C\cdot Z`.
+All that's left is only to process the input and output accurately. 
+Here two lines of three numbers are given,
+so we need to input the data twice through ``map(int(...``::
 
     a, b, c = map(int, input().split())
     x, y, z = map(int, input().split())
     print(a * x + b * y + c * z)
 
 .. task::
-   Машина едет со скоростью :math:`N` километров в час. Выведите эту информацию по-английский
-   по образцу: «The speed is :math:`N` kmph.», подставив вместо :math:`N` введенное число (см. пример).
 
-    **Входные данные**: Вводится одно число :math:`N`.
+  The car is going at a speed of :math:`N` kilometers per hour.
+  Output this information as follows: "The speed is :math:`N` kmph.", 
+  substituting the entered number instead of :math:`N` (see the example).
 
-    **Входные данные**: Выведите строку.
+    **Input**: One number :math:`N`.
 
-    **Пример**:
+    **Output**: Print a line.
 
-    Входные данные::
+    **Example**:
+
+    Input::
 
         55
 
-    Выходные данные:
+    Output:
 
     .. code-block:: text
 
@@ -759,29 +731,29 @@ Enter. Вы тут же увидите, что то, что вы ввели, в�
     |
     |
 
-Считывание числа, думаю, уже не должно представлять проблем, а вот для вывода надо вспомнить,
-что можно выводить не только числа, но и строки::
+Reading a number, I think, shouldn't be a problem, 
+but for output it is necessary to remember
+that you can print not only numbers, but also strings::
 
     n = int(input())
     print("The speed is", n, "kmph.")
 
 
-Что дальше?
------------
+What's next?
+------------
 
-(Естественно, это раздел только для учеников моего курса.)
+(Certainly, this section is only for students of my course.)
 
-Во-первых, если вы еще этого не сделали, прочитайте на страничке курса
-все тексты в «шапке» курса, особенно раздел «Работа с сайтом...», после
-чего начинайте решать «Задачи на арифметические операторы». И двигайтесь
-дальше.
+First, if you haven't done this yet, read all the texts 
+in the header on the course page, especially the section 
+"How to work with the site...", then start doing 
+"Arithmetic operator problems". And move on.
 
-**Внимание!** Не надо прямо сейчас читать следующие разделы этого текста, 
-не надо нажимать кнопку «Next» ниже. Дальше идет теория для следующих тем,
-поэтому сначала прорешайте задачи на арифметические операции на сайте,
-потом уже переходите к следующим темам (по ссылкам на сайте).
+**Attention!** Do not read the following sections of this text right now,
+do not click the "Next" button below. There is the theory on the new topics,
+so first do the problems on arithmetic operations on the site, and only
+then move on to those topics (by the links on the site).
 
+And in case of any questions, write to me.
 
-И по любым вопросам пишите мне.
-
-.. [1] Конечно, предложения «написать мне» относятся только к ученикам моего курса.
+.. [1] Of course, the suggestions "write to me" are only referred to students of my course.

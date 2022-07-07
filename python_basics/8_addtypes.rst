@@ -1,72 +1,73 @@
 .. highlight:: python
 
-Дополнительные типы данных и прочие замечания
-=============================================
+Additional data types and miscellaneous remarks
+===============================================
 
-Здесь я приведу разные дополнительные замечания по питону. Большая часть этой информации
-не особо нужна для простейших задач, но в той или иной мере будет полезна в дальнейшем.
-В основном я буду говорить про различные типы данных, с которыми вы раньше не очень много работали.
+Here I will give various additional comments on Python. Most of this information
+is rather unnecessary for the basic tasks, but more or less it
+will be useful in the future. Mainly, I'm going to discuss various 
+data types that you haven't worked with very much yet.
 
 int
----
+----
+This is a common integer data type that you've already worked with a lot.
+But it has one peculiarity to keep in mind — it is overflow.
 
-Это обычный целочисленный тип данных, с которым вы уже много работали. Но у него есть одна особенность,
-которую надо иметь в виду — это переполнения.
+Computer processors are able to work with integers only within a certain value range.
+For modern processors, the maximum value with which the processor can work directly,
+without various tricks, is :math:`2^{64}-1`, i.e. :math:`18\,446\,744\,073\,709\,551\,615`.
+(Actually, from the processor's point, there are several different data types that differ by these maximum values.)
 
-Процессоры компьютеров умеют работать с целыми числами только в пределах определенного диапазона значений.
-На современных процессорах максимальное значение, с которым процессор может работать напрямую,
-без разных ухищрений — это :math:`2^{64}-1`, т.е. :math:`18\,446\,744\,073\,709\,551\,615`.
-(На самом деле с точки зрения процессора есть несколько разных типов данных, различающихся этими максимальными значениями.)
+If you need to work with even bigger numbers, then most likely you'll have to work separately with each digit,
+write the "columnar addition" (and not directly ask the processor to add two numbers), etc.
+This is what is called "long arithmetic"; right now you don't need to get into it.
 
-Если вам надо работать с еще бóльшими числами, то как правило приходится работать отдельно с каждой цифрой,
-писать сложение «в столбик» (а не напрямую просить процессор сложить два числа), и т.д.
-Это то, что называется «длинная арифметика»; прямо сейчас вам в этом разбираться не надо.
+Python hides all these difficulties from you. In Python, ``int`` type can store arbitrarily large numbers
+(until you run out of RAM). Small numbers are sent directly to the processor, and with very large ones 
+Python automatically switches to long arithmetic, and at first glance you will not notice anything at all.
 
-Питон скрывает от вас все эти сложности, питоновский int может хранить сколь угодно большие числа
-(пока у вас не кончится оперативная память). Маленькие числа питон отправляет в процессор напрямую, с очень большими
-— питон сам перейдет к длинной арифметике, и вы на первый взгляд вообще ничего не заметите.
+But there is a problem: adding two small numbers is a single processor instruction,
+and if you need to use long arithmetic, then you have to perform a lot more actions.
+Therefore, while your numbers aren't very large (roughly speaking, no more than :math:`2^{64}`,
+although since there are also negative numbers, it is more likely to be approximately :math:`\pm2^{63}`,
+and in 32-bit versions of Python it can be up to :math:`2^{32}` or approximately :math:`\pm2^{31}`), 
+all operations will be relatively fast. But as soon as your numbers become longer,
+their processing in Python will get noticeably slower.
 
-Но есть одна проблема: сложить два небольших числа — это одна инструкция процессора, а если надо использовать
-длинную арифметику, то надо совершать намного больше действий. Поэтому пока вы работаете с не очень большими числами
-(грубо говоря, не больше того же :math:`2^{64}`, хотя поскольку еще бывают отрицательные числа, то скорее до примерно :math:`\pm2^{63}`,
-а в 32-битных версиях питона может быть до :math:`2^{32}` или примерно :math:`\pm2^{31}`), то все операции будут относительно быстрыми.
-Но как только ваши числа станут длиннее, операции с ними в питоне будут выполняться заметно медленнее.
+In regular tasks you'll hardly meet long numbers, but anything can happen. 
+For example, in dynamic programming, in tasks for counting the number of objects
+you can easily get very large numbers. Pay attention to this fact.
 
-В обычных задачах у вас вряд ли будут очень длинные числа, но всякое бывает. 
-Например, в динамическом программировании в задачах на подсчет количества объектов
-вы легко можете попасть на очень большие числа. Будьте внимательны.
-
-(А еще хуже на других языках типа C++ или паскаля. Там автоматического перехода к длинной арифметике не произойдет,
-и если результат какой-то операции выйдет за пределы, поддерживаемые соответствующим типом данных,
-то произойдет собственно переполнение, и результат операции получится, скорее всего, совсем не тот,
-который вы ожидали.)
+(The situation is even worse in other languages like C++ or Pascal. There will be no automatic switch 
+to long arithmetic, and if the result of some operation goes beyond the limits supported
+by the corresponding data type, an overflow will actually occur, and the result
+of the operation will most likely be completely different from what you expected.)
 
 bool
 ----
 
-Логический тип данных, или bool — это тот самый тип данных, который вы пишете в разных условиях: в ``if``, в ``while`` и т.п.
-Например, вы можете написать ``if a > 0``, а можно написать и так::
+Boolean (or logical) data type, named ``bool``, is exactly the type used in various conditions:
+in ``if``, ``while`` and so on. For example, you can write ``if a > 0``, but can instead write this way::
 
     x = a > 0
     if x:
         ...
 
-Тут вы сравниваете ``a`` с нулем, но не сразу используете результат сравнения в ``if``, а сначала сохраняете результат сравнения
-в переменную ``x``, и дальше уже в ``if`` считываете результат сравнения из ``x`` и в зависимости от значения ``x`` или идете в ``if``,
-или нет. Вот эта переменная ``x`` как раз и будет иметь тип данных bool, или, как говорят, логический тип.
+Here you compare ``a`` with zero, but don't immediately use the comparison result in ``if``, but save this result
+to the variable ``x``. After that, in ``if`` you retrieve it from ``x`` and, depending on the value,
+either execute the body of ``if`` or not. This variable ``x`` will have the ``bool`` data type.
 
-Естественно, такое сравнение может иметь только два результата: или истина (``a`` больше нуля), или ложно (``a`` не больше нуля).
-Соответственно, тип bool имеет лишь два значения, они обозначаются ``True`` (истина) и ``False`` (ложь).
-Их можно использовать и напрямую::
+Certainly, such a comparison can only have one of the two results: either true (``a`` is greater than zero) 
+or false (``a`` is not greater than zero). Accordingly, the ``bool`` type has only two values,
+they are denoted as ``True`` and ``False`` (capitals are important here). They can also be used directly::
 
     x = True
 
-но чаще вы будете использовать какие-либо сравнения или другие проверки, как в примере выше.
+but more often you'll use them in some kind of comparisons or other checks, as in the example above.
 
-Естественно, тут можно использовать и ``and``, ``or`` и ``not``; на самом деле, ``and``, ``or`` и ``not`` — это просто операторы,
-работающие с логическим типом данных — логические операторы (аналогично тому, как есть арифметические операторы ``+``, ``-`` и т.п.,
-и они работают с числовым типом данных). Соответственно, вы можете писать
-
+Of course, you can use ``and``, ``or`` and ``not`` here; in fact, ``and``, ``or`` and ``not`` are just operators
+over the Boolean data type — Boolean (or logical) operators (similar to how there are arithmetic operators ``+``, ``-`` and etc.,
+and they work with a numeric data types). Accordingly, you can write
 ::
 
     x = (a > 0 or c == 0) and d < e
@@ -74,10 +75,10 @@ bool
     if y and q < w:
         ...
 
-и т.д.
+and so on.
 
-Скорее всего, вы уже раньше местами применяли так называемые «переменные-флажки», в которые помечали, выполняется ли какое-нибудь условие. 
-Например, если вам надо проверить, есть ли в данном массиве число ноль, вы могли писать примерно так::
+Probably you have already used so-called "flag variables" somewhere, that you used to mark whether some condition is met. 
+For example, if you need to check if a given array contains zero, you could write something like this::
 
     flag = 0
     for i in range(n):
@@ -88,7 +89,7 @@ bool
     else:
         print("no")
 
-Вот правильнее и логичнее тут использовать логический тип данных::
+But it's more reasonable to use Boolean type here::
 
     flag = False
     for i in range(n):
@@ -99,12 +100,13 @@ bool
     else:
         print("no")
 
-Еще дополнительно напомню-подчеркну, что логический тип данных — это как раз то, что *напрямую* получается при разных проверках (сравнениях и т.п.),
-и что можно *напрямую* использовать в ``if``. Например, в примере выше не надо писать ``if flag == True:``, достаточно просто ``if flag:`` — переменная ``flag`` 
-имеет логический тип, поэтому ее прекрасно можно (и нужно) использовать в ``if`` напрямую.
+I will remind and emphasize once again that the Boolean data type is exactly 
+what is *directly* obtained from different checks (comparisons, etc.),
+and what can be *directly* used in ``if``. For example, in the code above,
+you do not need to write ``if flag == True:``. Just ``if flag:`` is enough,
+as the variable ``flag`` has a Boolean type, so it can (and should) be used in ``if`` directly.
 
-Аналогично, возвращаясь к самому первому примеру в этом разделе, не надо писать
-
+Accordingly, going back to the very first example in this section, do not write
 ::
 
     if a > 0:
@@ -112,14 +114,15 @@ bool
     else:
         x = False
 
-Правильно писать так::
+The right notation is exactly such::
 
     x = a > 0
 
-потому что сравнение сразу напрямую возвращает логический тип, его можно напрямую сохранить в ``x``.
+because result of the comparison exactly has Boolean type, and can be directly assigned to ``x``.
 
-Более частый пример про то же самое — у вас может быть функция, которая что-то проверяет; в качестве элементарного примера пусть вам нужна функция, которая проверяет,
-что число четное. Вы можете захотеть написать так::
+A more frequent case on the same topic: you may have a function that performs some check;
+as an elementary example, let's say you need a function
+that checks if the number is even. You may want to write it like this::
 
     def is_even(x):
         z = x % 2
@@ -128,32 +131,40 @@ bool
         else:
             return False
 
-Но не надо так писать! Пишите проще::
+But don't write it like that! Do it easier::
 
     def is_even(x):
         z = x % 2
         return z == 0
 
-(ну или, конечно, сразу ``return x % 2 == 0``).
+(or even just ``return x % 2 == 0``).
 
-Ведь результат сравнения ``z == 0`` — это сразу или ``True``, или ``False``, как вам и надо, поэтому лишний ``if`` писать незачем.
+Because the result of the comparison ``z == 0`` is exactly 
+either ``True`` or ``False``, as you need, so there is no reason to use an extra ``if``.
 
 .. note::
 
-    На самом деле, в ``if`` вы можете использовать напрямую не только логический тип данных. Например, даже если у вас переменная ``a`` хранит целое число,
-    вы можете написать ``if a:`` — в питоне это будет обозначать «если ``a`` не равно нулю». Но вот так делать я вам очень не советую, потому что проверка целых чисел
-    — это на самом деле не очень естественная операция. Действительно, пусть ``a`` равно 42. Тогда запись ``if a:`` читается как «если 42». Так 42 — это истинно или ложно?
-    Видите, что вопрос звучит в принципе странно? Вы можете спросить «если 42 больше 0» или что-то подобное, но вопрос «если 42» большого смысла не имеет.
+    In fact, in ``if`` you can use not only Boolean expressions.
+    For example, even if your variable ``a`` stores an integer number, you can write ``if a:``.
+    In Python, this means "if ``a`` is not zero". But I strongly advise you not to do this,
+    because checking integers is actually quite not a natural operation. Indeed, let ``a`` be 42. 
+    Then the notation ``if a:`` is equivalent to "if 42". So is 42 true or false? 
+    Do you see that the question generally sounds weird? You can ask "if 42 is greater than 0"
+    or something similar, but the question "if 42" does not make much sense.
 
-    А для логических переменных такой проблемы нет; наоборот, они используются в ``if`` напрямую и очень естественно. Если у вас ``x`` равно например ``True``,
-    то запись ``if x`` обозначает «если истина», что очень логично: истинное утверждение же истинно, такой проблемы как с 42 нет, наоборот, скорее тут получается тавтология.
+    At the same time, there is no such problem for Boolean variables; they are used in ``if`` directly 
+    and it's quite natural. If you have ``x`` equal to, for example, ``True``, then 
+    the notation ``if x`` means "if true", which is purely logical: the true statement is true, 
+    there is no such problem as with 42. Vice versa, here there's rather a tautology.
 
-    Единственный случай, когда имеет смысл писать не-bool переменные напрямую в ``if`` — когда эти переменные имеют еще и очень понятный bool-смысл,
-    если сравнение с нулем отвечает не просто на вопрос «равна ли переменная нулю», а имеет и какой-то более понятный и естественный смысл.
-    Например, если у вас в переменной ``a`` хранится количество каких-то объектов, то проверку ``if a`` можно понимать как «если эти объекты вообще есть»
-    (действительно, если ``a==0``, то объектов нет, иначе они есть), поэтому такая проверка имеет смысл.
+    The only case where it makes sense to use non-Boolean variables in a condition
+    is when these variables also have a very clear Boolean meaning. I.e., if 
+    comparing them to zero answers not just the question "is the variable equal to zero?",
+    but has some special, comprehensible meaning. For example, if a variable ``a`` stores
+    the number of some objects, then the check ``if a`` can be considered as "if these objects exist at all"
+    (indeed, if ``a == 0``, then there are no objects, otherwise they exist), so such a check makes sense.
 
-    Пример — задача про нули, которую обсуждали выше. Вы можете написать так::
+    An example of such a case is the problem about zeros in an array, which was discussed above. You can write like this::
 
         count = 0
         for i in range(n):
@@ -164,111 +175,125 @@ bool
         else:
             print("no")    
 
-    Тут проверка ``if count`` очень понятна: «если мы нашли хотя бы один ноль».
+    Here the check ``if count`` is very clear: "if we found at least one zero".
 
-    (В данном конкретном случае с bool-переменной лучше, потому что вам это количество само по себе не нужно. 
-    Но если вам это количество потом куда-то надо будет еще использовать, или если
-    количество вы не сами считаете, а сразу откуда-то получаете, то напрямую проверять количество в ``if`` вполне можно.)
+    (In this particular case, it's better with a Boolean variable, because you don't need this amount by itself.
+    But if you'd use the amount of zeros somewhere else later, or if you don't count it by yourself 
+    but get it from somewhere, then it is quite natural to directly check the quantity in ``if``.)
 
-    А вот проверка на четность — это пример, когда так писать не надо. Проверка
-
+    However, the simplest parity check is an example when it's *bad* to use integers in a condition. The check
     ::
 
         if z % 2:
 
-    обозначает вовсе не то, что вы можете подумать: она обозначает не «если ``z`` делится на 2», а «если ``z`` **не** делится на 2» (т.е. «если остаток не ноль»).
-    Тут очень легко ошибиться и запутаться, поэтому не используйте такое неявное сравнение с нулем, когда нет однозначной и очевидной bool-трактовки.
+    doesn't mean at all what you might think: it doesn't mean "if ``z`` is evenly divisible by 2",
+    but "if ``z`` **is not** evenly divisible by 2" (i.e. "if the remainder is not zero").
+    It's extremely easy to make a mistake and get confused here, so don't use this
+    implicit comparison with zero until there is an unambiguous and obvious Boolean interpretation.
 
-    И да, конечно, все сказанное в этом примечании относится к тому, как стоит писать программу, а не к тому, что конкретно питон вам разрешает.
-    Питон спокойно вам разрешит писать ``if z % 2:``, но это не значит, что так делать надо.
+    And yes, of course, everything stated in this note is related to how to write a program,
+    and not to what specifically Python allows you to do. Python will easily allow you to write
+    ``if z %2:``, but this doesn't mean you should do so.
 
-Кортежи, они же tuple
----------------------
+tuple
+-----
 
-Кортеж, он же tuple — это почти то же самое, что и массив, только его нельзя никак изменять. Вы один раз записываете значение,
-дальше можете по нему итерироваться, копировать и т.д., но никакие операции изменения вам не будут доступны, максимум вы можете создать новый кортеж.
-Кортеж создается так же, как и массив, только вместо квадратных скобок используются круглые::
+Tuple data type is almost the same as array, but it cannot be changed in any way. You create a set of values once,
+then you can iterate over it, copy, etc., but no modification operations are available. At most you can create a new tuple.
+A tuple is created in the same way as an array, but with round brackets instead of square brackets::
 
     a = (1, 10, 100)
-    print(a[1])  # выведет 10
+    print(a[1])  # will print 10
 
-В первом приближении вам кортежи не особенно нужны, в простейших случаях вы всегда можете вместо них использовать массивы. Но, например,
-в словарях (см. ниже) кортежи можно использовать в качестве индексов, а массивы — нет.
+At first, you won't really need tuples, as in the basic cases you can always use arrays instead.
+But, for example, in dictionaries (see below) tuples can be used as indices, while arrays can't.
 
-Массивы и цикл ``for``
-----------------------
+Arrays and the ``for`` loop
+---------------------------
 
-В теме про циклы мы обсуждали, что элементы массива можно обойти циклом ``for i in range(len(a))``. Но если вам нужны только значения, а индексы элементов не нужны,
-то можно просто писать ``for i in a`` — теперь переменная ``i`` будет последовательно принимать все значения, которые хранятся в ``a``. Например, так можно массив вывести на экран::
+In the loops section, we discussed that you can iterate over the array elements 
+by using the ``for i in range(len(a))`` loop. But if you only need values,
+and the indices of the elements are unused, then you can simply write ``for i in a``.
+Now the variable ``i`` will sequentially take all *values* stored in ``a``.
+For example, this is how an array can be output to the screen::
 
     for i in a:
         print(i)
 
-Аналогично можно работать с строками (перебирать все символы) и с кортежами.
+You can also work this way with strings (iterate over all characters) and tuples.
 
+Dictionaries (dict)
+-------------------
 
-Словари
--------
+Arrays, where elements are indexed by consecutive integers, starting from zero,
+are already familiar to you. There is a data structure which is at first glance
+very similar: associative arrays. In Python they are called "dictionaries" (``dict`` type).
+Roughly speaking, a dictionary is like an array in which elements can be addressed by almost anything.
+First of all, we are interested in the ability to use arbitrary numbers 
+(not necessarily in a row) and strings as dictionary indices.
 
-Вы уже знаете массивы — в них элементы индексируются последовательными целыми числами, начиная с нуля. Есть очень похожая на первый взгляд конструкция
-— ассоциативные массивы, в питоне они называются «словари». В первом приближении это массив, в котором элементы могут адресоваться примерно чем угодно.
-Нам будет в первую очередь интересна возможность в качестве индексов словарей использовать произвольные числа (не обязательно подряд), а также строки.
+Dictionaries are declared in this way::
 
-Пишется это так::
-
-    d = {}  # так создается пустой словарь. В нем нет ни одного элемента
-    d[3] = 10  # теперь в словаре только один элемент, но его индекс — 3
-    d[17] = 137  # теперь два элемента, с индексами 3 и 17
-    d["abc"] = 42  # а теперь три элемента, с индексами 3, 17, и "abc"
+    d = {}  # we created an empty dictionary. It has no elements
+    d[3] = 10  # we added one element to d, but its index is 3
+    d[17] = 137  # now there are two elements with indices 3 and 17
+    d["abc"] = 42  # now three elements with indices 3, 17 and "abc"
     
-    # к элементам словаря обращаетесь как к элементам массива:
+    # dictionary elements are accessed just as array elements:
     print(d[3] + d[17])  
     d["abc"] = d["abc"] + 1
 
-    # конечно, в квадратных скобках можно использовать любые выражения:
+    # you may put in brackets any reasonable expression 
     print(d[4 - 1])
     print(d["ab" + "c"])
     s = input()
-    d[s] = 10  # индексом будет введенная строка
+    d[s] = 10  # the obtained string will be the index
 
-    # конечно, значениями элементов словаря может быть что угодно
-    d[10] = "qwe"  # строка
-    d["abc"] = [1, 2, 3]  # массив
-    d["qwe"] = {}  # даже другой словарь, и т.д.
+    # of course, values may contain anything
+    d[10] = "qwe"  # a string
+    d["abc"] = [1, 2, 3]  # an array
+    d["qwe"] = {}  # even another dictionary, etc.
 
-    # а вот так можно создать словарь с заранее заданным содержимым:
+    # you can also create a dictionary with some content:
     pairs = { 
-        # через двоеточие задаем индекс и значение
+        # index and corresponding vaue are separated by colon
         "(": ")",
         "[": "]",
         "{": "}"
     }
-    print(pairs["("])  # выведет )
+    print(pairs["("])  # will print )
 
-(Конечно, в реальной программе в каждом конкретном словаре у вас обычно индексами будут или только числа, или только строки. Питон позволяет смешивать типы индексов,
-но вам как правило это не будет нужно, а, наоборот, будет неудобно.)
+(Of course, in a real programs, in each particular dictionary you'll usually have either
+only numbers or only strings as indices. Python allows you to mix index types,
+but generally you won't need it. Vice versa, it will mostly be inconvenient.)
 
-Когда работают со словарями, часто вместо слова «индекс» (массива) говорят «ключ» (словаря). Например, «записать значение ``10`` в словарь ``d`` по ключу ``3``» ­— это значит ``d[3] = 10``.
+When working with dictionaries, the commonly used term is "(dictionary) key" instead of "(array) index". 
+For example, "assigning the value ``10`` to the dictionary ``d`` on the key ``3``" means ``d[3] = 10``.
 
 .. note::
+    In addition to numbers and strings, other data types can also be used as indices,
+    but not all. Particularly, only types whose values are unchangeable can be used as indices.
+    Namely, arrays or other dictionaries can't be indices, but tuples and Booleans can.
 
-    Помимо чисел и строк, конечно, в качестве индексов можно использовать другие типы данных, но не все. А именно, в качестве индексов
-    можно использовать только типы, значения которых невозможно изменить. В частности, массивы или другие словари в качестве индексов использовать нельзя, а вот кортежи (tuple) и bool'ы можно.
-
-Основная операция при работе с массивом — это обход массива, обычно через ``for i in range(len(a))``. Со словарями так просто не получится,
-потому что элементы словаря не занумерованы по порядку. Тут есть два способа::
+The main operation array operation is iterating over all elements,
+usually done through ``for i in range(len(a))``. With dictionaries, it won't work just like that,
+because dictionary elements are unordered. There are two ways here::
 
     for key in d:
-        ....  # переменная key переберет все ключи словаря
-        ....  # дальше что-то делаете с d[key]
+        ... # key will iterate over all keys
+        ... # do something with d[key]
 
-или сразу можно перебирать пары (ключ, значение)::
+or you can immediately iterate over the pairs (key, value)::
 
     for key, value in d.items():
-        ...
+        ... # key and value will represent essentially each key and corresponding value 
 
-Удалить элемент из словаря можно командой ``del``, например, ``del d[3]``. Проверить, если ли какой-то ключ в словаре — проверкой ``if 3 in d``.
+There are also some special operations. You can delete an element from a dictionary 
+with the ``del`` statement, for example, ``del d[3]``, 
+and check whether a certain key exists in a dictionary by a condition ``if 3 in d``.
 
-Словари удобно использовать, когда вам надо действительно использовать строки как индексы (например, вы пишете какой-нибудь компилятор, который должен знать информацию
-обо всех переменных), или когда интервал возможных числовых значений очень широк, а из них реально используется очень мало. Но не надо использовать словарь, когда достаточно обычного массива;
-массив работает побыстрее, и в целом, если вам нужен именно массив, то программа с массивом будет понятнее.
+Dictionaries are useful when you really need to use strings as indices
+(for example, you are developing a compiler that needs to gather information about all variables),
+or when the range of possible numeric values is very wide, but very few of them are actually used.
+But don't use a dictionary when a common array is enough: arrays work faster, and in general,
+if you need an array, the program with an array will be easier to read.

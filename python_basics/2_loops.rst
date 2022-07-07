@@ -1,63 +1,60 @@
 .. highlight:: python
 
-Циклы
+Loops
 =====
 
-В программах довольно часто встречается необходимость повторить
-некоторое действие несколько раз. Часто вы даже не знаете заранее,
-сколько именно раз. Для этого существует специальная конструкция,
-команда языка — цикл.
+In programs, it is quite common that you have to repeat some operation(s) 
+several times. Often you don't even know in advance how many times you exactly need 
+to do it. There is a lanugage construction designed specially for this, called loop.
 
-В питоне есть циклы двух типов.
+There are two types of loops in Python.
 
-(Я тут буду приводить примеры кодов. Конечно, экспериментируйте с ними
-для лучшего понимания.)
+(I will give some code samples here. Of course, explore them
+for a better comprehension.)
 
-Цикл while
+While loop
 ----------
 
-Цикл while — это простейший вариант цикла. Он выполняет некоторые
-действия, после чего определяет, не надо ли их выполнить еще раз.
-"Определяет" путем проверки указанного программистом условия. Выглядит
-код так:
+The ``while`` loop is the simplest version of the loop. It performs some
+operations and then determines whether they need to be performed again.
+"Determination" is done by checking the condition set by the programmer.
+The code looks like this:
 
 ::
 
-    while условие:
-        код
+    while condition:
+        code
 
-Здесь ``условие`` — это условие в том же виде, в котором вы пишете
-условие ``if``'а. Там могут быть сравнения, ``and``, ``or`` и т.д.
+Here ``condition`` is a condition that has the same form as a condition for 
+the ``if``-statement. There can be reraltions, ``and``, ``or``, etc.
 
-А ``код`` — это произвольная последовательность комад (может занимать и
-несколько строк), содержащая любые команды, которые вы знаете или
-узнаете потом: присваивания, if'ы, даже другие циклы и т.д.
+And the ``code`` is an arbitrary sequence of operations (it can take
+several lines) containing any instructions that you know or will
+learn later: assignments, conditional statements, other loops, etc.
 
-Что будет делать компьютер, когда дойдет до такого цикла? Сначала он
-проверит, выполняется ли условие. Если выполняется, то компьютер
-выполнит указанный код и опять проверит условие. Если оно все еще
-выполняется, то компьютер выполнит этот код еще раз, и так далее, до тех
-пор, пока при очередной проверке не окажется, что условие не
-выполняется. Тогда компьютер закончит выполнение цикла и перейдет к
-коду, написанному после него.
+What will the computer do when it encounters such a loop? First it
+will check if the condition is true. If it is, the computer
+will execute the indented code below and check the condition again. If it is still
+true, the computer will execute that code again. And so on, until 
+the next check reveals that the condition is false. Then the computer 
+will finish executing the loop and immediately move on to the code written after it.
 
-Как может ``условие`` выполняться-выполняться, и вдруг перестать
-выполняться? Очень просто: ``код`` может изменить какие-то переменные,
-из-за которых условие перестанет выполняться. Собственно, в этом и
-состоит весь смысл процесса. (А если ``код`` ничего такого не меняет, то
-``условие`` будет выполняться всегда, и получится "бесконечный цикл" —
-программа зависнет. Не делайте так.)
+How can the ``condition`` be several times true-true-ture and then suddenly stop
+being true? It's quite simple: the ``code`` can change variables upon whose values 
+the condition relies, and the check will fail. Actually, this is the whole point 
+of the process. (And if the ``code`` doesn't actually change anything, then
+the ``condition`` will always be true, and you will get a so-called 
+"infinite loop" — the program will hang. Don't do that.)
 
-В частности, может быть так, что условие цикла не будет выполняться с
-самого начала. Тогда цикл не выполнится ни разу, исполнение сразу
-перейдет на команды после цикла.
+Particularly, it may occur that the loop condition will not be true 
+from the very beginning. Then the loop will not be run even once, 
+execution will immediately move on to instructions after the loop.
 
-Слово "while" переводится как "пока", т.е. вся запись цикла по сути
-обозначает "пока выполняется ``условие``, делай ``код``".
+The entire shape of the loop essentially means "while the ``condition`` 
+is true, do the ``code``".
 
-Примеры
-~~~~~~~
-
+Examples
+~~~~~~~~
 ::
 
     n = int(input())
@@ -67,25 +64,24 @@
         a += 1
     print("Done")
 
-Что делает этот код? Он сначала считывает с клавиатуры значение ``n``.
-Пусть для примера пользователь вводит число 5. Далее в переменную ``a``
-записывается 1. А дальше начинается цикл.
+What does this code do? First, it reads the value of ``n`` from the keyboard.
+For example, let's suppose the user entered 5. Next, 1 is written to the 
+variable ``a``. And then the loop begins.
 
-Сначала компьютер проверяет, правда ли, что ``2 * a < n``.
-Действительно, ``2*a`` равно 2, а ``n`` равно 5, условие выполняется.
-Поэтому начинаем выполнять тот код, который написан внутри цикла. А
-именно, выводим на экран ``a``, т.е. 1. И прибавляем единицу к ``a``,
-получается ``a==2``. Код (говорят "тело цикла") закончился, поэтому
-проверяем условие еще раз. Оно все еще выполняется (``2*a`` равно 4, а
-``n`` равно 5), поэтому выполняем тело цикла заново. Выводим на экран 2
-и увеличиваем ``a`` еще на единицу. Проверяем условие еще раз, оно уже
-не выполняется (``2*a`` равно 6, а ``n`` равно 5), цикл закончился.
+First, the computer checks whether ``2 * a < n`` is true.
+Indeed, ``2 * a`` is 2, and ``n`` is 5, the condition is met.
+Therefore, we begin executing the code that is written inside the loop.
+Namely, we write ``a``, i.e. 1, on the screen. And add one to ``a``,
+resulting ``a == 2``. We've moved to the end of the code 
+(it's also called "the loop body"), so we check the condition again. 
+It's still true (``2 * a`` is 4, and ``n`` is equal to 5), 
+so we execute the loop body again. We display 2 on the screen
+and again increase ``a`` by one. We check the condition again, it is
+no longer met (``2*a`` is 6, and ``n`` is 5), the loop ends.
 
-Цикл закончился, поэтому переходим на то, что после цикла — выводим на
-экран Done.
+Once the loop is terminated, we move on to the code after it, printing "Done".
 
-Еще один пример, уже довольно навороченный:
-
+One more example, now quite sophisticated:
 ::
 
     n = int(input())
@@ -99,108 +95,105 @@
         print()
         a *= 2
 
-Здесь цикл, вложенный в цикл. Это работает следующим образом. Пусть
-пользователь ввел 6. Переменная ``a`` становится равна 1.
+Here is a loop put into another loop (nested loops). It works as follows: let's consider 
+the user entered 6. The variable ``a``, just like above, becomes equal to 1.
 
-Начинается внешний цикл (который ``while a < n``). Переменная ``b``
-становится равна ``a``, т.е. 1. Пока ``b>0`` мы делаем следующее
-(внутренний цикл): если ``b`` нечетное, то выводим на экран 1, после
-чего уменьшаем ``b`` на 1. В итоге на экран выведется 1, после чего
-``b`` станет равно 0, и внутренний цикл закончится.
+The outer loop begins (which is ``while a < n``). The variable ``b``
+becomes equal to ``a``, i.e. 1. While ``b > 0`` we do the following
+(inner loop): if ``b`` is odd, then we display 1, after
+which we reduce ``b`` by 1. As a result, 1 is displayed on the screen,
+``b`` becomes 0 and the inner loop ends.
 
-Но внешний цикл еще продолжается. Выполняется команда ``print()``,
-которая просто переводит строку, и переменная ``a`` увеличивается в 2
-раза и становится равна 2. Проверяем условие цикла: ``a`` все еще меньше
-``n``. Поэтому повторяем операции, но уже с новым ``a``. Переменная
-``b`` становится равна 2, начинается внутренний цикл, сначала (при
-``b==2``) на экран ничего не выводится (т.к. ``b`` четное), и ``b``
-становится равно 1, потом на экран выводится 1, и ``b`` становится равно
-0 и внутренний цикл заканчивается.
+But the execution of the outer loop still continues. The ``print()`` insturction 
+is executed, which outputs nothing, just starting a new line, and the variable ``a`` 
+is  multiplied by 2 and becomes 2. Checking the loop condition: ``a`` is still 
+less than ``n``. Therefore we repeat the operations, but with the new ``a`` value. 
+Variable `b` becomes equal to 2 and the inner loop begins. In it, first (when
+``b == 2``) output is not performed (because ``b`` is even), and ``b``
+becomes equal to 1. Then 1 is output to the screen, ``b`` becomes equal
+to 0 and the inner loop ends.
 
-Продолжается внешний цикл, выводится перевод строки и ``a`` становится
-равно 4. Это все еще меньше чем ``n``, поэтому входим заново во
-внутренний цикл, ``b`` становится равно 4 ... и за весь внутренний цикл
-на экран выводится 3 1 (я не буду уже подробно расписывать).
+The outer loop continues, another empty line is output and ``a`` becomes
+equal to 4. This is still less than ``n``, so we enter the inner loop again. 
+Now ``b`` becomes equal to 4... and during the entire inner loop
+on the screen is printed 3 1 (I will not describe it in detail).
 
-Далее опять выводим перевод строки, ``a`` становится равно 8, это уже
-больше чем ``n``, поэтому внешний цикл закончился.
+Next, we output the new line again and ``a`` becomes equal to 8. This is
+now more than ``n``, so the outer loop ends.
 
-Цикл for
+For loop
 --------
 
-Цикл ``while`` работает тупо: проверяет условие и выполняет код, и так
-пока условие не перестанет выполняться. Это позволяет реализовать
-практически любые правила зацикленности, какие нужны в задаче, и потому
-часто применяется.
+The ``while`` loop works bluntly: it checks the condition and executes the code, 
+and so on until the condition stops being true. This allows you to implement
+almost any looping rules that are needed, and therefore is frequently used.
 
-Но кроме того, довольно часто бывает так, что надо выполнить один и тот
-же код несколько раз подряд, просто изменяя значения одной переменной
-некоторым очень простым образом. Для этого есть цикл ``for``. Он пишется
-так:
+But besides, quite often it happens that you need to execute the
+same code several times in a row, just changing the value of one variable
+in some very simple way. There is a ``for`` loop for this. It is written
+this way:
 
 ::
 
-    for переменная in список_значений:
-        код
+    for variable in list_values:
+        code
 
-Этот цикл работает так: указанной переменной присваивается первое
-значение из списка, и выполняется код. Потом ей присваивается следующее
-значение, и так далее.
+This loop works like this: the ``variable`` is assigned the first
+value is from the ``list_values`` and the ``code`` is executed.
+Then it is assigned the next value from that list and the ``code`` is executed
+again, and so on.
 
-Пример:
-
+Example:
 ::
 
     for i in 7, 42, 137:
         print(i)
 
-Этот код выведет на экран по очереди все три указанных числа (7, 42 и
-137).
+This code will output all three specified numbers (7, 42 and
+137), one after another.
 
-Список значений можно задавать как в примере выше, через запятую, а
-можно и разными другими способами. Общие правила тут вы узнаете позже,
-пока просто приведу наиболее распространенный вариант, который вам
-сейчас чаще всего будет нужен (а вариант с явным перечислением значений,
-как выше, вам сейчас довольно редко будет нужен).
+The list of values can be set as in the example above, separated by commas,
+or in variety of other ways. You will learn the general rules of this later,
+while I will just give the common way that you will often 
+use now (and the one with an explicit listing of values,
+as above, you will need quite rarely).
 
-А именно, очень часто вам надо, чтобы переменная цикла менялась,
-перебирая числа в некотором диапазоне по порядку, например, 1, 2, 3, 4,
-..., 10. Для этого есть конструкция ``range``. Пишется так:
-``for i in range(1, 11)`` — это перебирает все числа от 1 (включительно)
-до 11 (**невключительно**), т.е. как раз написанный выше набор чисел.
-Еще раз, потому что важно: первое число включительно, второе
-невключительно. Пример:
-
+So, very often you need to change the loop variable by going through 
+the numbers in a certain range one after another, for example, 1, 2, 3, 4,
+..., 10. There is a ``range`` operation for this. It is written like this:
+``for i in range(1, 11)`` — this iterates through all the numbers from 1
+(first bound is included) to 11 (but **second bound is not included**),
+i.e. just the range of numbers written above.
+Once again, because it is important: the first number is included, the last
+is not included. Example:
 ::
 
     for i in range(1, 21):
         print(i, "*", i, "=", i * i)
 
-выводит на экран таблицу квадратов всех чисел от 1 до 20 включительно
-(или до 21 невключительно).
+This code will output a sequence of squares of all numbers from 1 to 20
+including right endpoint (or up to 21 not including it).
 
-У команды ``range`` можно не указывать первый параметр, тогда он будет
-считаться равным 0: ``for i in range(4)`` переберет числа 0, 1, 2, 3.
-Это может показаться странным и непоследовательным, но в следующей теме
-(про массивы) вы поймете, что это очень естественно.
+You are free to omit the first parameter of ``range``, it will be
+implicitly considered zero:: ``for i in range(4)`` will result in 0, 1, 2, 3.
+This may seem odd and inconsistent, but in the next section (about arrays) 
+you will understand that this is quite native.
 
-И наоборот, у команды ``range`` можно указать третий параметр — шаг, с
-которым будет меняться значение переменной. Например, ``range(1, 7, 2)``
-обозначает "от 1 (включительно) до 7 (невключительно) с шагом 2", т.е.
-дает числа 1, 3, 5. Или ``range(0, 100, 10)`` дает числа 0, 10, 20, 30,
+Conversely, you can laso specify the third parameter for ``range`` — that
+will be the step with which the value of the variable will change. For example, 
+``range(1, 7, 2)`` means "from 1 (including it) to 7 (not including it) with step of 2", i.e.
+gives the numbers 1, 3, 5. And ``range(0, 100, 10)`` gives the numbers 0, 10, 20, 30,
 ..., 90.
 
-Особое применение этого третьего параметра — это перебор чисел в
-обратном порядке. ``range(10, 0, -1)`` дает 10, 9, 8, ..., 1. Обратите
-внимание, что 0 опять не включается. (Аналогично можно указывать шаг -2
-и т.п.)
+This third parameter is also used in a special way to iterate through the numbers 
+in reverse order. ``range(10, 0, -1)`` gives 10, 9, 8, ..., 1.
+Note that 0 is not included again. (Similarly, you can specify step equal to -2, etc.)
 
-В ``range`` можно, конечно, указывать и переменные, выражения и т.д.
-Например, ``range(a - b, a + b + 1)`` перебирает числа от ``a-b`` до
-``a+b`` включительно (до ``a+b+1`` невключительно).
+Of course, in ``range`` you can use variables, expressions, etc.
+For example, ``range(a - b, a + b + 1)`` will iterate through the numbers from ``a-b`` to
+``a+b`` including (up to ``a+b+1`` not including it).
 
-И напоследок — еще один, более сложный, пример применения цикла ``for``:
-
+And finally — a more complex example of using the ``for`` loop:
 ::
 
     for i in range(1, 10):
@@ -208,194 +201,187 @@
             print(i * j, end="")
         print()
 
-выводит на экран таблицу умножения.
+this will output the multiplication table .
 
-Про команды break и continue
-----------------------------
+Break and continue
+------------------
 
-При работе с циклами есть две полезных команды — break и continue. Здесь
-я опишу, что они делают и как их использовать.
+There are two special statements really useful for work with loops:
+``break`` and ``continue``. Here I will describe what they do and
+their basic appications.
 
-Понятие тела цикла и итерации
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Loop body and iterations
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-Сначала введу/повторю несколько терминов, которые полезны при обсуждении циклов.
+First, I will set/remind a few terms that are useful on the topic of loops.
 
-**Тело** цикла — это собственно те команды, которые находятся внутри
-цикла. Например, в цикле
-
+The **body** of the loop is actually those instructions that are written inside
+the loop. For example, in the loop
 ::
 
     for i in range(1, n + 1):
         a = i * i
         print(i, a)
     
+the loop body consists of two instructions: assignment and output.
 
-тело цикла состоит из двух команд: присваивания и вывода.
+The **iteration** is one separate pass the through the loop body.
+During the loop execution instructions of the loop body are repeated several times 
+— each such repetition is called an iteration. In the example above, we can say that
+the loop will do *n* iterations. For example, you can say that on the fifth
+iteration of the loop, the string "5 25" will be output.
 
-**Итерацией** называется каждый отдельный проход по телу цикла. Цикл
-всегда повторяет команды из тела цикла несколько раз — вот каждое такое
-повторение и называется итерацией. В примере выше можно сказать, что
-цикл сделает *n* итераций. Можно, например, сказать, что на пятой
-итерации цикла будет выведена строка "5 25".
+Break statement
+~~~~~~~~~~~~~~~
 
-Команда break
-~~~~~~~~~~~~~
+The ``break`` statement is used to interrupt the execution of the loop body 
+and go on to execute the code that comes after the loop. I.e. if at some
+point you decided that you don't need to loop anymore, as your loop has
+already produced all necessary data, and you need to move on to what is 
+written after it, then write ``break`` in that point. Note that if the break 
+happens in the middle of an iteration, this iteration will be interrupted 
+and the loop body will not be executed until the end.
 
-Команда break обозначает прервать выполнение цикла, и идти дальше
-выполнять те команды, которые идут после цикла. Т.е. если вы в некоторый
-момент решили, что больше вам циклиться не надо, и цикл уже отработал
-все, что надо, и вам нужно переходить к тому, что написано после цикла,
-то пишите break. Если это произошло посреди итерации, то итерация будет
-прервана — тело цикла до конца выполнено не будет.
-
-Пример:
-
+Example:
 ::
 
     for i in range(2, n + 1):
         if n % i == 0:
             print(i)
             break
-        print('Попробовали', i, ', не подходит')
-    print('Конец!')
+        print('Tried', i, ', failed')
+    print('The end!')
 
-— как только условие if'а выполнится, на экран будет выведено
-соответствующее *i*, и выполнение цикла будет прервано — дальше будет
-выведено слово "Конец!" и т.д. При этом строка "Попробовали..." будет
-выводиться для всех i, **не** включая то, на котором выполнилось условие
-цикла.
+As soon as the condition is met, the corresponding *i* will be
+output to the screen, and the execution of the loop will be interrupted 
+immediately after that. Then, "The end!" will be displayed, and etc. 
+In this case, the line "Tried..." will be output for every i 
+**not including** the one on which the condition was met.
 
-Например, для ``n==9`` вывод будет следующий:
-
+For example, for ``n == 9`` the output will be as follows:
 ::
-
-    Попробовали 2 , не подходит
+    
+    Tried 2 , failed
     3
-    Конец!
+    The end!
 
-(Правда, данный конкретный код было бы проще написать через while —
-подумайте, как)
+(Though this particular code would be easier to write 
+via ``while`` loop. Think of how to do that)
 
-Команду break можно также применять и с циклами while и repeat, один из
-примеров будет ниже.
+The ``break`` statement can also be used with ``while`` and 
+``repeat`` loops, one of the examples will be shown below.
 
-Команда continue
-~~~~~~~~~~~~~~~~
+Continue statement
+~~~~~~~~~~~~~~~~~~
 
-Команда continue обозначает прервать выполнение текущей итерации цикла и
-начать следующую итерацию. Т.е. как будто бы, не доделывая то, что
-написано ниже в теле цикла, прыгнуть на начало цикла, при этом выполнив
-все действия, которые должны быть выполнены после очередной итерации —
-т.е. в цикле for увеличив значение счетчика цикла на 1, а в циклах
-while/repeat проверив условие и, если оно не выполняется, то вообще
-прервав работу.
+The ``continue`` statement is used to interrupt the execution of 
+the current iteration of the loop and start the next iteration.
+I.e., it's like jumping to the beginning of the loop without completing
+what is written below in the body of the loop *but* with performing 
+all the actions that must be performed after any iteration —
+i.e. in the ``for`` loop increasing the value of the loop counter by 1,
+and in ``while``/``repeat`` loops checking the condition and,
+if it is not true, interrupting the whole loop.
 
-Пример:
-
-::
+Example::
 
     for i in range(2, n):
         if n % i != 0:
-            print('Попробовали', i, ', не подходит')
+            print('Tried', i, ', failed')
             continue
-        print(n, 'делится на', i)
+        print(n, 'is evelny divisible by', i)
 
-— здесь цикл пройдется по всем числам от ``2`` до ``n-1`` и для каждого выведет,
-делится ли ``n`` на ``i`` или нет. Например, при ``n==9`` вывод будет такой:
+Here the loop will go through all the numbers from ``2`` to ``n-1`` and for each will output
+whether ``n`` is divisible by ``i`` or not. For example, for ``n == 9`` the output will look so::
 
-::
-
-    Попробовали 2 , не подходит
-    9 делится на 3
-    Попробовали 4 , не подходит
+    Tried 2 , failed
+    9 is evenly divisible by 3
+    Tried 4 , failed
     ...
-    Попробовали 8 , не подходит
+    Tried 8 , failed
 
-Пройдем подробнее по началу выполнения этого кода. Сначала i становится
-равным 2. Смотрим: ``9 % 2 != 0`` — значит, идем внутрь if. Выводим на
-экран "Попробовали...", и далее идет команда continue. Значит, сразу
-идем на следующую итерацию: увеличиваем ``i`` (!), оно становится равным 3,
-и идем на начало цикла. ``9 % 3 == 0``, поэтому в if не идем, выводим "9
-делится на 3", итерация закончилась — увеличиваем ``i`` и идем на следующую
-итерацию. И так далее.
+Let's look at the few first iterations in more detail. First, ``i`` becomes
+equal to 2. We check: ``9 % 2 != 0``, so we go inside our ``if``. We output
+"Tried..." to the screen, and then there's the ``continue`` statement. So we 
+immediately start the next iteration: increase ``i`` (!), it becomes 
+equal to 3, and we go to the beginning of the loop body. ``9 % 3 == 0``, so we 
+don't execute the ``if`` body and output "9 is evenly divisible by 3".
+This iteration is over. We increase `i` and go to the next one. And so on.
 
-Конечно, в этом примере можно было бы обойтись и без ``continue``, просто
-написать ``else``. Это было бы проще. Но бывает, что вам надо перебрать
-числа, и есть много случаев, когда какое-то число вам не надо
-рассматривать. Тогда писать кучу ``else`` было бы намного сложнее, чем
-несколько ``continue``. Например (пример выдуман из головы, но подобные
-случаи бывают):
-
-::
+Of course, in this particular case it's possible to do without using 
+``continue``, just by writing ``else`` after ``if``. That would be easier. 
+But it happens that you need to sort out the numbers, and there are many 
+specific conditions upon those you don't need to take the number into account.
+Then writing a bunch of ``else`` statements would be much more complicated than
+a few ``continue`` statements. For example (this one is rather synthetic,
+but similar cases really exist)::
 
     for i in range(n):
-        # нам не нужны числа, делящиеся на 5
+        # we don' need numbers divisible by 5
         if i % 5 == 0:
             continue
-        # нам не нужны числа, квадрат которых дает остаток 4 при делении на 7
-        # обратите внимание, что мы можем делать какие-то действия до проверки условий
+        # we also don't need numbers that give remainder 4 when divided by 7
+        # note that we may process something befоre checking the condition from the comment above
         p = i * i
         if p % 7 == 4:
             continue
-        # все оставшиеся числа нам нужны,
-        # поэтому здесь делаем какую-нибудь сложную обработку из многих команд
+        # all the remaining numbers are necessary
+        # so here we do some complex processing with many instructions
         ...
 
-— тут намного более понятно, что вы имели в виду, чем если бы вы писали
-с ``else``. С ``else`` тому, кто будет читать ваш код, пришлось бы смотреть, где
-``else`` заканчивается, и вдруг после конца ``else`` идут еще какие-нибудь
-команды, а здесь все понятно: если ``if`` выполняется, то пропускается все
-оставшееся тело цикла.
+Here it's way more clear what you meant than if you wrote it using ``else``. 
+With ``else``, whoever is going to read your code would have to look where
+``else`` ends, and whether there are some more instructions after that ``else``.
+In contrast, here everything is clear: if ``if`` is executed, the
+remaining part of the loop body is entirely skipped.
 
-while True и break
-~~~~~~~~~~~~~~~~~~~~~
+While True and break
+~~~~~~~~~~~~~~~~~~~~
 
-Один важный случай применения команды ``break`` состоит в следующем. Часто
-бывает так, что вам надо повторять какую-то последовательность действий,
-и проверять условие окончания вам хочется в середине этой
-последовательности. Например, вам надо считывать с клавиатуры числа,
-пока не будет введен ноль. Все числа, кроме нуля, надо как-то
-обрабатывать (для простоты будем считать, что выводить на экран — это
-нам не существенно).
+One special case of ``break`` statement usage is the following.
+It's typical that you need to repeat some sequence of operations
+and you want to check the exit condition *in the middle* of this
+sequence. For example, you need to read numbers from keyboard
+until zero is entered. All numbers, except zero, need to be
+processed somehow (It's not essential here how exactly.
+To simplify, we will just output them to the screen).
 
-Естественная последовательность действий следующая:
+The natural way to do this looks like this::
 
-::
-
-    считать число
-    если ноль, то прерваться
-    вывести это число на экран
-    считать число
-    если ноль, то прерваться
-    вывести это число на экран
+    read a number
+    if it's equal to zero, stop and exit
+    output the number to the screen
+    read a number
+    if it's equal to zero, stop and exit
+    output the number to the screen
+    read a number
+    if it's equal to zero, stop and exit
+    output the number to the screen
     ...
 
-Очень четко видна цикличность, но если вы попытаетесь написать цикл без
-команды ``break``, ничего хорошего у вас не получится.
+The looping pattern seems quite clear, but if you try to write 
+a loop without using ``break``, nothing good would come of that.
 
-У вас будет несколько вариантов: например, так
-
+You'll probably take one of the several options. For example, like this:
 ::
 
     a = int(input())
     while a != 0:
         print(a)
         a = int(input())
+        
+In fact, you've "cut off" the looping sequence at the monent where 
+the check must be performend and, as a result, were forced
+to duplicate the reading operation: you have it before the loop, and
+then again at the end of the loop. Code duplication is not very good
+(if you have to change it, you may forget that the same code is in two
+places); if you have a slightly more complex code instead of reading a number, 
+it will be even worse. This particular variant, also has another disadvantage:
+variable ``a`` has different values within one iteration of the loop. 
+It would be easier if each iteration of the loop
+corresponded to processing a certain entered number.
 
-Фактически вы "разрезали" циклическую последовательность действий на
-проверке условия окончания цикла, и в результате были вынуждены команду
-считывания числа задублировать: она у вас один раз перед циклом, и один
-раз в конце цикла. Дублирование кода — это не очень хорошо (если вам
-придется его менять, вы можете забыть, что один и тот же код в двух
-местах); если у вас вместо считывания числа будет чуть более сложный
-код, то будет еще хуже. Кроме того, в этой реализации не очень хорошо,
-что у вас в пределах одной итерации цикла есть разные значения
-переменной ``a``, было бы проще, если бы каждая итерация цикла
-соответствовала работе только с одним введенным числом.
-
-Второй вариант, который вам может придти в голову, такой:
-
+The second option you may come up with may be similar to this:
 ::
 
     a = 1
@@ -404,20 +390,21 @@ while True и break
         if a != 0:
             print(a)
 
-Этот вариант лучше в том смысле, что каждая итерация работает только с
-одним числом, но у него все равно есть недостатки. Во-первых, есть
-искуственная команда ``a = 1`` перед циклом. Во-вторых, условие ``a != 0``
-дублируется; если вам придется его менять, вы можете забыть, что оно
-написано в двух местах. В-третьих, у вас *основная* ветка выполнения
-цикла, ветка, по которой будет выполняться большинство итераций, попала
-в ``if``. Это не очень удобно с точки зрения кода: все-таки все числа, кроме
-последнего, будут не нулевыми, поэтому хотелось бы написать такой код, в
-котором обработка случая ``a = 0`` не потребует заворачивания основного
-варианта в ``if`` — так просто читать удобнее (особенно если бы у нас было
-бы не просто ``print(a)``, а существенно более сложный код обработки
-очередного числа, сам включающий несколько ``if``'ов и т.п.).
+This one is better, as each iteration only processes one number, 
+but it still has drawbacks. First, there is an artificial instruction 
+``a = 1`` before the loop. Second, the condition ``a != 0``
+is duplicated; if you have to change it, you may forget that it
+is used twice. Third, you are going through ``if`` body in the *main* 
+branch of the loop execution (i.e. the branch on which most iterations 
+will be executed). This is not very convenient (from the point of readability): 
+after all, all the numbers except the last one will not be zeros. 
+So I would better write code which wouldn't require almost every iteration
+to step into ``if`` for handling a rare case of ``a == 0``.
+It would be much easier to read (especially if the processing would be 
+not just ``print(a)``, but a much more complex code including 
+several ``if``-statements itself and etc.).
 
-Но можно сделать следующим образом:
+Finally, you can implement it in this way:
 
 ::
 
@@ -427,51 +414,48 @@ while True и break
             break
         print(a)
 
-Искусственная конструкция ``0==0`` — это условие, которое всегда верно: нам
-надо, чтобы ``while`` выполнялся до бесконечности, и мог бы завершиться
-только по ``break``. На самом деле в питоне есть специальное слово ``True``,
-которое обозначает условие, которое всегда верно (и симметричное слово
-``False``, которое обозначает условие, которое не верно никогда).
-Соответственно, еще лучше писать ``while True:``...
+The artificial expression ``0 == 0`` is a condition that is always true: 
+we need ``while`` to execute infinitely, and only stop via ``break``.
+In fact, Python has a special word ``True`` in its syntax, denoting a condition
+that is always true (and a symmetric word ``False`` denoting a condition 
+that is never true). Accordingly, it's even better to type ``while True:``...
 
-Этот вариант свободен от всех указанных выше недостатков. Каждая
-итерация работает с очередным числом, код считывания не дублируется, код
-проверки не дублируется, общая последовательность действий понятна, и
-основная ветка выполнения цикла находится в основном коде.
+This option is free from all the disadvantages mentioned above.
+Each iteration works with one number, reading code is not duplicated,
+the check is not duplicated, the overall sequence of operations is clear,
+the main branch of the loop goes straight through the main code.
 
-Вот так и следует писать любые циклы, в которых проверка условия нужна
-*в середине* тела цикла:
-
+This is how you should write any loops where the you need to check 
+the condition *in the middle* of loop body:
 ::
 
     while True:
-        что-то сделали
-        if надо завершить работу:
+        some processing
+        if exit_condition:
             break
-        сделали что-то еще
+        some more processing
 
-Примеры решения задач
----------------------
+Sample problems and solutions
+-----------------------------
 
-Приведу несколько примеров задач, аналогичных тем, которые встречаются на олимпиадах
-и в моем курсе.
+Here are a few sample problems similar to those you may come across on contests and in my course.
 
 .. task::
 
-    В классе :math:`N` школьников. На уроке физкультуры тренер говорит «на первый-второй рассчитайтесь».
-    Выведите, что скажут ученики.
+    There are :math:`N` students in the class. On a PE lesson the teacher says "count off one to two".
+    Output what the students will say.
 
-    **Входные данные**: Вводится одно целое число — количество человек в классе.
+    **Input**: One integer number — the number of students in the class.
 
-    **Входные данные**: Выведите последовательность чисел 1 и 2, в том порядке, как будут говорить школьники.
+    **Output**: A sequence of numbers 1 and 2 in the order corresponding to what students will say.
 
-    **Пример**:
+    **Example**:
 
-    Входные данные::
+    Input::
 
         5
 
-    Выходные данные::
+    Output::
 
         1
         2
@@ -482,24 +466,30 @@ while True и break
     |
     |
 
-Сначала, конечно, считываем :math:`N`::
+Firstly, of course, we read :math:`N`::
 
     n = int(input())
 
-Самое главное в задачах на циклы — понять, какая операция будет повторяться, и сколько раз или до какого условия,
-и чему будет соответствовать каждое повторение (итерация) цикла.
-В этой задаче более-менее понятно: надо :math:`N` раз вывести число, и каждая итерация
-будет соответствовать одному школьнику. Поэтому логично написать цикл ``for i in range(n)``,
-он как раз осуществит :math:`N` повторений.
+The most important thing in problems on the topic of loops is to understand 
+what operation(s) will be repeated, how many times or upon what condition,
+and what each repetition (iteration) of the cycle will correspond to.
+In this problem, it's more or less clear: we need to print a number :math:`N` times, 
+and each iteration will correspond to one student's answer. 
+Therefore, it's reasonable to write a loop ``for i in range(n)``
+which will give exactly :math:`N` repetitions.
 
-Дальше надо понять, что делать внутри каждого повторения. Здесь надо решить, что выводить — 1 или 2 —
-и соответственно вывести. В цикле ``for`` у нас как раз есть переменная ``i``, которая хранит номер текущего школьника.
-(Это очень важный момент — внутри цикла вы должны писать общий код, который будет работать
-в общем виде на каждой итерации, и обычно как раз стоит опираться на какие-то переменные,
-отражающие текущее состояние, в цикле ``for`` это обычно переменная цикла.)
+Then we need to understand what to do inside each repetition. 
+Here we have to decide what to output (1 or 2) and accordingly 
+output it. In our ``for`` loop, we have the variable ``i`` 
+in which the number of the current student is stored.
+(This is a very important point — inside the loop you have to 
+write code that will work in a generic way on each iteration, 
+and usually it's a good point to rely on some variables representing 
+the current state. In the ``for`` loop it's usually the looping variable.)
 
-Ясно, что число, которое надо вывести, зависит от четности ``i``. Надо еще учесть,
-что итерация цикла (``range(n)``) начинается с нуля, поэтому общий код получается такой::
+Here it's clear that the number we need to output depends on the parity of ``i``.
+We should also take into account that the iteration interval (``range(n)``)
+starts with zero. So the whole code will be such as given::
 
     n = int(input())
     for i in range(n):
@@ -510,15 +500,17 @@ while True и break
 
 .. task::
 
-    Вводятся :math:`N` чисел. Посчитайте, сколько среди них четных.
+    :math:`N` numbers are given. Count how many of them are even.
 
-    **Входные данные**: На первой строке вводится одно число :math:`N`. Далее следуют :math:`N` строк по одному числу на каждой — заданные числа.
+    **Input**: On the first line there's one number :math:`N`.
+    On the following :math:`N` lines there are given numbers — 
+    one number on each line.
 
-    **Входные данные**: Выведите ответ на задачу.
+    **Output**: Print the quantity of even numbers.
 
-    **Пример**:
+    **Example**:
 
-    Входные данные::
+    Input::
 
         4
         10
@@ -526,36 +518,41 @@ while True и break
         12
         13
 
-    Выходные данные::
+    Output::
 
         2
     |
     |
     |
+    
+Here you are faced with the fact that you don't know in advance 
+(at the stage of writing the program) how many numbers you'll have to read.
+First, the number :math:`N` will be entered, and after that :math:`N` more numbers. 
+I.e. if 3 is input as the first number, then there will be 3 more numbers following,
+and if 137 is input as the first number, there will be 137 more numbers. 
+This is radically different from what you did before,
+when you knew, for example, that exactly 6 numbers are always entered.
 
-Здесь вы сталкиваетесь с тем, что заранее (на этапе написания программы) вы не знаете, сколько чисел надо будет вводить.
-Вы должны сначала ввести число :math:`N`, а потом еще :math:`N` чисел, т.е. если вам первым числом вводят 3, значит, дальше будет еще 3 числа,
-а если первым числом вводят 137, то дальше будет еще 137 чисел. Это радикально отличается от того, что вы делали раньше,
-когда вы знали, например, что всегда вводится ровно 6 чисел.
+But loops are exactly the thing allowing you to repeat some operation certain times, 
+and at the stage of writing the program it's not necessary to know how many times 
+you need to do it. In the example above, you've output data inside the loop, and here, 
+according to the task, you will have to *read* data inside the loop.
 
-Но как раз циклы и позволяют повторить некоторую операцию заданное число раз, причем на этапе написания программы
-вам не обязательно знать, сколько раз надо это делать. В примере выше внутри цикла вы выводили данные,
-а тут по смыслу задачи внутри цикла вам придется *считывать* данные.
-
-Вы считываете сначала :math:`N`::
+First, you read :math:`N`::
 
     n = int(input())
 
-а дальше вам надо написать цикл, повторяющийся :math:`N` раз, и внутри цикла считывать числа::
+Then you need a loop iterating :math:`N` times and reading numbers inside it::
 
     for i in range(n):
         x = int(input())
         ...
 
-Дальше надо у каждого числа проверить, четное ли оно: ``if x % 2 == 0``, ну и если четное, то увеличить счетчик четных чисел на единицу.
-Такой счетчик, естественно, надо завести заранее. 
+Then each number must be checked if it's even: ``if x % 2 == 0``. If so,
+the even numbers counter should be increased by one.
+Obviously, you need to create such a counter beforehand.
 
-Итого получаем::
+Finally you'll get::
 
     n = int(input())
     k = 0
@@ -565,75 +562,81 @@ while True и break
             k += 1
     print(k)
 
-Обратите внимание, что вывод ответа (``k``) надо делать после окончания цикла, поэтому команда ``print`` пишется без отступа.
+Note that the output of the answer (``k``) is outside the loop so
+``print`` doesn't have an indent.
 
 .. task::
 
-    Посчитайте сумму :math:`1+2+3+\ldots+N`.
+    Calculate the sum: :math:`1+2+3+\ldots+N`.
 
-    **Входные данные**: Вводится одно целое число :math:`N`.
+    **Input**: One integer number :math:`N`.
 
-    **Входные данные**: Выведите искомую сумму.
+    **Output**: Print the required sum.
 
-    **Пример**:
+    **Example**:
 
-    Входные данные::
+    Input::
 
         2
 
-    Выходные данные::
+    Output::
 
         3
 
-    Входные данные::
+    Input::
 
         5
 
-    Выходные данные::
+    Output::
 
         15
     |
     |
     |
 
-(Конечно, эту задачу можно решить известной формулой,
-но давайте все-таки напишем цикл.)
+(Of course, this problem can be solved in one line via a 
+well-known formula, but let's do it with a loop)
 
-(Обратите еще внимание, что ввод 2 корректен, и ответ на 2 равен 3, несмотря на то, что в формуле написана и двойка, и тройка, и :math:`N`.
-Это стандартная особенность таких математических обозначений: в формуле с многоточием пишется побольше слагаемых,
-чтобы была понятна логика, но если :math:`N` маленькое, то просто остается только столько слагаемых, сколько надо.)
+(Note as well: input 2 is correct and gives the answer 3 despite the fact 
+that both two, three and :math:`N` are written in the formula.
+This is a standard feature of such mathematical notation: in a formula 
+with an ellipsis, more terms are written for the logic to be clear, 
+but if :math:`N` is small, then only as many terms as necessary remain.
 
-В такой задаче полезно подумать, как бы вы считали ответ вручную.
-Часто говорят: сложил бы все числа.
-Но если подумать, вы же не сможете сложить сразу все пять чисел.
-Вы наверняка будете складывать числа по очереди:
-сначала к 1 прибавляете 2, потом к результату прибавляете 3,
-потом к результату прибавляете 4, и т.д.
+In such a problem, it is useful to think about how you'd count 
+the answer "by hand". A typical answer is: I would just add up all the numbers!
+But if you think about it, you'll realize you can't add up five numbers at once.
+You will probably add the them in turn:
+first add 2 to 1, then add 3 to the result,
+then add 4 to the result, and etc.
 
-Соответственно, какая картина вырисовывается: у вас много раз повторяется
-одно и то же действие: к текущей сумме прибавить очередное число. Значит, нам, во-первых,
-явно нужен цикл, перебирающий числа подряд, во-вторых, нам явно нужна
-переменная для текущей суммы, пусть это будет переменная :math:`k`. 
-Соответственно, получается что-то такого рода::
+Thus, a pattern emerges: you repeat one operation many times. 
+This operation is addition of the next number to the current sum.
+So first, we obviously need a loop iterating over the numbers one by one, 
+second, we clearly need a variable for the current sum, let it be :math:`k`.
+Accordingly, it's something like this::
 
     for i in .....:
         ... k + i
 
-т.е. вам надо к :math:`k` прибавить :math:`i`.
-Но просто так прибавлять смысла нет, надо куда-нибудь сохранить результат.
-И тут фокус, возможно, не очень очевидный: результат надо сохранять в :math:`k`!
-Потому что на следующей итерации цикла именно к этому результату
-надо будет прибавлять следующее :math:`i`::
+i.e. you need to add т.е. :math:`i` to :math:`k`.
+But there's no point in just adding, you need to save the result somewhere.
+And here's the trick may not be obvious: the result must be assigned to :math:`k` itself!
+Because on the next iteration of the loop you'll need to add next :math:`i` exactly to this result::
 
     for i in .....:
         k = k + i
 
-осталось понять, в каких пределах надо запускать цикл, а также что изначально записать в :math:`k`.
-Напрашивается решение в :math:`k` записать 1 (первое слагаемое), а цикл делать от 2 до :math:`N`,
-но на самом деле немного проще изначально в :math:`k` записать 0 (пустую сумму, т.е. как будто нет слагаемых вообще),
-а цикл делать от 1 до :math:`N`, причем, естественно, :math:`N` включительно, поэтому надо писать ``range(1, n + 1)``.
+All that's left is to understand what are the bounds of the loop
+and what should be the initial value of :math:`k`.
+A typical option you may come up with is to initialize :math:`k` with 1 
+(the first summand), and to organize a loop from 2 to :math:`N`.
+But in fact it is a little easier to initially assign 0 to :math:`k`
+(an empty sum, as if there are no summands at all),
+and do the loop do from 1 to :math:`N` (of course, 
+including :math:`N`, so you need to use ``range(1, n + 1)``).
 
-Итоговый код, вместе с вводом и выводом переменных::
+So here's the entire code with the input and output::
 
     n = int(input())
     k = 0
@@ -642,58 +645,60 @@ while True и break
     print(k)
     
 .. task::
+    Masha wants to save up for a new phone. The phone costs :math:`N` rubles.
+    Masha can save :math:`K` rubles a day and does it every day except Sunday,
+    when she spends her money going to the cinema.
+    Masha starts saving on Monday. In how many days will she get the required amount?
 
-    Маша хочет накопить на новый телефон. Телефон стоит :math:`N` рублей.
-    Маша может откладывать :math:`K` рублей в день каждый день, за исключением воскресенья,
-    когда она тратит деньги на поход в кино.
-    Маша начинает копить в понедельник. За сколько дней она накопит нужную сумму?
+    **Input**: Two numbers :math:`N` and :math:`K`.
 
-    **Входные данные**: Вводятся два числа: :math:`N` и :math:`K`.
+    **Output**: Print the number of days Masha needs.
 
-    **Входные данные**: Выведите искомое количество дней
+    **Example**:
 
-    **Пример**:
-
-    Входные данные::
+    Input::
 
         100 50
 
-    Выходные данные::
+    Output::
 
         2
 
-    Входные данные::
+    Input::
 
         100 10
 
-    Выходные данные::
+    Output::
 
         11
     |
     |
     |
 
-В принципе, эту задачу не так уж и сложно решить формулой, без циклов (но скорее всего с if'ами),
-но давайте напишем цикл.
+In theory, it's not diificult to solve it with a formula and no loops
+(but most likely with an ``if``, maybe not only one). But let's work out a loop.
 
-Попробуем промоделировать, как будет увеличиваться сумма накопленных денег у Маши. Обозначим текущую сумму как :math:`s`.
-Каждый день, кроме воскресенья, к ней прибавляется :math:`K`.
-Логично написать цикл, чтобы одна итерация цикла соответствовала одному дню.
-Цикл надо продолжать до тех пор, пока не накопится нужная сумма, поэтому естественно написать цикл ``while``::
-
-    while s < n:
-
-Что мы делаем в цикле? Надо прибавить :math:`K` к :math:`s`, но только если текущий день не воскресенье::
+We'll try to replicate how the amount of Masha's saved money will increase.
+Let's denote the current sum as :math:`s`. Every day except Sunday :math:`K` 
+is added to it. It's reasonable to write a loop where one iteration 
+corresponds to one day. The loop should be executed until 
+the required amount is reached, so it is natural to use ``while`` loop::
 
     while s < n:
-        if .....:  # тут надо написать условие «не воскресенье»
+
+What shoud we do inside the loop? Add :math:`K` to :math:`s`... 
+but only if the current day is not Sunday::
+
+    while s < n:
+        if .....:  # here must be a "not Sunday" condition
             s = s + k
 
-Как понять, воскресенье сейчас или нет? Естественно, нам нужен какой-нибудь счетчик дней, заодно он нам нужен будет
-и для вывода ответа. Заводим переменную :math:`day` — номер текущего дня. Маша начинает копить в понедельник,
-считая это днем 1, понимаем, что воскресенья — это дни, номера которых делятся на 7.
+How can we get if today's Sunday or not? Naturally, we need some kind of day counter,
+we'll then also use it to output the answer. Let's create a variable :math:`day` which
+will represent the number of the current day. Masha starts saving on Monday. Considering 
+it's  day 1, we easily get that Sundays are days whose numbers are evenly divided by 7.
 
-Получаем примерно такой код::
+The code will look like this::
 
     day = 1
     s = 0
@@ -702,8 +707,9 @@ while True и break
             s = s + k
         day = day + 1
 
-Тут единственная проблема — мы заканчиваем цикл, уже перейдя к очередному дню, т.е. в этом коде :math:`day`
-получается всегда на 1 больше, чем нужно. Поэтому при выводе ответа надо вычесть единицу::
+Here's an only trouble left: the loop terminates already after moving to the next day,
+i.e. in this code :math:`day` will be always greater than we need by 1.
+Therefore, when we output the answer, you we to subtract 1::
 
     n, k = map(int, input().split())
     day = 1

@@ -1,174 +1,163 @@
 .. highlight:: python
 
-Работа с файлами
-=======================
+File input and output
+=====================
 
-На серьезных олимпиадах, а также во многих других ситуациях, вам надо
-читать данные не с клавиатуры, а из файла, и выводить данные в файл, а
-не на "экран". 
+On some contests, as well as in many other situations, you may need
+to input data not from keyboard, but from a file,
+and output data to a file, not to the abstract "screen".
 
-(В таком случае, конечно, вы должны знать имена этих файлов; в
-задачах они, как правило, указаны; на алгопроге имена файлов почти
-всегда — ``input.txt`` для входных данных и ``output.txt`` для выходных.)
+(For this, of course, you should know the names of these files. In the tasks they are usually 
+specified directly. On the algoprog, the file names are almost always these:
+``input.txt`` for input data and ``output.txt`` for the output.)
 
-Во многих языках программирования ввод/вывод данных через файлы очень
-похож на ввод/вывод с клавиатуры — те же команды, только немного другие
-параметры. В питоне, к сожалению, отличия более существенны.
+In many programming languages, data input from/output to files is very similar 
+to keyboard input/output — the instructions are the same, only parameters are 
+slightly different. Unfortunately, in Python the differences are more significant.
 
-Ввод данных
------------
+File input
+----------
 
-Чтение по аналогии с input
-``````````````````````````
+Inputting analogous to standard ``input``
+`````````````````````````````````````````
 
-Чтобы считать данные из файла, вам надо сначала «открыть файл на чтение».
-Это делается командой 
-
-::
+To read data from a file, you first need to "open the file for reading".
+This is done by the following instruction::
 
     f = open("input.txt", "r")
 
-Здесь ``input.txt`` — файл, откуда надо считать данные, параметр ``"r"``
-указывает, что вы собираетесь именно *читать* (**r**\ ead) данные, а не
-записывать (**w**\ rite, см. ниже).
+Here ``input.txt`` is exactly the file from which you need to read the data, 
+and the parameter ``"r"`` stands for "**r**\ead", so it indicates that you are going 
+to read the data, not to write (then you should use ``"w"`` instead, see this below).
 
-Далее с полученным объектом ``f`` можно работать. Самая простая операция
-— ``f.readline()`` — возвращает очередную строку файла.
-Это полный аналог ``input()``, за исключением того, что на конце 
-полученной строки будет специальный символ перевода строки ``"\n"``
-(при выводе строки на экран он не будет заметен, но переведет лишний раз строку).
-Как правило, он вам будет мешать, но вы его можете легко убрать методом ``.rstrip("\n")``,
-например, ``f.readline().rstrip("\n")``.
+Then you are able to work with the received object ``f``. The basic operation is
+``f.readline()``, which returns the next line of the file.
+This is a complete analog of ``input()``, except for that at the end
+of the received string there will be a special line break character ``"\n"``
+(when the line is output to the screen, it won't be visible, 
+but will break the line and start a new one). Highly likely it will bother you, 
+but you can easily remove it using the ``.rstrip("\n")`` method,
+for example, ``f.readline().rstrip("\n")``.
 
-Пример. Пусть во входном файле два числа по одному на строке. С клавиатуры
-вы бы считывали так:
-
-::
+Here's an example. Let there be two numbers in the input file, one per line.
+From the keyboard you would read it like this::
 
     a = int(input())
     b = int(input())
 
-Тогда из файла надо считывать так:
-
-::
+Then the input from the file is done as follows::
 
     f = open("input.txt", "r")
     a = int(f.readline().rstrip("\n"))
     b = int(f.readline().rstrip("\n"))
 
-Аналогично, если два числа в одной строке. С клавиатуры это считывается так:
-
-::
+The case with two numbers on the same line is quite similar.
+When reading from the keyboard, it's like this::
 
     a, b = map(int, input().split())
 
-Тогда из файла считываем так:
-
-::
+And from the file like this::
 
     f = open("input.txt", "r")
     a, b = map(int, f.readline().rstrip("\n").split())
 
-Более сложный пример: сначала число ``N``, а потом ``N`` строк по одному
-числу в каждой. С клавиатуры:
-
-::
+A more complex example: let's assume we need first the number ``N``, 
+and then ``N`` lines of one number in each. From the keyboard::
 
     n = int(input())
     for i in range(n):
         x = int(input())
-        #... что-то делаем с x
+        ...     # processing x
 
-Из файла:
-
-::
+From the file::
 
     f = open("input.txt", "r")
     n = int(f.readline().rstrip("\n"))
     for i in range(n):
         x = int(f.readline().rstrip("\n"))
-        #... что-то делаем с x
+        ...     # processing x
 
-Чтение до конца файла
-`````````````````````
+Reading the file to the end
+```````````````````````````
 
-Пока файл не кончился, функция ``readline`` будет вам всегда возвращать 
-*непустую* строку (в ней будет как минимум символ ``"\n"``). Как только файл кончится,
-``readline`` вернет пустую строку. Поэтому читать до конца файла можно так::
+Until the file ends, the ``readline`` function will always return
+*a non-empty* string (it will contain at least the line break character ``"\n"``).
+As soon as the file ends, ``readline`` will return an empty string.
+Therefore, you can read the file to the end like this::
 
     f = open("input.txt", "r")
     while True:
         s = f.readline()
         if s == "":
             break
-        # обрабатываем s, в частности, теперь можно вызвать s = s.rstrip("\n")
+        # processing s; particularly, may start with "s = s.rstrip("\n")"
 
-
-Альтернативный вариант — можно сразу считать весь файл в массив строк::
+There's an alternative way — you can read the entire file
+at once and save it to an array of strings::
 
     data = open("input.txt", "r").readlines()
 
-Теперь ``data`` — это массив строк, каждый элемент которого — это
-очередная строка из входного файла. Например, если в файле было написано
-
-::
+Now ``data`` is an array of strings. Each its element contains 
+a corresponding line of the input file. For example, 
+if the content of that file is as follows::
 
     1 2 3
     4 5 6
     some text
 
-то ``data`` будет содержать массив
-``["1 2 3\n", "4 5 6\n", "some text\n"]``, и дальше вы можете работать с этим массивом как вам надо.
+then ``data`` will be an array looking just like this:
+``["1 2 3\n", "4 5 6\n", "some text\n"]``, 
+and thereafter you may process it as you wish.
 
-Еще можно написать ``open("input.txt", "r").read()``, это считает весь файл в одну большую строку
-(в том числе в середине этой строки могут быть символы перевода строки,
-но это все равно будет одна большая строка, а не массив строк).
+You can also use this method: ``open("input.txt ", "r").read()``.
+It reads the entire file and puts it in one big string
+(and there may be line break characters in the middle of this string,
+but it will still be one big string, not an array of strings).
 
-Вывод
------
+File output
+-----------
 
-Для вывода данных вы можете открыть файл *на вывод*::
+To save your data to a file, you should open it for output::
 
     f = open("output.txt", "w")
 
-(буква ``w`` обозначает write, запись). И дальше можно использовать ``f``
-в качестве опционального аргумента уже знакомой вам функции ``print``::
+here, ``"w"`` means "**w**\rite". Ater that, you can use ``f``
+as an optional argument of a common ``print`` function::
 
     print(a, b, file=f)
+    
+After the overall end of the output, it's recommended to call ``f.close()``
+so that the data will be actually written to the disk
+(although in most cases everything works without it).
 
-После окончания всего вывода рекомендуется вызвать ``f.close()``,
-чтобы данные реально оказались записаны на диск
-(хотя в большинстве случаев все работает и без этого).
+How to use it on contests?
+--------------------------
 
-Как это использовать в олимпиадах
----------------------------------
+The main advantage of inputting from files when solving algorithmic problems
+(on the contests, here on algoprog, etc.) is that you do not have
+to retype the entire test every time. If you are debugging your program 
+on some test, figuring out why it doesn't work, trying to fix errors,
+you'll definitely need to run the program many times on the same test.
+It is difficult and takes time to enter it manually every time. It's much easier 
+to save it to a file once, and then organize the input from that file.
 
-Основное достоинство ввода из файлов при решении алгоритмических задач
-(на олимпиадах, тут на сайте и т.д.) — что вам не надо каждый раз заново
-вводить весь тест. Если вы отлаживаете программу на некотором тесте,
-разбираетесь, почему она не работает, пытаетесь исправить ошибки,
-вы будете много раз запускать программу на одном и том же тесте.
-Каждый раз его вводить — сложно и долго. Намного проще его один раз записать в файл,
-и дальше делать ввод из файла.
+The second reason to use file input is that you can "juggle" tests much more easily.
+You can write several tests to an auxiliary file, and simply
+copy the desired test to the input file. Moreover, in most cases
+you can even store a lot of tests just in your input file.
 
-Вторая причина использовать файлы — вы намного легче можете «жонглировать» тестами.
-Вы можете записать несколько тестов в другой, вспомогательный, файл,
-и просто копировать нужный тест во входной файл.
-Более того, в большинстве случаев вы можете даже хранить много тестов
-прямо во входном файле. 
+Namely, in many tasks you don't have to read data to the end of the file.
+For example, you need read only two numbers, or only one line, or you
+are given the number ``N`` and then ``N`` more numbers — in all these cases
+the program doesn't care what comes after this data. You can store
+other tests there, and then, upon you need a certain test, just move it
+to the beginning of the file.
 
-А именно, во многих задачах у вас чтение данных идет не до конца файла
-— например, вы считываете только два числа, или только одну строку, или вам 
-задается число ``N`` и дальше ``N`` чисел — во всех этих случаях
-программе не важно, что идет после этих данных. Вы там можете хранить
-другие тесты, а потом, когда вам нужно, переносите просто нужный тест
-в самое начало файла.
+(In general, you can even write your program in such a way so that it processes
+all the tests that the input file contains — this is the so-called *multitest*.
+There will be only one test at once in the testing system, and the program 
+will run on it, and during your testing, your program will immediately run on many tests.
+And moreover, there are tasks where there is a multitest in the input data, 
+i.e. many tests are set at once. Then especially you can debug on many tests at once.)
 
-(А вообще, можете даже написать программу так, чтобы она обрабатывала
-вообще все тесты, которые есть во входном файле — это так называемый мультитест.
-На тестирующем сервере будет только один тест, и программа отработает только 
-его, а при вашем тестировании программа будет сразу запускаться на многих тестах.
-А еще, бывают задачи, где во входных данных сразу мультитест, т.е. задается сразу много тестов.
-Тогда тем более вы можете тестировать сразу на многих тестах.)
-
-Ну и при :ref:`стресс-тестировании <stresstesting>` ввод из файла вам тоже будет удобнее.
+And well, in :ref:`stress testing <stresstesting>` inputting from the file will also be more convenient.
