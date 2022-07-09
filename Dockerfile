@@ -44,3 +44,4 @@ FROM nginx
 COPY --from=1 /app/docs/_build_ru/html /usr/share/nginx/html/ru
 COPY --from=1 /app/docs/_build_en/html /usr/share/nginx/html/en
 COPY index-lang-redirect.html /usr/share/nginx/html/index.html
+COPY nginx_default.conf /etc/nginx/conf.d/default.conf
