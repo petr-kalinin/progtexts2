@@ -1,9 +1,9 @@
-name: "Build docker image from master branch"
+name: "Build docker image from english branch"
 
 on:
   push:
     branches:
-      - 'master'
+      - 'english'
 
 jobs:
   docker:
