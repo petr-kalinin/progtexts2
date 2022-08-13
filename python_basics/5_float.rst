@@ -234,6 +234,14 @@ And if the correct answer is 0.10000023, then you
 can output 0.10000, 0.10000987 or even just 0.1 or 1e—001
 (because these two are the same as 0.10000).
 
+In particular, if the correct answer to the problem is an integer 
+(for example, 12), then you can omit the fractional part at all: 12, 
+you can output 12.0, 12.0000, even 11.999999999999, 1.2e1, etc. 
+(Of course, this applies only to tasks where the answer can be non-integer. 
+If the answer in the problem is always integer, then the 
+checking program may not understand the output with a fractional part, 
+even if it is only zeroes.)
+
 In particular, this means that you can use the standard
 output function (``print``) without any special tricks;
 there's no need to round the number, no need to format the output, etc.
