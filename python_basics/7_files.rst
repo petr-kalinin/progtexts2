@@ -33,7 +33,8 @@ to read the data, not to write (then you should use ``"w"`` instead, see this be
 Then you are able to work with the received object ``f``. The basic operation is
 ``f.readline()``, which returns the next line of the file.
 This is a complete analog of ``input()``, except for that at the end
-of the received string there will be a special line break character ``"\n"``
+of the received string there will be a special line break character.
+In code you denote this character as ``"\n"``
 (when the line is output to the screen, it won't be visible, 
 but will break the line and start a new one). Highly likely it will bother you, 
 but you can easily remove it using the ``.rstrip("\n")`` method,
@@ -129,6 +130,65 @@ as an optional argument of a common ``print`` function::
 After the overall end of the output, it's recommended to call ``f.close()``
 so that the data will be actually written to the disk
 (although in most cases everything works without it).
+
+Typical mistakes
+----------------
+
+1. The line break symbol is denoted as ``\n``, not ``/n``.
+   In general, the symbols ``/`` (slash) and ``\`` (backslash) 
+   are different symbols, don't confuse them.
+
+   .. note::
+
+        In fact, the code ``\n`` is an example of a special construction,
+        allowing you to use different characters that are for some reason difficult to 
+        type as-is in the program.
+        All these constructions start with a backslash, after which
+        there is one or more characters.
+        For example, you have already encountered ``\"`` and ``\'``,
+        because inside a string enclosed in quotation marks, you can not just
+        type a quotation mark, python will think that this is the end of the string, 
+        not a quotation mark inside a string.
+        Similarly, the backslash symbol itself can't be directly typed in code,
+        python will think that this is the beginning of such a special construction,
+        the backslash in the string should be written as ``\\``. 
+        Also, for example, the code ``\t`` denotes the "tab" symbol, 
+        which is sometimes used to indent programs
+        (although it is no longer customary to do so). And so on, there are many 
+        different such constructions. You don't need to understand this in detail 
+        right now, but it is useful to know that the backslash is used 
+        in string constants for this purpose.
+
+2. Of course, if you need to work with several files in the program,
+   then you need to use *different* variables for them. In the text above, everywhere
+   the variable ``f`` was used, but, of course, you can name
+   the variables as you like, and if you need to work with two files at the same time,
+   then you need to use different variable names. In particular, in the olympiads
+   you need to work with input and output files, so usually it is easier to have
+   two different variables for them. As a rule, they are called ``f`` and ``g`` 
+   or, for example, ``inf`` and ``ouf`` (from 'input file' and 'output file').
+3. Each call of the ``open`` command *resets* the status of the file that 
+   corresponds to the specified variable. You are required to call ``open`` 
+   before starting reading or writing, but if you then call ``open`` again 
+   on the same file, the state will reset.
+   Namely, if you were reading the data from the file ``f``,
+   then after repeated ``f = open("input.txt ", "r")``
+   the reading will begin anew, from the very beginning. If you were outputting 
+   data to a file ``f``, then after repeated ``f = open("output.txt ", "w")`` 
+   the file will be *cleared*, and the output will continue again to an empty file.
+   Therefore, it is almost always necessary to open a file for input and 
+   output **only once**. In particular, if you are reading or outputting data 
+   *in a loop*, then the ``open`` command must be *outside of the loop*. Example::
+
+        # wrong
+        for i in range(n):
+            f = open("output.txt", "w")
+            print(a[i], file=f)
+
+        # correct
+        f = open("output.txt", "w")
+        for i in range(n):
+            print(a[i], file=f)
 
 How to use it on contests?
 --------------------------
