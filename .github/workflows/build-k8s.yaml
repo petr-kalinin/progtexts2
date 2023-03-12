@@ -23,8 +23,6 @@ jobs:
         with:
           push: true
           tags: petrkalinin/progtexts2-master:latest,petrkalinin/progtexts2-master:${{ github.sha }}
-          cache-from: type=registry,ref=petrkalinin/progtexts2-master:latest
-          cache-to: type=inline
 
       - 
         name: Set kubectl context
