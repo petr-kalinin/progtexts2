@@ -1,0 +1,1097 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   sodipodi:docname="figs.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:snap-object-midpoints="true"
+     inkscape:snap-nodes="true"
+     inkscape:zoom="2.2948373"
+     inkscape:cx="403.95021"
+     inkscape:cy="719.65887"
+     inkscape:window-width="2560"
+     inkscape:window-height="1367"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <marker
+       style="overflow:visible;"
+       id="Arrow1Mend"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.4) rotate(180) translate(10,0)"
+         style="fill-rule:evenodd;fill:context-stroke;stroke:context-stroke;stroke-width:1.0pt;"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path2070" />
+    </marker>
+    <marker
+       style="overflow:visible;"
+       id="Arrow1Lend"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8) rotate(180) translate(12.5,0)"
+         style="fill-rule:evenodd;fill:context-stroke;stroke:context-stroke;stroke-width:1.0pt;"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path2064" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <ellipse
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+       id="path848"
+       cx="51.127121"
+       cy="64.231644"
+       rx="0.47428116"
+       ry="0.47428119"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <ellipse
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+       id="ellipse948"
+       cx="68.843819"
+       cy="64.231644"
+       rx="0.47428116"
+       ry="0.47428119"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <ellipse
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+       id="ellipse950"
+       cx="78.072418"
+       cy="55.205383"
+       rx="0.47428116"
+       ry="0.47428119"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <ellipse
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+       id="ellipse952"
+       cx="64.52079"
+       cy="47.976162"
+       rx="0.47428116"
+       ry="0.47428119"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <ellipse
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+       id="ellipse954"
+       cx="76.133018"
+       cy="41.019238"
+       rx="0.47428116"
+       ry="0.47428119"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <ellipse
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+       id="ellipse956"
+       cx="57.339294"
+       cy="34.888126"
+       rx="0.47428116"
+       ry="0.47428119"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <ellipse
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+       id="ellipse958"
+       cx="47.883186"
+       cy="37.373363"
+       rx="0.47428116"
+       ry="0.47428119"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <ellipse
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+       id="ellipse960"
+       cx="42.918224"
+       cy="46.856289"
+       rx="0.47428116"
+       ry="0.47428119"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <ellipse
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+       id="ellipse962"
+       cx="43.179199"
+       cy="53.57954"
+       rx="0.47428116"
+       ry="0.47428119"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <ellipse
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.0862286"
+       id="path986"
+       cx="51.127121"
+       cy="64.231644"
+       rx="0.95688564"
+       ry="0.9568857"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <ellipse
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.0585956"
+       id="path1108"
+       cx="42.816364"
+       cy="71.595192"
+       rx="0.47070226"
+       ry="0.4707022"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <ellipse
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.0585956"
+       id="ellipse1190"
+       cx="65.234322"
+       cy="73.621323"
+       rx="0.47070226"
+       ry="0.4707022"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <ellipse
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.0585956"
+       id="ellipse1192"
+       cx="50.068409"
+       cy="79.686272"
+       rx="0.47070226"
+       ry="0.4707022"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <ellipse
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.0585956"
+       id="ellipse1194"
+       cx="33.956127"
+       cy="75.459282"
+       rx="0.47070226"
+       ry="0.4707022"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <ellipse
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.0600947"
+       id="ellipse1196"
+       cx="33.353508"
+       cy="64.231644"
+       rx="0.49588427"
+       ry="0.46995267"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <circle
+       id="path1231"
+       style="fill:#000000;stroke:#000000;stroke-width:0.264583"
+       cx="51.119961"
+       cy="64.194908"
+       r="0.0029021453"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <circle
+       id="path1233"
+       style="fill:#000000;stroke:#000000;stroke-width:0.264583"
+       cx="51.119961"
+       cy="64.194908"
+       r="0.0029021453"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 51.119961,64.194908 17.723858,0.03674 7.289199,-23.212406 -18.793724,-6.131112"
+       id="path1463"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.264583, 0.264583;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
+       d="M 71.858472,68.799676 C 80.44418,67.580016 86.455816,59.307795 87.240534,54.340664 88.025252,49.373533 86.616124,39.953733 82.529441,35.005737"
+       id="path1732"
+       sodipodi:nodetypes="czc"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="49.875305"
+       y="69.502419"
+       id="text5533"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91"><tspan
+         sodipodi:role="line"
+         id="tspan5531"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.29167px;font-family:'DejaVu Serif';-inkscape-font-specification:'DejaVu Serif';stroke-width:0.264583"
+         x="49.875305"
+         y="69.502419">O</tspan></text>
+    <g
+       id="g23511"
+       transform="translate(0,-3.3149907)"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig2.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91">
+      <g
+         id="g23127">
+        <path
+           style="fill:#4d4d4d;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="M 60.933382,144.56943 78.65724,144.60613 96.845076,134.2335 85.946439,121.39375 60.940544,144.60616"
+           id="path22824" />
+        <path
+           style="fill:#cccccc;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 60.940544,144.60615 6.212174,-29.34349 18.793721,6.13111 z"
+           id="path22558"
+           sodipodi:nodetypes="cccc" />
+        <ellipse
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+           id="ellipse14884"
+           cx="60.940544"
+           cy="144.60616"
+           rx="0.47428116"
+           ry="0.47428119"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <ellipse
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+           id="ellipse14886"
+           cx="78.657242"
+           cy="144.60616"
+           rx="0.47428116"
+           ry="0.47428119"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <ellipse
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+           id="ellipse14888"
+           cx="96.845078"
+           cy="134.23352"
+           rx="0.47428116"
+           ry="0.47428119"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <ellipse
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+           id="ellipse14890"
+           cx="71.92186"
+           cy="126.7504"
+           rx="0.47428116"
+           ry="0.47428119"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <ellipse
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+           id="ellipse14892"
+           cx="85.946442"
+           cy="121.39377"
+           rx="0.47428116"
+           ry="0.47428119"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <ellipse
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+           id="ellipse14894"
+           cx="67.152718"
+           cy="115.26266"
+           rx="0.47428116"
+           ry="0.47428119"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <ellipse
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+           id="ellipse14896"
+           cx="57.696609"
+           cy="117.74789"
+           rx="0.47428116"
+           ry="0.47428119"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <ellipse
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+           id="ellipse14898"
+           cx="52.731647"
+           cy="127.23082"
+           rx="0.47428116"
+           ry="0.47428119"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <ellipse
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+           id="ellipse14900"
+           cx="52.992622"
+           cy="133.95406"
+           rx="0.47428116"
+           ry="0.47428119"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <ellipse
+           style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.0862286"
+           id="ellipse14902"
+           cx="60.940544"
+           cy="144.60616"
+           rx="0.95688564"
+           ry="0.9568857"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <circle
+           id="circle14914"
+           style="fill:#000000;stroke:#000000;stroke-width:0.264583"
+           cx="60.933384"
+           cy="144.56943"
+           r="0.0029021453"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <circle
+           id="circle14916"
+           style="fill:#000000;stroke:#000000;stroke-width:0.264583"
+           cx="60.933384"
+           cy="144.56943"
+           r="0.0029021453"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+           x="59.688728"
+           y="149.87694"
+           id="text14924"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91"><tspan
+             sodipodi:role="line"
+             id="tspan14922"
+             style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.29167px;font-family:'DejaVu Serif';-inkscape-font-specification:'DejaVu Serif';stroke-width:0.264583"
+             x="59.688728"
+             y="149.87694">O</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+           x="67.168312"
+           y="113.9169"
+           id="text15248"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91"><tspan
+             sodipodi:role="line"
+             id="tspan15246"
+             style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.29167px;font-family:'DejaVu Serif';-inkscape-font-specification:'DejaVu Serif';stroke-width:0.264583"
+             x="67.168312"
+             y="113.9169">A<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan16394">i</tspan></tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+           x="87.423714"
+           y="121.58985"
+           id="text19186"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91"><tspan
+             sodipodi:role="line"
+             id="tspan19184"
+             style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.29167px;font-family:'DejaVu Serif';-inkscape-font-specification:'DejaVu Serif';stroke-width:0.264583"
+             x="87.423714"
+             y="121.58985">A<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan20992">j</tspan></tspan></text>
+        <ellipse
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+           id="ellipse22328"
+           cx="102.11674"
+           cy="119.54707"
+           rx="0.47428116"
+           ry="0.47428119"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 67.152718,115.26266 18.793721,6.13111"
+           id="path22443" />
+      </g>
+    </g>
+    <g
+       id="g23538"
+       transform="translate(0,-5.1637036)"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig2.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91">
+      <g
+         id="g23153">
+        <path
+           style="fill:#4d4d4d;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 127.83551,146.41815 17.72386,0.0367 23.45951,-25.05905 -16.17031,1.84667 -25.0059,23.21241"
+           id="path23055"
+           sodipodi:nodetypes="ccccc" />
+        <path
+           style="fill:#cccccc;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 127.84267,146.45487 6.21218,-29.34349 18.79372,6.13111 z"
+           id="path23057"
+           sodipodi:nodetypes="cccc" />
+        <ellipse
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+           id="ellipse23059"
+           cx="127.84267"
+           cy="146.45486"
+           rx="0.47428116"
+           ry="0.47428119"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <ellipse
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+           id="ellipse23061"
+           cx="145.55937"
+           cy="146.45486"
+           rx="0.47428116"
+           ry="0.47428119"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <ellipse
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+           id="ellipse23063"
+           cx="163.74721"
+           cy="136.08223"
+           rx="0.47428116"
+           ry="0.47428119"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <ellipse
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+           id="ellipse23065"
+           cx="138.82399"
+           cy="128.59912"
+           rx="0.47428116"
+           ry="0.47428119"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <ellipse
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+           id="ellipse23067"
+           cx="152.84857"
+           cy="123.24249"
+           rx="0.47428116"
+           ry="0.47428119"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <ellipse
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+           id="ellipse23069"
+           cx="134.05484"
+           cy="117.11137"
+           rx="0.47428116"
+           ry="0.47428119"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <ellipse
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+           id="ellipse23071"
+           cx="124.59874"
+           cy="119.5966"
+           rx="0.47428116"
+           ry="0.47428119"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <ellipse
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+           id="ellipse23073"
+           cx="119.63378"
+           cy="129.07954"
+           rx="0.47428116"
+           ry="0.47428119"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <ellipse
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+           id="ellipse23075"
+           cx="119.89475"
+           cy="135.80276"
+           rx="0.47428116"
+           ry="0.47428119"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <ellipse
+           style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.0862286"
+           id="ellipse23077"
+           cx="127.84267"
+           cy="146.45486"
+           rx="0.95688564"
+           ry="0.9568857"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <circle
+           id="circle23079"
+           style="fill:#000000;stroke:#000000;stroke-width:0.264583"
+           cx="127.83551"
+           cy="146.41814"
+           r="0.0029021453"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <circle
+           id="circle23081"
+           style="fill:#000000;stroke:#000000;stroke-width:0.264583"
+           cx="127.83551"
+           cy="146.41814"
+           r="0.0029021453"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+           x="126.59087"
+           y="151.72565"
+           id="text23085"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91"><tspan
+             sodipodi:role="line"
+             id="tspan23083"
+             style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.29167px;font-family:'DejaVu Serif';-inkscape-font-specification:'DejaVu Serif';stroke-width:0.264583"
+             x="126.59087"
+             y="151.72565">O</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+           x="134.07043"
+           y="115.76562"
+           id="text23091"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91"><tspan
+             sodipodi:role="line"
+             id="tspan23089"
+             style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.29167px;font-family:'DejaVu Serif';-inkscape-font-specification:'DejaVu Serif';stroke-width:0.264583"
+             x="134.07043"
+             y="115.76562">A<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan23087">i</tspan></tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+           x="154.32585"
+           y="123.43857"
+           id="text23097"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91"><tspan
+             sodipodi:role="line"
+             id="tspan23095"
+             style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.29167px;font-family:'DejaVu Serif';-inkscape-font-specification:'DejaVu Serif';stroke-width:0.264583"
+             x="154.32585"
+             y="123.43857">A<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan23093">j</tspan></tspan></text>
+        <ellipse
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+           id="ellipse23099"
+           cx="169.01888"
+           cy="121.3958"
+           rx="0.47428116"
+           ry="0.47428119"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 134.05485,117.11138 18.79372,6.13111"
+           id="path23101" />
+      </g>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 108.87437,109.97846 v 33.42422"
+       id="path23404"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig2.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <path
+       style="fill:#4d4d4d;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 58.257445,224.70719 17.723858,0.0367 18.187836,-10.37263 -10.898637,-12.83975 -25.005895,23.21241"
+       id="path23668" />
+    <path
+       style="fill:#cccccc;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 58.264607,224.74391 6.212174,-29.34349 18.793721,6.13111 z"
+       id="path23670"
+       sodipodi:nodetypes="cccc" />
+    <ellipse
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+       id="ellipse23672"
+       cx="58.264606"
+       cy="224.74391"
+       rx="0.47428116"
+       ry="0.47428119"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <ellipse
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+       id="ellipse23674"
+       cx="75.981308"
+       cy="224.74391"
+       rx="0.47428116"
+       ry="0.47428119"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <ellipse
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+       id="ellipse23676"
+       cx="94.169144"
+       cy="214.37128"
+       rx="0.47428116"
+       ry="0.47428119"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <ellipse
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+       id="ellipse23678"
+       cx="69.245926"
+       cy="206.88815"
+       rx="0.47428116"
+       ry="0.47428119"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <ellipse
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+       id="ellipse23680"
+       cx="83.270508"
+       cy="201.53152"
+       rx="0.47428116"
+       ry="0.47428119"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <ellipse
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+       id="ellipse23682"
+       cx="64.476784"
+       cy="195.40042"
+       rx="0.47428116"
+       ry="0.47428119"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <ellipse
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+       id="ellipse23684"
+       cx="55.020672"
+       cy="197.88565"
+       rx="0.47428116"
+       ry="0.47428119"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <ellipse
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+       id="ellipse23686"
+       cx="50.05571"
+       cy="207.36858"
+       rx="0.47428116"
+       ry="0.47428119"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <ellipse
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+       id="ellipse23688"
+       cx="50.316685"
+       cy="214.09181"
+       rx="0.47428116"
+       ry="0.47428119"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <ellipse
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.0862286"
+       id="ellipse23690"
+       cx="58.264606"
+       cy="224.74391"
+       rx="0.95688564"
+       ry="0.9568857"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <circle
+       id="circle23692"
+       style="fill:#000000;stroke:#000000;stroke-width:0.264583"
+       cx="58.257446"
+       cy="224.70718"
+       r="0.0029021453"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <circle
+       id="circle23694"
+       style="fill:#000000;stroke:#000000;stroke-width:0.264583"
+       cx="58.257446"
+       cy="224.70718"
+       r="0.0029021453"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="57.012791"
+       y="230.01469"
+       id="text23698"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91"><tspan
+         sodipodi:role="line"
+         id="tspan23696"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.29167px;font-family:'DejaVu Serif';-inkscape-font-specification:'DejaVu Serif';stroke-width:0.264583"
+         x="57.012791"
+         y="230.01469">O</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="64.492378"
+       y="194.05466"
+       id="text23704"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91"><tspan
+         sodipodi:role="line"
+         id="tspan23702"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.29167px;font-family:'DejaVu Serif';-inkscape-font-specification:'DejaVu Serif';stroke-width:0.264583"
+         x="64.492378"
+         y="194.05466">A<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan23700">i</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="84.74778"
+       y="201.72762"
+       id="text23710"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91"><tspan
+         sodipodi:role="line"
+         id="tspan23708"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.29167px;font-family:'DejaVu Serif';-inkscape-font-specification:'DejaVu Serif';stroke-width:0.264583"
+         x="84.74778"
+         y="201.72762">A<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan23706">j</tspan></tspan></text>
+    <ellipse
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+       id="ellipse23712"
+       cx="99.440804"
+       cy="199.68483"
+       rx="0.47428116"
+       ry="0.47428119"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 64.476781,195.40042 18.793721,6.13111"
+       id="path23714" />
+    <g
+       id="g23770"
+       transform="translate(-2.6759369,78.289048)"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig2.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91">
+      <g
+         id="g23768">
+        <path
+           style="fill:#4d4d4d;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 127.83551,146.41815 17.72386,0.0367 23.45951,-25.05905 -16.17031,1.84667 -25.0059,23.21241"
+           id="path23720"
+           sodipodi:nodetypes="ccccc" />
+        <path
+           style="fill:#cccccc;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 127.84267,146.45487 6.21218,-29.34349 18.79372,6.13111 z"
+           id="path23722"
+           sodipodi:nodetypes="cccc" />
+        <ellipse
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+           id="ellipse23724"
+           cx="127.84267"
+           cy="146.45486"
+           rx="0.47428116"
+           ry="0.47428119"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <ellipse
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+           id="ellipse23726"
+           cx="145.55937"
+           cy="146.45486"
+           rx="0.47428116"
+           ry="0.47428119"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <ellipse
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+           id="ellipse23728"
+           cx="163.74721"
+           cy="136.08223"
+           rx="0.47428116"
+           ry="0.47428119"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <ellipse
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+           id="ellipse23730"
+           cx="138.82399"
+           cy="128.59912"
+           rx="0.47428116"
+           ry="0.47428119"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <ellipse
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+           id="ellipse23732"
+           cx="152.84857"
+           cy="123.24249"
+           rx="0.47428116"
+           ry="0.47428119"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <ellipse
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+           id="ellipse23734"
+           cx="134.05484"
+           cy="117.11137"
+           rx="0.47428116"
+           ry="0.47428119"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <ellipse
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+           id="ellipse23736"
+           cx="124.59874"
+           cy="119.5966"
+           rx="0.47428116"
+           ry="0.47428119"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <ellipse
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+           id="ellipse23738"
+           cx="119.63378"
+           cy="129.07954"
+           rx="0.47428116"
+           ry="0.47428119"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <ellipse
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+           id="ellipse23740"
+           cx="119.89475"
+           cy="135.80276"
+           rx="0.47428116"
+           ry="0.47428119"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <ellipse
+           style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.0862286"
+           id="ellipse23742"
+           cx="127.84267"
+           cy="146.45486"
+           rx="0.95688564"
+           ry="0.9568857"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <circle
+           id="circle23744"
+           style="fill:#000000;stroke:#000000;stroke-width:0.264583"
+           cx="127.83551"
+           cy="146.41814"
+           r="0.0029021453"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <circle
+           id="circle23746"
+           style="fill:#000000;stroke:#000000;stroke-width:0.264583"
+           cx="127.83551"
+           cy="146.41814"
+           r="0.0029021453"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+           x="126.59087"
+           y="151.72565"
+           id="text23750"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91"><tspan
+             sodipodi:role="line"
+             id="tspan23748"
+             style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.29167px;font-family:'DejaVu Serif';-inkscape-font-specification:'DejaVu Serif';stroke-width:0.264583"
+             x="126.59087"
+             y="151.72565">O</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+           x="134.07043"
+           y="115.76562"
+           id="text23756"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91"><tspan
+             sodipodi:role="line"
+             id="tspan23754"
+             style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.29167px;font-family:'DejaVu Serif';-inkscape-font-specification:'DejaVu Serif';stroke-width:0.264583"
+             x="134.07043"
+             y="115.76562">A<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan23752">i</tspan></tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+           x="154.32585"
+           y="123.43857"
+           id="text23762"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91"><tspan
+             sodipodi:role="line"
+             id="tspan23760"
+             style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.29167px;font-family:'DejaVu Serif';-inkscape-font-specification:'DejaVu Serif';stroke-width:0.264583"
+             x="154.32585"
+             y="123.43857">A<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan23758">j</tspan></tspan></text>
+        <ellipse
+           style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0514376"
+           id="ellipse23764"
+           cx="169.01888"
+           cy="121.3958"
+           rx="0.47428116"
+           ry="0.47428119"
+           inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+           inkscape:export-xdpi="463.91"
+           inkscape:export-ydpi="463.91" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 134.05485,117.11138 18.79372,6.13111"
+           id="path23766" />
+      </g>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 106.19843,193.43121 v 33.42422"
+       id="path23772"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig2.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="95.122864"
+       y="211.62186"
+       id="text23827"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91"><tspan
+         sodipodi:role="line"
+         id="tspan23825"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.29167px;font-family:'DejaVu Serif';-inkscape-font-specification:'DejaVu Serif';stroke-width:0.264583"
+         x="95.122864"
+         y="211.62186">A<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan26167">k</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="161.84459"
+       y="196.8956"
+       id="text27375"
+       inkscape:export-filename="/home/petr/algoprog/progtexts2/docs/dynprog/eagles/fig1.png"
+       inkscape:export-xdpi="463.91"
+       inkscape:export-ydpi="463.91"><tspan
+         sodipodi:role="line"
+         id="tspan27373"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.29167px;font-family:'DejaVu Serif';-inkscape-font-specification:'DejaVu Serif';stroke-width:0.264583"
+         x="161.84459"
+         y="196.8956">A<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan27371">k</tspan></tspan></text>
+  </g>
+</svg>
