@@ -5,6 +5,6 @@ Sqrt-decomposition
    :maxdepth: 2
    :caption: Оглавление:
 
-   sqrt_main
-   sqrt_answers
+   1_sqrt_main
+   answers
 
