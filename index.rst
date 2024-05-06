@@ -23,4 +23,7 @@
    dfs/index
    dynprog/index
    binsearch/07_binsearch_main
+   2-sat/2-sat_index
+   sqrt/sqrt_index
+   strings/strings_main
 
