@@ -247,7 +247,7 @@ else и elif
 
 Еще пример::
 
-    if d = "North":
+    if d == "North":
         print("Идем на север")
     elif d == "South":
         print("Идем на юг")
