@@ -22,7 +22,7 @@ FROM python:3
 RUN mkdir -p /app/docs
 WORKDIR /app/docs
 
-RUN pip3 install -U sphinx
+RUN pip3 install -U sphinx==7.0.0
 
 COPY --from=0 /app/theme /app/theme
 RUN git clone https://github.com/petr-kalinin/progtexts2 .
