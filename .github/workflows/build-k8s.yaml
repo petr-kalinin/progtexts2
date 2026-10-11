@@ -1,55 +1,110 @@
-name: "Build docker image from master branch"
+name: Build and deploy Notes to Selectel
 
 on:
   push:
     branches:
-      - 'master'
-      - 'english'
+      - master
+      - english
+
+permissions:
+  contents: read
+
+concurrency:
+  group: selectel-notes
+  cancel-in-progress: false
 
 jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
-      -
-        name: Login to DockerHub
-        uses: docker/login-action@v1 
+      - name: Resolve both source revisions
+        id: sources
+        run: |
+          set -euo pipefail
+          repository="https://github.com/petr-kalinin/progtexts2.git"
+          ru_ref="$(git ls-remote "$repository" refs/heads/master | cut -f1)"
+          en_ref="$(git ls-remote "$repository" refs/heads/english | cut -f1)"
+          test -n "$ru_ref"
+          test -n "$en_ref"
+          if [[ "$GITHUB_REF_NAME" == master ]]; then
+            ru_ref="$GITHUB_SHA"
+          else
+            en_ref="$GITHUB_SHA"
+          fi
+          printf 'ru=%s\nen=%s\nimage_tag=%s-%s\n' \
+            "$ru_ref" "$en_ref" "$ru_ref" "$en_ref" >> "$GITHUB_OUTPUT"
+
+      - name: Check out the pinned master build files
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ steps.sources.outputs.ru }}
+          persist-credentials: false
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      -
-        name: Build and push
-        id: docker_build
-        uses: docker/build-push-action@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v4
+
+      - name: Build and push
+        uses: docker/build-push-action@v7
         with:
+          context: .
           push: true
-          tags: petrkalinin/progtexts2-master:latest,petrkalinin/progtexts2-master:${{ github.sha }}
+          build-args: |
+            RU_REF=${{ steps.sources.outputs.ru }}
+            EN_REF=${{ steps.sources.outputs.en }}
+          tags: |
+            docker.io/petrkalinin/progtexts2-master:${{ steps.sources.outputs.image_tag }}
+            docker.io/petrkalinin/progtexts2-master:${{ github.sha }}
+          cache-from: type=registry,ref=docker.io/petrkalinin/progtexts2-master:latest
+          cache-to: type=inline
 
-      - 
-        name: Set kubectl context
-        uses: azure/k8s-set-context@v1
-        id: setcontext
+      - name: Install kubectl
+        uses: azure/setup-kubectl@v5.1.0
         with:
-          method: service-account
-          k8s-url: ${{ secrets.K8S_URL }}
-          k8s-secret: ${{ secrets.K8S_SECRET }}
-          
-      - 
-        name: Checkout
-        uses: actions/checkout@v2
+          version: v1.35.3
 
-      - 
-        name: Deploy to k8s
-        uses: Azure/k8s-deploy@v1.4
-        with:
-          manifests: |
-            k8s/deployment.yaml
-            k8s/service.yaml
-          images: 'petrkalinin/progtexts2-master:${{ github.sha }}'
-          kubectl-version: 'latest'
+      - name: Deploy current Notes sources
+        id: deploy
+        env:
+          RU_REF: ${{ steps.sources.outputs.ru }}
+          EN_REF: ${{ steps.sources.outputs.en }}
+          IMAGE_TAG: ${{ steps.sources.outputs.image_tag }}
+          SELECTEL_KUBECONFIG_B64: ${{ secrets.SELECTEL_KUBECONFIG_B64 }}
+        run: |
+          set -euo pipefail
+          test -n "$SELECTEL_KUBECONFIG_B64"
 
-      - 
-        name: send telegram message
+          current_ru="$(git ls-remote origin refs/heads/master | cut -f1)"
+          current_en="$(git ls-remote origin refs/heads/english | cut -f1)"
+          test -n "$current_ru"
+          test -n "$current_en"
+          if [[ "$current_ru" != "$RU_REF" || "$current_en" != "$EN_REF" ]]; then
+            echo "A newer Notes source commit exists; skipping this deployment."
+            exit 0
+          fi
+
+          umask 077
+          export KUBECONFIG="$RUNNER_TEMP/selectel-kubeconfig"
+          printf '%s' "$SELECTEL_KUBECONFIG_B64" | base64 --decode > "$KUBECONFIG"
+          trap 'rm -f "$KUBECONFIG"' EXIT
+
+          image="docker.io/petrkalinin/progtexts2-master:$IMAGE_TAG"
+          kubectl -n default set image deployment/progtexts2 progtexts2="$image"
+          kubectl -n default rollout status deployment/progtexts2 --timeout=15m
+          docker buildx imagetools create \
+            --tag docker.io/petrkalinin/progtexts2-master:latest "$image"
+          echo 'deployed=true' >> "$GITHUB_OUTPUT"
+
+      - name: Notify on Telegram
+        if: steps.deploy.outputs.deployed == 'true'
+        continue-on-error: true
         uses: appleboy/telegram-action@master
         with:
-            to: ${{ secrets.TELEGRAM_TO }}
-            token: ${{ secrets.TELEGRAM_TOKEN }}
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: Notes deployed to Selectel from ${{ steps.sources.outputs.image_tag }}

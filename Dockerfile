@@ -19,6 +19,9 @@ RUN npm run build
 
 FROM python:3
 
+ARG RU_REF=master
+ARG EN_REF=english
+
 RUN mkdir -p /app/docs
 WORKDIR /app/docs
 
@@ -27,12 +30,12 @@ RUN pip3 install -U sphinx==7.0.0
 COPY --from=0 /app/theme /app/theme
 RUN git clone https://github.com/petr-kalinin/progtexts2 .
 
-RUN git checkout master
+RUN git checkout --detach "$RU_REF"
 RUN make html
 RUN make html
 RUN cp -r _build _build_ru
 
-RUN git checkout english
+RUN git checkout --detach "$EN_REF"
 RUN rm -r _build
 RUN make html
 RUN make html
